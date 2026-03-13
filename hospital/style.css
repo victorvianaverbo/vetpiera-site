@@ -299,19 +299,52 @@ ul {
    SECTION 1 — HERO
    100vh fullbleed · Mouse Spotlight · Grain · "24h" Stamp
    ============================================================ */
+/* ── Hero shell ── */
 .hosp-hero {
-  position: relative;
-  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   min-height: 100svh;
-  display: flex;
-  align-items: center;
+  position: relative;
   overflow: hidden;
+  background-color: var(--clr-dark);
+}
 
-  /* Photo background with gradient fallback */
+/* ── Left panel: dark background + copy ── */
+.hosp-hero__left {
+  background: var(--clr-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(120px, 14vw, 180px) clamp(80px, 10vw, 120px);
+  padding-inline: var(--pad-x) clamp(48px, 6vw, 88px);
+  position: relative;
+  z-index: 5;
+}
+
+/* ── Right panel: photo ── */
+.hosp-hero__right {
+  position: relative;
+  overflow: hidden;
+}
+
+.hosp-hero__photo {
+  width: 100%;
+  height: 100%;
   background-image: url('/images/hospital-hero-final.png');
   background-size: cover;
   background-position: center center;
   background-color: #0a1e16;
+}
+
+.hosp-hero__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(15, 45, 36, 0.40) 0%,
+    transparent 50%
+  );
 }
 
 /* Dark gradient overlay on photo */
@@ -388,13 +421,6 @@ ul {
 
 /* ── Content wrapper ── */
 .hosp-hero__content {
-  position: relative;
-  z-index: 4;
-  max-width: var(--container);
-  width: 100%;
-  margin-inline: auto;
-  padding-inline: var(--pad-x);
-  padding-block: clamp(120px, 16vw, 180px) clamp(80px, 10vw, 120px);
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -507,11 +533,29 @@ ul {
 }
 
 /* ── Hero mobile breakpoints ── */
+@media (max-width: 1024px) {
+  .hosp-hero {
+    grid-template-columns: 55fr 45fr;
+  }
+}
+
 @media (max-width: 768px) {
+  .hosp-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .hosp-hero__right {
+    height: 55vw;
+    min-height: 240px;
+  }
+  .hosp-hero__left {
+    padding-block: clamp(80px, 12vw, 120px) clamp(100px, 14vw, 140px);
+  }
   .hosp-hero__stamp {
     font-size: clamp(5rem, 22vw, 9rem);
-    bottom: 20px;
+    bottom: -30px;
     right: 16px;
+    opacity: 0.15;
   }
   .hosp-hero__headline {
     font-size: clamp(2.25rem, 7.5vw, 3.5rem);
@@ -519,10 +563,6 @@ ul {
   .hosp-hero__actions {
     flex-direction: column;
     align-items: flex-start;
-  }
-  /* Disable spotlight on touch devices */
-  .hosp-hero__spotlight {
-    display: none;
   }
 }
 
@@ -1639,6 +1679,84 @@ ul {
    ACCESSIBILITY — prefers-reduced-motion
    Show final states immediately, skip all transitions
    ============================================================ */
+
+/* ============================================================
+   SECTION: QUEM SOMOS (Hospital)
+   ============================================================ */
+.hosp-about {
+  padding-block: var(--sp-section);
+  background: var(--clr-bg);
+}
+
+.hosp-about__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(40px, 8vw, 80px);
+  align-items: center;
+}
+
+.hosp-about__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--clr-primary);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+
+.hosp-about__badge-num {
+  font-family: var(--ff-heading);
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--clr-accent);
+}
+
+.hosp-about__badge-text {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.hosp-about__title {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-h2);
+  color: var(--clr-dark);
+  margin-bottom: 24px;
+}
+
+.hosp-about__text {
+  font-size: var(--fs-body);
+  color: var(--clr-muted);
+  margin-bottom: 20px;
+  max-width: 560px;
+}
+
+.hosp-about__visual {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 20px 20px 60px rgba(0,0,0,0.05);
+}
+
+.hosp-about__img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.6s var(--ease);
+}
+.hosp-about__visual:hover .hosp-about__img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+  .hosp-about__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   /* Hero: skip all fade/stamp animations, show final state */
   .hosp-hero__eyebrow,
@@ -1678,5 +1796,195 @@ ul {
   .services__card-live-dot,
   .hosp-contact__glass-dot {
     animation: none;
+  }
+}
+
+/* ============================================================
+   SECTION: NOSSA ESTRUTURA (Hospital)
+   Archetype: Multi-row Carousel with Navigation
+   ============================================================ */
+.hosp-structure {
+  background: var(--clr-primary-pale);
+  padding-block: var(--sp-section);
+  overflow: hidden;
+}
+
+.hosp-structure__header {
+  text-align: center;
+  margin-bottom: clamp(40px, 6vw, 64px);
+}
+
+.hosp-structure__title {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-h2);
+  color: var(--clr-primary);
+  margin-bottom: 12px;
+}
+
+.hosp-structure__carousel {
+  width: 100%;
+  position: relative;
+  padding-inline: var(--pad-x);
+  max-width: var(--container);
+  margin-inline: auto;
+}
+
+.hosp-structure__track-wrapper {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  cursor: grab;
+}
+.hosp-structure__track-wrapper:active { cursor: grabbing; }
+
+.hosp-structure__track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.6s var(--ease);
+}
+
+.hosp-structure__item {
+  flex: 0 0 clamp(280px, 40vw, 450px);
+  height: clamp(300px, 45vw, 500px);
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--clr-dark);
+}
+
+.hosp-structure__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+
+.hosp-structure__item:hover .hosp-structure__img {
+  transform: scale(1.08);
+}
+
+.hosp-structure__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px 24px 24px;
+  background: linear-gradient(to top, rgba(15, 45, 36, 0.9), transparent);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: transform 0.4s var(--ease), opacity 0.4s ease;
+}
+
+.hosp-structure__item:hover .hosp-structure__caption {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.hosp-structure__nav {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.hosp-structure__btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-primary);
+  font-size: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+.hosp-structure__btn:hover {
+  background: var(--clr-primary);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* ============================================================
+   SECTION: NOSSOS DIFERENCIAIS (Hospital)
+   Archetype: Feature Grid 3x3
+   ============================================================ */
+.hosp-diffs {
+  background: var(--clr-surface);
+  padding-block: var(--sp-section);
+}
+
+.hosp-diffs__header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.hosp-diffs__title {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-h2);
+  color: var(--clr-dark);
+  margin-bottom: 16px;
+}
+
+.hosp-diffs__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--pad-x);
+}
+
+.hosp-diffs__card {
+  padding: 32px;
+  background: var(--clr-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--clr-border);
+  transition: all 0.4s var(--ease);
+}
+.hosp-diffs__card:hover {
+  transform: translateY(-5px);
+  border-color: var(--clr-primary);
+  box-shadow: 0 12px 32px rgba(27,77,62,0.08);
+}
+
+.hosp-diffs__icon {
+  width: 48px;
+  height: 48px;
+  background: var(--clr-primary-pale);
+  color: var(--clr-primary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.hosp-diffs__card-name {
+  font-family: var(--ff-heading);
+  font-size: 1.25rem;
+  color: var(--clr-dark);
+  margin-bottom: 12px;
+}
+
+.hosp-diffs__card-desc {
+  font-size: 0.9rem;
+  color: var(--clr-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .hosp-diffs__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .hosp-diffs__grid {
+    grid-template-columns: 1fr;
   }
 }
