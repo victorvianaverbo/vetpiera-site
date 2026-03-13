@@ -602,18 +602,11 @@ button {
 }
 
 .spec-card__photo--ryan {
-  background-image: url('/images/dr-ryan.jpg');
-  /* Fallback gradient while image loads */
-  background-image:
-    url('/images/dr-ryan.jpg'),
-    linear-gradient(135deg, #1B4D3E 0%, #0F2D24 100%);
+  background-image: url('/images/diretor-ryan.jpg');
 }
 
 .spec-card__photo--diana {
-  background-image: url('/images/dra-diana.jpg');
-  background-image:
-    url('/images/dra-diana.jpg'),
-    linear-gradient(135deg, #1B4D3E 0%, #0F2D24 100%);
+  background-image: url('/images/diretora-diana.jpg');
 }
 
 /* ── Bio overlay (hover reveal) ── */
@@ -1509,5 +1502,91 @@ button {
   .btn:hover,
   .spec-card:hover {
     transform: none;
+  }
+}
+
+/* ============================================================
+   SECTION: NOSSA ESTRUTURA
+   Archetype: Masonry-style Editorial Grid
+   ============================================================ */
+.structure {
+  background: var(--clr-surface);
+  padding-block: var(--sp-section);
+}
+
+.structure__header {
+  text-align: center;
+  margin-bottom: clamp(40px, 6vw, 64px);
+  padding-inline: var(--pad-x);
+}
+
+.structure__title {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-h2);
+  color: var(--clr-primary);
+  margin-bottom: 12px;
+}
+
+.structure__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: clamp(200px, 25vw, 300px);
+  gap: 16px;
+  padding-inline: var(--pad-x);
+  max-width: var(--container);
+  margin-inline: auto;
+}
+
+.structure__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--clr-primary-pale);
+}
+
+.structure__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.structure__item:hover .structure__img {
+  transform: scale(1.05);
+}
+
+.structure__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(15, 45, 36, 0.7), transparent);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.structure__item:hover .structure__caption {
+  opacity: 1;
+}
+
+/* Layout specific spans */
+.structure__item--lg { grid-column: span 8; grid-row: span 2; }
+.structure__item--sm { grid-column: span 4; grid-row: span 1; }
+.structure__item--md { grid-column: span 4; grid-row: span 2; }
+
+@media (max-width: 768px) {
+  .structure__grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 250px;
+  }
+  .structure__item--lg,
+  .structure__item--sm,
+  .structure__item--md {
+    grid-column: span 1;
+    grid-row: span 1;
   }
 }
