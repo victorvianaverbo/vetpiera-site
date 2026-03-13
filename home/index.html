@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Grupo Piera — Cuidado veterinário completo desde 2002. Hospital 24h, UTI veterinária e 25 especialidades em São Paulo.">
+  <title>VetPiera — Cuidado Veterinário Completo</title>
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
+
+  <link rel="stylesheet" href="/home/style.css">
+</head>
+<body>
+
+  <!-- ===================================================
+       NAVIGATION
+  =================================================== -->
+  <header class="site-header" role="banner">
+    <div class="site-header__inner container">
+      <a href="/" class="site-header__logo" aria-label="VetPiera — Página inicial">
+        Vet<span>Piera</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Navegação principal">
+        <ul class="site-nav__list" role="list">
+          <li><a href="/hospital" class="site-nav__link">Hospital 24h</a></li>
+          <li><a href="/especialidades" class="site-nav__link">Especialidades</a></li>
+        </ul>
+      </nav>
+
+      <a href="https://wa.me/5511963326376" class="btn btn--accent site-header__cta" target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
+        Fale Conosco
+      </a>
+
+      <button class="site-header__burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="site-header__burger-bar"></span>
+        <span class="site-header__burger-bar"></span>
+        <span class="site-header__burger-bar"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <nav aria-label="Navegação mobile">
+        <ul class="mobile-menu__list" role="list">
+          <li><a href="/hospital" class="mobile-menu__link">Hospital 24h</a></li>
+          <li><a href="/especialidades" class="mobile-menu__link">Especialidades</a></li>
+          <li><a href="/quem-somos" class="mobile-menu__link">Quem Somos</a></li>
+          <li>
+            <a href="https://wa.me/5511963326376" class="btn btn--accent mobile-menu__cta" target="_blank" rel="noopener">
+              Fale Conosco
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================================================
+         SECTION 1 — HERO (Split Assimetrico 55/45)
+    =================================================== -->
+    <section class="hero" aria-label="Hero principal">
+
+      <!-- Left copy panel 55% -->
+      <div class="hero__copy">
+        <span class="hero__eyebrow">Grupo Piera · Desde 2002</span>
+        <h1 class="hero__headline">
+          <span class="hero__word">O</span>
+          <span class="hero__word">cuidado</span>
+          <span class="hero__word">veterinário</span>
+          <span class="hero__word">completo</span>
+          <span class="hero__word">que</span>
+          <span class="hero__word">o</span>
+          <span class="hero__word">seu</span>
+          <span class="hero__word">pet</span>
+          <span class="hero__word">merece.</span>
+        </h1>
+        <p class="hero__sub">Somos o Grupo Piera — 22 anos cuidando de animais com tecnologia, especialização e humanidade.</p>
+        <div class="hero__actions">
+          <a href="/hospital" class="btn btn--accent">Hospital 24h →</a>
+          <a href="/especialidades" class="btn btn--outline">Conhecer Especialidades</a>
+        </div>
+      </div>
+
+      <!-- Right media panel 45% -->
+      <div class="hero__media" aria-hidden="true">
+        <div class="hero__photo" id="heroPhoto" style="background-image: url('/images/hero-home-brasil.jpg');"></div>
+        <div class="hero__vignette"></div>
+      </div>
+
+      <!-- Badge "22 anos" — overlapping the diagonal seam -->
+      <div class="hero__badge" aria-label="22 anos de experiência">
+        <span class="hero__badge-num" id="heroBadgeCounter">0</span>
+        <span class="hero__badge-label">anos de<br>experiência</span>
+      </div>
+
+    </section>
+
+    <!-- ===================================================
+         SECTION 2 — UNITS ("Duas Unidades")
+         Bento Box com 3D Flip Cards
+    =================================================== -->
+    <section class="units" aria-label="Nossas unidades">
+      <div class="units__header">
+        <p class="units__pre">Onde seu pet precisa ir?</p>
+        <h2 class="units__title">Duas unidades.<br>Um só compromisso com o seu animal.</h2>
+        <p class="units__intro">Temos a estrutura certa para cada momento — desde a emergência à madrugada até a consulta especializada marcada com antecedência.</p>
+      </div>
+
+      <div class="units__grid">
+
+        <!-- Hospital 24h card (dark) -->
+        <div class="unit unit--dark" tabindex="0" role="button"
+             aria-label="Hospital Veterinário 24h — clique para ver detalhes">
+          <div class="unit__inner">
+            <!-- FRONT -->
+            <div class="unit__front">
+              <span class="unit__tag">Hospital Veterinário</span>
+              <h3 class="unit__name">Emergência<br>24 horas.</h3>
+              <p class="unit__desc">Emergências, cirurgias, internação, diagnóstico e atendimento de rotina. Aberto todos os dias, a qualquer hora.</p>
+              <a href="/hospital" class="btn btn--ghost unit__cta">Ir para o Hospital →</a>
+            </div>
+            <!-- BACK -->
+            <div class="unit__back" aria-hidden="true">
+              <div class="unit__back-content">
+                <p class="unit__back-label">Telefone</p>
+                <p class="unit__back-value">(11) 2746-7292</p>
+                <p class="unit__back-label">Endereço</p>
+                <p class="unit__back-value">Av. Maria Luiza Americano, 803<br>São Paulo – SP</p>
+                <p class="unit__back-label">Horário</p>
+                <p class="unit__back-value">24 horas, 7 dias por semana</p>
+                <a href="tel:+551127467292" class="btn btn--accent unit__back-cta">Ligar agora →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Especialidades card (pale green) -->
+        <div class="unit unit--light" tabindex="0" role="button"
+             aria-label="Clínica de Especialidades — clique para ver detalhes">
+          <div class="unit__inner">
+            <!-- FRONT -->
+            <div class="unit__front">
+              <span class="unit__tag">Clínica de Especialidades</span>
+              <h3 class="unit__name">25 especialidades<br>veterinárias.</h3>
+              <p class="unit__desc">25 especialidades veterinárias para consultas eletivas. Equipe de especialistas com foco em diagnóstico preciso e tratamento personalizado.</p>
+              <a href="/especialidades" class="btn btn--primary unit__cta">Conhecer Especialidades →</a>
+            </div>
+            <!-- BACK -->
+            <div class="unit__back" aria-hidden="true">
+              <div class="unit__back-content">
+                <p class="unit__back-label">Telefone</p>
+                <p class="unit__back-value">(11) 2373-3144</p>
+                <p class="unit__back-label">Endereço</p>
+                <p class="unit__back-value">Rua Itapeti, 154<br>São Paulo – SP</p>
+                <p class="unit__back-label">Horário</p>
+                <p class="unit__back-value">Seg–Sex: 9h–18h<br>Sáb: 9h–13h</p>
+                <a href="/especialidades#contato" class="btn btn--primary unit__back-cta">Agendar consulta →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================
+         SECTION 3 — PILLARS ("O que nos diferencia")
+         Editorial Rows — NOT a card grid
+    =================================================== -->
+    <section class="pillars" aria-label="Nossos diferenciais">
+      <div class="pillars__container">
+        <header class="pillars__header">
+          <h2 class="pillars__title">O que nos<br>diferencia.</h2>
+        </header>
+
+        <div class="pillars__list">
+
+          <div class="pillars__row" style="--row-i: 0">
+            <span class="pillars__num" aria-hidden="true">01</span>
+            <div class="pillars__content">
+              <div class="pillars__tag">
+                <i class="ph ph-cpu" aria-hidden="true"></i>
+                <span>Tecnologia</span>
+              </div>
+              <h3 class="pillars__name">Tecnologia avançada</h3>
+              <p class="pillars__text">Equipamentos de última geração para diagnóstico e cirurgia — do raio-x digital ao microscópio cirúrgico. Tomografia, endoscopia, ecocardiografia e cirurgia laparoscópica a serviço do diagnóstico preciso.</p>
+            </div>
+          </div>
+
+          <div class="pillars__row" style="--row-i: 1">
+            <span class="pillars__num" aria-hidden="true">02</span>
+            <div class="pillars__content">
+              <div class="pillars__tag">
+                <i class="ph ph-stethoscope" aria-hidden="true"></i>
+                <span>Equipe</span>
+              </div>
+              <h3 class="pillars__name">Equipe especializada</h3>
+              <p class="pillars__text">Mais de 13 veterinários com formação específica em cada área, coordenados para atender cada caso da forma certa. Fisioterapeutas, nutricionistas e anestesiologistas dedicados.</p>
+            </div>
+          </div>
+
+          <div class="pillars__row" style="--row-i: 2">
+            <span class="pillars__num" aria-hidden="true">03</span>
+            <div class="pillars__content">
+              <div class="pillars__tag">
+                <i class="ph ph-heart" aria-hidden="true"></i>
+                <span>Cuidado</span>
+              </div>
+              <h3 class="pillars__name">Cuidado humanizado</h3>
+              <p class="pillars__text">Tratamos cada animal como único. Protocolos individualizados, comunicação clara e acolhimento em cada etapa. Mantemos tutores informados com transparência durante todo o atendimento.</p>
+            </div>
+          </div>
+
+          <div class="pillars__row" style="--row-i: 3">
+            <span class="pillars__num" aria-hidden="true">04</span>
+            <div class="pillars__content">
+              <div class="pillars__tag">
+                <i class="ph ph-calendar-check" aria-hidden="true"></i>
+                <span>Experiência</span>
+              </div>
+              <h3 class="pillars__name">22 anos de experiência</h3>
+              <p class="pillars__text">Desde 2002 cuidando de cães, gatos, silvestres e exóticos na Grande São Paulo. Uma das clínicas veterinárias mais antigas e respeitadas da região.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         SECTION 4 — TESTIMONIALS (CSS Carousel)
+         Pure CSS radio-driven carousel, dark bg
+    =================================================== -->
+    <section class="testimonials" aria-label="Depoimentos de clientes">
+
+      <!-- Radio controls MUST be direct children of section for CSS sibling selectors -->
+      <input type="radio" name="testimonial" id="t1" class="testimonials__radio" checked>
+      <input type="radio" name="testimonial" id="t2" class="testimonials__radio">
+      <input type="radio" name="testimonial" id="t3" class="testimonials__radio">
+
+      <div class="testimonials__inner">
+
+        <!-- Section label -->
+        <p class="testimonials__section-label">O que dizem quem já foi atendido.</p>
+
+        <!-- Decorative giant quote mark -->
+        <div class="testimonials__quote-mark" aria-hidden="true">"</div>
+
+        <!-- Track wrapper -->
+        <div class="testimonials__track-wrapper">
+          <div class="testimonials__track">
+
+            <!-- Slide 1 -->
+            <div class="testimonials__slide">
+              <div class="testimonials__stars" aria-label="5 estrelas">
+                <i class="ph-fill ph-star" style="--star-i:0" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:1" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:2" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:3" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:4" aria-hidden="true"></i>
+              </div>
+              <blockquote class="testimonials__quote">
+                "Minha cadela precisou de cirurgia de emergência às 3h da manhã. A equipe do hospital foi incrível — profissional, humana e super atenciosa durante toda a recuperação."
+              </blockquote>
+              <footer class="testimonials__author">
+                <p class="testimonials__name">Ana Paula M.</p>
+                <p class="testimonials__pet">Tutora da Luna, Golden Retriever</p>
+              </footer>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="testimonials__slide">
+              <div class="testimonials__stars" aria-label="5 estrelas">
+                <i class="ph-fill ph-star" style="--star-i:0" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:1" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:2" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:3" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:4" aria-hidden="true"></i>
+              </div>
+              <blockquote class="testimonials__quote">
+                "A especialidade de neurologia da VetPiera salvou a vida do meu gato. O Dr. Ryan explicou cada etapa do diagnóstico com paciência e cuidado extraordinários."
+              </blockquote>
+              <footer class="testimonials__author">
+                <p class="testimonials__name">Carlos Eduardo R.</p>
+                <p class="testimonials__pet">Tutor do Simba, Persa</p>
+              </footer>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="testimonials__slide">
+              <div class="testimonials__stars" aria-label="5 estrelas">
+                <i class="ph-fill ph-star" style="--star-i:0" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:1" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:2" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:3" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:4" aria-hidden="true"></i>
+              </div>
+              <blockquote class="testimonials__quote">
+                "Faço acompanhamento com a Dra. Diana há dois anos para a fisioterapia da minha cachorra. A evolução é impressionante e o atendimento é sempre excepcional."
+              </blockquote>
+              <footer class="testimonials__author">
+                <p class="testimonials__name">Mariana F.</p>
+                <p class="testimonials__pet">Tutora da Mel, Labrador</p>
+              </footer>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Navigation dots -->
+        <nav class="testimonials__nav" aria-label="Navegar entre depoimentos">
+          <label for="t1" class="testimonials__dot" aria-label="Depoimento 1"></label>
+          <label for="t2" class="testimonials__dot" aria-label="Depoimento 2"></label>
+          <label for="t3" class="testimonials__dot" aria-label="Depoimento 3"></label>
+        </nav>
+
+      </div>
+    </section>
+
+    <!-- ===================================================
+         SECTION 5 — PARTNERSHIP (Minimal)
+    =================================================== -->
+    <section class="partnership" aria-label="Parceria com veterinários">
+
+      <!-- No decorative lines as per user feedback -->
+
+      <div class="partnership__body">
+        <span class="partnership__eyebrow">Para profissionais</span>
+        <h2 class="partnership__title">Você é veterinário?</h2>
+        <p class="partnership__sub">Conheça nosso programa de parceria e encaminhe seus pacientes para a estrutura que eles precisam. A VetPiera oferece infraestrutura completa, equipe de suporte e ambiente colaborativo.</p>
+        <a href="/parceiros" class="btn btn--outline partnership__cta">Seja parceiro →</a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ===================================================
+       FOOTER
+  =================================================== -->
+  <footer class="footer" aria-label="Rodapé">
+    <div class="footer__container">
+
+      <!-- Logo escapes upward — Broken Grid effect -->
+      <div class="footer__logo-wrap">
+        <a href="/" class="footer__logo" aria-label="VetPiera — Página inicial">
+          <span class="footer__logo-text">Vet<span class="footer__logo-accent">Piera</span></span>
+        </a>
+      </div>
+
+      <div class="footer__grid">
+
+        <!-- Col 1: brand + tagline + social -->
+        <div class="footer__col footer__col--brand">
+          <p class="footer__tagline">Cuidado veterinário de excelência desde 2002.</p>
+          <div class="footer__social">
+            <a href="https://instagram.com/vetpiera" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
+              <i class="ph ph-instagram-logo" aria-hidden="true"></i>
+            </a>
+            <a href="https://facebook.com/vetpiera" class="footer__social-link" aria-label="Facebook" target="_blank" rel="noopener">
+              <i class="ph ph-facebook-logo" aria-hidden="true"></i>
+            </a>
+            <a href="https://wa.me/5511963326376" class="footer__social-link" aria-label="WhatsApp" target="_blank" rel="noopener">
+              <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Hospital 24h -->
+        <div class="footer__col">
+          <h4 class="footer__col-title">Hospital 24h</h4>
+          <ul class="footer__list">
+            <li><a href="/hospital" class="footer__link">Serviços hospitalares</a></li>
+            <li><a href="/hospital#emergencia" class="footer__link">Emergência veterinária</a></li>
+            <li><a href="/hospital#uti" class="footer__link">UTI veterinária</a></li>
+            <li class="footer__hours">24h · 7 dias por semana</li>
+            <li><a href="tel:+551127467292" class="footer__link">(11) 2746-7292</a></li>
+            <li><a href="mailto:hospital@vetpiera.com.br" class="footer__link">hospital@vetpiera.com.br</a></li>
+            <li class="footer__address">
+              Av. Maria Luiza Americano, 803
+              <div style="margin-top:10px; height:150px; border-radius:8px; overflow:hidden;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.406981846552!2d-46.47160762413123!3d-23.553818860714493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce66db48eb3a25%3A0xe21fec13cf6cd6ba!2sAv.%20Maria%20Luiza%20Americano%2C%20803%20-%20Cidade%20L%C3%ADder%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2008275-001!5e0!3m2!1spt-BR!2sbr!4v1710348000000!5m2!1spt-BR!2sbr" 
+                        title="Mapa Hospital" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Especialidades -->
+        <div class="footer__col">
+          <h4 class="footer__col-title">Especialidades</h4>
+          <ul class="footer__list">
+            <li><a href="/especialidades" class="footer__link">Ver todas as especialidades</a></li>
+            <li><a href="/especialidades#neurologia" class="footer__link">Neurologia</a></li>
+            <li><a href="/especialidades#ortopedia" class="footer__link">Ortopedia</a></li>
+            <li><a href="/especialidades#fisioterapia" class="footer__link">Fisioterapia</a></li>
+            <li class="footer__hours">Seg–Sex: 9h–18h · Sáb: 9h–13h</li>
+            <li><a href="tel:+551123733144" class="footer__link">(11) 2373-3144</a></li>
+            <li><a href="mailto:especialidades@vetpiera.com.br" class="footer__link">especialidades@vetpiera.com.br</a></li>
+            <li class="footer__address">
+              Rua Itapeti, 154
+              <div style="margin-top:10px; height:150px; border-radius:8px; overflow:hidden;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.9015426145325!2d-46.57463582413197!3d-23.5360662613583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5e9759ad2313%3A0x6a0f44f6f1406547!2sR.%20Itapeti%2C%20154%20-%20Tatuap%C3%A9%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2003324-002!5e0!3m2!1spt-BR!2sbr!4v1710348000000!5m2!1spt-BR!2sbr" 
+                        title="Mapa Especialidades" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">© 2026 VetPiera · Grupo Piera. Todos os direitos reservados.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ===================================================
+       JAVASCRIPT
+  =================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ── prefers-reduced-motion ── */
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ── DOMContentLoaded wrapper ── */
+      document.addEventListener('DOMContentLoaded', function () {
+
+        /* ==================================================
+           HERO — word reveal + sub/actions appearance
+        ================================================== */
+        if (reducedMotion) {
+          document.querySelectorAll('.hero__word').forEach(function (w) {
+            w.classList.add('is-revealed');
+          });
+          var sub = document.querySelector('.hero__sub');
+          var actions = document.querySelector('.hero__actions');
+          if (sub) sub.classList.add('is-visible');
+          if (actions) actions.classList.add('is-visible');
+          var counter = document.getElementById('heroBadgeCounter');
+          if (counter) {
+            counter.textContent = '22';
+            counter.classList.add('is-done');
+          }
+        } else {
+          /* Eyebrow fade-up */
+          var eyebrow = document.querySelector('.hero__eyebrow');
+          if (eyebrow) {
+            eyebrow.style.opacity = '0';
+            eyebrow.style.transform = 'translateY(12px)';
+            eyebrow.style.transition = 'opacity 550ms cubic-bezier(0.16,1,0.3,1) 100ms, transform 550ms cubic-bezier(0.16,1,0.3,1) 100ms';
+            requestAnimationFrame(function () {
+              requestAnimationFrame(function () {
+                eyebrow.style.opacity = '1';
+                eyebrow.style.transform = 'translateY(0)';
+              });
+            });
+          }
+
+          /* Word-by-word clip reveal */
+          var words = document.querySelectorAll('.hero__word');
+          words.forEach(function (word, i) {
+            setTimeout(function () { word.classList.add('is-revealed'); }, 300 + i * 80);
+          });
+
+          /* Sub + actions appear after last word */
+          var totalDelay = 300 + words.length * 80 + 100;
+          setTimeout(function () {
+            var s = document.querySelector('.hero__sub');
+            var a = document.querySelector('.hero__actions');
+            if (s) s.classList.add('is-visible');
+            if (a) a.classList.add('is-visible');
+          }, totalDelay);
+        }
+
+        /* ==================================================
+           HERO — counter animation (0 → 22)
+        ================================================== */
+        function animateCounter(el, from, to, duration) {
+          var startTime = performance.now();
+          function update(now) {
+            var elapsed = now - startTime;
+            var progress = Math.min(elapsed / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 2);
+            el.textContent = Math.round(from + (to - from) * eased);
+            if (progress < 1) {
+              requestAnimationFrame(update);
+            } else {
+              el.classList.add('is-done');
+            }
+          }
+          requestAnimationFrame(update);
+        }
+
+        var badgeEl = document.getElementById('heroBadgeCounter');
+        if (badgeEl) {
+          var badgeObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                animateCounter(badgeEl, 0, 22, 1400);
+                badgeObserver.disconnect();
+              }
+            });
+          }, { threshold: 0.5 });
+          var badgeTrigger = document.querySelector('.hero__badge');
+          if (badgeTrigger) badgeObserver.observe(badgeTrigger);
+        }
+
+        /* ==================================================
+           HERO — mouse parallax on hero photo
+        ================================================== */
+        if (!('ontouchstart' in window)) {
+          var hero = document.querySelector('.hero');
+          var photo = document.getElementById('heroPhoto');
+          var STRENGTH = 0.015;
+
+          if (hero && photo) {
+            hero.addEventListener('mousemove', function (e) {
+              var rect = hero.getBoundingClientRect();
+              var cx = rect.width / 2;
+              var cy = rect.height / 2;
+              var dx = (e.clientX - rect.left - cx) * STRENGTH;
+              var dy = (e.clientY - rect.top - cy) * STRENGTH;
+              photo.style.backgroundPosition = 'calc(50% + ' + dx + 'px) calc(50% + ' + dy + 'px)';
+            });
+
+            hero.addEventListener('mouseleave', function () {
+              photo.style.transition = 'background-position 800ms cubic-bezier(0.16,1,0.3,1)';
+              photo.style.backgroundPosition = '50% 50%';
+              setTimeout(function () { photo.style.transition = ''; }, 800);
+            });
+          }
+        }
+
+        /* ==================================================
+           NAVIGATION — sticky scroll + mobile burger
+        ================================================== */
+        var header = document.querySelector('.site-header');
+        if (header) {
+          window.addEventListener('scroll', function () {
+            header.classList.toggle('is-scrolled', window.scrollY > 32);
+          }, { passive: true });
+        }
+
+        var burger = document.querySelector('.site-header__burger');
+        var mobileMenu = document.getElementById('mobile-menu');
+        if (burger && mobileMenu) {
+          burger.addEventListener('click', function () {
+            var expanded = burger.getAttribute('aria-expanded') === 'true';
+            burger.setAttribute('aria-expanded', String(!expanded));
+            mobileMenu.setAttribute('aria-hidden', String(expanded));
+            mobileMenu.classList.toggle('is-open');
+            burger.classList.toggle('is-open');
+            document.body.classList.toggle('menu-open');
+          });
+          mobileMenu.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+              burger.setAttribute('aria-expanded', 'false');
+              mobileMenu.setAttribute('aria-hidden', 'true');
+              mobileMenu.classList.remove('is-open');
+              burger.classList.remove('is-open');
+              document.body.classList.remove('menu-open');
+            });
+          });
+        }
+
+        /* ==================================================
+           UNITS — 3D flip: keyboard + mobile click
+        ================================================== */
+        /* Mobile: click-to-flip */
+        if ('ontouchstart' in window) {
+          document.querySelectorAll('.unit').forEach(function (card) {
+            card.addEventListener('click', function () {
+              card.classList.toggle('is-flipped');
+            });
+          });
+        }
+
+        /* Keyboard: Enter / Space triggers flip */
+        document.querySelectorAll('.unit').forEach(function (card) {
+          card.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              card.classList.toggle('is-flipped');
+            }
+          });
+        });
+
+        /* ==================================================
+           PILLARS — animation-timeline fallback (IO)
+        ================================================== */
+        var supportsTimeline = CSS.supports('animation-timeline', 'view()');
+        if (!supportsTimeline) {
+          var rows = document.querySelectorAll('.pillars__row');
+          var pillarsIO = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                var rowI = parseInt(e.target.style.getPropertyValue('--row-i') || '0', 10);
+                setTimeout(function () {
+                  e.target.style.opacity = '1';
+                  e.target.style.transform = 'translateY(0)';
+                  e.target.style.transition = 'opacity 700ms ease, transform 700ms ease';
+                  pillarsIO.unobserve(e.target);
+                }, rowI * 80);
+              }
+            });
+          }, { threshold: 0.15 });
+
+          rows.forEach(function (r) {
+            r.style.opacity = '0';
+            r.style.transform = 'translateY(24px)';
+            pillarsIO.observe(r);
+          });
+        }
+
+        /* ==================================================
+           TESTIMONIALS — re-trigger star pop on slide change
+        ================================================== */
+        document.querySelectorAll('.testimonials__radio').forEach(function (radio) {
+          radio.addEventListener('change', function () {
+            var radios = Array.from(document.querySelectorAll('.testimonials__radio'));
+            var activeIndex = radios.findIndex(function (r) { return r.checked; });
+            var slides = document.querySelectorAll('.testimonials__slide');
+            if (slides[activeIndex]) {
+              slides[activeIndex].querySelectorAll('.testimonials__stars i').forEach(function (star) {
+                star.style.animation = 'none';
+                void star.offsetHeight; /* force reflow */
+                star.style.animation = '';
+              });
+            }
+          });
+        });
+
+        /* ── Autoplay for Testimonials ── */
+        var testimonialRadios = document.querySelectorAll('.testimonials__radio');
+        var testimonialInterval = 6000; // 6 seconds
+        var testimonialIndex = 0;
+
+        function nextTestimonial() {
+          testimonialIndex = (testimonialIndex + 1) % testimonialRadios.length;
+          testimonialRadios[testimonialIndex].checked = true;
+          // Trigger change event manually for the star animation
+          testimonialRadios[testimonialIndex].dispatchEvent(new Event('change'));
+        }
+
+        var testimonialTimer = setInterval(nextTestimonial, testimonialInterval);
+
+        // Pause on hover
+        var testimonialSection = document.querySelector('.testimonials');
+        if (testimonialSection) {
+          testimonialSection.addEventListener('mouseenter', function() {
+            clearInterval(testimonialTimer);
+          });
+          testimonialSection.addEventListener('mouseleave', function() {
+            testimonialTimer = setInterval(nextTestimonial, testimonialInterval);
+          });
+        }
+
+        /* ==================================================
+           PARTNERSHIP — scroll entrance animation
+        ================================================== */
+        var partnerBody = document.querySelector('.partnership__body');
+        if (partnerBody) {
+          var partnerIO = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-visible');
+                partnerIO.unobserve(e.target);
+              }
+            });
+          }, { threshold: 0.3 });
+          partnerIO.observe(partnerBody);
+        }
+
+        /* ==================================================
+           UNITS HEADER — scroll entrance animation
+        ================================================== */
+        var unitsHeader = document.querySelector('.units__header');
+        if (unitsHeader) {
+          var unitsIO = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-visible');
+                unitsIO.unobserve(e.target);
+              }
+            });
+          }, { threshold: 0.15 });
+          unitsIO.observe(unitsHeader);
+        }
+
+      }); /* end DOMContentLoaded */
+
+    }());
+  </script>
+
+</body>
+</html>

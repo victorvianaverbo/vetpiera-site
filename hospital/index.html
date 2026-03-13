@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Veterinário 24h | VetPiera</title>
+  <meta name="description" content="Emergência veterinária 24 horas em São Paulo. UTI veterinária, cirurgia e internação com equipe especializada. VetPiera Hospital.">
+
+  <!-- Fonts: DM Serif Display + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/hospital/style.css">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
+</head>
+<body>
+
+  <!-- =============================================
+       HEADER — Sticky navigation
+       ============================================= -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="/" class="header__logo" aria-label="VetPiera — Página inicial">
+        Vet<span>Piera</span>
+      </a>
+      <nav class="header__nav" aria-label="Navegação principal">
+        <a href="/home/index.html" class="nav-link">Home</a>
+        <a href="/especialidades" class="nav-link">Especialidades</a>
+      </nav>
+      <a href="https://wa.me/5511963326376" class="btn btn--accent header__cta" target="_blank" rel="noopener">
+        <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+        WhatsApp 24h
+      </a>
+      <button class="header__burger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =============================================
+         SECTION 1 — HERO
+         Archetype: Hero Dominante (100vh full-bleed)
+         Constraints: Mouse Spotlight + Grain + "24h" Stamp + fadeUp stagger
+         ============================================= -->
+    <section class="hosp-hero" aria-label="Hospital Veterinário 24 horas">
+
+      <!-- Mouse spotlight layer (JS-driven via CSS custom props) -->
+      <div class="hosp-hero__spotlight" id="heroSpotlight" aria-hidden="true"></div>
+
+      <!-- Grain overlay -->
+      <div class="hosp-hero__grain" aria-hidden="true"></div>
+
+      <!-- Giant "24h" stamp (decorative background text) -->
+      <div class="hosp-hero__stamp" aria-hidden="true">24h</div>
+
+      <!-- Centered content -->
+      <div class="hosp-hero__content">
+        <span class="hosp-hero__eyebrow">Hospital Veterinário · São Paulo</span>
+        <h1 class="hosp-hero__headline">
+          Emergência veterinária<br>
+          <em class="hosp-hero__em">24 horas.</em><br>
+          Aqui, seu pet nunca<br>fica sem atendimento.
+        </h1>
+        <p class="hosp-hero__sub">Hospital completo com UTI, centro cirúrgico, internação e 13 especialistas — prontos a qualquer hora do dia ou da noite.</p>
+        <div class="hosp-hero__actions">
+          <a href="https://wa.me/5511963326376" class="btn btn--accent" target="_blank" rel="noopener">
+            <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+            Falar agora no WhatsApp →
+          </a>
+          <a href="tel:+551127467292" class="btn btn--ghost">
+            <i class="ph ph-phone" aria-hidden="true"></i>
+            (11) 2746-7292
+          </a>
+        </div>
+      </div>
+
+      <!-- Scroll cue -->
+      <div class="hosp-hero__scroll-cue" aria-hidden="true">
+        <span class="hosp-hero__scroll-line"></span>
+      </div>
+
+    </section>
+
+    <!-- =============================================
+         SECTION 2 — SERVIÇOS BENTO BOX
+         Archetype: Bento Box Assimétrico
+         Constraints: Large card 2×2 + 3 flip cards (3D hover flip)
+         ============================================= -->
+    <section class="services" aria-label="Estrutura e serviços do hospital">
+      <div class="services__container">
+
+        <header class="services__header">
+          <h2 class="services__title">Estrutura completa<br>para cada momento.</h2>
+          <p class="services__sub">Do pronto-atendimento ao pós-operatório — temos tudo o que seu animal precisa em um único lugar.</p>
+        </header>
+
+        <div class="services__grid">
+
+          <!-- LARGE CARD: Emergência & UTI — col 1-2, row 1-2 -->
+          <article class="services__card services__card--large" aria-label="Emergência e UTI veterinária" id="emergencia">
+            <!-- "Disponível agora" floating tag -->
+            <span class="services__card-live" aria-label="Atendimento disponível agora">
+              <span class="services__card-live-dot" aria-hidden="true"></span>
+              Disponível agora
+            </span>
+            <div class="services__card-large-inner">
+              <!-- Body (left) -->
+              <div class="services__card-large-body">
+                <div class="services__card-category">
+                  <i class="ph ph-first-aid-kit" aria-hidden="true"></i>
+                  <span>Emergência &amp; UTI</span>
+                </div>
+                <h3 class="services__card-name">Pronto-atendimento e cuidados intensivos veterinários.</h3>
+                <p class="services__card-desc">Equipe de plantão 24h, UTI com monitoramento multiparamétrico contínuo, ventilação mecânica e suporte transfusional.</p>
+                <ul class="services__card-list">
+                  <li>Triagem imediata</li>
+                  <li>UTI com 12 vagas</li>
+                  <li>Oxigenoterapia</li>
+                  <li>Hemoterapia</li>
+                </ul>
+                <a href="/hospital/#emergencia" class="btn btn--ghost services__card-cta">Saiba mais →</a>
+              </div>
+              <!-- Photo (right) — gradient placeholder until real image added -->
+          <div class="services__card-large-photo" role="img" aria-label="UTI veterinária do hospital" style="background-image: url('/images/hospital-uti.jpg');"></div>
+            </div>
+          </article>
+
+          <!-- SMALL CARD 1: Cirurgia & Anestesia — 3D flip -->
+          <article class="services__card services__card--small" tabindex="0"
+                   aria-label="Cirurgia e Anestesia — pressione Enter para ver detalhes">
+            <div class="services__flip">
+              <!-- Front face -->
+              <div class="services__flip-front">
+                <i class="ph ph-scalpel" aria-hidden="true"></i>
+                <h3 class="services__flip-name">Cirurgia &amp;<br>Anestesia</h3>
+                <p class="services__flip-desc">Centro cirúrgico completo com anestesista residente.</p>
+              </div>
+              <!-- Back face -->
+              <div class="services__flip-back" aria-hidden="true">
+                <p class="services__flip-back-title">O que oferecemos:</p>
+                <ul class="services__flip-back-list">
+                  <li>Cirurgia geral e especializada</li>
+                  <li>Laparoscopia</li>
+                  <li>Monitoração anestésica avançada</li>
+                  <li>Recuperação assistida</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- SMALL CARD 2: Diagnóstico — 3D flip -->
+          <article class="services__card services__card--small" tabindex="0"
+                   aria-label="Diagnóstico por imagem — pressione Enter para ver detalhes">
+            <div class="services__flip">
+              <div class="services__flip-front">
+                <i class="ph ph-scan" aria-hidden="true"></i>
+                <h3 class="services__flip-name">Diagnóstico<br>por Imagem</h3>
+                <p class="services__flip-desc">Tomografia, ressonância, ecocardiografia e mais.</p>
+              </div>
+              <div class="services__flip-back" aria-hidden="true">
+                <p class="services__flip-back-title">O que oferecemos:</p>
+                <ul class="services__flip-back-list">
+                  <li>Tomografia computadorizada</li>
+                  <li>Ultrassonografia</li>
+                  <li>Ecocardiograma</li>
+                  <li>Radiologia digital</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- SMALL CARD 3: Internação — 3D flip -->
+          <article class="services__card services__card--small" tabindex="0"
+                   aria-label="Internação veterinária — pressione Enter para ver detalhes">
+            <div class="services__flip">
+              <div class="services__flip-front">
+                <i class="ph ph-bed" aria-hidden="true"></i>
+                <h3 class="services__flip-name">Internação<br>Veterinária</h3>
+                <p class="services__flip-desc">Acompanhamento contínuo com equipe de enfermagem.</p>
+              </div>
+              <div class="services__flip-back" aria-hidden="true">
+                <p class="services__flip-back-title">O que oferecemos:</p>
+                <ul class="services__flip-back-list">
+                  <li>Internação separada por espécie</li>
+                  <li>Isolamento infeccioso</li>
+                  <li>Monitoramento 24h</li>
+                  <li>Atualização diária ao tutor</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         SECTION 3 — ESPECIALIDADES (Scroll Horizontal)
+         Archetype: Horizontal drag-scroll strip
+         Constraints: Fade edges + drag-to-scroll JS + snap
+         ============================================= -->
+    <section class="hosp-specs" aria-label="Especialidades disponíveis no hospital">
+      <div class="hosp-specs__head">
+        <h2 class="hosp-specs__title">Especialidades disponíveis.</h2>
+        <p class="hosp-specs__sub">Nossa equipe cobre mais de 20 áreas especializadas. Se o seu pet precisar de um especialista, ele já está aqui.</p>
+      </div>
+
+      <!-- Stage: positions fade pseudo-elements + contains track -->
+      <div class="hosp-specs__stage" id="specsStage">
+        <div class="hosp-specs__track" id="specsTrack" role="list">
+
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-brain" aria-hidden="true"></i>
+            <span>Neurologia</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-heartbeat" aria-hidden="true"></i>
+            <span>Cardiologia</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-drop" aria-hidden="true"></i>
+            <span>Oncologia</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-scissors" aria-hidden="true"></i>
+            <span>Dermatologia</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-eye" aria-hidden="true"></i>
+            <span>Oftalmologia</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-bone" aria-hidden="true"></i>
+            <span>Ortopedia</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-flask" aria-hidden="true"></i>
+            <span>Endocrinologia</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-thermometer" aria-hidden="true"></i>
+            <span>Gastroenterologia</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-drop-half" aria-hidden="true"></i>
+            <span>Nefrologia</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-shield-check" aria-hidden="true"></i>
+            <span>Hematologia</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-tooth" aria-hidden="true"></i>
+            <span>Odontologia</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-wind" aria-hidden="true"></i>
+            <span>Pneumologia</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-chart-line-up" aria-hidden="true"></i>
+            <span>Nutrição</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-x-ray" aria-hidden="true"></i>
+            <span>Radiologia</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-syringe" aria-hidden="true"></i>
+            <span>Anestesia</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-cat" aria-hidden="true"></i>
+            <span>Felinos</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-bird" aria-hidden="true"></i>
+            <span>Silvestres</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-sparkle" aria-hidden="true"></i>
+            <span>Ozonioterapia</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-person-arms-spread" aria-hidden="true"></i>
+            <span>Reabilitação</span>
+          </div>
+          <div class="hosp-specs__chip" role="listitem">
+            <i class="ph ph-waves" aria-hidden="true"></i>
+            <span>Ultrassonografia</span>
+          </div>
+          <!-- Duplicate set for infinite animation -->
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-brain"></i><span>Neurologia</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-heartbeat"></i><span>Cardiologia</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-drop"></i><span>Oncologia</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-scissors"></i><span>Dermatologia</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-eye"></i><span>Oftalmologia</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-bone"></i><span>Ortopedia</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-flask"></i><span>Endocrinologia</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-thermometer"></i><span>Gastroenterologia</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-drop-half"></i><span>Nefrologia</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-shield-check"></i><span>Hematologia</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-tooth"></i><span>Odontologia</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-wind"></i><span>Pneumologia</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-chart-line-up"></i><span>Nutrição</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-x-ray"></i><span>Radiologia</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-syringe"></i><span>Anestesia</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-cat"></i><span>Felinos</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-bird"></i><span>Silvestres</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-sparkle"></i><span>Ozonioterapia</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-person-arms-spread"></i><span>Reabilitação</span></div>
+          <div class="hosp-specs__chip" aria-hidden="true"><i class="ph ph-waves"></i><span>Ultrassonografia</span></div>
+
+        </div>
+      </div>
+
+      <div class="hosp-specs__footer">
+        <a href="/especialidades/" class="btn btn--primary">Ver todas as especialidades →</a>
+      </div>
+    </section>
+
+    <!-- =============================================
+         SECTION 4 — DIFERENCIAIS (Timeline Vertical)
+         Archetype: Timeline Vertical alternando lados
+         Constraints: Clip Reveal + CSS View Timeline + JS fallback
+         ============================================= -->
+    <section class="diffs" aria-label="Diferenciais do hospital">
+      <div class="diffs__container">
+
+        <header class="diffs__header">
+          <h2 class="diffs__title">O que torna nosso<br>hospital diferente.</h2>
+        </header>
+
+        <!-- Absolute vertical center line -->
+        <div class="diffs__timeline" aria-hidden="true">
+          <div class="diffs__line"></div>
+        </div>
+
+        <div class="diffs__list">
+
+          <!-- Item 01 — odd: content right of line -->
+          <div class="diffs__item" style="--item-i: 0">
+            <div class="diffs__dot" aria-hidden="true"></div>
+            <div class="diffs__body">
+              <span class="diffs__num" aria-hidden="true">01</span>
+              <div class="diffs__text-group">
+                <div class="diffs__icon-title">
+                  <i class="ph ph-car" aria-hidden="true"></i>
+                  <h3 class="diffs__name">Estacionamento gratuito</h3>
+                </div>
+                <p class="diffs__desc">Sem preocupação com vaga. Nosso hospital conta com estacionamento exclusivo e gratuito para tutores durante o atendimento — venha com calma, mesmo em emergências.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 02 — even: content left of line -->
+          <div class="diffs__item" style="--item-i: 1">
+            <div class="diffs__dot" aria-hidden="true"></div>
+            <div class="diffs__body">
+              <span class="diffs__num" aria-hidden="true">02</span>
+              <div class="diffs__text-group">
+                <div class="diffs__icon-title">
+                  <i class="ph ph-house-line" aria-hidden="true"></i>
+                  <h3 class="diffs__name">Internação separada por espécie</h3>
+                </div>
+                <p class="diffs__desc">Felinos e cães em alas independentes — menos estresse, mais recuperação. Cuidado pensado para o bem-estar de cada animal durante a internação.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 03 — odd: content right of line -->
+          <div class="diffs__item" style="--item-i: 2">
+            <div class="diffs__dot" aria-hidden="true"></div>
+            <div class="diffs__body">
+              <span class="diffs__num" aria-hidden="true">03</span>
+              <div class="diffs__text-group">
+                <div class="diffs__icon-title">
+                  <i class="ph ph-virus" aria-hidden="true"></i>
+                  <h3 class="diffs__name">Isolamento infeccioso</h3>
+                </div>
+                <p class="diffs__desc">Estrutura específica para casos infecciosos, protegendo todos os pacientes do hospital. Protocolo rigoroso de biossegurança em área dedicada.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 04 — even: content left of line -->
+          <div class="diffs__item" style="--item-i: 3">
+            <div class="diffs__dot" aria-hidden="true"></div>
+            <div class="diffs__body">
+              <span class="diffs__num" aria-hidden="true">04</span>
+              <div class="diffs__text-group">
+                <div class="diffs__icon-title">
+                  <i class="ph ph-users-three" aria-hidden="true"></i>
+                  <h3 class="diffs__name">Equipe multidisciplinar integrada</h3>
+                </div>
+                <p class="diffs__desc">Os especialistas conversam entre si. O seu pet tem um plano de cuidado coordenado, não fragmentado — diagnóstico mais preciso e completo.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 05 — odd: content right of line -->
+          <div class="diffs__item" style="--item-i: 4">
+            <div class="diffs__dot" aria-hidden="true"></div>
+            <div class="diffs__body">
+              <span class="diffs__num" aria-hidden="true">05</span>
+              <div class="diffs__text-group">
+                <div class="diffs__icon-title">
+                  <i class="ph ph-cpu" aria-hidden="true"></i>
+                  <h3 class="diffs__name">Tecnologia cirúrgica de ponta</h3>
+                </div>
+                <p class="diffs__desc">Microscópio cirúrgico, bisturi bipolar e EEG — para casos complexos que exigem precisão máxima. Centro cirúrgico com laparoscópico e monitoração multiparamétrica.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         SECTION 5 — CONTATO
+         Archetype: Split Assimétrico (45/55)
+         Constraints: Dark background + Glass card + Live dot
+         ============================================= -->
+    <section class="hosp-contact" aria-label="Contato e localização do hospital">
+      <div class="hosp-contact__grid">
+
+        <!-- Left panel: copy + contact info (45%) -->
+        <div class="hosp-contact__left">
+          <span class="hosp-contact__eyebrow">Plantão 24 horas</span>
+          <h2 class="hosp-contact__title">Estamos abertos agora.</h2>
+          <p class="hosp-contact__sub">Nosso hospital nunca fecha. Entre em contato pelo WhatsApp ou telefone — nossa equipe responde imediatamente.</p>
+
+          <div class="hosp-contact__info-list">
+
+            <div class="hosp-contact__info-item">
+              <i class="ph ph-map-pin" aria-hidden="true"></i>
+              <div>
+                <p class="hosp-contact__info-label">Endereço</p>
+                <p class="hosp-contact__info-value">Av. Maria Luiza Americano, 803 — São Paulo, SP</p>
+              </div>
+            </div>
+
+            <div class="hosp-contact__info-item">
+              <i class="ph ph-clock" aria-hidden="true"></i>
+              <div>
+                <p class="hosp-contact__info-label">Horário</p>
+                <p class="hosp-contact__info-value">24 horas · 7 dias por semana</p>
+              </div>
+            </div>
+
+            <div class="hosp-contact__info-item">
+              <i class="ph ph-phone" aria-hidden="true"></i>
+              <div>
+                <p class="hosp-contact__info-label">Telefone</p>
+                <p class="hosp-contact__info-value">
+                  <a href="tel:+551127467292" class="hosp-contact__tel">(11) 2746-7292</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="hosp-contact__info-item">
+              <i class="ph ph-envelope" aria-hidden="true"></i>
+              <div>
+                <p class="hosp-contact__info-label">E-mail</p>
+                <p class="hosp-contact__info-value">
+                  <a href="mailto:hospital@vetpiera.com.br" class="hosp-contact__tel">hospital@vetpiera.com.br</a>
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <a href="https://wa.me/5511963326376" class="btn btn--accent hosp-contact__cta" target="_blank" rel="noopener">
+            <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+            Chamar no WhatsApp
+          </a>
+        </div>
+
+        <!-- Right panel: map placeholder (55%) -->
+        <div class="hosp-contact__right" aria-label="Mapa da localização">
+          <div class="hosp-contact__map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.406981846552!2d-46.47160762413123!3d-23.553818860714493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce66db48eb3a25%3A0xe21fec13cf6cd6ba!2sAv.%20Maria%20Luiza%20Americano%2C%20803%20-%20Cidade%20L%C3%ADder%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2008275-001!5e0!3m2!1spt-BR!2sbr!4v1710348000000!5m2!1spt-BR!2sbr" 
+                    title="Mapa de localização da VetPiera" 
+                    style="width:100%;height:100%;border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy"></iframe>
+          </div>
+
+          <!-- Floating glass card: "Disponível 24h" live indicator -->
+          <div class="hosp-contact__glass-card" aria-hidden="true">
+            <div class="hosp-contact__glass-dot"></div>
+            <div>
+              <p class="hosp-contact__glass-text">Aberto agora</p>
+              <p class="hosp-contact__glass-sub">24h · 7 dias</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =============================================
+       FOOTER
+       3-column grid: brand | hospital | especialidades
+       Dark background (#0F2D24) + monochromatic + gold accents
+       ============================================= -->
+  <footer class="footer" aria-label="Rodapé">
+    <div class="container footer__grid">
+
+      <div class="footer__brand">
+        <a href="/" class="footer__logo" aria-label="VetPiera — Página inicial">Vet<span>Piera</span></a>
+        <p class="footer__tagline">Grupo Piera — cuidado veterinário desde 2002.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Facebook" class="footer__social-link">
+            <i class="ph ph-facebook-logo"></i>
+          </a>
+          <a href="#" aria-label="Instagram" class="footer__social-link">
+            <i class="ph ph-instagram-logo"></i>
+          </a>
+          <a href="https://wa.me/5511963326376" aria-label="WhatsApp" class="footer__social-link" target="_blank" rel="noopener">
+            <i class="ph ph-whatsapp-logo"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__unit">
+        <h3 class="footer__unit-name">Hospital Veterinário</h3>
+        <ul class="footer__list">
+          <li><a href="tel:+551127467292">(11) 2746-7292</a></li>
+          <li><a href="mailto:hospital@vetpiera.com.br">hospital@vetpiera.com.br</a></li>
+          <li>Av. Maria Luiza Americano, 803</li>
+          <li class="footer__hours">24 horas · 7 dias</li>
+        </ul>
+      </div>
+
+      <div class="footer__unit">
+        <h3 class="footer__unit-name">Clínica de Especialidades</h3>
+        <ul class="footer__list">
+          <li><a href="tel:+551123733144">(11) 2373-3144</a></li>
+          <li><a href="mailto:especialidades@vetpiera.com.br">especialidades@vetpiera.com.br</a></li>
+          <li>Rua Itapeti, 154</li>
+          <li class="footer__hours">Seg–Sex 9h–18h · Sáb 9h–13h</li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>&copy;2025 VetPiera · Grupo Piera</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    /* ============================================================
+       HEADER — Mobile burger menu toggle
+       ============================================================ */
+    const burger = document.querySelector('.header__burger');
+    const nav    = document.querySelector('.header__nav');
+
+    burger?.addEventListener('click', () => {
+      const open = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', String(!open));
+      nav.classList.toggle('is-open');
+    });
+
+    /* ============================================================
+       HERO — Mouse spotlight (CSS custom property tracking)
+       Tracks mouse position and updates --mx / --my on spotlight div
+       ============================================================ */
+    const hero      = document.querySelector('.hosp-hero');
+    const spotlight = document.getElementById('heroSpotlight');
+
+    if (hero && spotlight) {
+      hero.addEventListener('mousemove', e => {
+        const rect = hero.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(2);
+        const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(2);
+        spotlight.style.setProperty('--mx', `${x}%`);
+        spotlight.style.setProperty('--my', `${y}%`);
+      });
+
+      hero.addEventListener('mouseleave', () => {
+        spotlight.style.setProperty('--mx', '50%');
+        spotlight.style.setProperty('--my', '50%');
+      });
+    }
+
+    /* ============================================================
+       SERVICES — Flip cards
+       Touch devices: click to toggle flip class
+       Keyboard: Enter / Space to flip
+       ============================================================ */
+    const flipCards = document.querySelectorAll('.services__card--small');
+
+    /* Touch / mobile: click to flip */
+    if ('ontouchstart' in window) {
+      flipCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const flip    = card.querySelector('.services__flip');
+          const flipped = card.classList.toggle('is-flipped');
+          flip.style.transform = flipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+        });
+      });
+    }
+
+    /* Keyboard accessibility for all devices */
+    flipCards.forEach(card => {
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const flip    = card.querySelector('.services__flip');
+          const flipped = card.classList.toggle('is-flipped');
+          flip.style.transform = flipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+        }
+      });
+    });
+
+    /* ============================================================
+       ESPECIALIDADES — Drag-to-scroll horizontal track
+       ============================================================ */
+    const track = document.getElementById('specsTrack');
+
+    if (track) {
+      let isDragging = false;
+      let startX     = 0;
+      let scrollLeft = 0;
+
+      track.addEventListener('mousedown', e => {
+        isDragging = true;
+        startX     = e.pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+        track.classList.add('is-dragging');
+      });
+
+      track.addEventListener('mouseleave', () => {
+        isDragging = false;
+        track.classList.remove('is-dragging');
+      });
+
+      track.addEventListener('mouseup', () => {
+        isDragging = false;
+        track.classList.remove('is-dragging');
+      });
+
+      track.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x    = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.5; /* drag speed multiplier */
+        track.scrollLeft = scrollLeft - walk;
+      });
+    }
+
+    /* ============================================================
+       DIFERENCIAIS — CSS animation-timeline fallback
+       For browsers that don't support scroll-driven animations,
+       use IntersectionObserver to trigger clipReveal animation
+       ============================================================ */
+    const supportsTimeline = CSS.supports('animation-timeline', 'view()');
+
+    if (!supportsTimeline) {
+      const diffItems = document.querySelectorAll('.diffs__item');
+
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const i     = parseInt(entry.target.style.getPropertyValue('--item-i') || '0');
+            const delay = i * 100;
+            setTimeout(() => {
+              entry.target.style.animation = 'clipReveal 600ms ease-out both';
+              entry.target.style.opacity   = '1';
+              io.unobserve(entry.target);
+            }, delay);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      diffItems.forEach(item => {
+        item.style.opacity = '0';
+        io.observe(item);
+      });
+    }
+  </script>
+
+</body>
+</html>

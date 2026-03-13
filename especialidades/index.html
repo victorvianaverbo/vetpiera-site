@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>25 Especialidades Veterinárias | VetPiera</title>
+  <meta name="description" content="Da neurologia à reabilitação — conheça as 25 especialidades veterinárias da VetPiera e agende uma consulta com nossos especialistas em São Paulo.">
+
+  <!-- Fonts: DM Serif Display + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/especialidades/style.css">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER — Sticky navigation
+       ============================================================ -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="/" class="header__logo" aria-label="VetPiera — Página inicial">
+        Vet<span>Piera</span>
+      </a>
+      <nav class="header__nav" aria-label="Navegação principal">
+        <a href="/home/index.html" class="nav-link">Home</a>
+        <a href="/hospital" class="nav-link">Hospital 24h</a>
+      </nav>
+      <a href="https://wa.me/5511991334520" class="btn btn--primary header__cta" target="_blank" rel="noopener noreferrer">
+        Agendar Consulta
+      </a>
+      <button class="header__burger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         SECTION 1 — HERO
+         Archetype: Split Vertical (50/50)
+         Constraints: Overlap Badge "25" + Counter Animation + Grain + Fade Left
+         ============================================================ -->
+    <section class="esp-hero" aria-label="Especialidades veterinárias VetPiera">
+
+      <!-- Left side: copy on dark background -->
+      <div class="esp-hero__left">
+        <span class="esp-hero__eyebrow" style="--delay: 0.05s">Clínica de Especialidades</span>
+        <h1 class="esp-hero__headline" style="--delay: 0.2s">
+          25 especialidades veterinárias.<br>
+          Um cuidado feito <em class="esp-hero__em">sob medida</em><br>
+          para o seu animal.
+        </h1>
+        <p class="esp-hero__sub" style="--delay: 0.38s">
+          Da neurologia à reabilitação — contamos com especialistas de ponta para diagnosticar, tratar e cuidar com excelência em cada área da medicina veterinária.
+        </p>
+        <div class="esp-hero__actions" style="--delay: 0.55s">
+          <a href="#contato" class="btn btn--accent">Agendar uma consulta →</a>
+          <a href="#especialidades-lista" class="btn btn--outline-pale">Ver especialidades</a>
+        </div>
+      </div>
+
+      <!-- Right side: photo with grain overlay -->
+      <div class="esp-hero__right" aria-hidden="true">
+        <div class="esp-hero__photo" style="background-image: url('/images/especialidades-hero-final.png');"></div>
+        <div class="esp-hero__grain"></div>
+      </div>
+
+      <!-- Badge "25" — overlaps the vertical dividing seam -->
+      <div class="esp-hero__badge" aria-label="25 especialidades veterinárias">
+        <div class="esp-hero__badge-inner">
+          <span class="esp-hero__badge-num" id="espBadgeCounter" aria-live="polite">0</span>
+          <div class="esp-hero__badge-labels">
+            <span class="esp-hero__badge-l1">especialidades</span>
+            <span class="esp-hero__badge-l2">veterinárias</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 2 — ESPECIALISTAS EM DESTAQUE
+         Archetype: Split com Hover Reveal (glassmorphism bio overlay)
+         ============================================================ -->
+    <section class="specialists" aria-label="Especialistas em destaque">
+      <div class="specialists__container">
+
+        <header class="specialists__header">
+          <h2 class="specialists__title">Quem vai cuidar do seu animal.</h2>
+          <p class="specialists__sub">Nossa clínica é dirigida por especialistas com décadas de experiência nas áreas mais complexas da medicina veterinária.</p>
+        </header>
+
+        <div class="specialists__grid">
+
+          <!-- Card 1: Dr. Ryan -->
+          <article class="spec-card" aria-label="Dr. Ryan Elias Piera — Neurologia e Neurocirurgia">
+            <div class="spec-card__photo spec-card__photo--ryan" role="img" aria-label="Dr. Ryan Elias Piera, Diretor Clínico"></div>
+            <!-- Bio overlay (hover reveals on desktop, always visible on mobile) -->
+            <div class="spec-card__overlay">
+              <p class="spec-card__role">Neurologia Veterinária</p>
+              <h3 class="spec-card__name">Dr. Ryan Elias Piera</h3>
+              <p class="spec-card__specialty">Diretor Clínico · CRMV-SP</p>
+              <p class="spec-card__bio">Médico veterinário pela USP (2000). Mestre em Anatomia Animal. Especialista em Neurologia e Neurocirurgia desde 2009. Referência no diagnóstico e tratamento de epilepsia e doenças do disco intervertebral.</p>
+            </div>
+            <!-- Footer always visible below photo -->
+            <div class="spec-card__footer">
+              <p class="spec-card__footer-role">Diretor Clínico · Neurologia &amp; Neurocirurgia</p>
+              <h3 class="spec-card__footer-name">Dr. Ryan Elias Piera</h3>
+            </div>
+          </article>
+
+          <!-- Card 2: Dra. Diana -->
+          <article class="spec-card" aria-label="Dra. Diana Sogaiar Elias Piera — Fisioterapia e Reabilitação">
+            <div class="spec-card__photo spec-card__photo--diana" role="img" aria-label="Dra. Diana Sogaiar Elias Piera, Diretora Clínica"></div>
+            <div class="spec-card__overlay">
+              <p class="spec-card__role">Fisioterapia &amp; Reabilitação</p>
+              <h3 class="spec-card__name">Dra. Diana Sogaiar Elias Piera</h3>
+              <p class="spec-card__specialty">Diretora Clínica · CRMV-SP</p>
+              <p class="spec-card__bio">Médica veterinária pela USP (2005). Residência e múltiplas especializações em reabilitação aquática, eletroterapia e acupuntura. Diretora Clínica desde 2002. Pioneira em fisioterapia veterinária no Brasil.</p>
+            </div>
+            <div class="spec-card__footer">
+              <p class="spec-card__footer-role">Diretora Clínica · Fisioterapia &amp; Reabilitação</p>
+              <h3 class="spec-card__footer-name">Dra. Diana Sogaiar Elias Piera</h3>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="specialists__cta-row">
+          <a href="/equipe" class="btn btn--outline">Ver toda a equipe →</a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 3 — GRID DE ESPECIALIDADES
+         Archetype: Editorial Vertical List (featured) + Tag Cloud (others)
+         ============================================================ -->
+    <section class="esp-grid" id="especialidades-lista" aria-label="Lista de especialidades veterinárias">
+      <div class="esp-grid__container">
+
+        <header class="esp-grid__header">
+          <h2 class="esp-grid__title">25 especialidades<br>em um só lugar.</h2>
+          <p class="esp-grid__sub">Seja qual for a necessidade do seu animal, temos o profissional certo aqui. Cada especialidade conta com protocolos atualizados e tecnologia diagnóstica própria.</p>
+        </header>
+
+        <!-- Featured 5 — vertical editorial list -->
+        <div class="esp-grid__featured" aria-label="Especialidades em destaque">
+
+          <div class="esp-grid__item" tabindex="0" role="button" aria-label="Neurologia veterinária">
+            <span class="esp-grid__num" aria-hidden="true">1</span>
+            <h3 class="esp-grid__name">Neurologia</h3>
+            <i class="ph ph-brain esp-grid__icon" aria-hidden="true"></i>
+          </div>
+
+          <div class="esp-grid__item" tabindex="0" role="button" aria-label="Ortopedia veterinária">
+            <span class="esp-grid__num" aria-hidden="true">2</span>
+            <h3 class="esp-grid__name">Ortopedia</h3>
+            <i class="ph ph-bone esp-grid__icon" aria-hidden="true"></i>
+          </div>
+
+          <div class="esp-grid__item" tabindex="0" role="button" aria-label="Fisioterapia e Reabilitação veterinária">
+            <span class="esp-grid__num" aria-hidden="true">3</span>
+            <h3 class="esp-grid__name">Fisioterapia &amp; Reabilitação</h3>
+            <i class="ph ph-activity esp-grid__icon" aria-hidden="true"></i>
+          </div>
+
+          <div class="esp-grid__item" tabindex="0" role="button" aria-label="Cardiologia veterinária">
+            <span class="esp-grid__num" aria-hidden="true">4</span>
+            <h3 class="esp-grid__name">Cardiologia</h3>
+            <i class="ph ph-heartbeat esp-grid__icon" aria-hidden="true"></i>
+          </div>
+
+          <div class="esp-grid__item" tabindex="0" role="button" aria-label="Oncologia veterinária">
+            <span class="esp-grid__num" aria-hidden="true">5</span>
+            <h3 class="esp-grid__name">Oncologia</h3>
+            <i class="ph ph-drop esp-grid__icon" aria-hidden="true"></i>
+          </div>
+
+        </div>
+
+        <!-- All other specialties — tag cloud -->
+        <div class="esp-grid__other" aria-label="Outras especialidades">
+          <p class="esp-grid__other-label">+ outras especialidades</p>
+          <div class="esp-grid__tags">
+            <span class="esp-grid__tag">Acupuntura</span>
+            <span class="esp-grid__tag">Anestesia</span>
+            <span class="esp-grid__tag">Dermatologia</span>
+            <span class="esp-grid__tag">Endocrinologia</span>
+            <span class="esp-grid__tag">Endoscopia</span>
+            <span class="esp-grid__tag">Eletroencefalograma (EEG)</span>
+            <span class="esp-grid__tag">Medicina Felina</span>
+            <span class="esp-grid__tag">Gastroenterologia</span>
+            <span class="esp-grid__tag">Hematologia</span>
+            <span class="esp-grid__tag">Odontologia</span>
+            <span class="esp-grid__tag">Oftalmologia</span>
+            <span class="esp-grid__tag">Ozonioterapia</span>
+            <span class="esp-grid__tag">Pneumologia</span>
+            <span class="esp-grid__tag">Nefrologia</span>
+            <span class="esp-grid__tag">Nutrição</span>
+            <span class="esp-grid__tag">Radiologia</span>
+            <span class="esp-grid__tag">Animais Silvestres</span>
+            <span class="esp-grid__tag">Ultrassonografia</span>
+            <span class="esp-grid__tag">Cirurgia Laparoscópica</span>
+            <span class="esp-grid__tag">Terapia Intensiva</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 4 — PROCESSO ("Como Funciona")
+         Archetype: Poster com números gigantes (outline)
+         Constraints: View Timeline Clip Reveal + Stagger
+         ============================================================ -->
+    <section class="process" aria-label="Como funciona o atendimento">
+      <div class="process__container">
+
+        <header class="process__header">
+          <h2 class="process__title">Como é o seu<br>atendimento.</h2>
+          <p class="process__sub">Simples, transparente e centrado no bem-estar do seu animal.</p>
+        </header>
+
+        <div class="process__grid">
+
+          <div class="process__step" style="--i: 0">
+            <span class="process__big-num" aria-hidden="true">1</span>
+            <div class="process__step-content">
+              <span class="process__step-line" aria-hidden="true"></span>
+              <h3 class="process__step-title">Agende sua consulta</h3>
+              <p class="process__step-text">Por WhatsApp, telefone ou diretamente em nosso site — escolha o especialista e o horário que melhor se encaixa na sua rotina.</p>
+            </div>
+          </div>
+
+          <div class="process__step" style="--i: 1">
+            <span class="process__big-num" aria-hidden="true">2</span>
+            <div class="process__step-content">
+              <span class="process__step-line" aria-hidden="true"></span>
+              <h3 class="process__step-title">Venha com o histórico do pet</h3>
+              <p class="process__step-text">Traga o histórico médico do seu animal. Nosso especialista fará uma avaliação completa e solicitará os exames necessários.</p>
+            </div>
+          </div>
+
+          <div class="process__step" style="--i: 2">
+            <span class="process__big-num" aria-hidden="true">3</span>
+            <div class="process__step-content">
+              <span class="process__step-line" aria-hidden="true"></span>
+              <h3 class="process__step-title">Receba o diagnóstico</h3>
+              <p class="process__step-text">Com laudo detalhado e plano de tratamento personalizado, você sai com clareza total sobre a saúde do seu pet e os próximos passos.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       SECTION 5 — CONTATO ("Agende agora")
+       Archetype: Split Assimétrico (45/55) Dark
+       ============================================================ -->
+  <section class="esp-contact" id="contato" aria-label="Agende sua consulta">
+    <div class="esp-contact__grid">
+
+      <!-- Left: copy + contact info (45%) -->
+      <div class="esp-contact__left">
+        <span class="esp-contact__eyebrow">Pronto para agendar?</span>
+        <h2 class="esp-contact__title">Agende agora.</h2>
+        <p class="esp-contact__sub">Nossa equipe de atendimento está disponível para ajudar você a encontrar o especialista certo para o seu animal.</p>
+
+        <div class="esp-contact__info-list">
+
+          <div class="esp-contact__info-item">
+            <i class="ph ph-map-pin" aria-hidden="true"></i>
+            <div>
+              <p class="esp-contact__info-label">Endereço</p>
+              <p class="esp-contact__info-value">Rua Itapeti, 154 — São Paulo, SP</p>
+            </div>
+          </div>
+
+          <div class="esp-contact__info-item">
+            <i class="ph ph-clock" aria-hidden="true"></i>
+            <div>
+              <p class="esp-contact__info-label">Horário</p>
+              <p class="esp-contact__info-value">Seg–Sex: 9h–18h &nbsp;·&nbsp; Sáb: 9h–13h</p>
+            </div>
+          </div>
+
+          <div class="esp-contact__info-item">
+            <i class="ph ph-phone" aria-hidden="true"></i>
+            <div>
+              <p class="esp-contact__info-label">Telefone</p>
+              <p class="esp-contact__info-value">
+                <a href="tel:+551123733144" class="esp-contact__tel">(11) 2373-3144</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="esp-contact__info-item">
+            <i class="ph ph-envelope" aria-hidden="true"></i>
+            <div>
+              <p class="esp-contact__info-label">E-mail</p>
+              <p class="esp-contact__info-value">
+                <a href="mailto:especialidades@vetpiera.com.br" class="esp-contact__tel">especialidades@vetpiera.com.br</a>
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="esp-contact__actions">
+          <a href="https://wa.me/5511991334520" class="btn btn--accent esp-contact__cta" target="_blank" rel="noopener noreferrer">
+            Agendar uma consulta →
+          </a>
+          <a href="https://wa.me/5511991334520" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">
+            <i class="ph ph-whatsapp-logo" aria-hidden="true"></i> WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: map placeholder (55%) -->
+      <div class="esp-contact__right" aria-label="Mapa de localização">
+        <div class="esp-contact__map" aria-hidden="true">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.9015426145325!2d-46.57463582413197!3d-23.5360662613583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5e9759ad2313%3A0x6a0f44f6f1406547!2sR.%20Itapeti%2C%20154%20-%20Tatuap%C3%A9%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2003324-002!5e0!3m2!1spt-BR!2sbr!4v1710348000000!5m2!1spt-BR!2sbr" 
+                  title="Mapa de localização Especialidades" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        <!-- Floating glassmorphism card -->
+        <div class="esp-contact__glass-card">
+          <div class="esp-contact__glass-hours">
+            <i class="ph ph-clock" aria-hidden="true"></i>
+            <div>
+              <p class="esp-contact__glass-label">Horário de atendimento</p>
+              <p class="esp-contact__glass-value">Seg–Sex: 9h–18h</p>
+              <p class="esp-contact__glass-value">Sáb: 9h–13h</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER — 3-column, #0F2D24, monochrome + gold accents
+       ============================================================ -->
+  <footer class="footer" id="quem-somos" aria-label="Rodapé">
+    <div class="container footer__grid">
+
+      <div class="footer__brand">
+        <a href="/" class="footer__logo" aria-label="VetPiera — Página inicial">Vet<span>Piera</span></a>
+        <p class="footer__tagline">Grupo Piera — cuidado veterinário de excelência desde 2002.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Facebook" class="footer__social-link">
+            <i class="ph ph-facebook-logo" aria-hidden="true"></i>
+          </a>
+          <a href="#" aria-label="Instagram" class="footer__social-link">
+            <i class="ph ph-instagram-logo" aria-hidden="true"></i>
+          </a>
+          <a href="https://wa.me/5511991334520" aria-label="WhatsApp" class="footer__social-link" target="_blank" rel="noopener noreferrer">
+            <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__unit">
+        <h3 class="footer__unit-name">Hospital Veterinário</h3>
+        <ul class="footer__list">
+          <li><a href="tel:+551127467292">(11) 2746-7292</a></li>
+          <li><a href="mailto:hospital@vetpiera.com.br">hospital@vetpiera.com.br</a></li>
+          <li>Av. Maria Luiza Americano, 803</li>
+          <li class="footer__hours">24 horas · 7 dias</li>
+        </ul>
+      </div>
+
+      <div class="footer__unit">
+        <h3 class="footer__unit-name">Clínica de Especialidades</h3>
+        <ul class="footer__list">
+          <li><a href="tel:+551123733144">(11) 2373-3144</a></li>
+          <li><a href="mailto:especialidades@vetpiera.com.br">especialidades@vetpiera.com.br</a></li>
+          <li>Rua Itapeti, 154</li>
+          <li class="footer__hours">Seg–Sex 9h–18h · Sáb 9h–13h</li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>&copy; 2025 VetPiera · Grupo Piera</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+       ============================================================ -->
+  <script>
+    /* ── Mobile burger menu ── */
+    const burger = document.querySelector('.header__burger');
+    const nav    = document.querySelector('.header__nav');
+    if (burger && nav) {
+      burger.addEventListener('click', () => {
+        const open = burger.getAttribute('aria-expanded') === 'true';
+        burger.setAttribute('aria-expanded', String(!open));
+        nav.classList.toggle('is-open');
+      });
+    }
+
+    /* ── Hero fade-left animations trigger ── */
+    document.addEventListener('DOMContentLoaded', () => {
+      const hero = document.querySelector('.esp-hero');
+      if (hero) hero.classList.add('is-loaded');
+    });
+
+    /* ── Badge counter animation (0 → 25 in 1200ms, ease-out cubic) ── */
+    function animateCounter(el, from, to, duration) {
+      const startTime = performance.now();
+      function update(now) {
+        const elapsed  = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased    = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+        el.textContent = Math.round(from + (to - from) * eased);
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    }
+
+    const badge = document.querySelector('.esp-hero__badge');
+    if (badge) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            animateCounter(document.getElementById('espBadgeCounter'), 0, 25, 1200);
+            io.disconnect();
+          }
+        });
+      }, { threshold: 0.5 });
+      io.observe(badge);
+    }
+
+    /* ── Process steps: View Timeline fallback for browsers without CSS animation-timeline ── */
+    const supportsTimeline = CSS.supports('animation-timeline', 'view()');
+    if (!supportsTimeline) {
+      const steps = document.querySelectorAll('.process__step');
+      const stepIO = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            const i = parseInt(e.target.style.getPropertyValue('--i') || '0');
+            const delay = i * 150;
+            setTimeout(() => {
+              e.target.classList.add('is-visible');
+              stepIO.unobserve(e.target);
+            }, delay);
+          }
+        });
+      }, { threshold: 0.15 });
+      steps.forEach(step => {
+        step.classList.add('needs-reveal');
+        stepIO.observe(step);
+      });
+    }
+  </script>
+
+</body>
+</html>
