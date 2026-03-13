@@ -819,6 +819,30 @@
 
       // Window resize handling
       window.addEventListener('resize', updateCarousel);
+
+      // Drag-to-scroll for structure carousel
+      let isDraggingStruct = false;
+      let startXStruct = 0;
+      let scrollLeftStruct = 0;
+
+      structTrack.addEventListener('mousedown', e => {
+        isDraggingStruct = true;
+        startXStruct = e.pageX - structTrack.offsetLeft;
+        scrollLeftStruct = currentPos;
+        structTrack.style.transition = 'none';
+      });
+
+      window.addEventListener('mousemove', e => {
+        if (!isDraggingStruct) return;
+        const x = e.pageX - structTrack.offsetLeft;
+        const walk = (x - startXStruct) / 200; 
+        // Simple drag feedback could be added here, but for now buttons are primary
+      });
+
+      window.addEventListener('mouseup', () => {
+        isDraggingStruct = false;
+        structTrack.style.transition = 'transform 0.6s var(--ease)';
+      });
     }
   </script>
 
