@@ -1448,3 +1448,80 @@ ul {
     transform: none !important;
   }
 }
+
+/* ============================================================
+   SECTION: QUEM SOMOS (Hospital) — Replicated on Home
+   ============================================================ */
+.hosp-about {
+  padding-block: var(--sp-section);
+  background: var(--clr-bg);
+}
+
+.hosp-about__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(40px, 8vw, 80px);
+  align-items: center;
+}
+
+.hosp-about__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--clr-primary);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+
+.hosp-about__badge-num {
+  font-family: var(--ff-heading);
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--clr-accent);
+}
+
+.hosp-about__badge-text {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.hosp-about__title {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-h2);
+  color: var(--clr-dark);
+  margin-bottom: 24px;
+}
+
+.hosp-about__text {
+  font-size: var(--fs-body);
+  color: var(--clr-muted);
+  margin-bottom: 20px;
+  max-width: 560px;
+}
+
+.hosp-about__visual {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 20px 20px 60px rgba(0,0,0,0.05);
+}
+
+.hosp-about__img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.6s var(--ease);
+}
+.hosp-about__visual:hover .hosp-about__img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+  .hosp-about__grid {
+    grid-template-columns: 1fr;
+  }
+}
