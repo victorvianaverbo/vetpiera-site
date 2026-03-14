@@ -612,18 +612,17 @@ button {
 /* ── Bio overlay (hover reveal) ── */
 .spec-card__overlay {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  height: 380px; /* matches photo height */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   background: linear-gradient(
     to top,
-    rgba(15, 45, 36, 0.88) 0%,
-    rgba(15, 45, 36, 0.60) 30%,
-    rgba(15, 45, 36, 0) 55%
+    rgba(15, 45, 36, 0.92) 0%,
+    rgba(15, 45, 36, 0.70) 40%,
+    rgba(15, 45, 36, 0) 70%
   );
   padding: clamp(24px, 3vw, 36px);
 
@@ -632,6 +631,17 @@ button {
   transition: opacity 400ms ease;
 }
 .spec-card:hover .spec-card__overlay {
+  opacity: 1;
+}
+
+/* Expanded: overlay anchors to bottom, content grows */
+.spec-card.is-expanded .spec-card__overlay {
+  background: linear-gradient(
+    to top,
+    rgba(15, 45, 36, 0.95) 0%,
+    rgba(15, 45, 36, 0.85) 60%,
+    rgba(15, 45, 36, 0.40) 100%
+  );
   opacity: 1;
 }
 
@@ -668,11 +678,42 @@ button {
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.75);
   margin: 0;
-  /* Clip to 4 lines */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spec-card__bio-content {
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  transition: -webkit-line-clamp 0s;
+}
+
+.spec-card.is-expanded .spec-card__bio-content {
+  display: block;
+  overflow: visible;
+}
+
+.btn-ver-mais {
+  align-self: flex-start;
+  font-family: var(--ff-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--clr-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 200ms ease;
+}
+
+.btn-ver-mais:hover {
+  opacity: 1;
 }
 
 /* ── Footer: always visible below the photo ── */
@@ -1258,12 +1299,14 @@ button {
   position: absolute;
   bottom: 32px;
   left: 24px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(20px) saturate(1.5);
-  -webkit-backdrop-filter: blur(20px) saturate(1.5);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(15, 45, 36, 0.90);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius);
   padding: 18px 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  color: #fff;
 }
 
 .esp-contact__glass-hours {

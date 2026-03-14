@@ -343,29 +343,31 @@ ul {
 .hosp-hero__media {
   position: relative;
   overflow: hidden;
-  background: var(--clr-dark);
 }
 
 .hosp-hero__photo-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
-  /* Corte elegante inferior esquerdo */
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
-  overflow: hidden;
 }
 
 .hosp-hero__photo {
   width: 100%;
   height: 100%;
-  background-image: url('/.netlify/images?url=/images/hospital-hero-final.png&w=1200&q=80');
+  background-image: url('/.netlify/images?url=/images/hospital-hero.jpg&w=1200&q=80');
   background-size: cover;
   background-position: center center;
-  filter: drop-shadow(0 0 40px rgba(0,0,0,0.3));
 }
 
-/* Remover overlays de cor e deixar foto limpa */
-.hosp-hero::before { display: none; }
+/* Vignette — idêntica à da Home */
+.hosp-hero__vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 80% at 100% 50%, transparent 50%, rgba(15,45,36,0.55) 100%),
+    linear-gradient(to right, rgba(250,250,248,0.6) 0%, transparent 30%);
+  pointer-events: none;
+}
 
 /* ── Giant "24h" Stamp ── */
 .hosp-hero__stamp {
@@ -1895,21 +1897,25 @@ ul {
 }
 
 .hosp-diffs__icon {
-  width: 56px;
-  height: 56px;
-  background: var(--clr-primary-pale);
-  color: var(--clr-primary);
-  border-radius: 12px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--clr-primary-pale) 0%, #ffffff 100%);
+  color: var(--clr-accent);
+  border-radius: 14px;
+  border: 1px solid rgba(201, 168, 76, 0.20);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.75rem;
-  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+  font-size: 1.875rem;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  box-shadow: 0 2px 8px rgba(201, 168, 76, 0.10);
 }
 
 .hosp-diffs__card:hover .hosp-diffs__icon {
   background: var(--clr-primary);
   color: #fff;
+  border-color: var(--clr-primary);
+  box-shadow: 0 4px 16px rgba(27, 77, 62, 0.20);
 }
 
 .hosp-diffs__card-name {
