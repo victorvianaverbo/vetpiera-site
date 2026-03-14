@@ -24,7 +24,7 @@
   <header class="site-header" role="banner">
     <div class="site-header__inner container">
       <a href="/" class="site-header__logo" aria-label="VetPiera — Página inicial">
-        Vet<span>Piera</span>
+        <img src="/.netlify/images?url=/images/logo.png&w=200&q=80" alt="VetPiera Logo" class="site-header__logo-img">
       </a>
 
       <nav class="site-nav" aria-label="Navegação principal">
@@ -73,18 +73,10 @@
       <div class="hero__copy">
         <span class="hero__eyebrow">Grupo Piera · Desde 2002</span>
         <h1 class="hero__headline">
-          <span class="hero__word">O</span>
-          <span class="hero__word">cuidado</span>
-          <span class="hero__word">veterinário</span>
-          <span class="hero__word">completo</span>
-          <span class="hero__word">que</span>
-          <span class="hero__word">o</span>
-          <span class="hero__word">seu</span>
-          <span class="hero__word">pet</span>
-          <span class="hero__word">merece.</span>
+          O cuidado veterinário completo que o seu pet merece.
         </h1>
-        <p class="hero__sub">Somos o Grupo Piera — 22 anos cuidando de animais com tecnologia, especialização e humanidade.</p>
-        <div class="hero__actions">
+        <p class="hero__sub is-visible">Somos o Grupo Piera — 22 anos cuidando de animais com tecnologia, especialização e humanidade.</p>
+        <div class="hero__actions is-visible">
           <a href="/hospital" class="btn btn--accent">Hospital 24h →</a>
           <a href="/especialidades" class="btn btn--outline">Conhecer Especialidades</a>
         </div>
@@ -92,7 +84,7 @@
 
       <!-- Right media panel 45% -->
       <div class="hero__media" aria-hidden="true">
-        <div class="hero__photo" id="heroPhoto" style="background-image: url('/images/hosp-exterior.jpg');"></div>
+        <div class="hero__photo" id="heroPhoto" style="background-image: url('/.netlify/images?url=/images/hosp-exterior.jpg&w=1200&q=80');"></div>
         <div class="hero__vignette"></div>
       </div>
 
@@ -192,7 +184,7 @@
           </p>
         </div>
         <div class="hosp-about__visual">
-          <img src="/images/hosp-exterior.jpg" alt="Fachada do Hospital Veterinário Piera" class="hosp-about__img" loading="lazy">
+          <img src="/.netlify/images?url=/images/hosp-exterior.jpg&w=800&q=80" alt="Fachada do Hospital Veterinário Piera" class="hosp-about__img" loading="lazy">
         </div>
       </div>
     </section>
@@ -463,52 +455,7 @@
       /* ── DOMContentLoaded wrapper ── */
       document.addEventListener('DOMContentLoaded', function () {
 
-        /* ==================================================
-           HERO — word reveal + sub/actions appearance
-        ================================================== */
-        if (reducedMotion) {
-          document.querySelectorAll('.hero__word').forEach(function (w) {
-            w.classList.add('is-revealed');
-          });
-          var sub = document.querySelector('.hero__sub');
-          var actions = document.querySelector('.hero__actions');
-          if (sub) sub.classList.add('is-visible');
-          if (actions) actions.classList.add('is-visible');
-          var counter = document.getElementById('heroBadgeCounter');
-          if (counter) {
-            counter.textContent = '22';
-            counter.classList.add('is-done');
-          }
-        } else {
-          /* Eyebrow fade-up */
-          var eyebrow = document.querySelector('.hero__eyebrow');
-          if (eyebrow) {
-            eyebrow.style.opacity = '0';
-            eyebrow.style.transform = 'translateY(12px)';
-            eyebrow.style.transition = 'opacity 550ms cubic-bezier(0.16,1,0.3,1) 100ms, transform 550ms cubic-bezier(0.16,1,0.3,1) 100ms';
-            requestAnimationFrame(function () {
-              requestAnimationFrame(function () {
-                eyebrow.style.opacity = '1';
-                eyebrow.style.transform = 'translateY(0)';
-              });
-            });
-          }
-
-          /* Word-by-word clip reveal */
-          var words = document.querySelectorAll('.hero__word');
-          words.forEach(function (word, i) {
-            setTimeout(function () { word.classList.add('is-revealed'); }, 300 + i * 80);
-          });
-
-          /* Sub + actions appear after last word */
-          var totalDelay = 300 + words.length * 80 + 100;
-          setTimeout(function () {
-            var s = document.querySelector('.hero__sub');
-            var a = document.querySelector('.hero__actions');
-            if (s) s.classList.add('is-visible');
-            if (a) a.classList.add('is-visible');
-          }, totalDelay);
-        }
+        /* Hero animations removed for performance. Counter remains as post-load animation. */
 
         /* ==================================================
            HERO — counter animation (0 → 22)

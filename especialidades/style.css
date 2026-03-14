@@ -224,6 +224,11 @@ button {
   letter-spacing: -0.01em;
 }
 .header__logo span { color: var(--clr-accent); }
+.header__logo-img {
+  height: clamp(32px, 4vw, 42px);
+  width: auto;
+  display: block;
+}
 
 /* Nav */
 .header__nav {
@@ -338,7 +343,7 @@ button {
 .esp-hero__photo {
   width: 100%;
   height: 100%;
-  background-image: url('/images/especialidades-hero.jpg');
+  background-image: url('/.netlify/images?url=/images/especialidades-hero.jpg&w=1200&q=80');
   background-size: cover;
   background-position: center top;
   /* Gradient from dark to photo — evokes depth */
@@ -477,15 +482,10 @@ button {
 .esp-hero__headline,
 .esp-hero__sub,
 .esp-hero__actions {
-  opacity: 0;
+  opacity: 1;
 }
 
-.esp-hero.is-loaded .esp-hero__eyebrow,
-.esp-hero.is-loaded .esp-hero__headline,
-.esp-hero.is-loaded .esp-hero__sub,
-.esp-hero.is-loaded .esp-hero__actions {
-  animation: fadeLeft 650ms cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s) both;
-}
+/* Animation removed for Hero performance */
 
 
 /* ── Hero Responsive ── */
@@ -602,11 +602,11 @@ button {
 }
 
 .spec-card__photo--ryan {
-  background-image: url('/images/diretor-ryan.jpg');
+  background-image: url('/.netlify/images?url=/images/diretor-ryan.jpg&w=600&q=80');
 }
 
 .spec-card__photo--diana {
-  background-image: url('/images/diretora-diana.jpg');
+  background-image: url('/.netlify/images?url=/images/diretora-diana.jpg&w=600&q=80');
 }
 
 /* ── Bio overlay (hover reveal) ── */

@@ -22,7 +22,7 @@
   <header class="header" id="header">
     <div class="container header__inner">
       <a href="/" class="header__logo" aria-label="VetPiera — Página inicial">
-        Vet<span>Piera</span>
+        <img src="/.netlify/images?url=/images/logo.png&w=200&q=80" alt="VetPiera Logo" class="header__logo-img">
       </a>
       <nav class="header__nav" aria-label="Navegação principal">
         <a href="/home/index.html" class="nav-link">Home</a>
@@ -46,11 +46,9 @@
          Constraints: Mouse Spotlight + Grain + "24h" Stamp + fadeUp stagger
          ============================================= -->
     <section class="hosp-hero" aria-label="Hospital Veterinário 24 horas">
-      <div class="hosp-hero__left">
-        <!-- Giant "24h" stamp (decorative background text) -->
-        <div class="hosp-hero__stamp" aria-hidden="true">24h</div>
-
-        <div class="hosp-hero__content">
+      <!-- Layout alinhado com a Home: Copy esquerda (60%), Foto direita (40%) -->
+      <div class="hosp-hero__container">
+        <div class="hosp-hero__copy">
           <span class="hosp-hero__eyebrow">Hospital Veterinário · São Paulo</span>
           <h1 class="hosp-hero__headline">
             Emergência veterinária<br>
@@ -69,14 +67,14 @@
             </a>
           </div>
         </div>
-      </div>
 
-      <div class="hosp-hero__right">
-        <div class="hosp-hero__photo" role="img" aria-label="Fachada do Hospital Veterinário VetPiera"></div>
-        <!-- Mouse spotlight layer (JS-driven via CSS custom props) -->
-        <div class="hosp-hero__spotlight" id="heroSpotlight" aria-hidden="true"></div>
-        <!-- Grain overlay -->
-        <div class="hosp-hero__grain" aria-hidden="true"></div>
+        <div class="hosp-hero__media">
+          <div class="hosp-hero__photo-wrapper">
+            <div class="hosp-hero__photo" role="img" aria-label="Fachada do Hospital Veterinário VetPiera"></div>
+            <!-- "24h" stamp movido para dentro da media area como elemento decorativo -->
+            <div class="hosp-hero__stamp" aria-hidden="true">24h</div>
+          </div>
+        </div>
       </div>
 
       <!-- Scroll cue -->
@@ -101,39 +99,39 @@
         <div class="hosp-structure__track-wrapper" id="structureWrapper">
           <div class="hosp-structure__track" id="structureTrack">
             <div class="hosp-structure__item">
-              <img src="/images/hosp-estrutura-recepcao.jpg" alt="Recepção do Hospital 24h" class="hosp-structure__img" loading="lazy">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-recepcao.jpg&w=600&q=80" alt="Recepção do Hospital 24h" class="hosp-structure__img" loading="lazy">
               <div class="hosp-structure__caption">Recepção 24h</div>
             </div>
             <div class="hosp-structure__item">
-              <img src="/images/hosp-estrutura-hall.jpg" alt="Hall de espera" class="hosp-structure__img" loading="lazy">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-hall.jpg&w=600&q=80" alt="Hall de espera" class="hosp-structure__img" loading="lazy">
               <div class="hosp-structure__caption">Hall de Espera</div>
             </div>
             <div class="hosp-structure__item">
-              <img src="/images/hosp-estrutura-consultorio-1.jpg" alt="Consultório Veterinário" class="hosp-structure__img" loading="lazy">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-consultorio-1.jpg&w=600&q=80" alt="Consultório Veterinário" class="hosp-structure__img" loading="lazy">
               <div class="hosp-structure__caption">Consultórios Modernos</div>
             </div>
             <div class="hosp-structure__item">
-              <img src="/images/hosp-estrutura-cirurgico-1.jpg" alt="Centro Cirúrgico" class="hosp-structure__img" loading="lazy">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-cirurgico-1.jpg&w=600&q=80" alt="Centro Cirúrgico" class="hosp-structure__img" loading="lazy">
               <div class="hosp-structure__caption">Centro Cirúrgico de Ponta</div>
             </div>
             <div class="hosp-structure__item">
-              <img src="/images/hosp-estrutura-emergencia.jpg" alt="Sala de Emergência" class="hosp-structure__img" loading="lazy">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-emergencia.jpg&w=600&q=80" alt="Sala de Emergência" class="hosp-structure__img" loading="lazy">
               <div class="hosp-structure__caption">Sala de Emergência</div>
             </div>
             <div class="hosp-structure__item">
-              <img src="/images/hosp-estrutura-raiox.jpg" alt="Sala de Raio-X" class="hosp-structure__img" loading="lazy">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-raiox.jpg&w=600&q=80" alt="Sala de Raio-X" class="hosp-structure__img" loading="lazy">
               <div class="hosp-structure__caption">Radiologia Digital</div>
             </div>
             <div class="hosp-structure__item">
-              <img src="/images/hosp-estrutura-ultrassom.jpg" alt="Sala de Ultrassom" class="hosp-structure__img" loading="lazy">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-ultrassom.jpg&w=600&q=80" alt="Sala de Ultrassom" class="hosp-structure__img" loading="lazy">
               <div class="hosp-structure__caption">Ultrassonografia</div>
             </div>
             <div class="hosp-structure__item">
-              <img src="/images/hosp-estrutura-internacao-caes-1.jpg" alt="Internação Cães" class="hosp-structure__img" loading="lazy">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-internacao-caes-1.jpg&w=600&q=80" alt="Internação Cães" class="hosp-structure__img" loading="lazy">
               <div class="hosp-structure__caption">Internação Canina</div>
             </div>
             <div class="hosp-structure__item">
-              <img src="/images/hosp-estrutura-internacao-felinos.jpg" alt="Internação Gatos" class="hosp-structure__img" loading="lazy">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-internacao-felinos.jpg&w=600&q=80" alt="Internação Gatos" class="hosp-structure__img" loading="lazy">
               <div class="hosp-structure__caption">Internação Felina Exclusiva</div>
             </div>
           </div>
@@ -521,7 +519,7 @@
           </p>
         </div>
         <div class="hosp-about__visual">
-          <img src="/images/hosp-exterior.jpg" alt="Fachada do Hospital Veterinário Piera" class="hosp-about__img" loading="lazy">
+          <img src="/.netlify/images?url=/images/hosp-exterior.jpg&w=800&q=80" alt="Fachada do Hospital Veterinário Piera" class="hosp-about__img" loading="lazy">
         </div>
       </div>
     </section>

@@ -301,129 +301,86 @@ ul {
    ============================================================ */
 /* ── Hero shell ── */
 .hosp-hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   min-height: 100svh;
   position: relative;
   overflow: hidden;
-  background-color: var(--clr-dark);
+  background-color: var(--clr-bg);
+  display: flex;
 }
 
-/* ── Left panel: dark background + copy ── */
-.hosp-hero__left {
-  background: var(--clr-dark);
+.hosp-hero__container {
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  width: 100%;
+}
+
+/* ── Content side ── */
+.hosp-hero__copy {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-block: clamp(120px, 14vw, 180px) clamp(80px, 10vw, 120px);
-  padding-inline: var(--pad-x) clamp(48px, 6vw, 88px);
+  padding-block: clamp(100px, 14vw, 160px);
+  padding-left: var(--pad-x);
+  padding-right: clamp(40px, 6vw, 80px);
+  background: var(--clr-bg);
   position: relative;
-  z-index: 5;
+  z-index: 2;
 }
 
-/* ── Right panel: photo ── */
-.hosp-hero__right {
+/* Diagonal edge (Home style sync) */
+.hosp-hero__copy::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  right: -80px;
+  background: var(--clr-bg);
+  clip-path: polygon(0 0, 48% 0, 100% 100%, 0 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ── Media side ── */
+.hosp-hero__media {
   position: relative;
+  overflow: hidden;
+  background: var(--clr-dark);
+}
+
+.hosp-hero__photo-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* Corte elegante inferior esquerdo */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
   overflow: hidden;
 }
 
 .hosp-hero__photo {
   width: 100%;
   height: 100%;
-  background-image: url('/images/hospital-hero-final.png');
+  background-image: url('/.netlify/images?url=/images/hospital-hero-final.png&w=1200&q=80');
   background-size: cover;
   background-position: center center;
-  background-color: #0a1e16;
+  filter: drop-shadow(0 0 40px rgba(0,0,0,0.3));
 }
 
-.hosp-hero__photo::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(15, 45, 36, 0.40) 0%,
-    transparent 50%
-  );
-}
+/* Remover overlays de cor e deixar foto limpa */
+.hosp-hero::before { display: none; }
 
-/* Dark gradient overlay on photo */
-.hosp-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(10, 30, 22, 0.88) 0%,
-    rgba(15, 45, 36, 0.75) 60%,
-    rgba(8, 26, 22, 0.82) 100%
-  );
-  z-index: 1;
-}
-
-/* ── Mouse Spotlight ── */
-.hosp-hero__spotlight {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    400px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(27, 77, 62, 0.18),
-    transparent 60%
-  );
-  z-index: 2;
-  pointer-events: none;
-  transition: background 0.05s linear;
-}
-
-/* ── Grain Overlay ── */
-.hosp-hero__grain {
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 256px 256px;
-  opacity: 0.04;
-  mix-blend-mode: overlay;
-  z-index: 3;
-  pointer-events: none;
-}
-
-/* ── Giant "24h" Stamp (background decorative) ── */
+/* ── Giant "24h" Stamp ── */
 .hosp-hero__stamp {
   position: absolute;
-  bottom: clamp(32px, 5vw, 64px);
-  right: clamp(32px, 5vw, 64px);
+  bottom: 10%;
+  right: 5%;
   font-family: var(--ff-heading);
-  font-size: clamp(6rem, 16vw, 14rem);
+  font-size: clamp(5rem, 15vw, 12rem);
   line-height: 1;
-  color: rgba(255, 255, 255, 0.05);
+  color: var(--clr-primary);
+  opacity: 0.15;
   letter-spacing: -0.04em;
   user-select: none;
   pointer-events: none;
   z-index: 2;
-
-  /* Initial state — animated in */
-  opacity: 0;
-  transform: scale(0.7);
-  animation: stampReveal 1000ms var(--ease-out-expo) 800ms forwards;
-}
-
-@keyframes stampReveal {
-  from {
-    opacity: 0;
-    transform: scale(0.7);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* ── Content wrapper ── */
-.hosp-hero__content {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
 }
 
 /* ── Eyebrow ── */
@@ -436,10 +393,6 @@ ul {
   letter-spacing: 0.12em;
   color: var(--clr-accent);
   margin-bottom: clamp(16px, 2.5vw, 24px);
-
-  opacity: 0;
-  transform: translateY(16px);
-  animation: fadeUp 550ms var(--ease-out-expo) 100ms forwards;
 }
 
 /* ── Headline ── */
@@ -447,19 +400,14 @@ ul {
   font-family: var(--ff-heading);
   font-size: var(--fs-hero);
   line-height: 1.08;
-  color: #FFFFFF;
+  color: var(--clr-text);
   letter-spacing: -0.025em;
   margin: 0 0 clamp(20px, 3vw, 32px);
-  max-width: 700px;
-
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 700ms var(--ease-out-expo) 250ms forwards;
+  max-width: 600px;
 }
 
-/* Gold italic emphasis inside headline */
 .hosp-hero__em {
-  color: var(--clr-accent);
+  color: var(--clr-primary);
   font-style: italic;
 }
 
@@ -467,14 +415,10 @@ ul {
 .hosp-hero__sub {
   font-family: var(--ff-body);
   font-size: var(--fs-body);
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--clr-muted);
   line-height: 1.65;
-  max-width: 540px;
+  max-width: 420px;
   margin: 0 0 clamp(32px, 4vw, 48px);
-
-  opacity: 0;
-  transform: translateY(16px);
-  animation: fadeUp 650ms var(--ease-out-expo) 400ms forwards;
 }
 
 /* ── CTAs ── */
@@ -482,87 +426,65 @@ ul {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-
-  opacity: 0;
-  transform: translateY(16px);
-  animation: fadeUp 550ms var(--ease-out-expo) 550ms forwards;
 }
 
-/* ── Shared fadeUp keyframe ── */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(var(--from-y, 16px));
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ── Scroll cue (animated line) ── */
+/* ── Scroll cue ── */
 .hosp-hero__scroll-cue {
   position: absolute;
   bottom: clamp(24px, 4vw, 40px);
-  left: 50%;
+  left: 27.5%; /* Centralizado no painel de texto */
   transform: translateX(-50%);
   z-index: 4;
   display: flex;
   flex-direction: column;
   align-items: center;
-  opacity: 0;
-  animation: fadeIn 600ms ease 1200ms forwards;
 }
 
 .hosp-hero__scroll-line {
   display: block;
   width: 1px;
   height: 48px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+  background: linear-gradient(to bottom, var(--clr-primary), transparent);
   animation: scrollPulse 2s ease infinite;
 }
 
-@keyframes scrollPulse {
-  0%   { transform: scaleY(1);   opacity: 1; }
-  50%  { transform: scaleY(0.5); opacity: 0.3; }
-  100% { transform: scaleY(1);   opacity: 1; }
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-/* ── Hero mobile breakpoints ── */
+/* ── Mobile breakpoints ── */
 @media (max-width: 1024px) {
-  .hosp-hero {
-    grid-template-columns: 55fr 45fr;
+  .hosp-hero__container {
+    grid-template-columns: 58fr 42fr;
   }
 }
 
 @media (max-width: 768px) {
   .hosp-hero {
-    grid-template-columns: 1fr;
     min-height: auto;
   }
-  .hosp-hero__right {
+  .hosp-hero__container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 55vw;
+  }
+  .hosp-hero__media {
+    order: -1;
     height: 55vw;
     min-height: 240px;
   }
-  .hosp-hero__left {
-    padding-block: clamp(80px, 12vw, 120px) clamp(100px, 14vw, 140px);
+  .hosp-hero__photo-wrapper {
+    clip-path: none; /* remove diagonal no mobile */
+  }
+  .hosp-hero__copy {
+    padding-block: clamp(60px, 10vw, 80px) clamp(40px, 8vw, 60px);
+    padding-inline: var(--pad-x);
+  }
+  .hosp-hero__copy::after {
+    display: none;
   }
   .hosp-hero__stamp {
-    font-size: clamp(5rem, 22vw, 9rem);
-    bottom: -30px;
-    right: 16px;
-    opacity: 0.15;
+    font-size: clamp(4rem, 18vw, 7rem);
+    bottom: 5%;
+    right: 5%;
   }
-  .hosp-hero__headline {
-    font-size: clamp(2.25rem, 7.5vw, 3.5rem);
-  }
-  .hosp-hero__actions {
-    flex-direction: column;
-    align-items: flex-start;
+  .hosp-hero__scroll-cue {
+    display: none;
   }
 }
 
@@ -688,7 +610,7 @@ ul {
 }
 
 .services__card-large-photo {
-  background-image: url('/images/hospital-uti.jpg');
+  background-image: url('/.netlify/images?url=/images/hospital-uti.jpg&w=800&q=80');
   background-size: cover;
   background-position: center;
   background-color: #0a1e16;
@@ -1473,31 +1395,33 @@ ul {
   font-size: 2.5rem;
 }
 
-/* ── Floating glass card ("Disponível 24h") ── */
+/* Floating glass card: "Disponível 24h" live indicator */
 .hosp-contact__glass-card {
   position: absolute;
-  bottom: 32px;
-  left: 24px;
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(20px) saturate(1.5);
-  -webkit-backdrop-filter: blur(20px) saturate(1.5);
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: var(--radius);
-  padding: 16px 20px;
+  bottom: 40px;
+  left: 40px;
+  z-index: 10;
+  background: rgba(15, 45, 36, 0.85); /* Tom escuro */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 18px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
-  gap: 12px;
-  min-width: 160px;
+  gap: 16px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+  color: #fff; /* Texto claro */
 }
 
-/* Green live dot with pulse */
 .hosp-contact__glass-dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: #4ade80;
+  background: #22c55e; /* Verde vivo para "aberto" */
   flex-shrink: 0;
-  animation: liveGreenPulse 2s ease infinite;
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
+  animation: livePulse 2s ease infinite;
 }
 
 @keyframes liveGreenPulse {
@@ -1507,19 +1431,15 @@ ul {
 }
 
 .hosp-contact__glass-text {
-  font-family: var(--ff-body);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
-  color: #FFFFFF;
   margin: 0;
-  line-height: 1.2;
 }
 
 .hosp-contact__glass-sub {
-  font-family: var(--ff-body);
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.50);
-  margin: 3px 0 0;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
 }
 
 /* ── Contact responsive ── */
@@ -1929,39 +1849,67 @@ ul {
   margin-bottom: 16px;
 }
 
+/* ── Bento grid ── */
 .hosp-diffs__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   max-width: var(--container);
   margin-inline: auto;
-  padding-inline: var(--pad-x);
 }
 
 .hosp-diffs__card {
-  padding: 32px;
-  background: var(--clr-bg);
-  border-radius: var(--radius-lg);
+  background: var(--clr-surface);
   border: 1px solid var(--clr-border);
-  transition: all 0.4s var(--ease);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
 }
+
+.hosp-diffs__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--clr-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+
 .hosp-diffs__card:hover {
-  transform: translateY(-5px);
-  border-color: var(--clr-primary);
-  box-shadow: 0 12px 32px rgba(27,77,62,0.08);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(15, 45, 36, 0.08);
+  border-color: var(--clr-accent);
+}
+
+.hosp-diffs__card:hover::before {
+  transform: scaleX(1);
 }
 
 .hosp-diffs__icon {
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   background: var(--clr-primary-pale);
   color: var(--clr-primary);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+  font-size: 1.75rem;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+.hosp-diffs__card:hover .hosp-diffs__icon {
+  background: var(--clr-primary);
+  color: #fff;
 }
 
 .hosp-diffs__card-name {
