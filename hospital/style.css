@@ -1943,3 +1943,48 @@ ul {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================================
+   MOBILE EXTRA-SMALL — 480px / 640px
+   ============================================================ */
+
+/* Hero: background-position e stamp em phones pequenos */
+@media (max-width: 768px) {
+  .hosp-hero__photo { background-position: top center; }
+}
+@media (max-width: 480px) {
+  .hosp-hero__stamp { font-size: clamp(2.5rem, 14vw, 4rem); }
+}
+
+/* Especialidades chips: reduz width mínimo */
+@media (max-width: 480px) {
+  .hosp-specs__chip { min-width: 110px; height: 72px; padding: 10px 12px; }
+}
+
+/* Estrutura carousel: item não cabe em 375px com clamp(280px, 40vw) */
+@media (max-width: 640px) {
+  .hosp-structure__item {
+    flex: 0 0 calc(100vw - 48px);
+    height: clamp(220px, 55vw, 350px);
+  }
+  .hosp-structure__caption {
+    padding: 16px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .hosp-structure__btn { width: 40px; height: 40px; font-size: 1rem; }
+}
+
+/* Contato glass card: left: 40px vaza em 375px */
+@media (max-width: 480px) {
+  .hosp-contact__glass-card {
+    left: 12px;
+    bottom: 12px;
+    padding: 14px 16px;
+  }
+}
+
+/* Diferenciais: reduz padding em phones muito pequenos */
+@media (max-width: 480px) {
+  .hosp-diffs__card { padding: 28px 20px; }
+}

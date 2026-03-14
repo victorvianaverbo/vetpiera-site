@@ -1633,3 +1633,37 @@ button {
     grid-row: span 1;
   }
 }
+
+/* ============================================================
+   MOBILE EXTRA-SMALL — 480px
+   ============================================================ */
+
+/* Hero badge */
+@media (max-width: 480px) {
+  .esp-hero__badge       { padding: 10px 14px; bottom: -32px; }
+  .esp-hero__badge-inner { padding: 12px 18px; }
+}
+
+/* Spec cards */
+@media (max-width: 480px) {
+  .spec-card__photo   { height: 260px; }
+  .spec-card__name    { font-size: clamp(1.1rem, 4vw, 1.3rem); }
+  .spec-card__overlay { padding: 16px; }
+}
+
+/* Process section: font-sizes fixos */
+@media (max-width: 480px) {
+  .process__step-title { font-size: clamp(1.05rem, 3.5vw, 1.2rem); }
+  .process__step-text  { font-size: clamp(0.8rem, 2.5vw, 0.875rem); }
+}
+
+/* Esp-Grid: coluna de número 60px → 50px */
+@media (max-width: 480px) {
+  .esp-grid__item { grid-template-columns: 50px 1fr auto; gap: 12px; }
+  .esp-grid__num  { font-size: clamp(1.5rem, 6vw, 2rem); }
+}
+
+/* Structure grid: reduz altura em phones */
+@media (max-width: 480px) {
+  .structure__grid { grid-auto-rows: 200px; gap: 10px; }
+}

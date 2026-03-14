@@ -1530,3 +1530,35 @@ ul {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================================
+   MOBILE EXTRA-SMALL — 480px / 640px
+   ============================================================ */
+
+/* Units: reduz altura em phones pequenos */
+@media (max-width: 480px) {
+  .unit { min-height: 240px; }
+}
+
+/* Pillars: coluna de número 140px → 100px; font-size fixo → clamp */
+@media (max-width: 480px) {
+  .pillars__row  { grid-template-columns: 100px 1fr; }
+  .pillars__name { font-size: clamp(1.1rem, 4vw, 1.4rem); }
+  .pillars__num  { margin-right: -12px; }
+}
+
+/* Testimonials: quote-mark com position absolute causa scroll horizontal — converte para static */
+@media (max-width: 640px) {
+  .testimonials__quote-mark {
+    position: static;
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: -8px;
+    opacity: 0.25;
+  }
+}
+
+/* Hero: background-position mais favorável em mobile */
+@media (max-width: 768px) {
+  .hero__photo { background-position: top center; }
+}
