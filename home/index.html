@@ -9,6 +9,11 @@
   <!-- Preconnect for Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="dns-prefetch" href="https://unpkg.com">
+  
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
 
   <!-- Phosphor Icons -->
@@ -84,7 +89,7 @@
 
       <!-- Right media panel 45% -->
       <div class="hero__media" aria-hidden="true">
-        <div class="hero__photo" id="heroPhoto" style="background-image: url('/.netlify/images?url=/images/hosp-exterior.jpg&w=1200&q=80');"></div>
+        <div class="hero__photo" id="heroPhoto" style="background-image: url('/.netlify/images?url=/images/hosp-exterior.jpg&w=1200&q=80');" fetchpriority="high"></div>
         <div class="hero__vignette"></div>
       </div>
 

@@ -1638,17 +1638,64 @@ button {
    MOBILE EXTRA-SMALL — 480px
    ============================================================ */
 
-/* Hero badge */
-@media (max-width: 480px) {
-  .esp-hero__badge       { padding: 10px 14px; bottom: -32px; }
-  .esp-hero__badge-inner { padding: 12px 18px; }
+@media (max-width: 768px) {
+  .esp-hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+  }
+  .esp-hero__container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    flex-grow: 1;
+  }
+  .esp-hero__media {
+    order: -1;
+    height: 55svh;
+    min-height: 320px;
+  }
+  .esp-hero__copy {
+    padding-block: clamp(60px, 12vw, 80px) 40px;
+    padding-inline: var(--pad-x);
+    flex-grow: 1;
+  }
+  /* Badge position fix */
+  .esp-hero__badge {
+    position: absolute;
+    top: auto;
+    bottom: 24px;
+    left: var(--pad-x);
+    transform: none;
+    background: rgba(15, 45, 36, 0.9);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+  }
 }
 
-/* Spec cards */
+/* Spec cards mobile refinement */
+@media (max-width: 768px) {
+  .spec-grid {
+    grid-template-columns: 1fr;
+  }
+  .spec-card {
+    height: auto;
+    min-height: 480px;
+  }
+  .spec-card__bio-content {
+    max-height: 120px; /* Reduced to show the button clearly */
+  }
+}
+
 @media (max-width: 480px) {
-  .spec-card__photo   { height: 260px; }
-  .spec-card__name    { font-size: clamp(1.1rem, 4vw, 1.3rem); }
-  .spec-card__overlay { padding: 16px; }
+  .esp-hero__headline { font-size: 2.4rem; }
+  .spec-card__name { font-size: 1.4rem; }
+  .spec-card__tag { font-size: 0.7rem; }
+}
+
+/* Hero badge (Hospital style sync) */
+@media (max-width: 480px) {
+  .esp-hero__badge       { padding: 12px 18px; bottom: 24px; left: 16px; width: calc(100% - 32px); }
+  .esp-hero__badge-inner { padding: 0; }
 }
 
 /* Process section: font-sizes fixos */

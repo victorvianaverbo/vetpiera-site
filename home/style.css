@@ -539,30 +539,55 @@ ul {
 @media (max-width: 768px) {
   .hero {
     grid-template-columns: 1fr;
-    grid-template-rows: auto 55vw;
-    min-height: auto;
+    grid-template-rows: auto auto; /* Mudei para auto auto para evitar overflow */
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
   }
   .hero__copy {
-    padding-block: clamp(80px, 12vw, 120px) clamp(40px, 6vw, 64px);
+    padding-block: clamp(80px, 12vw, 120px) 40px;
     padding-inline: var(--pad-x);
+    flex-grow: 1;
   }
   .hero__copy::after {
     display: none; /* diagonal only on desktop */
   }
   .hero__media {
-    order: -1;
-    height: 55vw;
-    min-height: 240px;
+    order: -1; /* Imagem primeiro no mobile */
+    height: 60svh; /* Aumentado para melhor visibilidade */
+    min-height: 320px;
+    width: 100%;
+  }
+  .hero__photo {
+    background-position: center;
   }
   .hero__badge {
-    position: relative;
+    position: absolute;
     top: auto;
-    left: auto;
+    bottom: 24px;
+    left: var(--pad-x);
     transform: none;
-    margin-top: 24px;
+    margin-top: 0;
+    z-index: 5;
   }
   .hero__badge-num {
-    font-size: clamp(4rem, 18vw, 7rem);
+    font-size: clamp(4rem, 15vw, 6rem);
+    color: var(--clr-bg); /* Contraste sobre a imagem */
+    opacity: 0.25;
+  }
+  .hero__badge-label {
+    color: var(--clr-bg);
+    opacity: 0.8;
+  }
+}
+
+/* Ajuste específico para telas muito pequenas (iPhone SE, etc) */
+@media (max-width: 380px) {
+  .hero__headline {
+    font-size: 2.5rem;
+  }
+  .hero__copy {
+    padding-block: 60px 40px;
   }
 }
 
@@ -1408,6 +1433,31 @@ ul {
   }
   .footer__col--brand {
     grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 1024px) {
+  .units__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .units__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .unit-card {
+    min-height: 280px; /* Altura fixa garantida */
+  }
+}
+
+@media (max-width: 380px) {
+  .unit-card__name {
+    font-size: 1.25rem;
+  }
+  .unit-card__front, .unit-card__back {
+    padding: 24px;
   }
 }
 
