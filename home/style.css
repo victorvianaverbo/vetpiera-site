@@ -353,6 +353,13 @@ ul {
 
 .mobile-menu__cta { margin-top: 8px; }
 
+/* ── Header: colapso mobile ── */
+@media (max-width: 760px) {
+  .site-nav         { display: none; }
+  .site-header__cta { display: none; }
+  .site-header__burger { display: flex; }
+}
+
 /* ============================================================
    5. HERO (Split Assimetrico 55/45 + Diagonal + Parallax)
    ============================================================ */
@@ -562,22 +569,14 @@ ul {
     background-position: center;
   }
   .hero__badge {
-    position: absolute;
+    position: relative;
     top: auto;
-    bottom: 24px;
-    left: var(--pad-x);
+    left: auto;
     transform: none;
-    margin-top: 0;
-    z-index: 5;
+    margin-top: 24px;
   }
   .hero__badge-num {
     font-size: clamp(4rem, 15vw, 6rem);
-    color: var(--clr-bg); /* Contraste sobre a imagem */
-    opacity: 0.25;
-  }
-  .hero__badge-label {
-    color: var(--clr-bg);
-    opacity: 0.8;
   }
 }
 

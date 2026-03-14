@@ -763,9 +763,20 @@ button {
   .specialists__grid {
     grid-template-columns: 1fr;
   }
-  .spec-card__photo,
+  .spec-card__photo {
+    height: 320px;
+  }
   .spec-card__overlay {
     height: 320px;
+  }
+  /* Overlay expande quando aberto */
+  .spec-card.is-expanded .spec-card__overlay {
+    height: auto;
+    min-height: 320px;
+  }
+  /* Footer oculto no mobile — overlay já mostra o nome */
+  .spec-card__footer {
+    display: none;
   }
   .spec-card:hover {
     transform: none; /* disable lift on touch */
