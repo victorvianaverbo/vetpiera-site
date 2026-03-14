@@ -216,6 +216,7 @@ ul {
 }
 .header__logo:hover { opacity: 0.8; }
 .header__logo span  { color: var(--clr-accent); }
+.header__logo-img   { height: clamp(32px, 4vw, 42px); width: auto; display: block; }
 
 /* Nav */
 .header__nav {
@@ -354,7 +355,7 @@ ul {
 .hosp-hero__photo {
   width: 100%;
   height: 100%;
-  background-image: url('/.netlify/images?url=/images/hospital-hero.jpg&w=1200&q=80');
+  background-image: url('/.netlify/images?url=/images/hosp-hero-recepcao.png&w=1200&q=80');
   background-size: cover;
   background-position: center center;
 }
