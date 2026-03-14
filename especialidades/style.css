@@ -503,8 +503,12 @@ button {
 
   /* Photo below copy on mobile */
   .esp-hero__right {
-    height: 55vw;
-    min-height: 240px;
+    height: 75vw;
+    min-height: 320px;
+  }
+
+  .esp-hero__photo {
+    background-position: center 20%;
   }
 
   .esp-hero__left {
@@ -764,15 +768,10 @@ button {
     grid-template-columns: 1fr;
   }
   .spec-card__photo {
-    height: 320px;
+    height: 420px; /* Aumentado para mostrar foto completa */
   }
   .spec-card__overlay {
-    height: 320px;
-  }
-  /* Overlay expande quando aberto */
-  .spec-card.is-expanded .spec-card__overlay {
-    height: auto;
-    min-height: 320px;
+    height: auto; /* Ocupa apenas o espaço do conteúdo — bottom-anchored */
   }
   /* Footer oculto no mobile — overlay já mostra o nome */
   .spec-card__footer {
@@ -1683,19 +1682,6 @@ button {
   }
 }
 
-/* Spec cards mobile refinement */
-@media (max-width: 768px) {
-  .spec-grid {
-    grid-template-columns: 1fr;
-  }
-  .spec-card {
-    height: auto;
-    min-height: 480px;
-  }
-  .spec-card__bio-content {
-    max-height: 120px; /* Reduced to show the button clearly */
-  }
-}
 
 @media (max-width: 480px) {
   .esp-hero__headline { font-size: 2.4rem; }

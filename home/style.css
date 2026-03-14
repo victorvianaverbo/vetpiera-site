@@ -552,16 +552,17 @@ ul {
     flex-direction: column;
   }
   .hero__copy {
+    min-height: 100svh;
     padding-block: clamp(80px, 12vw, 120px) 40px;
     padding-inline: var(--pad-x);
-    flex-grow: 1;
+    flex-grow: unset;
   }
   .hero__copy::after {
     display: none; /* diagonal only on desktop */
   }
   .hero__media {
-    order: -1; /* Imagem primeiro no mobile */
-    height: 60svh; /* Aumentado para melhor visibilidade */
+    order: 0; /* Foto abaixo do fold */
+    height: 60svh;
     min-height: 320px;
     width: 100%;
   }
@@ -821,6 +822,11 @@ ul {
   .unit {
     min-height: 280px;
     border-radius: var(--radius-lg);
+    perspective: none; /* Remove distorção 3D no mobile */
+  }
+
+  .unit__inner {
+    transform-style: flat; /* Sem contexto 3D */
   }
 
   /* Disable hover flip on mobile */
