@@ -1,1786 +1,482 @@
-# VetPiera — Home Page Layout Specification
+# Layout — Home (Grupo Piera)
 
-**File:** `home/layout.md`
-**Last updated:** 2026-03-13
-**Designer:** Art Director (Claude)
-**Status:** Ready for development
+> Especificação exaustiva das 10 seções da home, na ordem do Petderma, adaptada à proposta Piera (2 unidades). Hero + Stats já implementados como demo de design aprovada.
 
 ---
 
-## Global Tokens (apply to all pages)
+## Design Tokens (Bíblia)
 
-```css
-:root {
-  /* Colors */
-  --clr-primary:       #1B4D3E;
-  --clr-accent:        #C9A84C;
-  --clr-dark:          #0F2D24;
-  --clr-bg:            #FAFAF8;
-  --clr-primary-pale:  #E8F2ED;
-  --clr-surface:       #FFFFFF;
-  --clr-border:        #E2E8E5;
-  --clr-text:          #1A1A1A;
-  --clr-muted:         #5C6B74;
-
-  /* Typography */
-  --font-display: 'DM Serif Display', Georgia, serif;
-  --font-body:    'DM Sans', system-ui, sans-serif;
-  --fs-hero:  clamp(2.75rem, 5.5vw, 4.5rem);
-  --fs-h2:    clamp(2rem, 4vw, 3rem);
-  --fs-h3:    clamp(1.4rem, 2.5vw, 1.9rem);
-  --fs-body:  clamp(1rem, 1.5vw, 1.1rem);
-  --fs-sm:    0.875rem;
-
-  /* Spacing */
-  --sp-section: clamp(80px, 10vw, 128px);
-  --sp-inner:   clamp(40px, 5vw, 64px);
-  --container:  1200px;
-  --pad-x:      clamp(24px, 5vw, 64px);
-
-  /* Shape */
-  --radius:    12px;
-  --radius-lg: 20px;
-
-  /* Easing */
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-}
+### Cores
+```
+--clr-primary:       #1B4D3E   /* verde escuro principal */
+--clr-primary-mid:   #2A6B56   /* verde médio (gradients) */
+--clr-primary-pale:  #E8F2ED   /* verde claríssimo (badges) */
+--clr-accent:        #C9A84C   /* dourado */
+--clr-accent-deep:   #b8922e   /* dourado escuro (gradients) */
+--clr-accent-light:  #E6BC52   /* dourado claro (gradients) */
+--clr-dark:          #0F2D24   /* verde quase preto (CTAs dark) */
+--clr-bg:            #FAFAF8   /* fundo claro principal */
+--clr-bg-mesh-1:     #FCFCF9   /* topo do mesh gradient */
+--clr-bg-mesh-2:     #F4F7F4   /* fim do mesh gradient */
+--clr-surface:       #FFFFFF   /* cards */
+--clr-border:        #E2E8E5
+--clr-text:          #1A1A1A
+--clr-muted:         #5C6B74
 ```
 
----
+### Fontes
+- **Heading:** DM Serif Display (400 + italic) — Google Fonts
+- **Body:** DM Sans (400, 500, 600, 700) — Google Fonts
 
-## Section 1 — Hero
+### Espaçamentos
+- `--sp-section: clamp(80px, 10vw, 128px)`
+- Container default: 1200px max-width
+- Container Hero: 1320px max-width
+- `--pad-x: clamp(24px, 5vw, 64px)`
+- Radius: 12px default · 18–28px cards grandes · 999px pills
 
-**Archetype:** Split Assimétrico (55/45) com diagonal edge
-**Constraints:** Split Diagonal + Mouse Parallax + Clip Reveal (word-by-word) + Counter Animation
-
----
-
-### HTML Structure
-
-```html
-<section class="hero" aria-label="Hero principal">
-  <div class="hero__copy"> <!-- 55% left -->
-    <span class="hero__eyebrow">Clínica Veterinária de Referência</span>
-    <h1 class="hero__headline">
-      <span class="hero__word">O</span>
-      <span class="hero__word">cuidado</span>
-      <span class="hero__word">veterinário</span>
-      <span class="hero__word">completo</span>
-      <span class="hero__word">que</span>
-      <span class="hero__word">o</span>
-      <span class="hero__word">seu</span>
-      <span class="hero__word">pet</span>
-      <span class="hero__word">merece.</span>
-    </h1>
-    <p class="hero__sub">Atendimento humano, tecnologia de ponta e mais de 22 anos de experiência cuidando de quem você ama.</p>
-    <div class="hero__actions">
-      <a href="/hospital" class="btn btn--accent">Hospital 24h →</a>
-      <a href="/especialidades" class="btn btn--outline">Conhecer Especialidades</a>
-    </div>
-  </div>
-  <div class="hero__media" aria-hidden="true"> <!-- 45% right -->
-    <div class="hero__photo" id="heroPhoto"></div>
-    <div class="hero__vignette"></div>
-  </div>
-  <div class="hero__badge" aria-label="22 anos de experiência">
-    <span class="hero__badge-num" id="heroBadgeCounter">0</span>
-    <span class="hero__badge-label">anos de<br>experiência</span>
-  </div>
-</section>
-```
+### Easing global
+- `cubic-bezier(0.16, 1, 0.3, 1)` (out-expo, premium)
+- Durations: 280ms small interactions · 600–800ms entrance · 1400ms counter
 
 ---
 
-### Layout CSS
+## Seção 1: HERO
 
-```css
-.hero {
-  display: grid;
-  grid-template-columns: 55fr 45fr;
-  min-height: 100svh;
-  position: relative;
-  overflow: hidden;
-  background: var(--clr-bg);
-}
+### Arquétipo e Constraints
+- **Arquétipo:** Split com Overlap (60/40)
+- **Constraints:** Gradiente Mesh (Cor) · Imagem com Gradiente (Mídia) · Mouse Parallax (Interação) · Headline com Gradiente (Tipografia)
+- **Justificativa:** Mantém leveza editorial Petderma com foto generosa, evitando "split frio 50/50". Palavra-chave em gradient cria foco sem bullet visual.
 
-/* ── Left panel ── */
-.hero__copy {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-block: clamp(100px, 14vw, 160px);
-  padding-inline: var(--pad-x);
-  padding-right: clamp(40px, 6vw, 80px);
-  background: var(--clr-bg);
-}
+### Conteúdo (literal)
+- **Eyebrow pill (dot dourado pulsando):** `Grupo Piera · Desde 2002`
+- **Headline:** `O cuidado [veterinário] completo que o seu pet merece.` — "veterinário" em gradient italic
+- **Sub:** `Somos o Grupo Piera — 22 anos cuidando de animais com tecnologia, especialização e humanidade.`
+- **CTA primário:** `Hospital 24h` + `ph-arrow-right` → `/hospital`
+- **CTA secundário:** `Conhecer Especialidades` + `ph-arrow-up-right` → `/especialidades`
+- **Trust strip (3 itens com `ph-fill ph-check-circle`):** Hospital 24h · 25 especialidades · 13+ veterinários
+- **Badge bottom-left foto:** `22+ anos de excelência`
+- **Tag dourada top-right foto (`ph-fill ph-star`):** `5.0 · Google Reviews`
 
-/* Diagonal edge cutting into the right side */
-.hero__copy::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--clr-bg);
-  clip-path: polygon(0 0, 48% 0, 100% 100%, 0 100%);
-  right: -80px;
-  z-index: -1;
-  pointer-events: none;
-}
+### Layout
+- Container max-width 1320px, padding `clamp(120px, 14vw, 160px) var(--pad-x) clamp(80px, 10vw, 120px)`
+- Grid `60fr 40fr`, gap `clamp(40px, 6vw, 80px)`, align-items center
+- min-height 100svh desktop
+- Photo-wrap rotacionado `-1.5deg` → `0deg` em hero hover (600ms)
+- Badge: position absolute, `bottom: 24px; left: -36px` (sangrando)
+- Tag dourada: `top: 24px; right: -16px`, rotacionada `+2deg`
 
-/* ── Right panel (media) ── */
-.hero__media {
-  position: relative;
-  overflow: hidden;
-}
+### Tipografia
+- Headline: DM Serif Display 400 · `clamp(2.75rem, 6vw, 5rem)` · line-height 1.02 · letter-spacing -0.025em
+- Headline-grad: `linear-gradient(105deg, #1B4D3E 0%, #2A6B56 45%, #C9A84C 100%)` + `background-clip: text` + `font-style: italic`
+- Sub: DM Sans 400 · `clamp(1.05rem, 1.5vw, 1.18rem)` · line-height 1.6 · color muted · max-width 520px
+- Eyebrow: DM Sans 600 · 0.8125rem · uppercase · 0.08em letter-spacing · primary
+- Badge num: DM Serif Display `clamp(3rem, 5vw, 4rem)` em gradient verde→dourado
+- Badge label: DM Sans 500 · 0.75rem · uppercase · 0.06em · muted
 
-.hero__photo {
-  width: 100%;
-  height: 100%;
-  background-image: url('/images/hero-placeholder.jpg');
-  background-size: cover;
-  background-position: 50% 50%;
-  /* JS updates this via --mx/--my */
-  transition: background-position 0.1s linear;
-  will-change: background-position;
-}
+### Cores / Background
+- Fundo: linear `#FCFCF9 0% → #F4F7F4 100%` + radial gradients verde-pale top-left e dourado 10% top-right
+- 3 orbs blur 80px:
+  - Orb 1: 480px verde primary 22%, top-left (-120px, -120px)
+  - Orb 2: 380px dourado 18%, bottom-22% right
+  - Orb 3: 320px verde-mid 18%, top-30% right-8%
 
-/* Vignette overlay on photo */
-.hero__vignette {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 80% at 100% 50%, transparent 50%, rgba(15,45,36,0.55) 100%),
-    linear-gradient(to right, rgba(250,250,248,0.6) 0%, transparent 30%);
-  pointer-events: none;
-}
+### Elementos Visuais
+- Photo-wrap: radius 28px · overflow hidden · box-shadow `0 40px 80px -20px rgba(15,45,36,.35) + inset 0 0 0 1px rgba(255,255,255,.4)`
+- Photo-overlay: `linear-gradient(180deg, transparent 40%, rgba(15,45,36,.45) 100%) + radial top-right dourado 12%` · mix-blend-mode multiply
+- Badge: glass card branco 94% · backdrop-filter blur(20px) · radius 20px · padding 20px 28px
 
-/* ── Badge ── */
-.hero__badge {
-  position: absolute;
-  /* sits on the diagonal seam, vertically centered-ish */
-  top: 50%;
-  left: calc(55% - 60px);
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  pointer-events: none;
-}
+### Animações
+- **Orbs drift:** `heroOrbDrift 18s ease-in-out infinite alternate` — translate(0,0)→(40px,-30px), scale 1→1.08. Delays/durations diferentes (-3s -6s; 16s 18s 22s)
+- **Eyebrow dot pulse:** `heroPulse 2.4s ease-in-out infinite` — box-shadow ring 0→8px
+- **Counter badge:** 0→22 em 1400ms, easing `1 - (1-p)^2`, IO threshold 0.5
+- **Photo parallax (desktop only):** mousemove ajusta `background-position` da `.hero__photo` com STRENGTH 0.015. Mouseleave volta a 50%/50% (transition 800ms).
 
-.hero__badge-num {
-  font-family: var(--font-display);
-  font-size: clamp(5rem, 12vw, 9rem);
-  line-height: 1;
-  color: var(--clr-primary);
-  opacity: 0.12;
-  letter-spacing: -0.03em;
-  /* opacity increases after counter ends (JS adds class) */
-  transition: opacity 400ms ease;
-}
+### Interatividade
+- Hero hover: photo-wrap → rotate(0deg)
+- CTA primary hover: gradient invertido + translateY(-3px) + shadow intensifica + ícone translateX(+4px)
+- CTA secondary hover: color→primary, gap 8→12px, border-bottom→primary
+- Focus visible: outline 2px solid dourado offset 4px
 
-.hero__badge-num.is-done {
-  opacity: 0.18;
-}
-
-.hero__badge-label {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--clr-muted);
-  line-height: 1.4;
-}
-```
+### Responsividade
+- **≤980px:** grid 1 coluna, ordem copy→media. Photo-wrap rotate 0deg. Min-height auto.
+- **≤640px:** headline `clamp(2.25rem, 9vw, 3rem)` · media min-height 360px · badge `left: 12px bottom: 12px` · tag `right: 12px top: 12px` · trust strip gap 16px
+- **≤380px:** headline 2.125rem
 
 ---
 
-### Typography CSS
+## Seção 2: STATS BAR
 
-```css
-/* Eyebrow */
-.hero__eyebrow {
-  display: inline-block;
-  font-family: var(--font-body);
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--clr-accent);
-  margin-bottom: clamp(16px, 2.5vw, 24px);
-}
+### Arquétipo e Constraints
+- **Arquétipo:** Type Hero Editorial — números gigantes serif como protagonistas
+- **Constraints:** Color Blocking sutil (Cor) · Counter Animation (Movimento) · Stagger Sequencial (Movimento)
+- **Justificativa:** Quebra do hero ao introduzir seção quase 100% tipográfica. Pausa antes do bloco textual de Quem Somos.
 
-/* Headline */
-.hero__headline {
-  font-family: var(--font-display);
-  font-size: var(--fs-hero);
-  line-height: 1.08;
-  color: var(--clr-text);
-  letter-spacing: -0.02em;
-  margin: 0 0 clamp(20px, 3vw, 32px);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25em;
-}
+### Conteúdo
+- **Eyebrow:** `Números que pesam`
+- **Título:** `Mais de duas décadas cuidando de quem você ama.`
+- **Stats (4):**
+  1. **22+** · TEMPO · "Anos de experiência"
+  2. **25** · ATUAÇÃO · "Especialidades veterinárias"
+  3. **13+** · EQUIPE · "Veterinários especialistas"
+  4. **24h** (italic) · PLANTÃO · "Hospital aberto todos os dias"
 
-/* Each word wrapped for clip-path reveal */
-.hero__word {
-  display: inline-block;
-  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-  /* JS removes this initial state and applies the final state */
-}
+### Layout
+- Padding section: `clamp(80px, 10vw, 128px) 0`
+- Intro centralizada, margin-bottom `clamp(56px, 7vw, 88px)`, título max-width 720px
+- Grid 4 colunas, gap 0
+- Cada item: flex column align-items flex-start, padding `clamp(20px, 2.5vw, 32px)`
 
-.hero__word.is-revealed {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  transition: clip-path 600ms var(--ease-out-expo);
-}
+### Tipografia
+- Número: DM Serif Display · `clamp(4rem, 8.5vw, 7.5rem)` · line-height 0.85 · letter-spacing -0.05em
+- Número grad: `linear-gradient(135deg, #1B4D3E 0%, #2A6B56 50%, #C9A84C 130%)` + clip
+- "24h" italic
+- Plus: DM Serif Display · `clamp(2rem, 4vw, 3.25rem)` · color dourado
+- Label eyebrow: DM Sans 600 · 0.6875rem · uppercase · 0.2em · dourado
+- Label: DM Sans 500 · `clamp(0.95rem, 1.2vw, 1.05rem)` · line-height 1.35
 
-/* Sub */
-.hero__sub {
-  font-family: var(--font-body);
-  font-size: var(--fs-body);
-  color: var(--clr-muted);
-  line-height: 1.65;
-  max-width: 420px;
-  margin-bottom: clamp(32px, 4vw, 48px);
-  opacity: 0;
-  transform: translateY(16px);
-}
+### Cores
+- Fundo: `--clr-bg` (#FAFAF8) com radial verde 6% top + dourado 8% bottom-right
 
-.hero__sub.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 650ms var(--ease-out-expo) 800ms,
-              transform 650ms var(--ease-out-expo) 800ms;
-}
+### Elementos Visuais
+- Separadores verticais entre itens: `linear-gradient(180deg, transparent, rgba(27,77,62,.25), transparent)`, top 18% bottom 18%, width 1px
 
-/* CTAs row */
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  opacity: 0;
-  transform: translateY(16px);
-}
+### Animações
+- `statsReveal 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards`: opacity 0+translateY(24px) → 1+0
+- delay `calc(var(--stat-i) * 120ms + 100ms)`
+- Counter: easing quadOut, 1400ms, IO threshold 0.5
 
-.hero__actions.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 600ms var(--ease-out-expo) 1000ms,
-              transform 600ms var(--ease-out-expo) 1000ms;
-}
-```
+### Responsividade
+- **≤900px:** grid 2 colunas; itens 3-4 com border-top
+- **≤520px:** grid 1 coluna, separadores horizontais
 
 ---
 
-### Button Base Styles (Global)
+## Seção 3: QUEM SOMOS
 
-```css
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  line-height: 1;
-  padding: 14px 28px;
-  border-radius: 8px;
-  border: 2px solid transparent;
-  cursor: pointer;
-  text-decoration: none;
-  transition:
-    background-color 280ms ease,
-    box-shadow 280ms ease,
-    transform 200ms ease,
-    border-color 280ms ease,
-    color 280ms ease;
-}
+### Arquétipo e Constraints
+- **Arquétipo:** Split Alternado 50/50 (Texto + Badge / Imagem)
+- **Constraints:** Imagem com Overlay (Mídia) · Badge Overlapping (Layout) · Reveal Stagger on Scroll (Movimento)
+- **Justificativa:** Quebra do tipográfico-puro das stats com retorno a split. Diferente do hero (overlap) — aqui é alternado simétrico.
 
-.btn--accent {
-  background: var(--clr-accent);
-  color: #FFFFFF;
-  border-color: var(--clr-accent);
-}
-.btn--accent:hover {
-  background: #b8922e;
-  border-color: #b8922e;
-  box-shadow: 0 6px 24px rgba(201,168,76,0.32);
-  transform: translateY(-2px);
-}
+### Conteúdo
+- **Pre-título:** `Nossa história`
+- **Título:** `Cuidamos como se fosse parte da nossa família.`
+- **Texto 1:** `O Grupo Piera é composto pelo Piera Hospital Veterinário, que realiza atendimento clínico e hospitalar 24 horas; Piera Especialidades Veterinárias, focado no atendimento de especialidades e Piera Cursos veterinários, focado no aprimoramento de médicos veterinários.`
+- **Texto 2:** `Nascemos com a missão de oferecer medicina de alta complexidade com o acolhimento que seu pet merece. Hoje somos referência em neurologia, cirurgias complexas e reabilitação em toda a grande São Paulo.`
+- **CTA:** `Saiba mais sobre o Grupo Piera →` (link underline dourado)
+- **Badge sobreposto:** `22+ Anos de Experiência`
+- **Imagem:** `/images/hosp-exterior.jpg`
 
-.btn--outline {
-  background: transparent;
-  color: var(--clr-text);
-  border-color: var(--clr-text);
-}
-.btn--outline:hover {
-  background: var(--clr-text);
-  color: #FFFFFF;
-  transform: translateY(-2px);
-}
+### Layout
+- Container max-width 1200px, padding `--sp-section --pad-x`
+- Grid 2 colunas (1fr 1fr), gap `clamp(48px, 6vw, 80px)`, align-items center
+- Imagem: radius 24px · aspect 4/3 · overflow hidden
+- Badge sticky: position absolute, `top: -32px; left: -32px`, padding 20px 28px, bg branco, shadow elevada
 
-.btn--primary {
-  background: var(--clr-primary);
-  color: #FFFFFF;
-  border-color: var(--clr-primary);
-}
-.btn--primary:hover {
-  background: var(--clr-dark);
-  border-color: var(--clr-dark);
-  box-shadow: 0 6px 24px rgba(27,77,62,0.30);
-  transform: translateY(-2px);
-}
+### Tipografia
+- Pre-título: DM Sans 600 · 0.8125rem · uppercase · 0.18em · dourado
+- Título: DM Serif Display · `clamp(2rem, 4vw, 3rem)` · line-height 1.1 · color dark
+- Texto: DM Sans 400 · 1rem · line-height 1.65 · muted
 
-.btn--ghost {
-  background: rgba(255,255,255,0.1);
-  color: #FFFFFF;
-  border-color: rgba(255,255,255,0.35);
-  backdrop-filter: blur(8px);
-}
-.btn--ghost:hover {
-  background: rgba(255,255,255,0.18);
-  border-color: rgba(255,255,255,0.6);
-}
-```
+### Animações
+- Badge: scale(0.92)→1 + opacity 0→1, delay 200ms ao entrar viewport
+- Texto stagger: pre→título→t1→t2→CTA com delays 0/100/200/300/400ms
+
+### Responsividade
+- **≤900px:** 1 coluna, imagem primeiro. Badge `top: -24px; left: 12px`
 
 ---
 
-### Animation Specs
+## Seção 4: SERVICES (Grid de Procedimentos)
 
-#### Word-by-word Clip Reveal (JS-driven)
+### Arquétipo e Constraints
+- **Arquétipo:** Grid Modular (4 cards iguais)
+- **Constraints:** Hover Lift (Interação) · Icon Container com bg pale (Cor) · Stagger Entry on Scroll (Movimento)
+- **Justificativa:** Após dois splits (Hero, Quem Somos) e um tipográfico (Stats), precisa de grid pra variedade. 4 cards e não 3 (que é o padrão genérico).
 
-**Trigger:** `DOMContentLoaded` — starts immediately on page load (eyebrow fades first, then words)
+### Conteúdo
+- **Pre-título:** `O que fazemos`
+- **Título:** `Atendimento veterinário completo, em um só grupo.`
+- **Intro:** `Da emergência à madrugada à consulta especializada agendada — toda a estrutura, equipe e tecnologia para cuidar do seu animal.`
+- **Cards (4):**
+  1. `ph-first-aid` · **Emergência 24h** · "Atendimento de urgência todos os dias, a qualquer hora." → `/hospital#emergencia`
+  2. `ph-scissors` · **Cirurgias** · "Centro cirúrgico equipado para procedimentos de alta complexidade." → `/hospital#cirurgia`
+  3. `ph-heartbeat` · **UTI Veterinária** · "Internação intensiva com monitoramento 24h." → `/hospital#uti`
+  4. `ph-magnifying-glass` · **Diagnóstico por Imagem** · "Raio-x, ultrassom, ecocardiografia e tomografia." → `/hospital#diagnostico`
 
-```js
-// Eyebrow fades up first
-document.querySelector('.hero__eyebrow').style.cssText =
-  'opacity:0; transform:translateY(12px); transition: opacity 550ms cubic-bezier(0.16,1,0.3,1) 100ms, transform 550ms cubic-bezier(0.16,1,0.3,1) 100ms';
-requestAnimationFrame(() => {
-  document.querySelector('.hero__eyebrow').style.cssText =
-    'opacity:1; transform:translateY(0); transition: opacity 550ms cubic-bezier(0.16,1,0.3,1) 100ms, transform 550ms cubic-bezier(0.16,1,0.3,1) 100ms';
-});
+### Layout
+- Container max-width 1200px, padding `--sp-section`
+- Header centralizado max-width 720px, margin-bottom `clamp(48px, 6vw, 72px)`
+- Grid `repeat(4, 1fr)`, gap 20px
+- Card: padding `clamp(24px, 2.5vw, 32px)`, radius 12px, bg surface, border 1px solid border
 
-// Words reveal sequentially
-const words = document.querySelectorAll('.hero__word');
-words.forEach((word, i) => {
-  setTimeout(() => word.classList.add('is-revealed'), 300 + i * 80);
-});
+### Tipografia
+- Title card: DM Serif Display 400 · 1.4rem · line-height 1.15
+- Desc: DM Sans 400 · 0.95rem · line-height 1.55 · muted
+- Link: DM Sans 600 · 0.9rem · primary · border-bottom 1.5px solid dourado
 
-// Sub and actions appear after words
-setTimeout(() => {
-  document.querySelector('.hero__sub').classList.add('is-visible');
-  document.querySelector('.hero__actions').classList.add('is-visible');
-}, 300 + words.length * 80 + 100);
-```
+### Cores / Visuais
+- Icon container: 52×52px · radius 12px · bg `--clr-primary-pale` · color primary · ícone 26px
+- Hover card: translateY(-4px) · box-shadow `0 16px 40px rgba(15,45,36,.10)` · border-color primary-pale
 
-- Each word: `clip-path` transition `600ms cubic-bezier(0.16,1,0.3,1)`
-- Stagger: `80ms` between words
-- First word delay: `300ms` after page load
-- Sub appears: after last word + 100ms extra delay
+### Animações
+- Stagger reveal scroll-triggered (IO threshold 0.15): opacity 0+y20px → 1+0, 600ms ease-out, delay 100ms per card
 
-#### Counter Animation — Badge "22"
-
-**Trigger:** `IntersectionObserver` on `.hero__badge` (threshold 0.5)
-**Duration:** 1400ms
-**Easing:** ease-out (approximated with cubic-bezier steps)
-
-```js
-function animateCounter(el, from, to, duration) {
-  const startTime = performance.now();
-  function update(now) {
-    const elapsed = now - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    // ease-out quad
-    const eased = 1 - Math.pow(1 - progress, 2);
-    el.textContent = Math.round(from + (to - from) * eased);
-    if (progress < 1) requestAnimationFrame(update);
-    else el.closest('.hero__badge-num').classList.add('is-done');
-  }
-  requestAnimationFrame(update);
-}
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      animateCounter(document.getElementById('heroBadgeCounter'), 0, 22, 1400);
-      observer.disconnect();
-    }
-  });
-}, { threshold: 0.5 });
-observer.observe(document.querySelector('.hero__badge'));
-```
-
-#### Mouse Parallax — Hero Photo
-
-**Trigger:** `mousemove` on `.hero` element
-
-```js
-const hero = document.querySelector('.hero');
-const photo = document.getElementById('heroPhoto');
-const STRENGTH = 0.015;
-
-hero.addEventListener('mousemove', e => {
-  const rect = hero.getBoundingClientRect();
-  const cx = rect.width / 2;
-  const cy = rect.height / 2;
-  const dx = (e.clientX - rect.left - cx) * STRENGTH;
-  const dy = (e.clientY - rect.top - cy) * STRENGTH;
-  photo.style.backgroundPosition = `calc(50% + ${dx}px) calc(50% + ${dy}px)`;
-});
-
-hero.addEventListener('mouseleave', () => {
-  photo.style.backgroundPosition = '50% 50%';
-  // smooth reset
-  photo.style.transition = 'background-position 800ms cubic-bezier(0.16,1,0.3,1)';
-  setTimeout(() => { photo.style.transition = ''; }, 800);
-});
-```
-
-- Movement range: ±20px (achieved with STRENGTH 0.015 at standard viewport)
-- Reset transition: `800ms cubic-bezier(0.16,1,0.3,1)` on mouse leave
+### Responsividade
+- **≤980px:** grid 2 colunas
+- **≤520px:** grid 1 coluna
 
 ---
 
-### Responsive Breakpoints
+## Seção 5: PILLARS (O que nos diferencia)
 
-#### < 1024px (tablet)
+### Arquétipo e Constraints
+- **Arquétipo:** Editorial Rows numeradas — NÃO grid de cards
+- **Constraints:** Type Hero numérico em outline (Tipografia) · Wave Stagger scroll (Movimento) · Mixed Weights serif+sans (Tipografia)
+- **Justificativa:** Não pode ser cards (já tem em Services). Editorial faz a página respirar diferente. Cada pilar é uma linha larga.
 
-```css
-@media (max-width: 1024px) {
-  .hero {
-    grid-template-columns: 58fr 42fr;
-  }
-  .hero__badge {
-    left: calc(58% - 40px);
-  }
-}
-```
+### Conteúdo
+- **Título:** `O que nos diferencia.`
+- **Pilares (4):**
+  1. `01` · `ph-cpu` Tecnologia · **Tecnologia avançada** · "Equipamentos de última geração para diagnóstico e cirurgia — do raio-x digital ao microscópio cirúrgico. Tomografia, endoscopia, ecocardiografia e cirurgia laparoscópica."
+  2. `02` · `ph-stethoscope` Equipe · **Equipe especializada** · "Mais de 13 veterinários com formação específica em cada área. Fisioterapeutas, nutricionistas e anestesiologistas dedicados."
+  3. `03` · `ph-heart` Cuidado · **Cuidado humanizado** · "Tratamos cada animal como único. Protocolos individualizados, comunicação clara e acolhimento em cada etapa."
+  4. `04` · `ph-calendar-check` Experiência · **22 anos de experiência** · "Desde 2002 cuidando de cães, gatos, silvestres e exóticos na Grande São Paulo."
 
-#### < 768px (mobile)
+### Layout
+- Container max-width 1100px
+- Cada row: grid `auto 1fr`, gap 32px, padding-block `clamp(40px, 5vw, 56px)`
+- Border-bottom 1px solid border (exceto último)
 
-```css
-@media (max-width: 768px) {
-  .hero {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 55vw;
-    min-height: auto;
-  }
-  .hero__copy {
-    padding-block: clamp(80px, 12vw, 120px) clamp(40px, 6vw, 64px);
-    padding-inline: var(--pad-x);
-  }
-  .hero__copy::after {
-    display: none; /* diagonal only on desktop */
-  }
-  .hero__media {
-    order: -1; /* photo on top */
-    height: 55vw;
-    min-height: 240px;
-  }
-  .hero__badge {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    margin-top: 24px;
-  }
-  .hero__badge-num {
-    font-size: clamp(4rem, 18vw, 7rem);
-  }
-  /* Disable mouse parallax on touch devices (JS checks 'ontouchstart') */
-}
-```
+### Tipografia / Cores
+- Número outline: DM Serif Display · 120-180px · color transparent · `-webkit-text-stroke: 1.5px rgba(27,77,62,.25)`
+- Tag: DM Sans 600 · 0.8125rem · uppercase · 0.16em + ícone Phosphor
+- Name (h3): DM Serif Display · `clamp(1.5rem, 2.5vw, 2rem)`
+- Text: DM Sans 400 · 1.05rem · line-height 1.65 · muted · max-width 600px
+
+### Animações
+- Scroll-driven (`animation-timeline: view()`, range `entry 0% cover 30%`): opacity 0+y24 → 1+0
+- Fallback IO threshold 0.15, delay `calc(--row-i * 80ms)`
+
+### Responsividade
+- **≤700px:** número shrinks 80-100px, grid 1 coluna (número acima do conteúdo)
 
 ---
 
-## Section 2 — Units ("Duas Unidades")
+## Seção 6: GALLERY (Nosso Espaço)
 
-**Archetype:** Bento Box com dois cards grandes
-**Constraints:** Color Blocking + Hover Flip 3D + Grain Overlay
+### Arquétipo e Constraints
+- **Arquétipo:** Scroll Horizontal — free-scroll com snap
+- **Constraints:** Scroll Snap (Interação) · Hover Scale + Caption Reveal (Interação) · Custom Scrollbar dourada (Mídia)
+- **Justificativa:** Petderma usa scroll horizontal pra galeria. Quebra do scroll vertical e dá protagonismo às fotos.
 
----
+### Conteúdo
+- **Pre-título:** `Nosso espaço`
+- **Título:** `Estrutura pensada para o bem-estar do pet.`
+- **Intro:** `Ambientes amplos, equipamentos modernos e áreas separadas para cães, gatos e isolamento. Conheça por dentro.`
+- **8 imagens com caption:**
+  1. Recepção · `hosp-estrutura-recepcao.jpg`
+  2. Consultório · `hosp-estrutura-consultorio-1.jpg`
+  3. Centro Cirúrgico · `hosp-estrutura-cirurgico-1.jpg`
+  4. Internação Felinos · `hosp-estrutura-internacao-felinos.jpg`
+  5. Internação Cães · `hosp-estrutura-internacao-caes-1.jpg`
+  6. Raio-X · `hosp-estrutura-raiox.jpg`
+  7. Ultrassom · `hosp-estrutura-ultrassom.jpg`
+  8. Fisioterapia · `estrutura-fisio-01.jpg`
 
-### HTML Structure
+### Layout
+- Header centralizado max-width 720px
+- Rail: flex gap 16px · overflow-x auto · scroll-snap-type x mandatory · padding-inline `--pad-x`
+- Item: flex 0 0 auto · width `clamp(260px, 30vw, 380px)` · aspect 4/3 · radius 12px · overflow hidden
 
-```html
-<section class="units" aria-label="Nossas unidades">
-  <div class="units__header">
-    <h2 class="units__title">Duas unidades.<br>Um só compromisso.</h2>
-  </div>
-  <div class="units__grid">
+### Tipografia / Cores
+- Caption: `linear-gradient(to top, rgba(15,45,36,.85), transparent)` · white · DM Sans 600 0.95rem
+- Background section: surface (#FFFFFF) — destaca fotos contra section anterior
 
-    <!-- Hospital 24h card (dark) -->
-    <div class="unit unit--dark" tabindex="0" aria-label="Hospital Veterinário 24h — clique para ver detalhes">
-      <div class="unit__inner">
-        <!-- FRONT -->
-        <div class="unit__front">
-          <span class="unit__tag">Hospital Veterinário</span>
-          <h3 class="unit__name">Emergência<br>24 horas.</h3>
-          <p class="unit__desc">Atendimento de urgência e emergência ininterrupto, UTI veterinária equipada e equipe médica de plantão.</p>
-          <a href="/hospital" class="btn btn--ghost unit__cta">Ver hospital →</a>
-        </div>
-        <!-- BACK -->
-        <div class="unit__back" aria-hidden="true">
-          <div class="unit__back-content">
-            <p class="unit__back-label">Telefone</p>
-            <p class="unit__back-value">(11) 2373-3144</p>
-            <p class="unit__back-label">Endereço</p>
-            <p class="unit__back-value">Rua Itapeti, 154<br>São Paulo – SP</p>
-            <p class="unit__back-label">Horário</p>
-            <p class="unit__back-value">24 horas, 7 dias por semana</p>
-            <a href="tel:+551123733144" class="btn btn--accent unit__back-cta">Ligar agora →</a>
-          </div>
-        </div>
-      </div>
-    </div>
+### Animações
+- Hover img: transform scale(1.06), 600ms ease-out
+- Custom scrollbar: track verde border 10%, thumb dourado
 
-    <!-- Especialidades card (pale green) -->
-    <div class="unit unit--light" tabindex="0" aria-label="Clínica de Especialidades — clique para ver detalhes">
-      <div class="unit__inner">
-        <!-- FRONT -->
-        <div class="unit__front">
-          <span class="unit__tag">Clínica de Especialidades</span>
-          <h3 class="unit__name">25 especialidades<br>veterinárias.</h3>
-          <p class="unit__desc">Consultas com especialistas, exames diagnósticos avançados e acompanhamento humanizado do início ao fim.</p>
-          <a href="/especialidades" class="btn btn--primary unit__cta">Ver especialidades →</a>
-        </div>
-        <!-- BACK -->
-        <div class="unit__back" aria-hidden="true">
-          <div class="unit__back-content">
-            <p class="unit__back-label">Telefone</p>
-            <p class="unit__back-value">(11) 2373-3144</p>
-            <p class="unit__back-label">Endereço</p>
-            <p class="unit__back-value">Rua Itapeti, 154<br>São Paulo – SP</p>
-            <p class="unit__back-label">Horário</p>
-            <p class="unit__back-value">Seg–Sex: 9h–18h<br>Sáb: 9h–13h</p>
-            <a href="/especialidades#contato" class="btn btn--primary unit__back-cta">Agendar consulta →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-```
+### Responsividade
+- **≤640px:** item width `calc(100vw - 64px)`
 
 ---
 
-### Layout CSS
+## Seção 7: UNITS (Duas Unidades)
 
-```css
-.units {
-  padding-block: var(--sp-section);
-  padding-inline: var(--pad-x);
-  background: var(--clr-bg);
-}
+### Arquétipo e Constraints
+- **Arquétipo:** Bento Box 2 cards com 3D Flip
+- **Constraints:** 3D Flip (Interação) · Color Blocking dark/light (Cor) · Layered CTAs (Layout)
+- **Justificativa:** Diferente do bento Services (cards iguais). 2 cards com cores opostas + flip 3D = momento dramático.
 
-.units__header {
-  max-width: var(--container);
-  margin-inline: auto;
-  margin-bottom: clamp(48px, 6vw, 80px);
-}
+### Conteúdo
+- **Pre-título:** `Onde seu pet precisa ir?`
+- **Título:** `Duas unidades. Um só compromisso com o seu animal.`
+- **Intro:** `Temos a estrutura certa para cada momento — desde a emergência à madrugada até a consulta especializada marcada com antecedência.`
+- **Card 1 (DARK — Hospital):**
+  - Tag: `Hospital Veterinário`
+  - Name: `Emergência 24 horas.`
+  - Desc: "Emergências, cirurgias, internação, diagnóstico e atendimento de rotina. Aberto todos os dias, a qualquer hora."
+  - CTA: `Ir para o Hospital →` → `/hospital`
+  - Back: Tel `(11) 2746-7292` · Av. Maria Luiza Americano, 803 · 24h/7d · btn "Ligar agora →"
+- **Card 2 (LIGHT — Especialidades):**
+  - Tag: `Clínica de Especialidades`
+  - Name: `25 especialidades veterinárias.`
+  - Desc: "25 especialidades veterinárias para consultas eletivas. Equipe de especialistas com foco em diagnóstico preciso e tratamento personalizado."
+  - CTA: `Conhecer Especialidades →` → `/especialidades`
+  - Back: Tel `(11) 2373-3144` · Rua Itapeti, 154 · Seg-Sex 9h-18h Sáb 9h-13h · btn "Agendar consulta →"
 
-.units__title {
-  font-family: var(--font-display);
-  font-size: var(--fs-h2);
-  line-height: 1.15;
-  color: var(--clr-text);
-  letter-spacing: -0.02em;
-}
+### Layout
+- Container max-width 1200px
+- Header centralizado, max-width 720px
+- Grid `1fr 1fr`, gap 24px, min-height 480px por card
+- Card padding `clamp(40px, 5vw, 64px)` · radius 24px · perspective 1200px
 
-.units__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0; /* no gap — cards touch */
-  max-width: var(--container);
-  margin-inline: auto;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-```
+### Tipografia / Cores
+- Card DARK: bg `linear-gradient(135deg, #0F2D24, #1B4D3E)` · text white. Name DM Serif Display `clamp(2rem, 4vw, 2.75rem)`
+- Card LIGHT: bg `--clr-primary-pale` · border 1px solid primary 12% · text dark green
+- Tag: DM Sans 600 · 0.75rem · uppercase · 0.12em — dourado no dark, primary no light
 
----
+### Animações
+- Flip: `transform: rotateY(180deg)` no `.unit__inner`, transition 700ms cubic-bezier(0.16,1,0.3,1)
+- Touch/mobile: click toggle `.is-flipped`
+- Keyboard: Enter/Space
 
-### Card Flip CSS
-
-```css
-/* ── Flip container ── */
-.unit {
-  position: relative;
-  min-height: 360px;
-  perspective: 1000px;
-  cursor: pointer;
-}
-
-.unit__inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: inherit;
-  transform-style: preserve-3d;
-  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
-}
-
-/* Flip on hover (desktop) */
-.unit:hover .unit__inner,
-.unit:focus .unit__inner {
-  transform: rotateY(180deg);
-}
-
-/* Front face */
-.unit__front,
-.unit__back {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: clamp(32px, 5vw, 56px);
-}
-
-/* Back face starts rotated */
-.unit__back {
-  transform: rotateY(180deg);
-}
-
-/* ── Dark card ── */
-.unit--dark .unit__front { background: var(--clr-dark); }
-.unit--dark .unit__back  { background: var(--clr-primary); }
-
-/* Dark card grain overlay */
-.unit--dark .unit__front::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 200px 200px;
-  opacity: 0.03;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  border-radius: inherit;
-}
-
-/* ── Light card ── */
-.unit--light .unit__front { background: var(--clr-primary-pale); }
-.unit--light .unit__back  { background: var(--clr-primary-pale); }
-
-/* ── Typography inside cards ── */
-.unit__tag {
-  display: inline-block;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 6px 14px;
-  border-radius: 100px;
-  margin-bottom: auto; /* push to top by using flex + margin-bottom auto trick */
-  align-self: flex-start;
-  position: absolute;
-  top: clamp(32px, 5vw, 56px);
-  left: clamp(32px, 5vw, 56px);
-}
-
-.unit--dark .unit__tag {
-  background: rgba(201,168,76,0.15);
-  border: 1px solid rgba(201,168,76,0.3);
-  color: var(--clr-accent);
-}
-.unit--light .unit__tag {
-  background: rgba(27,77,62,0.1);
-  border: 1px solid rgba(27,77,62,0.2);
-  color: var(--clr-primary);
-}
-
-.unit__name {
-  font-family: var(--font-display);
-  font-size: var(--fs-h3);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-}
-.unit--dark .unit__name  { color: #FFFFFF; }
-.unit--light .unit__name { color: var(--clr-text); }
-
-.unit__desc {
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  margin-bottom: 32px;
-}
-.unit--dark .unit__desc  { color: rgba(255,255,255,0.6); }
-.unit--light .unit__desc { color: var(--clr-muted); }
-
-/* ── Back face content ── */
-.unit__back-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  width: 100%;
-}
-
-.unit__back-label {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-top: 16px;
-  margin-bottom: 2px;
-}
-.unit--dark .unit__back-label  { color: var(--clr-accent); }
-.unit--light .unit__back-label { color: var(--clr-primary); }
-
-.unit__back-value {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  line-height: 1.4;
-}
-.unit--dark .unit__back-value  { color: #FFFFFF; }
-.unit--light .unit__back-value { color: var(--clr-text); }
-
-.unit__back-cta {
-  margin-top: 28px;
-}
-```
+### Responsividade
+- **≤780px:** grid 1 coluna, min-height 420px
 
 ---
 
-### Responsive Breakpoints
+## Seção 8: TESTIMONIALS
 
-#### < 768px (mobile)
+### Arquétipo e Constraints
+- **Arquétipo:** CSS-only Carousel (radio inputs)
+- **Constraints:** Dark Mode (Cor) · Auto-rotate 6s + pause on hover (Movimento) · Stars stagger pop (Movimento)
+- **Justificativa:** Fundo escuro destaca quote, padrão clássico em CSS puro (radio + :checked siblings).
 
-```css
-@media (max-width: 768px) {
-  .units__grid {
-    grid-template-columns: 1fr;
-    border-radius: var(--radius-lg);
-    gap: 16px;
-  }
+### Conteúdo
+- **Section-label:** `O que dizem quem já foi atendido.`
+- **Slide 1:** ★★★★★ "Minha cadela precisou de cirurgia de emergência às 3h da manhã. A equipe do hospital foi incrível — profissional, humana e super atenciosa durante toda a recuperação." — Ana Paula M. · Tutora da Luna, Golden Retriever
+- **Slide 2:** ★★★★★ "A especialidade de neurologia da VetPiera salvou a vida do meu gato. O Dr. Ryan explicou cada etapa do diagnóstico com paciência e cuidado extraordinários." — Carlos Eduardo R. · Tutor do Simba, Persa
+- **Slide 3:** ★★★★★ "Faço acompanhamento com a Dra. Diana há dois anos para a fisioterapia da minha cachorra. A evolução é impressionante e o atendimento é sempre excepcional." — Mariana F. · Tutora da Mel, Labrador
 
-  .unit {
-    min-height: 280px;
-    border-radius: var(--radius-lg);
-  }
+### Layout
+- Padding-block `--sp-section`
+- Quote-mark serif gigante (12-15rem), opacity 0.06, absolute top-left, decorativo
+- Track: width 300%, transition `transform 700ms`
+- Cada slide width 33.33%, padding `clamp(40px, 6vw, 80px)`
 
-  /* On mobile: flip on click (JS toggles .is-flipped) */
-  .unit:hover .unit__inner {
-    transform: none; /* disable hover flip */
-  }
-  .unit.is-flipped .unit__inner {
-    transform: rotateY(180deg);
-  }
-}
-```
+### Tipografia / Cores
+- Background: `linear-gradient(135deg, #0F2D24 0%, #1B4D3E 100%)`
+- Section-label: DM Sans 600 · 0.8125rem · uppercase · 0.16em · dourado
+- Quote: DM Serif Display · `clamp(1.4rem, 2.5vw, 2rem)` · line-height 1.4 · white italic
+- Author: DM Sans 600 · 1rem · white
+- Pet: DM Sans 400 · 0.875rem · rgba(255,255,255,0.6)
+- Stars: dourado, 22px, keyframe pop scale 0→1.15→1
 
-**JS for mobile flip (click toggle):**
+### Animações
+- `@keyframes starPop`, delay `calc(--star-i * 80ms)`
+- Auto-rotate JS 6000ms interval, pause on mouseenter
+- Transition CSS-only `:checked ~ .testimonials__track`
 
-```js
-// Only enable click-flip on touch devices
-if ('ontouchstart' in window) {
-  document.querySelectorAll('.unit').forEach(card => {
-    card.addEventListener('click', () => card.classList.toggle('is-flipped'));
-  });
-}
-```
+### Responsividade
+- **≤640px:** quote-mark static, 4rem, opacity 0.25
 
 ---
 
-## Section 3 — Pilares ("O que nos diferencia")
+## Seção 9: INSTAGRAM (Feed)
 
-**Archetype:** Editorial (linhas horizontais, estilo revista)
-**Constraints:** Headline Outline Gigante (números 01-04) + Overlap Elements + View Timeline CSS + Stagger
+### Arquétipo e Constraints
+- **Arquétipo:** Gallery Wall (grid 6 tiles)
+- **Constraints:** Hover Overlay verde + ícone instagram (Interação) · Aspect Square 1:1 (Layout) · Widget-ready (preparado para LightWidget/Elfsight)
+- **Justificativa:** Padrão Petderma. Funciona com placeholders (atuais) ou substituível por widget externo (iframe). Comentário HTML indica ponto de integração.
 
----
+### Conteúdo
+- **Pre-título:** `@vetpiera`
+- **Título:** `Acompanhe nosso dia a dia no Instagram.`
+- **CTA pill:** `ph-instagram-logo` + "Seguir no Instagram" → `https://instagram.com/vetpiera`
+- **Grid 6 tiles** (cada link para o perfil): cachorro-caramelo, gato-brasil-premium, dr-ryan, dra-diana, estrutura-fisio-02, hospital-uti
+- **HTML comment:** `<!-- Para feed real: substituir .instagram__grid pelo iframe do widget LightWidget/Elfsight -->`
 
-### HTML Structure
+### Layout
+- Header centralizado margin-bottom `clamp(36px, 5vw, 56px)`
+- Grid `repeat(6, 1fr)` gap 8px
+- Tile aspect 1/1, radius 8px, overflow hidden
 
-```html
-<section class="pillars" aria-label="Nossos diferenciais">
-  <div class="pillars__container">
-    <header class="pillars__header">
-      <h2 class="pillars__title">O que nos<br>diferencia.</h2>
-    </header>
+### Tipografia / Cores
+- Pre-título: DM Sans 600 · 0.95rem · dourado
+- Title: DM Serif Display · fs-h2
+- CTA pill: bg primary · white · padding 12px 24px · radius 999px. Hover: dark + translateY(-2px)
+- Tile overlay hover: rgba(15,45,36,0.55) + `ph-instagram-logo` 28px white centered
 
-    <div class="pillars__list">
+### Animações
+- Img scale 1→1.08 (500ms)
+- Overlay opacity 0→1 (240ms)
 
-      <div class="pillars__row" style="--row-i: 0">
-        <span class="pillars__num" aria-hidden="true">01</span>
-        <div class="pillars__content">
-          <div class="pillars__tag">
-            <i class="ph ph-cpu" aria-hidden="true"></i>
-            <span>Tecnologia</span>
-          </div>
-          <h3 class="pillars__name">Tecnologia avançada</h3>
-          <p class="pillars__text">Equipamentos de última geração — tomografia, endoscopia, ecocardiografia e cirurgia laparoscópica a serviço do diagnóstico preciso.</p>
-        </div>
-      </div>
-
-      <div class="pillars__row" style="--row-i: 1">
-        <span class="pillars__num" aria-hidden="true">02</span>
-        <div class="pillars__content">
-          <div class="pillars__tag">
-            <i class="ph ph-stethoscope" aria-hidden="true"></i>
-            <span>Equipe</span>
-          </div>
-          <h3 class="pillars__name">Equipe especializada</h3>
-          <p class="pillars__text">Mais de 40 profissionais com especialização reconhecida — médicos veterinários, fisioterapeutas, nutricionistas e anestesiologistas.</p>
-        </div>
-      </div>
-
-      <div class="pillars__row" style="--row-i: 2">
-        <span class="pillars__num" aria-hidden="true">03</span>
-        <div class="pillars__content">
-          <div class="pillars__tag">
-            <i class="ph ph-heart" aria-hidden="true"></i>
-            <span>Cuidado</span>
-          </div>
-          <h3 class="pillars__name">Cuidado humanizado</h3>
-          <p class="pillars__text">Cada animal é tratado como único. Comunicamos com transparência e mantemos tutores informados em cada etapa do atendimento.</p>
-        </div>
-      </div>
-
-      <div class="pillars__row" style="--row-i: 3">
-        <span class="pillars__num" aria-hidden="true">04</span>
-        <div class="pillars__content">
-          <div class="pillars__tag">
-            <i class="ph ph-calendar-check" aria-hidden="true"></i>
-            <span>Experiência</span>
-          </div>
-          <h3 class="pillars__name">22 anos de experiência</h3>
-          <p class="pillars__text">Desde 2002 construindo confiança através de resultados — uma das clínicas veterinárias mais antigas e respeitadas de São Paulo.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-```
+### Responsividade
+- **≤900px:** grid 3 colunas
+- **≤480px:** grid 2 colunas
 
 ---
 
-### Layout CSS
+## Seção 10: BOOK CTA (Agendamento WhatsApp)
 
-```css
-.pillars {
-  padding-block: var(--sp-section);
-  background: var(--clr-bg);
-}
+### Arquétipo e Constraints
+- **Arquétipo:** Split com Photo + Color Block dramático
+- **Constraints:** Gradient Background diagonal (Cor) · Photo Floating em card 4/3 (Layout) · Glow Decoration radial dourado (Efeitos)
+- **Justificativa:** Encerra a página em alto contraste (fundo escuro pela primeira vez no fluxo). CTA final ganha peso visual diferente.
 
-.pillars__container {
-  max-width: 900px;
-  margin-inline: auto;
-  padding-inline: var(--pad-x);
-}
+### Conteúdo
+- **Pre-título:** `Agendamento`
+- **Título:** `Pronto para cuidar do seu pet?`
+- **Sub:** `Fale com nossa equipe pelo WhatsApp e agende uma consulta ou tire dúvidas sobre emergências, especialidades e exames.`
+- **CTA primário:** pill grande "Falar pelo WhatsApp" + `ph-fill ph-whatsapp-logo` → `wa.me/5511963326376`
+- **CTA secundário:** `ph-phone` + `(11) 2746-7292 — 24h` → `tel:`
+- **Foto:** cachorro-caramelo, aspect 4/3, radius 20px, shadow 0 24px 60px rgba(0,0,0,.35)
 
-.pillars__header {
-  margin-bottom: clamp(48px, 7vw, 80px);
-}
+### Layout
+- Padding-block `--sp-section`
+- Container max-width 1200px, grid `1.2fr 1fr`, gap `clamp(32px, 5vw, 64px)`, align center
 
-.pillars__title {
-  font-family: var(--font-display);
-  font-size: var(--fs-h2);
-  line-height: 1.1;
-  color: var(--clr-text);
-  letter-spacing: -0.02em;
-}
+### Tipografia / Cores
+- Background: `linear-gradient(135deg, var(--clr-dark) 0%, var(--clr-primary) 100%)`
+- Decoração: `radial-gradient(circle at 80% 20%, rgba(201,168,76,.15), transparent 50%)`
+- Pre-título: DM Sans 600 · 0.8125rem · uppercase · 0.18em · dourado
+- Title: DM Serif Display · `clamp(2.25rem, 4.5vw, 3.5rem)` · white
+- Sub: DM Sans 400 · 1.05rem · rgba(255,255,255,.85) · max-width 480px
+- WhatsApp btn: dourado (não verde) pra destacar como ação final
 
-/* ── Row layout ── */
-.pillars__list {
-  display: flex;
-  flex-direction: column;
-}
-
-.pillars__row {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 40px;
-  align-items: start;
-  padding-block: 40px;
-  border-top: 1px solid var(--clr-border);
-  position: relative;
-  cursor: default;
-
-  /* View Timeline animation */
-  animation: fadeUpRow 0.7s ease-out both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 40%;
-  animation-delay: calc(var(--row-i, 0) * 80ms);
-}
-
-.pillars__row:last-child {
-  border-bottom: 1px solid var(--clr-border);
-}
-
-/* ── Giant outline number ── */
-.pillars__num {
-  font-family: var(--font-display);
-  font-size: clamp(4rem, 9vw, 7rem);
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(27,77,62,0.15);
-  text-stroke: 1px rgba(27,77,62,0.15);
-  user-select: none;
-  display: block;
-  /* Overlap: number bleeds beyond its 140px column */
-  margin-right: -20px;
-  transition: -webkit-text-stroke-color 400ms ease, opacity 400ms ease;
-  opacity: 1;
-  /* Number uses stroke opacity rather than color opacity for correct rendering */
-  -webkit-text-stroke-color: rgba(27,77,62,0.15);
-}
-
-.pillars__row:hover .pillars__num {
-  -webkit-text-stroke-color: rgba(27,77,62,0.35);
-  transition: -webkit-text-stroke-color 400ms ease;
-}
-
-/* ── Content ── */
-.pillars__content {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-top: 8px; /* align baseline with number */
-}
-
-.pillars__tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--clr-accent);
-}
-
-.pillars__tag i {
-  font-size: 1rem;
-  color: var(--clr-accent);
-}
-
-.pillars__name {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  line-height: 1.25;
-  color: var(--clr-text);
-  letter-spacing: -0.01em;
-  margin: 0;
-}
-
-.pillars__text {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--clr-muted);
-  max-width: 560px;
-  margin: 0;
-}
-
-/* ── Keyframes ── */
-@keyframes fadeUpRow {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-```
+### Responsividade
+- **≤860px:** grid 1 coluna, foto em cima (order -1), aspect 16/10
 
 ---
 
-### Fallback for browsers without animation-timeline (JS)
+## Footer (mantido)
 
-```js
-// Feature detect CSS animation-timeline
-const supportsTimeline = CSS.supports('animation-timeline', 'view()');
-if (!supportsTimeline) {
-  const rows = document.querySelectorAll('.pillars__row');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => {
-          e.target.style.cssText = 'opacity:1; transform:translateY(0); transition: opacity 700ms ease, transform 700ms ease';
-          io.unobserve(e.target);
-        }, i * 80);
-      }
-    });
-  }, { threshold: 0.15 });
-  rows.forEach(r => {
-    r.style.cssText = 'opacity:0; transform:translateY(24px)';
-    io.observe(r);
-  });
-}
-```
+3 colunas com mapas embed.
+- **Col 1 (brand):** Logo + tagline + social (Instagram, Facebook, WhatsApp)
+- **Col 2 (Hospital 24h):** links serviços + tag 24h · Tel · Email · Endereço + Map iframe
+- **Col 3 (Especialidades):** links serviços + horário · Tel · Email · Endereço + Map iframe
+- **Bottom:** `© 2026 VetPiera · Grupo Piera. Todos os direitos reservados.`
 
 ---
 
-### Responsive Breakpoints
-
-#### < 760px (mobile)
-
-```css
-@media (max-width: 760px) {
-  .pillars__row {
-    grid-template-columns: 1fr;
-    gap: 8px;
-    padding-block: 32px;
-  }
-
-  .pillars__num {
-    font-size: clamp(3rem, 14vw, 5rem);
-    margin-right: 0;
-    /* Number goes above content */
-    order: -1;
-  }
-
-  .pillars__content {
-    padding-top: 0;
-  }
-}
-```
-
----
-
-## Section 4 — Depoimentos
-
-**Archetype:** Single Focus com carousel CSS puro
-**Constraints:** Aspas Decorativas Gigantes + Slide In + Counter Stars (aparecem uma a uma) + Dark Mode
-
----
-
-### HTML Structure
-
-```html
-<section class="testimonials" aria-label="Depoimentos de clientes">
-  <div class="testimonials__inner">
-
-    <!-- Radio controls (CSS carousel) -->
-    <input type="radio" name="testimonial" id="t1" class="testimonials__radio" checked>
-    <input type="radio" name="testimonial" id="t2" class="testimonials__radio">
-    <input type="radio" name="testimonial" id="t3" class="testimonials__radio">
-
-    <!-- Decorative quote marks -->
-    <div class="testimonials__quote-mark" aria-hidden="true">"</div>
-
-    <!-- Track -->
-    <div class="testimonials__track-wrapper">
-      <div class="testimonials__track">
-
-        <div class="testimonials__slide">
-          <div class="testimonials__stars" aria-label="5 estrelas">
-            <i class="ph-fill ph-star" style="--star-i:0" aria-hidden="true"></i>
-            <i class="ph-fill ph-star" style="--star-i:1" aria-hidden="true"></i>
-            <i class="ph-fill ph-star" style="--star-i:2" aria-hidden="true"></i>
-            <i class="ph-fill ph-star" style="--star-i:3" aria-hidden="true"></i>
-            <i class="ph-fill ph-star" style="--star-i:4" aria-hidden="true"></i>
-          </div>
-          <blockquote class="testimonials__quote">
-            "Minha cadela precisou de cirurgia de emergência às 3h da manhã. A equipe do hospital foi incrível — profissional, humana e super atenciosa durante toda a recuperação."
-          </blockquote>
-          <footer class="testimonials__author">
-            <p class="testimonials__name">Ana Paula M.</p>
-            <p class="testimonials__pet">Tutora da Luna, Golden Retriever</p>
-          </footer>
-        </div>
-
-        <div class="testimonials__slide">
-          <div class="testimonials__stars" aria-label="5 estrelas">
-            <i class="ph-fill ph-star" style="--star-i:0" aria-hidden="true"></i>
-            <i class="ph-fill ph-star" style="--star-i:1" aria-hidden="true"></i>
-            <i class="ph-fill ph-star" style="--star-i:2" aria-hidden="true"></i>
-            <i class="ph-fill ph-star" style="--star-i:3" aria-hidden="true"></i>
-            <i class="ph-fill ph-star" style="--star-i:4" aria-hidden="true"></i>
-          </div>
-          <blockquote class="testimonials__quote">
-            "A especialidade de neurologia da VetPiera salvou a vida do meu gato. O Dr. Ryan explicou cada etapa do diagnóstico com paciência e cuidado extraordinários."
-          </blockquote>
-          <footer class="testimonials__author">
-            <p class="testimonials__name">Carlos Eduardo R.</p>
-            <p class="testimonials__pet">Tutor do Simba, Persa</p>
-          </footer>
-        </div>
-
-        <div class="testimonials__slide">
-          <div class="testimonials__stars" aria-label="5 estrelas">
-            <i class="ph-fill ph-star" style="--star-i:0" aria-hidden="true"></i>
-            <i class="ph-fill ph-star" style="--star-i:1" aria-hidden="true"></i>
-            <i class="ph-fill ph-star" style="--star-i:2" aria-hidden="true"></i>
-            <i class="ph-fill ph-star" style="--star-i:3" aria-hidden="true"></i>
-            <i class="ph-fill ph-star" style="--star-i:4" aria-hidden="true"></i>
-          </div>
-          <blockquote class="testimonials__quote">
-            "Faço acompanhamento com a Dra. Diana há dois anos para a fisioterapia da minha cachorra. A evolução é impressionante e o atendimento é sempre excepcional."
-          </blockquote>
-          <footer class="testimonials__author">
-            <p class="testimonials__name">Mariana F.</p>
-            <p class="testimonials__pet">Tutora da Mel, Labrador</p>
-          </footer>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Navigation dots -->
-    <nav class="testimonials__nav" aria-label="Navegar entre depoimentos">
-      <label for="t1" class="testimonials__dot" aria-label="Depoimento 1"></label>
-      <label for="t2" class="testimonials__dot" aria-label="Depoimento 2"></label>
-      <label for="t3" class="testimonials__dot" aria-label="Depoimento 3"></label>
-    </nav>
-
-  </div>
-</section>
-```
-
----
-
-### Layout CSS
-
-```css
-/* Hide radios visually */
-.testimonials__radio {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-  width: 0;
-  height: 0;
-}
-
-.testimonials {
-  background: var(--clr-dark);
-  padding-block: var(--sp-section);
-  padding-inline: var(--pad-x);
-  position: relative;
-  overflow: hidden;
-}
-
-.testimonials__inner {
-  max-width: 900px;
-  margin-inline: auto;
-  position: relative;
-}
-
-/* ── Decorative quote mark ── */
-.testimonials__quote-mark {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(8rem, 20vw, 16rem);
-  line-height: 1;
-  color: rgba(201,168,76,0.08);
-  position: absolute;
-  top: -20px;
-  left: calc(-1 * var(--pad-x));
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-}
-
-/* ── Track wrapper ── */
-.testimonials__track-wrapper {
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
-}
-
-.testimonials__track {
-  display: flex;
-  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* ── Individual slide ── */
-.testimonials__slide {
-  min-width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding-inline: clamp(0px, 4vw, 60px);
-}
-
-/* ── Stars ── */
-.testimonials__stars {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 32px;
-}
-
-.testimonials__stars i {
-  font-size: 1.125rem;
-  color: var(--clr-accent);
-  opacity: 0; /* animated in via JS on slide change */
-  animation: starPop 200ms ease-out both;
-  animation-delay: calc(var(--star-i, 0) * 100ms);
-}
-
-@keyframes starPop {
-  from {
-    opacity: 0;
-    transform: scale(0.4);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* ── Quote ── */
-.testimonials__quote {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 3vw, 2.2rem);
-  line-height: 1.45;
-  color: rgba(255,255,255,0.90);
-  max-width: 820px;
-  margin: 0 auto 32px;
-  font-style: normal;
-}
-
-/* ── Author ── */
-.testimonials__name {
-  font-family: var(--font-body);
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--clr-accent);
-  margin-bottom: 6px;
-}
-
-.testimonials__pet {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: rgba(255,255,255,0.40);
-}
-
-/* ── Navigation dots ── */
-.testimonials__nav {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 48px;
-}
-
-.testimonials__dot {
-  display: block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.20);
-  cursor: pointer;
-  transition:
-    background 300ms ease,
-    width 300ms ease,
-    border-radius 300ms ease;
-}
-
-/* ── CSS Carousel — radio-driven track position ── */
-#t1:checked ~ .testimonials__track-wrapper .testimonials__track { transform: translateX(0%);   }
-#t2:checked ~ .testimonials__track-wrapper .testimonials__track { transform: translateX(-100%); }
-#t3:checked ~ .testimonials__track-wrapper .testimonials__track { transform: translateX(-200%); }
-
-/* Active dot styling via sibling selectors */
-#t1:checked ~ .testimonials__nav label:nth-child(1),
-#t2:checked ~ .testimonials__nav label:nth-child(2),
-#t3:checked ~ .testimonials__nav label:nth-child(3) {
-  background: var(--clr-accent);
-  width: 24px;
-  border-radius: 4px;
-}
-```
-
----
-
-### Star animation JS (reset on slide change)
-
-```js
-// Re-trigger star animation when slide changes
-document.querySelectorAll('.testimonials__radio').forEach(radio => {
-  radio.addEventListener('change', () => {
-    const activeSlideIndex = [...document.querySelectorAll('.testimonials__radio')].findIndex(r => r.checked);
-    const slides = document.querySelectorAll('.testimonials__slide');
-    const stars = slides[activeSlideIndex].querySelectorAll('.testimonials__stars i');
-    stars.forEach(star => {
-      star.style.animation = 'none';
-      star.offsetHeight; // reflow
-      star.style.animation = '';
-    });
-  });
-});
-```
-
----
-
-### Responsive Breakpoints
-
-#### < 768px (mobile)
-
-```css
-@media (max-width: 768px) {
-  .testimonials__quote-mark {
-    font-size: clamp(6rem, 25vw, 10rem);
-    left: 0;
-  }
-  .testimonials__slide {
-    padding-inline: 0;
-  }
-  .testimonials__quote {
-    font-size: clamp(1.15rem, 4.5vw, 1.5rem);
-  }
-}
-```
-
----
-
-## Section 5 — Parceria ("Você é veterinário?")
-
-**Archetype:** Minimal / White Space Hero
-**Constraints:** Container Narrow + Diagonal Divider Decorativo + Hover Glow no CTA
-
----
-
-### HTML Structure
-
-```html
-<section class="partnership" aria-label="Parceria com veterinários">
-  <!-- Decorative SVG diagonal line -->
-  <svg class="partnership__deco" aria-hidden="true" preserveAspectRatio="none"
-       viewBox="0 0 1440 200" xmlns="http://www.w3.org/2000/svg">
-    <line x1="0" y1="180" x2="1440" y2="20"
-          stroke="#E2E8E5" stroke-width="1"/>
-  </svg>
-
-  <div class="partnership__body">
-    <span class="partnership__eyebrow">Para profissionais</span>
-    <h2 class="partnership__title">Você é veterinário?</h2>
-    <p class="partnership__sub">A VetPiera oferece infraestrutura completa, equipe de suporte e ambiente colaborativo para médicos veterinários que buscam crescer junto a uma referência.</p>
-    <a href="/parceiros" class="btn btn--outline partnership__cta">Seja parceiro →</a>
-  </div>
-</section>
-```
-
----
-
-### Layout CSS
-
-```css
-.partnership {
-  background: var(--clr-bg);
-  padding-block: var(--sp-section);
-  padding-inline: var(--pad-x);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Diagonal SVG line decoration */
-.partnership__deco {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Narrow centered column */
-.partnership__body {
-  position: relative;
-  z-index: 1;
-  max-width: 480px;
-  margin-inline: auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(16px, 2.5vw, 24px);
-}
-
-.partnership__eyebrow {
-  font-family: var(--font-body);
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--clr-accent);
-}
-
-.partnership__title {
-  font-family: var(--font-display);
-  font-size: var(--fs-h3);
-  line-height: 1.2;
-  color: var(--clr-text);
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-
-.partnership__sub {
-  font-family: var(--font-body);
-  font-size: var(--fs-body);
-  line-height: 1.65;
-  color: var(--clr-muted);
-  margin: 0;
-}
-
-/* CTA: outline style from base .btn--outline */
-/* Override: border color is #1A1A1A (already default) */
-.partnership__cta {
-  border-color: var(--clr-text);
-  margin-top: 8px;
-}
-
-/* Hover: glow instead of fill */
-.partnership__cta:hover {
-  background: transparent;
-  color: var(--clr-text);
-  box-shadow: 0 0 0 4px rgba(27,77,62,0.15);
-  transform: none; /* override global btn translateY */
-}
-```
-
----
-
-### Scroll-triggered entrance animation
-
-```css
-.partnership__body {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 700ms var(--ease-out-expo), transform 700ms var(--ease-out-expo);
-}
-
-.partnership__body.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-```
-
-```js
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('is-visible');
-      io.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.3 });
-io.observe(document.querySelector('.partnership__body'));
-```
-
----
-
-### Responsive Breakpoints
-
-No breakpoints needed — `max-width: 480px` with `margin-inline: auto` already handles all sizes. On mobile, `padding-inline: var(--pad-x)` provides natural constraints. The SVG decorative line is hidden on very small screens:
-
-```css
-@media (max-width: 480px) {
-  .partnership__deco {
-    opacity: 0.5;
-  }
-}
-```
-
----
-
-## Section 6 — Footer
-
-**Archetype:** Contained Center com grid editorial
-**Constraints:** Color Blocking (preto profundo) + Broken Grid (logo escapa 20px acima) + Selective Color (apenas accent como cor)
-
----
-
-### HTML Structure
-
-```html
-<footer class="footer" aria-label="Rodapé">
-  <div class="footer__container">
-    <!-- Logo escapes upward (Broken Grid effect) -->
-    <div class="footer__logo-wrap">
-      <a href="/" class="footer__logo" aria-label="VetPiera — Página inicial">
-        <img src="/images/logo-white.svg" alt="VetPiera" width="140" height="40">
-      </a>
-    </div>
-
-    <div class="footer__grid">
-
-      <!-- Col 1: brand + description + social -->
-      <div class="footer__col footer__col--brand">
-        <p class="footer__tagline">Cuidado veterinário de excelência desde 2002.</p>
-        <div class="footer__social">
-          <a href="https://instagram.com/vetpiera" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
-            <i class="ph ph-instagram-logo" aria-hidden="true"></i>
-          </a>
-          <a href="https://facebook.com/vetpiera" class="footer__social-link" aria-label="Facebook" target="_blank" rel="noopener">
-            <i class="ph ph-facebook-logo" aria-hidden="true"></i>
-          </a>
-          <a href="https://wa.me/5511991334520" class="footer__social-link" aria-label="WhatsApp" target="_blank" rel="noopener">
-            <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Col 2: Hospital 24h -->
-      <div class="footer__col">
-        <h4 class="footer__col-title">Hospital 24h</h4>
-        <ul class="footer__list">
-          <li><a href="/hospital" class="footer__link">Serviços hospitalares</a></li>
-          <li><a href="/hospital#emergencia" class="footer__link">Emergência veterinária</a></li>
-          <li><a href="/hospital#uti" class="footer__link">UTI veterinária</a></li>
-          <li class="footer__hours">24h · 7 dias por semana</li>
-          <li><a href="tel:+551123733144" class="footer__link">(11) 2373-3144</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 3: Especialidades -->
-      <div class="footer__col">
-        <h4 class="footer__col-title">Especialidades</h4>
-        <ul class="footer__list">
-          <li><a href="/especialidades" class="footer__link">Ver todas as especialidades</a></li>
-          <li><a href="/especialidades#neurologias" class="footer__link">Neurologia</a></li>
-          <li><a href="/especialidades#ortopedia" class="footer__link">Ortopedia</a></li>
-          <li><a href="/especialidades#fisioterapia" class="footer__link">Fisioterapia</a></li>
-          <li class="footer__hours">Seg–Sex: 9h–18h · Sáb: 9h–13h</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="footer__bottom">
-      <p class="footer__copy">© 2026 VetPiera. Todos os direitos reservados.</p>
-    </div>
-  </div>
-</footer>
-```
-
----
-
-### Layout CSS
-
-```css
-.footer {
-  background: var(--clr-dark);
-  padding-bottom: clamp(40px, 6vw, 64px);
-  /* No padding-top — logo handles the top spacing via negative margin */
-}
-
-.footer__container {
-  max-width: var(--container);
-  margin-inline: auto;
-  padding-inline: var(--pad-x);
-}
-
-/* ── Logo escapes upward (Broken Grid) ── */
-.footer__logo-wrap {
-  display: flex;
-  justify-content: flex-start;
-  margin-top: -20px;   /* escapes above footer border */
-  padding-top: clamp(40px, 6vw, 72px);
-  margin-bottom: clamp(40px, 5vw, 64px);
-  position: relative;
-  z-index: 2;
-}
-
-.footer__logo {
-  display: inline-block;
-  /* No additional styles needed — image provides sizing */
-}
-
-.footer__logo img {
-  display: block;
-  height: 36px;
-  width: auto;
-}
-
-/* ── Main grid ── */
-.footer__grid {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  gap: clamp(40px, 6vw, 96px);
-  padding-bottom: clamp(40px, 5vw, 64px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-/* ── Brand column ── */
-.footer__tagline {
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.40);
-  max-width: 280px;
-  margin-bottom: 28px;
-}
-
-.footer__social {
-  display: flex;
-  gap: 16px;
-}
-
-.footer__social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.06);
-  color: rgba(255,255,255,0.50);
-  text-decoration: none;
-  font-size: 1.125rem;
-  transition: background 250ms ease, color 250ms ease;
-}
-
-.footer__social-link:hover {
-  background: rgba(201,168,76,0.15);
-  color: var(--clr-accent); /* Selective Color: only accent as color */
-}
-
-/* ── Column typography ── */
-.footer__col-title {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.30);
-  margin-bottom: 20px;
-}
-
-.footer__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.footer__link {
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  color: rgba(255,255,255,0.55);
-  text-decoration: none;
-  transition: color 250ms ease;
-}
-
-.footer__link:hover {
-  color: var(--clr-accent); /* Selective Color */
-}
-
-/* Hours display (not a link) */
-.footer__hours {
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  color: var(--clr-accent); /* always gold — selective color */
-  margin-top: 8px;
-}
-
-/* ── Bottom bar ── */
-.footer__bottom {
-  padding-top: clamp(24px, 3vw, 40px);
-  text-align: center;
-}
-
-.footer__copy {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.20);
-}
-```
-
----
-
-### Responsive Breakpoints
-
-#### < 1024px (tablet)
-
-```css
-@media (max-width: 1024px) {
-  .footer__grid {
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(32px, 4vw, 56px);
-  }
-  .footer__col--brand {
-    grid-column: 1 / -1; /* full width on first row */
-  }
-}
-```
-
-#### < 640px (mobile)
-
-```css
-@media (max-width: 640px) {
-  .footer__grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .footer__logo-wrap {
-    margin-top: -12px;
-  }
-}
-```
-
----
-
-## Global Accessibility Notes
-
-- All interactive elements have `:focus-visible` outlines: `outline: 2px solid var(--clr-accent); outline-offset: 4px`
-- Carousel navigation uses `<label for="">` tied to radio inputs — keyboard accessible
-- Flip cards are `tabindex="0"` with keyboard trigger on `Enter`/`Space`
-- All decorative elements have `aria-hidden="true"`
-- Color contrast ratios: all text on dark backgrounds checked to WCAG AA minimum
-
-```css
-/* Global focus style */
-:focus-visible {
-  outline: 2px solid var(--clr-accent);
-  outline-offset: 4px;
-  border-radius: 4px;
-}
-
-/* Flip card keyboard trigger */
-.unit:focus-within .unit__inner {
-  transform: rotateY(180deg);
-}
-```
-
----
-
-## Asset Requirements
-
-| Asset | Dimensions | Format | Notes |
-|---|---|---|---|
-| `/images/hero-placeholder.jpg` | 900×1100px | JPG | Dark moody vet clinic interior |
-| `/images/logo-white.svg` | 140×40px | SVG | White version |
-| `/images/logo-dark.svg` | 140×40px | SVG | Dark version for light bg |
-| Phosphor Icons | CDN | SVG font | `ph`, `ph-fill` classes |
-| DM Serif Display | Google Fonts | Woff2 | weights: 400 |
-| DM Sans | Google Fonts | Woff2 | weights: 400, 500, 600 |
-
----
-
-## Performance Notes
-
-- Hero photo lazy: `loading="eager"` (above fold)
-- All other images: `loading="lazy"`
-- Fonts: `<link rel="preconnect" href="https://fonts.googleapis.com">` in `<head>`
-- JS animations check `prefers-reduced-motion`: if true, skip all transform/opacity animations, show elements in final state immediately
-
-```js
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (reducedMotion) {
-  document.querySelectorAll('.hero__word').forEach(w => w.classList.add('is-revealed'));
-  document.querySelector('.hero__sub').classList.add('is-visible');
-  document.querySelector('.hero__actions').classList.add('is-visible');
-  document.getElementById('heroBadgeCounter').textContent = '22';
-}
-```
+## Variedade entre seções consecutivas
+
+| # | Arquétipo | Densidade | Constraint principal |
+|---|-----------|-----------|----------------------|
+| 1 | Split com Overlap | Balanced | Gradient Mesh |
+| 2 | Type Hero Editorial | Sparse | Color Blocking |
+| 3 | Split Alternado | Balanced | Badge Overlapping |
+| 4 | Grid Modular | Balanced | Hover Lift |
+| 5 | Editorial Rows | Sparse | Type numérico outline |
+| 6 | Scroll Horizontal | Dense | Scroll Snap |
+| 7 | Bento 3D Flip | Balanced | Color Blocking dark/light |
+| 8 | CSS Carousel | Sparse | Dark Mode |
+| 9 | Gallery Wall | Dense | Hover Overlay |
+| 10 | Split Color Block | Balanced | Gradient Background |
+
+✓ Nenhum arquétipo repetido em seções consecutivas.
+✓ Densidade alterna (Balanced → Sparse → Balanced → ...).
+✓ Cor alterna fundo claro ↔ escuro nas key sections (1 claro, 7 dark card, 8 dark, 10 dark).

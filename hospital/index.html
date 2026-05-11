@@ -6,18 +6,22 @@
   <title>Hospital Veterinário 24h | VetPiera</title>
   <meta name="description" content="Emergência veterinária 24 horas em São Paulo. UTI veterinária, cirurgia e internação com equipe especializada. VetPiera Hospital.">
 
-  <!-- Fonts: DM Serif Display + DM Sans -->
+  <!-- Resource hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <link rel="preconnect" href="https://unpkg.com">
-  <link rel="dns-prefetch" href="https://unpkg.com">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <!-- Preload do hero image (LCP) -->
+  <link rel="preload" as="image" href="/.netlify/images?url=/images/hosp-hero-recepcao.png&w=1200&q=80" fetchpriority="high">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+  <!-- Phosphor Icons (cherry-pick: regular + fill apenas) -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
 
   <link rel="stylesheet" href="/hospital/style.css">
-  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
 </head>
 <body>
 
@@ -47,114 +51,183 @@
 
     <!-- =============================================
          SECTION 1 — HERO
-         Archetype: Hero Dominante (100vh full-bleed)
-         Constraints: Mouse Spotlight + Grain + "24h" Stamp + fadeUp stagger
+         Arquétipo: Split com Overlap (60/40)
+         Constraints: Gradient Mesh (Cor) + Image Gradient (Mídia)
+                     + Pulse Loop (Movimento) + Headline Gradient (Tipo)
+                     + Bleed Stamp 24h (Layout)
          ============================================= -->
     <section class="hosp-hero" aria-label="Hospital Veterinário 24 horas">
-      <!-- Layout alinhado com a Home: Copy esquerda (60%), Foto direita (40%) -->
+
+      <!-- Mesh gradient backdrop -->
+      <div class="hosp-hero__bg" aria-hidden="true">
+        <div class="hosp-hero__bg-orb hosp-hero__bg-orb--1"></div>
+        <div class="hosp-hero__bg-orb hosp-hero__bg-orb--2"></div>
+        <div class="hosp-hero__bg-orb hosp-hero__bg-orb--3"></div>
+      </div>
+
       <div class="hosp-hero__container">
+
+        <!-- Copy panel 60% -->
         <div class="hosp-hero__copy">
-          <span class="hosp-hero__eyebrow">Hospital Veterinário · São Paulo</span>
+          <span class="hosp-hero__eyebrow">
+            <span class="hosp-hero__eyebrow-dot"></span>
+            Plantão Veterinário · Cidade Líder, SP
+          </span>
           <h1 class="hosp-hero__headline">
-            Emergência veterinária<br>
-            <em class="hosp-hero__em">24 horas.</em><br>
-            Aqui, seu pet nunca<br>fica sem atendimento.
+            Emergência veterinária <span class="hosp-hero__em">24 horas.</span><br>
+            Aqui, seu pet nunca fica sem atendimento.
           </h1>
           <p class="hosp-hero__sub">Hospital completo com UTI, centro cirúrgico, internação e 13 especialistas — prontos a qualquer hora do dia ou da noite.</p>
           <div class="hosp-hero__actions">
-            <a href="https://wa.me/5511963326376" class="btn btn--accent" target="_blank" rel="noopener">
-              <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
-              Falar agora no WhatsApp →
+            <a href="https://wa.me/5511963326376" class="btn btn--primary hosp-hero__btn-primary" target="_blank" rel="noopener">
+              <i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i>
+              <span>Falar agora no WhatsApp</span>
             </a>
-            <a href="tel:+551127467292" class="btn btn--ghost">
-              <i class="ph ph-phone" aria-hidden="true"></i>
-              (11) 2746-7292
+            <a href="tel:+551127467292" class="hosp-hero__phone">
+              <i class="ph ph-phone-call" aria-hidden="true"></i>
+              <div>
+                <span class="hosp-hero__phone-label">Plantão direto</span>
+                <span class="hosp-hero__phone-num">(11) 2746-7292</span>
+              </div>
             </a>
+          </div>
+
+          <!-- Trust strip -->
+          <div class="hosp-hero__trust" aria-label="Diferenciais rápidos">
+            <div class="hosp-hero__trust-item">
+              <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
+              <span>UTI veterinária</span>
+            </div>
+            <div class="hosp-hero__trust-item">
+              <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
+              <span>Centro cirúrgico</span>
+            </div>
+            <div class="hosp-hero__trust-item">
+              <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
+              <span>Diagnóstico por imagem</span>
+            </div>
           </div>
         </div>
 
-        <div class="hosp-hero__media">
-          <div class="hosp-hero__photo-wrapper">
-            <div class="hosp-hero__photo" role="img" aria-label="Cachorros sendo atendidos no Hospital Veterinário VetPiera" fetchpriority="high"></div>
-            <div class="hosp-hero__vignette" aria-hidden="true"></div>
-            <div class="hosp-hero__stamp" aria-hidden="true">24h</div>
+        <!-- Media panel 40% -->
+        <div class="hosp-hero__media" aria-hidden="true">
+          <div class="hosp-hero__photo-wrap">
+            <div class="hosp-hero__photo" role="img" aria-label="Recepção do Hospital VetPiera" fetchpriority="high"></div>
+            <div class="hosp-hero__photo-overlay"></div>
+          </div>
+
+          <!-- Stamp circular "24h" sangrando -->
+          <div class="hosp-hero__stamp" aria-hidden="true">
+            <span class="hosp-hero__stamp-num">24</span>
+            <span class="hosp-hero__stamp-unit">h</span>
+          </div>
+
+          <!-- Badge "Aberto agora" com pulse -->
+          <div class="hosp-hero__badge" aria-label="Hospital aberto agora">
+            <span class="hosp-hero__badge-dot"></span>
+            <div class="hosp-hero__badge-content">
+              <span class="hosp-hero__badge-title">Aberto agora</span>
+              <span class="hosp-hero__badge-sub">Plantão · 7 dias</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Scroll cue -->
-      <div class="hosp-hero__scroll-cue" aria-hidden="true">
-        <span class="hosp-hero__scroll-line"></span>
       </div>
-    </section>
-
     </section>
 
     <!-- =============================================
-         SECTION: NOSSA ESTRUTURA
-         Archetype: Featured Carousel
+         SECTION 2 — STATS BAR
+         Arquétipo: Type Hero / Editorial
+         Constraints: Color Blocking + Counter Animation + Stagger
          ============================================= -->
-    <section class="hosp-structure" id="estrutura" aria-label="Nossa estrutura hospitalar">
-      <div class="container hosp-structure__header">
-        <h2 class="hosp-structure__title">Nossa estrutura.</h2>
-        <p class="hosp-structure__sub">Ambientes de alta complexidade preparados para salvar vidas 24 horas por dia.</p>
-      </div>
+    <section class="hosp-stats" aria-label="Números do Hospital">
+      <div class="hosp-stats__bg" aria-hidden="true"></div>
 
-      <div class="hosp-structure__carousel">
-        <div class="hosp-structure__track-wrapper" id="structureWrapper">
-          <div class="hosp-structure__track" id="structureTrack">
-            <div class="hosp-structure__item">
-              <img src="/.netlify/images?url=/images/hosp-estrutura-recepcao.jpg&w=600&q=80" alt="Recepção do Hospital 24h" class="hosp-structure__img" loading="lazy">
-              <div class="hosp-structure__caption">Recepção 24h</div>
+      <div class="hosp-stats__container container">
+        <header class="hosp-stats__intro">
+          <span class="hosp-stats__eyebrow">Hospital em números</span>
+          <h2 class="hosp-stats__title">Estrutura, equipe e tempo<br>a favor do seu pet.</h2>
+        </header>
+
+        <div class="hosp-stats__grid">
+          <div class="hosp-stats__item" style="--stat-i: 0">
+            <div class="hosp-stats__num-wrap">
+              <span class="hosp-stats__num hosp-stats__num--text">24h</span>
             </div>
-            <div class="hosp-structure__item">
-              <img src="/.netlify/images?url=/images/hosp-estrutura-hall.jpg&w=600&q=80" alt="Hall de espera" class="hosp-structure__img" loading="lazy">
-              <div class="hosp-structure__caption">Hall de Espera</div>
-            </div>
-            <div class="hosp-structure__item">
-              <img src="/.netlify/images?url=/images/hosp-estrutura-consultorio-1.jpg&w=600&q=80" alt="Consultório Veterinário" class="hosp-structure__img" loading="lazy">
-              <div class="hosp-structure__caption">Consultórios Modernos</div>
-            </div>
-            <div class="hosp-structure__item">
-              <img src="/.netlify/images?url=/images/hosp-estrutura-cirurgico-1.jpg&w=600&q=80" alt="Centro Cirúrgico" class="hosp-structure__img" loading="lazy">
-              <div class="hosp-structure__caption">Centro Cirúrgico de Ponta</div>
-            </div>
-            <div class="hosp-structure__item">
-              <img src="/.netlify/images?url=/images/hosp-estrutura-emergencia.jpg&w=600&q=80" alt="Sala de Emergência" class="hosp-structure__img" loading="lazy">
-              <div class="hosp-structure__caption">Sala de Emergência</div>
-            </div>
-            <div class="hosp-structure__item">
-              <img src="/.netlify/images?url=/images/hosp-estrutura-raiox.jpg&w=600&q=80" alt="Sala de Raio-X" class="hosp-structure__img" loading="lazy">
-              <div class="hosp-structure__caption">Radiologia Digital</div>
-            </div>
-            <div class="hosp-structure__item">
-              <img src="/.netlify/images?url=/images/hosp-estrutura-ultrassom.jpg&w=600&q=80" alt="Sala de Ultrassom" class="hosp-structure__img" loading="lazy">
-              <div class="hosp-structure__caption">Ultrassonografia</div>
-            </div>
-            <div class="hosp-structure__item">
-              <img src="/.netlify/images?url=/images/hosp-estrutura-internacao-caes-1.jpg&w=600&q=80" alt="Internação Cães" class="hosp-structure__img" loading="lazy">
-              <div class="hosp-structure__caption">Internação Canina</div>
-            </div>
-            <div class="hosp-structure__item">
-              <img src="/.netlify/images?url=/images/hosp-estrutura-internacao-felinos.jpg&w=600&q=80" alt="Internação Gatos" class="hosp-structure__img" loading="lazy">
-              <div class="hosp-structure__caption">Internação Felina Exclusiva</div>
+            <div class="hosp-stats__label-wrap">
+              <span class="hosp-stats__label-eyebrow">Plantão</span>
+              <p class="hosp-stats__label">Hospital aberto<br>todos os dias</p>
             </div>
           </div>
-        </div>
 
-        <div class="hosp-structure__nav">
-          <button class="hosp-structure__btn hosp-structure__btn--prev" aria-label="Anterior">
-            <i class="ph ph-caret-left"></i>
-          </button>
-          <button class="hosp-structure__btn hosp-structure__btn--next" aria-label="Próximo">
-            <i class="ph ph-caret-right"></i>
-          </button>
+          <div class="hosp-stats__item" style="--stat-i: 1">
+            <div class="hosp-stats__num-wrap">
+              <span class="hosp-stats__num" data-count-to="13">13</span>
+              <span class="hosp-stats__plus">+</span>
+            </div>
+            <div class="hosp-stats__label-wrap">
+              <span class="hosp-stats__label-eyebrow">Equipe</span>
+              <p class="hosp-stats__label">Veterinários<br>especialistas</p>
+            </div>
+          </div>
+
+          <div class="hosp-stats__item" style="--stat-i: 2">
+            <div class="hosp-stats__num-wrap">
+              <span class="hosp-stats__num" data-count-to="12">12</span>
+            </div>
+            <div class="hosp-stats__label-wrap">
+              <span class="hosp-stats__label-eyebrow">UTI</span>
+              <p class="hosp-stats__label">Vagas de internação<br>intensiva</p>
+            </div>
+          </div>
+
+          <div class="hosp-stats__item" style="--stat-i: 3">
+            <div class="hosp-stats__num-wrap">
+              <span class="hosp-stats__num" data-count-to="22">22</span>
+              <span class="hosp-stats__plus">+</span>
+            </div>
+            <div class="hosp-stats__label-wrap">
+              <span class="hosp-stats__label-eyebrow">Tempo</span>
+              <p class="hosp-stats__label">Anos de<br>experiência</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- =============================================
-         SECTION 2 — SERVIÇOS BENTO BOX
+         SECTION 3 — QUEM SOMOS / HISTÓRIA
+         Arquétipo: Split Alternado + Badge Overlapping
+         ============================================= -->
+    <section class="hosp-about" id="quem-somos" aria-label="Sobre o Hospital">
+      <div class="container hosp-about__grid">
+        <div class="hosp-about__content">
+          <span class="hosp-about__pre">Nosso hospital</span>
+          <h2 class="hosp-about__title">Tecnologia, equipe e estrutura para<br><span class="hosp-about__title-grad">os momentos mais difíceis.</span></h2>
+          <p class="hosp-about__text">
+            O <strong>Hospital Veterinário Piera</strong> é referência em medicina veterinária de alta complexidade na Grande São Paulo. Estamos abertos 24 horas para acolher emergências, realizar cirurgias e cuidar de cada animal como se fosse da nossa família.
+          </p>
+          <p class="hosp-about__text">
+            Contamos com UTI veterinária equipada, centro cirúrgico de ponta, internação separada por espécie e isolamento infeccioso. Uma estrutura completa que poucos hospitais oferecem.
+          </p>
+          <a href="#diferenciais" class="hosp-about__cta">Conheça nossos diferenciais →</a>
+        </div>
+        <div class="hosp-about__visual">
+          <div class="hosp-about__img-wrap">
+            <img src="/.netlify/images?url=/images/hosp-exterior.jpg&w=800&q=80" alt="Fachada do Hospital Veterinário Piera" class="hosp-about__img" loading="lazy" width="800" height="600">
+            <div class="hosp-about__img-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="hosp-about__badge" aria-hidden="true">
+            <span class="hosp-about__badge-num">22</span>
+            <span class="hosp-about__badge-plus">+</span>
+            <span class="hosp-about__badge-text">anos de<br>experiência</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         SECTION 4 — SERVIÇOS BENTO BOX
          Archetype: Bento Box Assimétrico
          Constraints: Large card 2×2 + 3 flip cards (3D hover flip)
          ============================================= -->
@@ -309,9 +382,136 @@
     </section>
 
     <!-- =============================================
-         SECTION 3 — ESPECIALIDADES (Scroll Horizontal)
-         Archetype: Horizontal drag-scroll strip
-         Constraints: Fade edges + drag-to-scroll JS + snap
+         SECTION 5 — DIFERENCIAIS (Grid 3x3 Premium)
+         ============================================= -->
+    <section class="hosp-diffs" id="diferenciais" aria-label="Diferenciais VetPiera">
+      <div class="container hosp-diffs__header">
+        <span class="hosp-diffs__pre">Por que VetPiera</span>
+        <h2 class="hosp-diffs__title">Diferenciais que<br><span class="hosp-diffs__title-grad">salvam vidas.</span></h2>
+      </div>
+
+      <div class="hosp-diffs__grid">
+        <article class="hosp-diffs__card">
+          <div class="hosp-diffs__icon"><i class="ph-fill ph-car"></i></div>
+          <h3 class="hosp-diffs__card-name">Estacionamento Gratuito</h3>
+          <p class="hosp-diffs__card-desc">Comodidade e segurança para você e seu pet com estacionamento gratuito no local.</p>
+        </article>
+
+        <article class="hosp-diffs__card">
+          <div class="hosp-diffs__icon"><i class="ph-fill ph-buildings"></i></div>
+          <h3 class="hosp-diffs__card-name">Internações Exclusivas</h3>
+          <p class="hosp-diffs__card-desc">Áreas separadas para cães, gatos e doenças infecciosas, proporcionando maior segurança e conforto.</p>
+        </article>
+
+        <article class="hosp-diffs__card">
+          <div class="hosp-diffs__icon"><i class="ph-fill ph-squares-four"></i></div>
+          <h3 class="hosp-diffs__card-name">Tudo em um só lugar</h3>
+          <p class="hosp-diffs__card-desc">Atendimento, exames, cirurgias, internação e especialidades integradas em um único local.</p>
+        </article>
+
+        <article class="hosp-diffs__card">
+          <div class="hosp-diffs__icon"><i class="ph-fill ph-users-three"></i></div>
+          <h3 class="hosp-diffs__card-name">Trabalho em Equipe</h3>
+          <p class="hosp-diffs__card-desc">Corpo clínico composto por 13 veterinários com rica troca de experiências e diagnósticos compartilhados.</p>
+        </article>
+
+        <article class="hosp-diffs__card">
+          <div class="hosp-diffs__icon"><i class="ph-fill ph-medal"></i></div>
+          <h3 class="hosp-diffs__card-name">Competência Garantida</h3>
+          <p class="hosp-diffs__card-desc">Profissionais especializados em constante atualização e aprimoramento técnico e acadêmico.</p>
+        </article>
+
+        <article class="hosp-diffs__card">
+          <div class="hosp-diffs__icon"><i class="ph-fill ph-first-aid-kit"></i></div>
+          <h3 class="hosp-diffs__card-name">Cirurgias de Ponta</h3>
+          <p class="hosp-diffs__card-desc">Neurocirurgias e cirurgias cranianas, além de todas as demais cirurgias de alta complexidade.</p>
+        </article>
+
+        <article class="hosp-diffs__card">
+          <div class="hosp-diffs__icon"><i class="ph-fill ph-test-tube"></i></div>
+          <h3 class="hosp-diffs__card-name">Exames Laboratoriais</h3>
+          <p class="hosp-diffs__card-desc">Análises completas incluindo coleta de liquor, hemogasometria e testes hormonais imediatos.</p>
+        </article>
+
+        <article class="hosp-diffs__card">
+          <div class="hosp-diffs__icon"><i class="ph-fill ph-scan"></i></div>
+          <h3 class="hosp-diffs__card-name">Imagem de Qualidade</h3>
+          <p class="hosp-diffs__card-desc">Eletroencefalograma, Ecocardiograma, Endoscopia, RX digital e Ultrassonografias especializadas.</p>
+        </article>
+
+        <article class="hosp-diffs__card">
+          <div class="hosp-diffs__icon"><i class="ph-fill ph-cpu"></i></div>
+          <h3 class="hosp-diffs__card-name">Tecnologia Veterinária</h3>
+          <p class="hosp-diffs__card-desc">Equipamentos de última geração para diagnóstico e tratamento preciso em todas as unidades.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- =============================================
+         SECTION 6 — NOSSA ESTRUTURA (Featured Carousel)
+         ============================================= -->
+    <section class="hosp-structure" id="estrutura" aria-label="Nossa estrutura hospitalar">
+      <div class="container hosp-structure__header">
+        <span class="hosp-structure__pre">Nosso espaço</span>
+        <h2 class="hosp-structure__title">Estrutura pensada para<br><span class="hosp-structure__title-grad">salvar vidas 24 horas por dia.</span></h2>
+        <p class="hosp-structure__sub">Ambientes de alta complexidade preparados para acolher emergências, realizar cirurgias e internação intensiva.</p>
+      </div>
+
+      <div class="hosp-structure__carousel">
+        <div class="hosp-structure__track-wrapper" id="structureWrapper">
+          <div class="hosp-structure__track" id="structureTrack">
+            <div class="hosp-structure__item">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-recepcao.jpg&w=600&q=80" alt="Recepção do Hospital 24h" class="hosp-structure__img" loading="lazy" width="500" height="333">
+              <div class="hosp-structure__caption">Recepção 24h</div>
+            </div>
+            <div class="hosp-structure__item">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-hall.jpg&w=600&q=80" alt="Hall de espera" class="hosp-structure__img" loading="lazy" width="500" height="333">
+              <div class="hosp-structure__caption">Hall de Espera</div>
+            </div>
+            <div class="hosp-structure__item">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-consultorio-1.jpg&w=600&q=80" alt="Consultório Veterinário" class="hosp-structure__img" loading="lazy" width="500" height="333">
+              <div class="hosp-structure__caption">Consultórios Modernos</div>
+            </div>
+            <div class="hosp-structure__item">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-cirurgico-1.jpg&w=600&q=80" alt="Centro Cirúrgico" class="hosp-structure__img" loading="lazy" width="500" height="333">
+              <div class="hosp-structure__caption">Centro Cirúrgico de Ponta</div>
+            </div>
+            <div class="hosp-structure__item">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-emergencia.jpg&w=600&q=80" alt="Sala de Emergência" class="hosp-structure__img" loading="lazy" width="500" height="333">
+              <div class="hosp-structure__caption">Sala de Emergência</div>
+            </div>
+            <div class="hosp-structure__item">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-raiox.jpg&w=600&q=80" alt="Sala de Raio-X" class="hosp-structure__img" loading="lazy" width="500" height="333">
+              <div class="hosp-structure__caption">Radiologia Digital</div>
+            </div>
+            <div class="hosp-structure__item">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-ultrassom.jpg&w=600&q=80" alt="Sala de Ultrassom" class="hosp-structure__img" loading="lazy" width="500" height="333">
+              <div class="hosp-structure__caption">Ultrassonografia</div>
+            </div>
+            <div class="hosp-structure__item">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-internacao-caes-1.jpg&w=600&q=80" alt="Internação Cães" class="hosp-structure__img" loading="lazy" width="500" height="333">
+              <div class="hosp-structure__caption">Internação Canina</div>
+            </div>
+            <div class="hosp-structure__item">
+              <img src="/.netlify/images?url=/images/hosp-estrutura-internacao-felinos.jpg&w=600&q=80" alt="Internação Gatos" class="hosp-structure__img" loading="lazy" width="500" height="333">
+              <div class="hosp-structure__caption">Internação Felina Exclusiva</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hosp-structure__nav">
+          <button class="hosp-structure__btn hosp-structure__btn--prev" aria-label="Anterior">
+            <i class="ph ph-caret-left"></i>
+          </button>
+          <button class="hosp-structure__btn hosp-structure__btn--next" aria-label="Próximo">
+            <i class="ph ph-caret-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         SECTION 7 — ESPECIALIDADES DISPONÍVEIS (Kinetic Strip)
          ============================================= -->
     <section class="hosp-specs" aria-label="Especialidades disponíveis no hospital">
       <div class="hosp-specs__head">
@@ -434,103 +634,121 @@
     </section>
 
     <!-- =============================================
-         SECTION 4 — DIFERENCIAIS (Timeline Vertical)
-         Archetype: Timeline Vertical alternando lados
-         Constraints: Clip Reveal + CSS View Timeline + JS fallback
+         SECTION 8 — DEPOIMENTOS (CSS Carousel)
          ============================================= -->
-    <!-- =============================================
-         SECTION: NOSSOS DIFERENCIAIS
-         Archetype: Grid 3x3 Premium
-         ============================================= -->
-    <section class="hosp-diffs" id="diferenciais" aria-label="Diferenciais VetPiera">
-      <div class="container hosp-diffs__header">
-        <h2 class="hosp-diffs__title">Diferenciais que<br>salvam vidas.</h2>
-      </div>
+    <section class="hosp-testimonials" aria-label="Depoimentos de clientes">
+      <input type="radio" name="hosp-test" id="ht1" class="hosp-testimonials__radio" checked>
+      <input type="radio" name="hosp-test" id="ht2" class="hosp-testimonials__radio">
+      <input type="radio" name="hosp-test" id="ht3" class="hosp-testimonials__radio">
 
-      <div class="hosp-diffs__grid">
-        <article class="hosp-diffs__card">
-          <div class="hosp-diffs__icon"><i class="ph-fill ph-car"></i></div>
-          <h3 class="hosp-diffs__card-name">Estacionamento Gratuito</h3>
-          <p class="hosp-diffs__card-desc">Comodidade e segurança para você e seu pet com estacionamento gratuito no local.</p>
-        </article>
+      <div class="hosp-testimonials__inner">
+        <p class="hosp-testimonials__label">O que dizem quem já foi atendido.</p>
+        <div class="hosp-testimonials__quote-mark" aria-hidden="true">"</div>
 
-        <article class="hosp-diffs__card">
-          <div class="hosp-diffs__icon"><i class="ph-fill ph-buildings"></i></div>
-          <h3 class="hosp-diffs__card-name">Internações Exclusivas</h3>
-          <p class="hosp-diffs__card-desc">Áreas separadas para cães, gatos e doenças infecciosas, proporcionando maior segurança e conforto.</p>
-        </article>
+        <div class="hosp-testimonials__track-wrapper">
+          <div class="hosp-testimonials__track">
+            <div class="hosp-testimonials__slide">
+              <div class="hosp-testimonials__stars" aria-label="5 estrelas">
+                <i class="ph-fill ph-star" style="--star-i:0"></i>
+                <i class="ph-fill ph-star" style="--star-i:1"></i>
+                <i class="ph-fill ph-star" style="--star-i:2"></i>
+                <i class="ph-fill ph-star" style="--star-i:3"></i>
+                <i class="ph-fill ph-star" style="--star-i:4"></i>
+              </div>
+              <blockquote class="hosp-testimonials__quote">"Minha cadela precisou de cirurgia de emergência às 3h da manhã. A equipe do hospital foi incrível — profissional, humana e super atenciosa durante toda a recuperação."</blockquote>
+              <footer class="hosp-testimonials__author">
+                <p class="hosp-testimonials__name">Ana Paula M.</p>
+                <p class="hosp-testimonials__pet">Tutora da Luna, Golden Retriever</p>
+              </footer>
+            </div>
 
-        <article class="hosp-diffs__card">
-          <div class="hosp-diffs__icon"><i class="ph-fill ph-squares-four"></i></div>
-          <h3 class="hosp-diffs__card-name">Tudo em um só lugar</h3>
-          <p class="hosp-diffs__card-desc">Atendimento, exames, cirurgias, internação e especialidades integradas em um único local.</p>
-        </article>
+            <div class="hosp-testimonials__slide">
+              <div class="hosp-testimonials__stars" aria-label="5 estrelas">
+                <i class="ph-fill ph-star" style="--star-i:0"></i>
+                <i class="ph-fill ph-star" style="--star-i:1"></i>
+                <i class="ph-fill ph-star" style="--star-i:2"></i>
+                <i class="ph-fill ph-star" style="--star-i:3"></i>
+                <i class="ph-fill ph-star" style="--star-i:4"></i>
+              </div>
+              <blockquote class="hosp-testimonials__quote">"Trouxe meu cachorro em situação crítica e fui atendida na hora. Toda a equipe nos manteve informados durante a internação. Não tenho palavras para agradecer."</blockquote>
+              <footer class="hosp-testimonials__author">
+                <p class="hosp-testimonials__name">Roberta S.</p>
+                <p class="hosp-testimonials__pet">Tutora do Thor, Pastor Alemão</p>
+              </footer>
+            </div>
 
-        <article class="hosp-diffs__card">
-          <div class="hosp-diffs__icon"><i class="ph-fill ph-users-three"></i></div>
-          <h3 class="hosp-diffs__card-name">Trabalho em Equipe</h3>
-          <p class="hosp-diffs__card-desc">Corpo clínico composto por 13 veterinários com rica troca de experiências e diagnósticos compartilhados.</p>
-        </article>
-
-        <article class="hosp-diffs__card">
-          <div class="hosp-diffs__icon"><i class="ph-fill ph-medal"></i></div>
-          <h3 class="hosp-diffs__card-name">Competência Garantida</h3>
-          <p class="hosp-diffs__card-desc">Profissionais especializados em constante atualização e aprimoramento técnico e acadêmico.</p>
-        </article>
-
-        <article class="hosp-diffs__card">
-          <div class="hosp-diffs__icon"><i class="ph-fill ph-first-aid-kit"></i></div>
-          <h3 class="hosp-diffs__card-name">Cirurgias de Ponta</h3>
-          <p class="hosp-diffs__card-desc">Neurocirurgias e cirurgias cranianas, além de todas as demais cirurgias de alta complexidade.</p>
-        </article>
-
-        <article class="hosp-diffs__card">
-          <div class="hosp-diffs__icon"><i class="ph-fill ph-test-tube"></i></div>
-          <h3 class="hosp-diffs__card-name">Exames Laboratoriais</h3>
-          <p class="hosp-diffs__card-desc">Análises completas incluindo coleta de liquor, hemogasometria e testes hormonais imediatos.</p>
-        </article>
-
-        <article class="hosp-diffs__card">
-          <div class="hosp-diffs__icon"><i class="ph-fill ph-scan"></i></div>
-          <h3 class="hosp-diffs__card-name">Imagem de Qualidade</h3>
-          <p class="hosp-diffs__card-desc">Eletroencefalograma, Ecocardiograma, Endoscopia, RX digital e Ultrassonografias especializadas.</p>
-        </article>
-
-        <article class="hosp-diffs__card">
-          <div class="hosp-diffs__icon"><i class="ph-fill ph-cpu"></i></div>
-          <h3 class="hosp-diffs__card-name">Tecnologia Veterinária</h3>
-          <p class="hosp-diffs__card-desc">Equipamentos de última geração para diagnóstico e tratamento preciso em todas as unidades.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- =============================================
-         SECTION: QUEM SOMOS / HISTÓRIA
-         Archetype: Split Alternado (Texto / Badge + Imagem)
-         ============================================= -->
-    <section class="hosp-about" id="quem-somos" aria-label="Sobre o Grupo Piera">
-      <div class="container hosp-about__grid">
-        <div class="hosp-about__content">
-          <div class="hosp-about__badge">
-            <span class="hosp-about__badge-num">22+</span>
-            <span class="hosp-about__badge-text">Anos de<br>Experiência</span>
+            <div class="hosp-testimonials__slide">
+              <div class="hosp-testimonials__stars" aria-label="5 estrelas">
+                <i class="ph-fill ph-star" style="--star-i:0"></i>
+                <i class="ph-fill ph-star" style="--star-i:1"></i>
+                <i class="ph-fill ph-star" style="--star-i:2"></i>
+                <i class="ph-fill ph-star" style="--star-i:3"></i>
+                <i class="ph-fill ph-star" style="--star-i:4"></i>
+              </div>
+              <blockquote class="hosp-testimonials__quote">"O hospital está sempre limpo, organizado e a equipe é extremamente atenciosa. Minha gata foi muito bem cuidada durante a internação na UTI."</blockquote>
+              <footer class="hosp-testimonials__author">
+                <p class="hosp-testimonials__name">Lucas F.</p>
+                <p class="hosp-testimonials__pet">Tutor da Mimi, SRD</p>
+              </footer>
+            </div>
           </div>
-          <h2 class="hosp-about__title">Nossa História.</h2>
-          <p class="hosp-about__text">
-            O <strong>Grupo Piera</strong> é composto pelo Piera Hospital Veterinário, que realiza atendimento clínico e hospitalar 24 horas; Piera Especialidades Veterinárias, focado no atendimento de especialidades e Piera Cursos veterinários, focado no aprimoramento de médicos veterinários.
-          </p>
-          <p class="hosp-about__text">
-            Nascemos com a missão de oferecer medicina de alta complexidade com o acolhimento que seu pet merece. Hoje somos referência em neurologia, cirurgias complexas e reabilitação em toda a grande São Paulo.
-          </p>
         </div>
-        <div class="hosp-about__visual">
-          <img src="/.netlify/images?url=/images/hosp-exterior.jpg&w=800&q=80" alt="Fachada do Hospital Veterinário Piera" class="hosp-about__img" loading="lazy">
+
+        <nav class="hosp-testimonials__nav" aria-label="Navegar entre depoimentos">
+          <label for="ht1" class="hosp-testimonials__dot" aria-label="Depoimento 1"></label>
+          <label for="ht2" class="hosp-testimonials__dot" aria-label="Depoimento 2"></label>
+          <label for="ht3" class="hosp-testimonials__dot" aria-label="Depoimento 3"></label>
+        </nav>
+      </div>
+    </section>
+
+    <!-- =============================================
+         SECTION 9 — INSTAGRAM
+         Arquétipo: Gallery Wall (grid 6 tiles)
+         ============================================= -->
+    <section class="hosp-instagram" aria-label="Instagram do Hospital">
+      <div class="hosp-instagram__container container">
+        <header class="hosp-instagram__header">
+          <p class="hosp-instagram__pre">@vetpiera</p>
+          <h2 class="hosp-instagram__title">Acompanhe o<br><span class="hosp-instagram__title-grad">dia a dia do hospital.</span></h2>
+          <a href="https://instagram.com/vetpiera" class="hosp-instagram__cta" target="_blank" rel="noopener">
+            <i class="ph ph-instagram-logo" aria-hidden="true"></i>
+            <span>Seguir no Instagram</span>
+          </a>
+        </header>
+
+        <!-- Para feed real: substituir .hosp-instagram__grid pelo iframe do widget LightWidget/Elfsight -->
+        <div class="hosp-instagram__grid">
+          <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="hosp-instagram__tile" aria-label="Post no Instagram">
+            <img src="/.netlify/images?url=/images/hospital-uti.jpg&w=400&q=70" alt="" loading="lazy" width="300" height="300">
+            <span class="hosp-instagram__tile-overlay"><i class="ph ph-instagram-logo"></i></span>
+          </a>
+          <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="hosp-instagram__tile" aria-label="Post no Instagram">
+            <img src="/.netlify/images?url=/images/hosp-estrutura-cirurgico-1.jpg&w=400&q=70" alt="" loading="lazy" width="300" height="300">
+            <span class="hosp-instagram__tile-overlay"><i class="ph ph-instagram-logo"></i></span>
+          </a>
+          <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="hosp-instagram__tile" aria-label="Post no Instagram">
+            <img src="/.netlify/images?url=/images/cachorro-caramelo.jpg&w=400&q=70" alt="" loading="lazy" width="300" height="300">
+            <span class="hosp-instagram__tile-overlay"><i class="ph ph-instagram-logo"></i></span>
+          </a>
+          <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="hosp-instagram__tile" aria-label="Post no Instagram">
+            <img src="/.netlify/images?url=/images/hosp-estrutura-emergencia.jpg&w=400&q=70" alt="" loading="lazy" width="300" height="300">
+            <span class="hosp-instagram__tile-overlay"><i class="ph ph-instagram-logo"></i></span>
+          </a>
+          <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="hosp-instagram__tile" aria-label="Post no Instagram">
+            <img src="/.netlify/images?url=/images/gato-brasil-premium.jpg&w=400&q=70" alt="" loading="lazy" width="300" height="300">
+            <span class="hosp-instagram__tile-overlay"><i class="ph ph-instagram-logo"></i></span>
+          </a>
+          <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="hosp-instagram__tile" aria-label="Post no Instagram">
+            <img src="/.netlify/images?url=/images/hosp-estrutura-internacao-felinos.jpg&w=400&q=70" alt="" loading="lazy" width="300" height="300">
+            <span class="hosp-instagram__tile-overlay"><i class="ph ph-instagram-logo"></i></span>
+          </a>
         </div>
       </div>
     </section>
 
     <!-- =============================================
-         SECTION 5 — CONTATO
+         SECTION 10 — CONTATO
          Archetype: Split Assimétrico (45/55)
          Constraints: Dark background + Glass card + Live dot
          ============================================= -->

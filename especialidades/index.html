@@ -6,18 +6,22 @@
   <title>25 Especialidades Veterinárias | VetPiera</title>
   <meta name="description" content="Da neurologia à reabilitação — conheça as 25 especialidades veterinárias da VetPiera e agende uma consulta com nossos especialistas em São Paulo.">
 
-  <!-- Fonts: DM Serif Display + DM Sans -->
+  <!-- Resource hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <link rel="preconnect" href="https://unpkg.com">
-  <link rel="dns-prefetch" href="https://unpkg.com">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
+  <!-- Preload do hero image (LCP) -->
+  <link rel="preload" as="image" href="/.netlify/images?url=/images/especialidades-hero-final.png&w=1200&q=80" fetchpriority="high">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+  <!-- Phosphor Icons (cherry-pick: regular + fill apenas) -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
 
   <link rel="stylesheet" href="/especialidades/style.css">
-  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
 </head>
 <body>
 
@@ -46,51 +50,356 @@
 
     <!-- ============================================================
          SECTION 1 — HERO
-         Archetype: Split Vertical (50/50)
-         Constraints: Overlap Badge "25" + Counter Animation + Grain + Fade Left
+         Arquétipo: Split com Overlap (60/40)
+         Constraints: Gradient Mesh (Cor) + Image Gradient (Mídia)
+                     + Headline Gradient (Tipo) + Card Badge "25" (Layout)
          ============================================================ -->
     <section class="esp-hero" aria-label="Especialidades veterinárias VetPiera">
 
-      <!-- Left side: copy on dark background -->
-      <div class="esp-hero__left">
-        <span class="esp-hero__eyebrow" style="--delay: 0.05s">Clínica de Especialidades</span>
-        <h1 class="esp-hero__headline" style="--delay: 0.2s">
-          25 especialidades veterinárias.<br>
-          Um cuidado feito <em class="esp-hero__em">sob medida</em><br>
-          para o seu animal.
-        </h1>
-        <p class="esp-hero__sub" style="--delay: 0.38s">
-          Da neurologia à reabilitação — contamos com especialistas de ponta para diagnosticar, tratar e cuidar com excelência em cada área da medicina veterinária.
-        </p>
-        <div class="esp-hero__actions" style="--delay: 0.55s">
-          <a href="#contato" class="btn btn--accent">Agendar uma consulta →</a>
-          <a href="#especialidades-lista" class="btn btn--outline-pale">Ver especialidades</a>
+      <!-- Mesh gradient backdrop -->
+      <div class="esp-hero__bg" aria-hidden="true">
+        <div class="esp-hero__bg-orb esp-hero__bg-orb--1"></div>
+        <div class="esp-hero__bg-orb esp-hero__bg-orb--2"></div>
+        <div class="esp-hero__bg-orb esp-hero__bg-orb--3"></div>
+      </div>
+
+      <div class="esp-hero__container">
+
+        <!-- Copy panel 60% -->
+        <div class="esp-hero__copy">
+          <span class="esp-hero__eyebrow">
+            <span class="esp-hero__eyebrow-dot"></span>
+            Clínica de Especialidades · Tatuapé, SP
+          </span>
+          <h1 class="esp-hero__headline">
+            <span class="esp-hero__em">25 especialidades</span><br>
+            veterinárias para um cuidado feito sob medida.
+          </h1>
+          <p class="esp-hero__sub">
+            Da neurologia à reabilitação — equipe de especialistas para diagnosticar, tratar e cuidar com excelência em cada área da medicina veterinária.
+          </p>
+          <div class="esp-hero__actions">
+            <a href="#contato" class="btn btn--primary esp-hero__btn-primary">
+              <span>Agendar uma consulta</span>
+              <i class="ph ph-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="#especialidades-lista" class="esp-hero__link">
+              Ver todas as especialidades
+              <i class="ph ph-arrow-down" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <!-- Trust strip -->
+          <div class="esp-hero__trust" aria-label="Diferenciais rápidos">
+            <div class="esp-hero__trust-item">
+              <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
+              <span>Diagnóstico preciso</span>
+            </div>
+            <div class="esp-hero__trust-item">
+              <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
+              <span>Tratamento personalizado</span>
+            </div>
+            <div class="esp-hero__trust-item">
+              <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
+              <span>Acompanhamento contínuo</span>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Right side: photo with grain overlay -->
-      <div class="esp-hero__right" aria-hidden="true">
-        <div class="esp-hero__photo" style="background-image: url('/.netlify/images?url=/images/especialidades-hero-final.png&w=1200&q=80');" fetchpriority="high"></div>
-        <div class="esp-hero__grain"></div>
-      </div>
+        <!-- Media panel 40% -->
+        <div class="esp-hero__media" aria-hidden="true">
+          <div class="esp-hero__photo-wrap">
+            <div class="esp-hero__photo" role="img" aria-label="Atendimento na Clínica de Especialidades" fetchpriority="high"></div>
+            <div class="esp-hero__photo-overlay"></div>
+          </div>
 
-      <!-- Badge "25" — overlaps the vertical dividing seam -->
-      <div class="esp-hero__badge" aria-label="25 especialidades veterinárias">
-        <div class="esp-hero__badge-inner">
-          <span class="esp-hero__badge-num" id="espBadgeCounter" aria-live="polite">0</span>
-          <div class="esp-hero__badge-labels">
-            <span class="esp-hero__badge-l1">especialidades</span>
-            <span class="esp-hero__badge-l2">veterinárias</span>
+          <!-- Card "25" sangrando -->
+          <div class="esp-hero__card-stamp" aria-hidden="true">
+            <span class="esp-hero__card-num" id="espBadgeCounter">25</span>
+            <span class="esp-hero__card-label">especialidades<br>veterinárias</span>
+          </div>
+
+          <!-- Tag agendamento -->
+          <div class="esp-hero__tag" aria-hidden="true">
+            <i class="ph-fill ph-calendar-check"></i>
+            <span>Agendamento rápido</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 2 — STATS BAR
+         Arquétipo: Type Hero / Editorial
+         Constraints: Color Blocking + Counter Animation + Stagger
+         ============================================================ -->
+    <section class="esp-stats" aria-label="Números da Clínica de Especialidades">
+      <div class="esp-stats__bg" aria-hidden="true"></div>
+
+      <div class="esp-stats__container container">
+        <header class="esp-stats__intro">
+          <span class="esp-stats__eyebrow">Especialidades em números</span>
+          <h2 class="esp-stats__title">Equipe completa para<br>cada tipo de cuidado.</h2>
+        </header>
+
+        <div class="esp-stats__grid">
+          <div class="esp-stats__item" style="--stat-i: 0">
+            <div class="esp-stats__num-wrap">
+              <span class="esp-stats__num" data-count-to="25">25</span>
+            </div>
+            <div class="esp-stats__label-wrap">
+              <span class="esp-stats__label-eyebrow">Atuação</span>
+              <p class="esp-stats__label">Áreas<br>especializadas</p>
+            </div>
+          </div>
+
+          <div class="esp-stats__item" style="--stat-i: 1">
+            <div class="esp-stats__num-wrap">
+              <span class="esp-stats__num" data-count-to="13">13</span>
+              <span class="esp-stats__plus">+</span>
+            </div>
+            <div class="esp-stats__label-wrap">
+              <span class="esp-stats__label-eyebrow">Equipe</span>
+              <p class="esp-stats__label">Veterinários<br>especialistas</p>
+            </div>
+          </div>
+
+          <div class="esp-stats__item" style="--stat-i: 2">
+            <div class="esp-stats__num-wrap">
+              <span class="esp-stats__num" data-count-to="22">22</span>
+              <span class="esp-stats__plus">+</span>
+            </div>
+            <div class="esp-stats__label-wrap">
+              <span class="esp-stats__label-eyebrow">Tempo</span>
+              <p class="esp-stats__label">Anos de<br>experiência</p>
+            </div>
+          </div>
+
+          <div class="esp-stats__item" style="--stat-i: 3">
+            <div class="esp-stats__num-wrap">
+              <span class="esp-stats__num esp-stats__num--text">100%</span>
+            </div>
+            <div class="esp-stats__label-wrap">
+              <span class="esp-stats__label-eyebrow">Cuidado</span>
+              <p class="esp-stats__label">Atendimento<br>personalizado</p>
+            </div>
           </div>
         </div>
       </div>
-
     </section>
 
 
     <!-- ============================================================
-         SECTION 2 — ESPECIALISTAS EM DESTAQUE
-         Archetype: Split com Hover Reveal (glassmorphism bio overlay)
+         SECTION 3 — QUEM SOMOS / SOBRE AS ESPECIALIDADES
+         Arquétipo: Split Alternado com foto à esquerda
+         ============================================================ -->
+    <section class="esp-about" id="quem-somos" aria-label="Sobre as Especialidades">
+      <div class="container esp-about__grid">
+        <div class="esp-about__visual">
+          <div class="esp-about__img-wrap">
+            <img src="/.netlify/images?url=/images/diretor-ryan.jpg&w=800&q=80" alt="Equipe diretora da Clínica de Especialidades Piera" class="esp-about__img" loading="lazy" width="800" height="800">
+            <div class="esp-about__img-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="esp-about__badge" aria-hidden="true">
+            <span class="esp-about__badge-num">13</span>
+            <span class="esp-about__badge-plus">+</span>
+            <span class="esp-about__badge-text">especialistas<br>na equipe</span>
+          </div>
+        </div>
+        <div class="esp-about__content">
+          <span class="esp-about__pre">Cuidado especializado</span>
+          <h2 class="esp-about__title">Cada animal tem uma história.<br><span class="esp-about__title-grad">Cada caso, um especialista.</span></h2>
+          <p class="esp-about__text">
+            Da neurologia à fisioterapia, da oncologia à dermatologia — reunimos médicos veterinários com formação profunda em cada área da medicina animal. Aqui, seu pet é atendido por quem entende exatamente do que ele precisa.
+          </p>
+          <p class="esp-about__text">
+            Mais de 25 especialidades sob o mesmo teto. Diagnóstico preciso, tratamento personalizado, acompanhamento contínuo. Cuidado completo, do primeiro exame ao último acompanhamento.
+          </p>
+          <a href="#especialidades-lista" class="esp-about__cta">Ver lista completa de especialidades →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4 — GRID DE ESPECIALIDADES
+         Arquétipo: Editorial Featured List + Tag Cloud
+         ============================================================ -->
+    <section class="esp-grid" id="especialidades-lista" aria-label="Lista de especialidades veterinárias">
+      <div class="esp-grid__container">
+
+        <header class="esp-grid__header">
+          <span class="esp-grid__pre">Nossas áreas</span>
+          <h2 class="esp-grid__title">25 especialidades<br><span class="esp-grid__title-grad">em um só lugar.</span></h2>
+          <p class="esp-grid__sub">Seja qual for a necessidade do seu animal, temos o profissional certo aqui. Cada especialidade conta com protocolos atualizados e tecnologia diagnóstica própria.</p>
+        </header>
+
+        <div class="esp-grid__featured" aria-label="Especialidades em destaque">
+          <div class="esp-grid__item" tabindex="0" role="button" aria-label="Neurologia veterinária">
+            <span class="esp-grid__num" aria-hidden="true">1</span>
+            <h3 class="esp-grid__name">Neurologia</h3>
+            <i class="ph ph-brain esp-grid__icon" aria-hidden="true"></i>
+          </div>
+          <div class="esp-grid__item" tabindex="0" role="button" aria-label="Ortopedia veterinária">
+            <span class="esp-grid__num" aria-hidden="true">2</span>
+            <h3 class="esp-grid__name">Ortopedia</h3>
+            <i class="ph ph-bone esp-grid__icon" aria-hidden="true"></i>
+          </div>
+          <div class="esp-grid__item" tabindex="0" role="button" aria-label="Fisioterapia e Reabilitação veterinária">
+            <span class="esp-grid__num" aria-hidden="true">3</span>
+            <h3 class="esp-grid__name">Fisioterapia &amp; Reabilitação</h3>
+            <i class="ph ph-activity esp-grid__icon" aria-hidden="true"></i>
+          </div>
+          <div class="esp-grid__item" tabindex="0" role="button" aria-label="Cardiologia veterinária">
+            <span class="esp-grid__num" aria-hidden="true">4</span>
+            <h3 class="esp-grid__name">Cardiologia</h3>
+            <i class="ph ph-heartbeat esp-grid__icon" aria-hidden="true"></i>
+          </div>
+          <div class="esp-grid__item" tabindex="0" role="button" aria-label="Oncologia veterinária">
+            <span class="esp-grid__num" aria-hidden="true">5</span>
+            <h3 class="esp-grid__name">Oncologia</h3>
+            <i class="ph ph-drop esp-grid__icon" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="esp-grid__other" aria-label="Outras especialidades">
+          <p class="esp-grid__other-label">+ outras especialidades</p>
+          <div class="esp-grid__tags">
+            <span class="esp-grid__tag">Acupuntura</span>
+            <span class="esp-grid__tag">Anestesia</span>
+            <span class="esp-grid__tag">Dermatologia</span>
+            <span class="esp-grid__tag">Endocrinologia</span>
+            <span class="esp-grid__tag">Endoscopia</span>
+            <span class="esp-grid__tag">Eletroencefalograma (EEG)</span>
+            <span class="esp-grid__tag">Medicina Felina</span>
+            <span class="esp-grid__tag">Gastroenterologia</span>
+            <span class="esp-grid__tag">Hematologia</span>
+            <span class="esp-grid__tag">Odontologia</span>
+            <span class="esp-grid__tag">Oftalmologia</span>
+            <span class="esp-grid__tag">Ozonioterapia</span>
+            <span class="esp-grid__tag">Neurocirurgia</span>
+            <span class="esp-grid__tag">Medicina Integrativa</span>
+            <span class="esp-grid__tag">Pneumologia</span>
+            <span class="esp-grid__tag">Nefrologia</span>
+            <span class="esp-grid__tag">Nutrição</span>
+            <span class="esp-grid__tag">Radiologia</span>
+            <span class="esp-grid__tag">Animais Silvestres</span>
+            <span class="esp-grid__tag">Ultrassonografia</span>
+            <span class="esp-grid__tag">Cirurgia Laparoscópica</span>
+            <span class="esp-grid__tag">Terapia Intensiva</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 5 — POR QUE ESCOLHER (Pillars)
+         Arquétipo: Editorial Rows numeradas
+         ============================================================ -->
+    <section class="esp-pillars" aria-label="Por que escolher a Clínica de Especialidades">
+      <div class="esp-pillars__container">
+        <header class="esp-pillars__header">
+          <span class="esp-pillars__pre">Diferenciais</span>
+          <h2 class="esp-pillars__title">Por que escolher a<br><span class="esp-pillars__title-grad">Clínica de Especialidades Piera.</span></h2>
+        </header>
+
+        <div class="esp-pillars__list">
+          <div class="esp-pillars__row" style="--row-i: 0">
+            <span class="esp-pillars__num" aria-hidden="true">01</span>
+            <div class="esp-pillars__content">
+              <div class="esp-pillars__tag">
+                <i class="ph ph-target" aria-hidden="true"></i>
+                <span>Diagnóstico</span>
+              </div>
+              <h3 class="esp-pillars__name">Diagnóstico preciso</h3>
+              <p class="esp-pillars__text">Equipamentos de imagem de última geração + análises laboratoriais + segundas opiniões entre especialistas. Diagnóstico sem chute.</p>
+            </div>
+          </div>
+
+          <div class="esp-pillars__row" style="--row-i: 1">
+            <span class="esp-pillars__num" aria-hidden="true">02</span>
+            <div class="esp-pillars__content">
+              <div class="esp-pillars__tag">
+                <i class="ph ph-puzzle-piece" aria-hidden="true"></i>
+                <span>Tratamento</span>
+              </div>
+              <h3 class="esp-pillars__name">Tratamento personalizado</h3>
+              <p class="esp-pillars__text">Cada animal recebe protocolo individualizado. Histórico, raça, idade e perfil são considerados em cada decisão clínica.</p>
+            </div>
+          </div>
+
+          <div class="esp-pillars__row" style="--row-i: 2">
+            <span class="esp-pillars__num" aria-hidden="true">03</span>
+            <div class="esp-pillars__content">
+              <div class="esp-pillars__tag">
+                <i class="ph ph-graduation-cap" aria-hidden="true"></i>
+                <span>Equipe</span>
+              </div>
+              <h3 class="esp-pillars__name">Especialistas reais</h3>
+              <p class="esp-pillars__text">13+ veterinários com residência, mestrado ou doutorado em suas áreas. Aprendizado contínuo é exigência da casa.</p>
+            </div>
+          </div>
+
+          <div class="esp-pillars__row" style="--row-i: 3">
+            <span class="esp-pillars__num" aria-hidden="true">04</span>
+            <div class="esp-pillars__content">
+              <div class="esp-pillars__tag">
+                <i class="ph ph-handshake" aria-hidden="true"></i>
+                <span>Cuidado</span>
+              </div>
+              <h3 class="esp-pillars__name">Acompanhamento contínuo</h3>
+              <p class="esp-pillars__text">Atendimento que não termina no consultório. Mantemos contato com tutores entre consultas e ajustamos o tratamento conforme evolução.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6 — NOSSO ESPAÇO (Galeria/Estrutura)
+         ============================================================ -->
+    <section class="structure" aria-label="Nossa estrutura física">
+      <div class="structure__header container">
+        <span class="structure__pre">Nosso espaço</span>
+        <h2 class="structure__title">Ambientes pensados para<br><span class="structure__title-grad">o cuidado especializado.</span></h2>
+        <p class="structure__sub">Consultórios modernos, sala de fisioterapia equipada, recepção acolhedora — estrutura inteira pensada para o bem-estar do animal e do tutor.</p>
+      </div>
+
+      <div class="structure__grid">
+        <div class="structure__item structure__item--lg">
+          <img src="/.netlify/images?url=/images/estrutura-recepcao.jpg&w=800&q=80" alt="Recepção principal da Unidade de Especialidades" class="structure__img" loading="lazy" width="700" height="467">
+          <div class="structure__caption">Recepção Acolhedora</div>
+        </div>
+        <div class="structure__item structure__item--sm">
+          <img src="/.netlify/images?url=/images/estrutura-consultorio-01.jpg&w=600&q=80" alt="Consultório veterinário moderno" class="structure__img" loading="lazy" width="500" height="333">
+          <div class="structure__caption">Consultórios Humanizados</div>
+        </div>
+        <div class="structure__item structure__item--sm">
+          <img src="/.netlify/images?url=/images/estrutura-fisio-01.jpg&w=600&q=80" alt="Sala de fisioterapia veterinária" class="structure__img" loading="lazy" width="500" height="333">
+          <div class="structure__caption">Fisioterapia &amp; Reabilitação</div>
+        </div>
+        <div class="structure__item structure__item--md">
+          <img src="/.netlify/images?url=/images/estrutura-fisio-02.jpg&w=600&q=80" alt="Equipamentos de reabilitação" class="structure__img" loading="lazy" width="500" height="500">
+          <div class="structure__caption">Reabilitação Avançada</div>
+        </div>
+        <div class="structure__item structure__item--lg">
+          <img src="/.netlify/images?url=/images/estrutura-cirurgico.jpg&w=800&q=80" alt="Centro cirúrgico de alta tecnologia" class="structure__img" loading="lazy" width="700" height="467">
+          <div class="structure__caption">Centro Cirúrgico Completo</div>
+        </div>
+        <div class="structure__item structure__item--sm">
+          <img src="/.netlify/images?url=/images/estrutura-consultorio-02.jpg&w=600&q=80" alt="Consultório de especialidades" class="structure__img" loading="lazy" width="500" height="333">
+          <div class="structure__caption">Atendimento Especializado</div>
+        </div>
+        <div class="structure__item structure__item--sm">
+          <img src="/.netlify/images?url=/images/estrutura-recuperacao.jpg&w=600&q=80" alt="Sala de recuperação pós-cirúrgica" class="structure__img" loading="lazy" width="500" height="333">
+          <div class="structure__caption">Recuperação Assistida</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 7 — ESPECIALISTAS EM DESTAQUE
+         Arquétipo: Photo Cards com Hover Reveal (glassmorphism bio)
          ============================================================ -->
     <section class="specialists" aria-label="Especialistas em destaque">
       <div class="specialists__container">
@@ -157,143 +466,7 @@
 
 
     <!-- ============================================================
-         SECTION: NOSSA ESTRUTURA
-         Showcasing the premium clinical environment
-         ============================================================ -->
-    <section class="structure" aria-label="Nossa estrutura física">
-      <div class="structure__header container">
-        <h2 class="structure__title">Nossa estrutura.</h2>
-        <p class="structure__sub">Ambientes planejados para o conforto do seu pet e a precisão do diagnóstico.</p>
-      </div>
-
-      <div class="structure__grid">
-        <!-- Item 1: Recepção (Large) -->
-        <div class="structure__item structure__item--lg">
-          <img src="/.netlify/images?url=/images/estrutura-recepcao.jpg&w=800&q=80" alt="Recepção principal da Unidade de Especialidades" class="structure__img" loading="lazy">
-          <div class="structure__caption">Recepção Acolhedora</div>
-        </div>
-
-        <!-- Item 2: Consultório 1 (Small) -->
-        <div class="structure__item structure__item--sm">
-          <img src="/.netlify/images?url=/images/estrutura-consultorio-01.jpg&w=600&q=80" alt="Consultório veterinário moderno" class="structure__img" loading="lazy">
-          <div class="structure__caption">Consultórios Humanizados</div>
-        </div>
-
-        <!-- Item 3: Fisioterapia (Small) -->
-        <div class="structure__item structure__item--sm">
-          <img src="/.netlify/images?url=/images/estrutura-fisio-01.jpg&w=600&q=80" alt="Sala de fisioterapia veterinária" class="structure__img" loading="lazy">
-          <div class="structure__caption">Fisioterapia & Reabilitação</div>
-        </div>
-
-        <!-- Item 4: Fisioterapia 2 (Medium/Tall) -->
-        <div class="structure__item structure__item--md">
-          <img src="/.netlify/images?url=/images/estrutura-fisio-02.jpg&w=600&q=80" alt="Equipamentos de reabilitação" class="structure__img" loading="lazy">
-          <div class="structure__caption">Reabilitação Avançada</div>
-        </div>
-
-        <!-- Item 5: Centro Cirúrgico (Large) -->
-        <div class="structure__item structure__item--lg">
-          <img src="/.netlify/images?url=/images/estrutura-cirurgico.jpg&w=800&q=80" alt="Centro cirúrgico de alta tecnologia" class="structure__img" loading="lazy">
-          <div class="structure__caption">Centro Cirúrgico Completo</div>
-        </div>
-
-        <!-- Item 6: Consultório 2 (Small) -->
-        <div class="structure__item structure__item--sm">
-          <img src="/.netlify/images?url=/images/estrutura-consultorio-02.jpg&w=600&q=80" alt="Consultório de especialidades" class="structure__img" loading="lazy">
-          <div class="structure__caption">Atendimento Especializado</div>
-        </div>
-
-        <!-- Item 7: Recuperação (Small) -->
-        <div class="structure__item structure__item--sm">
-          <img src="/.netlify/images?url=/images/estrutura-recuperacao.jpg&w=600&q=80" alt="Sala de recuperação pós-cirúrgica" class="structure__img" loading="lazy">
-          <div class="structure__caption">Recuperação Assistida</div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ============================================================
-         SECTION 3 — GRID DE ESPECIALIDADES
-         Archetype: Editorial Vertical List (featured) + Tag Cloud (others)
-         ============================================================ -->
-    <section class="esp-grid" id="especialidades-lista" aria-label="Lista de especialidades veterinárias">
-      <div class="esp-grid__container">
-
-        <header class="esp-grid__header">
-          <h2 class="esp-grid__title">25 especialidades<br>em um só lugar.</h2>
-          <p class="esp-grid__sub">Seja qual for a necessidade do seu animal, temos o profissional certo aqui. Cada especialidade conta com protocolos atualizados e tecnologia diagnóstica própria.</p>
-        </header>
-
-        <!-- Featured 5 — vertical editorial list -->
-        <div class="esp-grid__featured" aria-label="Especialidades em destaque">
-
-          <div class="esp-grid__item" tabindex="0" role="button" aria-label="Neurologia veterinária">
-            <span class="esp-grid__num" aria-hidden="true">1</span>
-            <h3 class="esp-grid__name">Neurologia</h3>
-            <i class="ph ph-brain esp-grid__icon" aria-hidden="true"></i>
-          </div>
-
-          <div class="esp-grid__item" tabindex="0" role="button" aria-label="Ortopedia veterinária">
-            <span class="esp-grid__num" aria-hidden="true">2</span>
-            <h3 class="esp-grid__name">Ortopedia</h3>
-            <i class="ph ph-bone esp-grid__icon" aria-hidden="true"></i>
-          </div>
-
-          <div class="esp-grid__item" tabindex="0" role="button" aria-label="Fisioterapia e Reabilitação veterinária">
-            <span class="esp-grid__num" aria-hidden="true">3</span>
-            <h3 class="esp-grid__name">Fisioterapia &amp; Reabilitação</h3>
-            <i class="ph ph-activity esp-grid__icon" aria-hidden="true"></i>
-          </div>
-
-          <div class="esp-grid__item" tabindex="0" role="button" aria-label="Cardiologia veterinária">
-            <span class="esp-grid__num" aria-hidden="true">4</span>
-            <h3 class="esp-grid__name">Cardiologia</h3>
-            <i class="ph ph-heartbeat esp-grid__icon" aria-hidden="true"></i>
-          </div>
-
-          <div class="esp-grid__item" tabindex="0" role="button" aria-label="Oncologia veterinária">
-            <span class="esp-grid__num" aria-hidden="true">5</span>
-            <h3 class="esp-grid__name">Oncologia</h3>
-            <i class="ph ph-drop esp-grid__icon" aria-hidden="true"></i>
-          </div>
-
-        </div>
-
-        <!-- All other specialties — tag cloud -->
-        <div class="esp-grid__other" aria-label="Outras especialidades">
-          <p class="esp-grid__other-label">+ outras especialidades</p>
-          <div class="esp-grid__tags">
-            <span class="esp-grid__tag">Acupuntura</span>
-            <span class="esp-grid__tag">Anestesia</span>
-            <span class="esp-grid__tag">Dermatologia</span>
-            <span class="esp-grid__tag">Endocrinologia</span>
-            <span class="esp-grid__tag">Endoscopia</span>
-            <span class="esp-grid__tag">Eletroencefalograma (EEG)</span>
-            <span class="esp-grid__tag">Medicina Felina</span>
-            <span class="esp-grid__tag">Gastroenterologia</span>
-            <span class="esp-grid__tag">Hematologia</span>
-            <span class="esp-grid__tag">Odontologia</span>
-            <span class="esp-grid__tag">Oftalmologia</span>
-            <span class="esp-grid__tag">Ozonioterapia</span>
-            <span class="esp-grid__tag">Neurocirurgia</span>
-            <span class="esp-grid__tag">Medicina Integrativa</span>
-            <span class="esp-grid__tag">Pneumologia</span>
-            <span class="esp-grid__tag">Nefrologia</span>
-            <span class="esp-grid__tag">Nutrição</span>
-            <span class="esp-grid__tag">Radiologia</span>
-            <span class="esp-grid__tag">Animais Silvestres</span>
-            <span class="esp-grid__tag">Ultrassonografia</span>
-            <span class="esp-grid__tag">Cirurgia Laparoscópica</span>
-            <span class="esp-grid__tag">Terapia Intensiva</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ============================================================
-         SECTION 4 — PROCESSO ("Como Funciona")
+         SECTION 8 — PROCESSO ("Como Funciona")
          Archetype: Poster com números gigantes (outline)
          Constraints: View Timeline Clip Reveal + Stagger
          ============================================================ -->
@@ -343,7 +516,52 @@
 
 
   <!-- ============================================================
-       SECTION 5 — CONTATO ("Agende agora")
+       SECTION 9 — INSTAGRAM
+       Arquétipo: Gallery Wall (grid 6 tiles)
+       ============================================================ -->
+  <section class="esp-instagram" aria-label="Instagram da Clínica de Especialidades">
+    <div class="esp-instagram__container container">
+      <header class="esp-instagram__header">
+        <p class="esp-instagram__pre">@vetpiera</p>
+        <h2 class="esp-instagram__title">Acompanhe nosso<br><span class="esp-instagram__title-grad">dia a dia no Instagram.</span></h2>
+        <a href="https://instagram.com/vetpiera" class="esp-instagram__cta" target="_blank" rel="noopener">
+          <i class="ph ph-instagram-logo" aria-hidden="true"></i>
+          <span>Seguir no Instagram</span>
+        </a>
+      </header>
+
+      <!-- Para feed real: substituir .esp-instagram__grid pelo iframe do widget LightWidget/Elfsight -->
+      <div class="esp-instagram__grid">
+        <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="esp-instagram__tile" aria-label="Post no Instagram">
+          <img src="/.netlify/images?url=/images/dr-ryan.jpg&w=400&q=70" alt="" loading="lazy" width="300" height="300">
+          <span class="esp-instagram__tile-overlay"><i class="ph ph-instagram-logo"></i></span>
+        </a>
+        <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="esp-instagram__tile" aria-label="Post no Instagram">
+          <img src="/.netlify/images?url=/images/dra-diana.jpg&w=400&q=70" alt="" loading="lazy" width="300" height="300">
+          <span class="esp-instagram__tile-overlay"><i class="ph ph-instagram-logo"></i></span>
+        </a>
+        <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="esp-instagram__tile" aria-label="Post no Instagram">
+          <img src="/.netlify/images?url=/images/estrutura-fisio-01.jpg&w=400&q=70" alt="" loading="lazy" width="300" height="300">
+          <span class="esp-instagram__tile-overlay"><i class="ph ph-instagram-logo"></i></span>
+        </a>
+        <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="esp-instagram__tile" aria-label="Post no Instagram">
+          <img src="/.netlify/images?url=/images/estrutura-fisio-02.jpg&w=400&q=70" alt="" loading="lazy" width="300" height="300">
+          <span class="esp-instagram__tile-overlay"><i class="ph ph-instagram-logo"></i></span>
+        </a>
+        <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="esp-instagram__tile" aria-label="Post no Instagram">
+          <img src="/.netlify/images?url=/images/cachorro-caramelo.jpg&w=400&q=70" alt="" loading="lazy" width="300" height="300">
+          <span class="esp-instagram__tile-overlay"><i class="ph ph-instagram-logo"></i></span>
+        </a>
+        <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="esp-instagram__tile" aria-label="Post no Instagram">
+          <img src="/.netlify/images?url=/images/gato-brasil-premium.jpg&w=400&q=70" alt="" loading="lazy" width="300" height="300">
+          <span class="esp-instagram__tile-overlay"><i class="ph ph-instagram-logo"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 10 — CONTATO ("Agende agora")
        Archetype: Split Assimétrico (45/55) Dark
        ============================================================ -->
   <section class="esp-contact" id="contato" aria-label="Agende sua consulta">

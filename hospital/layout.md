@@ -1,1872 +1,363 @@
-# VetPiera — Hospital Page Layout Specification
+# Layout — Hospital 24h (VetPiera)
 
-**File:** `hospital/layout.md`
-**Last updated:** 2026-03-13
-**Designer:** Art Director (Claude)
-**Status:** Ready for development
-
-> This file assumes Global Tokens defined in `home/layout.md` are already applied via the shared CSS.
-> All CSS tokens (colors, fonts, spacing, radius, easing) are inherited from `:root`.
+> Especificação exaustiva das 10 seções da página Hospital, na ordem do Petderma. Hero + Stats já implementados como demo aprovada. Compartilha tokens da home — ver `home/layout.md` para tabela completa.
 
 ---
 
-## Page-Level Notes
+## Design Tokens
 
-- URL: `/hospital`
-- Title: `Hospital Veterinário 24h | VetPiera`
-- Meta description: `Emergência veterinária 24 horas em São Paulo. UTI veterinária, cirurgia e internação com equipe especializada. VetPiera Hospital.`
-- Nav state: highlight "Hospital" link in navigation
+Mesmos da home — DM Serif Display + DM Sans, paleta verde escuro #1B4D3E + dourado #C9A84C, mesh gradient backgrounds. Ver `home/layout.md` para detalhes.
 
----
-
-## Section 1 — Hero
-
-**Archetype:** Hero Dominante (100vh full-bleed)
-**Constraints:** Imagem Fullbleed + Mouse Spotlight + Counter Animation ("24h" stamp) + Grain Overlay
+**Proposta diferencial do hospital:** urgência + plantão. Sinalização visual com:
+- Dot **vermelho** pulsante no eyebrow (vs. dourado da home)
+- Live indicator **verde** pulsante "Aberto agora"
+- Stamp dourado **"24h"** com ring branco
 
 ---
 
-### HTML Structure
+## Seção 1: HERO
 
-```html
-<section class="hosp-hero" aria-label="Hospital Veterinário 24 horas">
-  <!-- Mouse spotlight layer (JS-driven) -->
-  <div class="hosp-hero__spotlight" id="heroSpotlight" aria-hidden="true"></div>
-  <!-- Grain overlay -->
-  <div class="hosp-hero__grain" aria-hidden="true"></div>
+### Arquétipo e Constraints
+- **Arquétipo:** Split com Overlap (60/40)
+- **Constraints:** Gradient Mesh (Cor) · Image Gradient (Mídia) · Pulse Loop vermelho+verde (Movimento) · Headline com Gradiente (Tipo) · Card Bleed "24h" (Layout)
+- **Justificativa:** Mantém consistência com home, mas adiciona elementos de urgência (pulses vermelho e verde) específicos do hospital.
 
-  <!-- Giant "24h" stamp (decorative, background) -->
-  <div class="hosp-hero__stamp" aria-hidden="true">24h</div>
+### Conteúdo
+- **Eyebrow pill (dot vermelho `#d94343` pulse):** `Plantão Veterinário · Cidade Líder, SP`
+- **Headline:** `Emergência veterinária [24 horas.] Aqui, seu pet nunca fica sem atendimento.` — "24 horas." em gradient italic
+- **Sub:** `Hospital completo com UTI, centro cirúrgico, internação e 13 especialistas — prontos a qualquer hora do dia ou da noite.`
+- **CTA primário:** `Falar agora no WhatsApp` + `ph-fill ph-whatsapp-logo` → `wa.me/5511963326376`
+- **CTA secundário (telefone com ícone circular):**
+  - Label: `Plantão direto`
+  - Número: `(11) 2746-7292`
+  - Link: `tel:+551127467292`
+- **Trust strip:** UTI veterinária · Centro cirúrgico · Diagnóstico por imagem
+- **Card "24h" dourado** (bottom-right da foto, rotacionado +4deg, ring branco)
+- **Badge "Aberto agora"** (top-left da foto, dot verde `#1fae6a` pulsante):
+  - Title: `Aberto agora`
+  - Sub: `Plantão · 7 dias`
 
-  <!-- Centered content -->
-  <div class="hosp-hero__content">
-    <span class="hosp-hero__eyebrow">Hospital Veterinário · São Paulo</span>
-    <h1 class="hosp-hero__headline">
-      Emergência veterinária<br>
-      <em class="hosp-hero__em">24 horas.</em><br>
-      Aqui, seu pet nunca<br>fica sem atendimento.
-    </h1>
-    <p class="hosp-hero__sub">Equipe médica de plantão, UTI equipada e centro cirúrgico disponíveis ininterruptamente para cuidar do que mais importa.</p>
-    <div class="hosp-hero__actions">
-      <a href="https://wa.me/5511991334520" class="btn btn--accent" target="_blank" rel="noopener">
-        <i class="ph ph-whatsapp-logo" aria-hidden="true"></i> WhatsApp →
-      </a>
-      <a href="tel:+551123733144" class="btn btn--ghost">
-        <i class="ph ph-phone" aria-hidden="true"></i> (11) 2373-3144
-      </a>
-    </div>
-  </div>
+### Layout
+- Container 1320px, padding `clamp(120px, 14vw, 160px) var(--pad-x) clamp(80px, 10vw, 120px)`
+- Grid `60fr 40fr`, gap `clamp(40px, 6vw, 80px)`, align center
+- min-height 100svh
+- Photo-wrap rotate -1.5deg → 0 hover
+- Stamp 24h: position absolute `bottom: -28px; right: -24px`, padding `20px 28px 18px`, radius 18px (card retangular)
+- Badge "Aberto agora": `top: 24px; left: -32px`, glass pill radius 999px
 
-  <!-- Scroll cue -->
-  <div class="hosp-hero__scroll-cue" aria-hidden="true">
-    <span class="hosp-hero__scroll-line"></span>
-  </div>
-</section>
-```
+### Tipografia
+- Headline: DM Serif Display 400 · `clamp(2.5rem, 5.5vw, 4.5rem)` · line-height 1.04 · letter-spacing -0.025em
+- Em: gradient verde→dourado italic (igual home)
+- Phone label: DM Sans 500 · 0.75rem · uppercase · 0.08em · muted
+- Phone num: DM Sans 700 · 1.0625rem
+- Stamp num: DM Serif Display · `clamp(2.75rem, 5vw, 4rem)` · white
+- Stamp unit: italic, `clamp(1.5rem, 2.5vw, 2.25rem)` · white · padding-bottom 4px
 
----
+### Cores
+- Mesh idêntico à home, com Orb 1 mais escuro: radial verde dark 28% top-left (vs 22% na home)
+- Dot eyebrow vermelho `#d94343`, pulse 1.8s (mais rápido = sensação de plantão ativo)
+- Stamp bg: `linear-gradient(135deg, #d4ab3a 0%, #C9A84C 50%, #b8922e 100%)` · text white !important
+- Stamp box-shadow: `0 24px 56px -12px rgba(201,168,76,.7), 0 0 0 4px white, 0 0 0 5px rgba(201,168,76,.4)` (ring duplo)
+- Badge dot verde `#1fae6a`, pulse 1.6s
 
-### Layout CSS
+### Animações
+- Orbs drift, hero rotate hover, photo parallax — igual home
+- Pulse vermelho eyebrow: `hospHeroPulse 1.8s` — box-shadow 0→10px
+- Pulse verde live: `hospLivePulse 1.6s` — box-shadow 0→12px
 
-```css
-.hosp-hero {
-  position: relative;
-  width: 100%;
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-
-  /* Fullbleed background */
-  background-image: url('/images/hospital-hero.jpg');
-  background-size: cover;
-  background-position: center center;
-  /* Fallback gradient if image absent */
-  background-color: #0a1e16;
-}
-
-/* Dark gradient overlay on photo */
-.hosp-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(10, 30, 22, 0.88) 0%,
-    rgba(15, 45, 36, 0.75) 60%,
-    rgba(8, 26, 22, 0.82) 100%
-  );
-  z-index: 1;
-}
-
-/* ── Mouse Spotlight ── */
-.hosp-hero__spotlight {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    400px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(27, 77, 62, 0.15),
-    transparent 60%
-  );
-  z-index: 2;
-  pointer-events: none;
-  transition: background 0.05s linear;
-}
-
-/* ── Grain Overlay ── */
-.hosp-hero__grain {
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 256px 256px;
-  opacity: 0.04;
-  mix-blend-mode: overlay;
-  z-index: 3;
-  pointer-events: none;
-}
-
-/* ── Giant "24h" stamp ── */
-.hosp-hero__stamp {
-  position: absolute;
-  bottom: clamp(32px, 5vw, 64px);
-  right: clamp(32px, 5vw, 64px);
-  font-family: var(--font-display);
-  font-size: clamp(6rem, 16vw, 14rem);
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.05);
-  letter-spacing: -0.04em;
-  user-select: none;
-  pointer-events: none;
-  z-index: 2;
-
-  /* Initial state for animation */
-  opacity: 0;
-  transform: scale(0.7);
-  animation: stampReveal 1000ms var(--ease-out-expo) 800ms forwards;
-}
-
-@keyframes stampReveal {
-  from {
-    opacity: 0;
-    transform: scale(0.7);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* ── Content ── */
-.hosp-hero__content {
-  position: relative;
-  z-index: 4;
-  max-width: var(--container);
-  width: 100%;
-  margin-inline: auto;
-  padding-inline: var(--pad-x);
-  padding-block: clamp(120px, 16vw, 180px) clamp(80px, 10vw, 120px);
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-/* ── Eyebrow ── */
-.hosp-hero__eyebrow {
-  display: inline-block;
-  font-family: var(--font-body);
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--clr-accent);
-  margin-bottom: clamp(16px, 2.5vw, 24px);
-
-  opacity: 0;
-  transform: translateY(16px);
-  animation: fadeUp 550ms var(--ease-out-expo) 100ms forwards;
-}
-
-/* ── Headline ── */
-.hosp-hero__headline {
-  font-family: var(--font-display);
-  font-size: var(--fs-hero);
-  line-height: 1.08;
-  color: #FFFFFF;
-  letter-spacing: -0.025em;
-  margin: 0 0 clamp(20px, 3vw, 32px);
-  max-width: 700px;
-
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 700ms var(--ease-out-expo) 250ms forwards;
-}
-
-/* Gold italic emphasis */
-.hosp-hero__em {
-  color: var(--clr-accent);
-  font-style: italic;
-}
-
-/* ── Sub ── */
-.hosp-hero__sub {
-  font-family: var(--font-body);
-  font-size: var(--fs-body);
-  color: rgba(255, 255, 255, 0.72);
-  line-height: 1.65;
-  max-width: 540px;
-  margin: 0 0 clamp(32px, 4vw, 48px);
-
-  opacity: 0;
-  transform: translateY(16px);
-  animation: fadeUp 650ms var(--ease-out-expo) 400ms forwards;
-}
-
-/* ── CTAs ── */
-.hosp-hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-
-  opacity: 0;
-  transform: translateY(16px);
-  animation: fadeUp 550ms var(--ease-out-expo) 550ms forwards;
-}
-
-/* ── Shared fadeUp keyframe ── */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(var(--from-y, 16px));
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ── Scroll cue ── */
-.hosp-hero__scroll-cue {
-  position: absolute;
-  bottom: clamp(24px, 4vw, 40px);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 4;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0;
-  animation: fadeIn 600ms ease 1200ms forwards;
-}
-
-.hosp-hero__scroll-line {
-  display: block;
-  width: 1px;
-  height: 48px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
-  animation: scrollPulse 2s ease infinite;
-}
-
-@keyframes scrollPulse {
-  0%   { transform: scaleY(1); opacity: 1; }
-  50%  { transform: scaleY(0.5); opacity: 0.3; }
-  100% { transform: scaleY(1); opacity: 1; }
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-```
+### Responsividade
+- **≤980px:** grid 1 coluna
+- **≤640px:** headline `clamp(2.125rem, 9vw, 2.75rem)` · stamp `bottom: -12px right: -8px` · badge `left: 12px top: 12px`
 
 ---
 
-### Mouse Spotlight JS
+## Seção 2: STATS BAR
 
-```js
-const hero = document.querySelector('.hosp-hero');
-const spotlight = document.getElementById('heroSpotlight');
+### Arquétipo e Constraints
+- **Arquétipo:** Type Hero Editorial (igual home, sufixado `.hosp-stats`)
+- **Constraints:** Color Blocking · Counter · Stagger — idênticos à home
 
-if (hero && spotlight) {
-  hero.addEventListener('mousemove', e => {
-    const rect = hero.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(2);
-    const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(2);
-    spotlight.style.setProperty('--mx', `${x}%`);
-    spotlight.style.setProperty('--my', `${y}%`);
-  });
+### Conteúdo
+- **Eyebrow:** `Hospital em números`
+- **Título:** `Estrutura, equipe e tempo a favor do seu pet.`
+- **Stats:**
+  1. **24h** (italic) · PLANTÃO · "Hospital aberto todos os dias"
+  2. **13+** · EQUIPE · "Veterinários especialistas"
+  3. **12** · UTI · "Vagas de internação intensiva"
+  4. **22+** · TEMPO · "Anos de experiência"
 
-  hero.addEventListener('mouseleave', () => {
-    spotlight.style.setProperty('--mx', '50%');
-    spotlight.style.setProperty('--my', '50%');
-  });
-}
-```
+### Layout / Tipografia / Animações
+Idênticos à home — ver `home/layout.md` seção 2.
 
 ---
 
-### Responsive Breakpoints
+## Seção 3: SOBRE O HOSPITAL
 
-#### < 768px (mobile)
+### Arquétipo e Constraints
+- **Arquétipo:** Split Alternado 50/50 (Texto + Badge / Imagem)
+- **Constraints:** Imagem com Overlay (Mídia) · Badge Overlapping (Layout) · Stagger Reveal (Movimento)
 
-```css
-@media (max-width: 768px) {
-  .hosp-hero__stamp {
-    font-size: clamp(5rem, 22vw, 9rem);
-    bottom: 20px;
-    right: 16px;
-  }
-  .hosp-hero__headline {
-    font-size: clamp(2.25rem, 7.5vw, 3.5rem);
-  }
-  .hosp-hero__actions {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  /* Disable spotlight on touch */
-  .hosp-hero__spotlight {
-    display: none;
-  }
-}
-```
+### Conteúdo
+- **Pre-título:** `Nosso hospital`
+- **Título:** `Tecnologia, equipe e estrutura para os momentos mais difíceis.`
+- **Texto 1:** `O Hospital Veterinário Piera é referência em medicina veterinária de alta complexidade na Grande São Paulo. Estamos abertos 24 horas para acolher emergências, realizar cirurgias e cuidar de cada animal como se fosse da nossa família.`
+- **Texto 2:** `Contamos com UTI veterinária equipada, centro cirúrgico de ponta, internação separada por espécie e isolamento infeccioso. Uma estrutura completa que poucos hospitais oferecem.`
+- **CTA:** `Conheça nossa equipe →` → âncora para `#diferenciais` ou `/quem-somos`
+- **Badge:** `22+ Anos de Experiência`
+- **Imagem:** `/images/hosp-exterior.jpg`
+
+### Layout / Tipografia
+- Container 1200px, grid 2 colunas gap `clamp(48px, 6vw, 80px)`, align center
+- Imagem radius 24px, aspect 4/3
+- Badge sticky position absolute `top: -32px; left: -32px`
+- Idêntico à home seção 3
 
 ---
 
-## Section 2 — Serviços Bento
+## Seção 4: SERVIÇOS (Bento Box assimétrico)
 
-**Archetype:** Bento Box Assimétrico
-**Constraints:** Grid Assimétrico (card grande 2×2 + 3 cards menores) + Hover Flip nos menores + Overlap Elements ("Disponível agora" flutua)
+### Arquétipo e Constraints
+- **Arquétipo:** Bento Box Assimétrico (1 card large 2×2 + 5 cards small com 3D flip)
+- **Constraints:** Live tag "Disponível agora" (Interação) · 3D Flip (Interação) · Image full-bleed no large card (Mídia) · Mixed Sizes (Layout)
+- **Justificativa:** Diferente da home (que tem grid 4 iguais). Hospital tem MAIS serviços para mostrar (6 vs 4) — o assimétrico permite hierarquia.
 
----
+### Conteúdo
+- **Pre-título / Título / Sub:**
+  - "Estrutura completa para cada momento."
+  - "Do pronto-atendimento ao pós-operatório — temos tudo o que seu animal precisa em um único lugar."
 
-### HTML Structure
+- **Card LARGE (2×2): Emergência & UTI** `ph-first-aid-kit`
+  - Live tag "Disponível agora" (dot verde pulsando)
+  - Name: "Pronto-atendimento e cuidados intensivos veterinários."
+  - Desc: "Equipe de plantão 24h, UTI com monitoramento multiparamétrico contínuo, ventilação mecânica e suporte transfusional."
+  - List: Triagem imediata · UTI com 12 vagas · Oxigenoterapia · Hemoterapia
+  - CTA: `Saiba mais →`
+  - Photo background: `/images/hospital-uti.jpg`
 
-```html
-<section class="services" aria-label="Estrutura e serviços do hospital">
-  <div class="services__container">
+- **Cards SMALL (5) com 3D flip:**
+  1. `ph-scalpel` **Cirurgia & Anestesia** → "Cirurgia geral · Laparoscopia · Monitoração anestésica · Recuperação"
+  2. `ph-scan` **Diagnóstico por Imagem** → "Tomografia · Ultrassom · Ecocardiograma · Radiologia digital"
+  3. `ph-bed` **Internação Veterinária** → "Separada por espécie · Isolamento infeccioso · Monitoramento 24h · Atualização ao tutor"
+  4. `ph-stethoscope` **Consultas & Prevenção** → "Consultas de rotina · Vacinas importadas · Check-up · Orientação nutricional"
+  5. `ph-test-tube` **Laboratório Próprio** → "Hemograma · Testes Rápidos · Coleta de Líquor · Análises Hormonais"
 
-    <header class="services__header">
-      <h2 class="services__title">Estrutura completa<br>para cada momento.</h2>
-      <p class="services__sub">Do pronto-atendimento ao pós-operatório — temos tudo o que seu animal precisa em um único lugar.</p>
-    </header>
+### Layout
+- Container max-width 1200px
+- Grid: `grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(180px, auto)`
+- Large card: `grid-column: span 2; grid-row: span 2` (ocupa 2×2)
+- Small cards: 1×1 cada (5 cards preenchem o resto)
+- Gap 16px
 
-    <div class="services__grid">
+### Tipografia / Cores
+- Card category: DM Sans 600 · 0.8125rem · uppercase · 0.12em · dourado + ícone Phosphor
+- Card name: DM Serif Display · clamp(1.25rem, 2vw, 1.6rem) · line-height 1.15
+- Card desc: DM Sans 400 · 0.95rem · line-height 1.55 · muted
+- Live tag: pill bg `rgba(31,174,106,.12)` · color `#1fae6a` · dot pulsando
 
-      <!-- LARGE CARD: Emergência & UTI (col 1-2, row 1-2) -->
-      <article class="services__card services__card--large" aria-label="Emergência e UTI veterinária">
-        <!-- "Disponível agora" floating tag -->
-        <span class="services__card-live" aria-label="Atendimento disponível agora">
-          <span class="services__card-live-dot" aria-hidden="true"></span>
-          Disponível agora
-        </span>
-        <div class="services__card-large-inner">
-          <!-- Body (left) -->
-          <div class="services__card-large-body">
-            <div class="services__card-category">
-              <i class="ph ph-first-aid-kit" aria-hidden="true"></i>
-              <span>Emergência & UTI</span>
-            </div>
-            <h3 class="services__card-name">Pronto-atendimento e cuidados intensivos veterinários.</h3>
-            <p class="services__card-desc">Equipe de plantão 24h, UTI com monitoramento multiparamétrico contínuo, ventilação mecânica e suporte transfusional.</p>
-            <ul class="services__card-list">
-              <li>Triagem imediata</li>
-              <li>UTI com 12 vagas</li>
-              <li>Oxigenoterapia</li>
-              <li>Hemoterapia</li>
-            </ul>
-            <a href="/hospital#emergencia" class="btn btn--ghost services__card-cta">Saiba mais →</a>
-          </div>
-          <!-- Photo (right) -->
-          <div class="services__card-large-photo" aria-hidden="true"></div>
-        </div>
-      </article>
+### Animações
+- Flip: rotateY 180deg, 700ms
+- Live dot pulse: 1.6s ease infinite
+- Card hover: translateY(-4px) + shadow
 
-      <!-- SMALL CARD 1: Cirurgia & Anestesia -->
-      <article class="services__card services__card--small" tabindex="0" aria-label="Cirurgia e Anestesia — clique para ver detalhes">
-        <div class="services__flip">
-          <!-- Front -->
-          <div class="services__flip-front">
-            <i class="ph ph-scalpel" aria-hidden="true"></i>
-            <h3 class="services__flip-name">Cirurgia &<br>Anestesia</h3>
-            <p class="services__flip-desc">Centro cirúrgico completo com anestesista residente.</p>
-          </div>
-          <!-- Back -->
-          <div class="services__flip-back" aria-hidden="true">
-            <p class="services__flip-back-title">O que oferecemos:</p>
-            <ul class="services__flip-back-list">
-              <li>Cirurgia geral e especializada</li>
-              <li>Laparoscopia</li>
-              <li>Monitoração anestésica avançada</li>
-              <li>Recuperação assistida</li>
-            </ul>
-          </div>
-        </div>
-      </article>
-
-      <!-- SMALL CARD 2: Diagnóstico -->
-      <article class="services__card services__card--small" tabindex="0" aria-label="Diagnóstico por imagem — clique para ver detalhes">
-        <div class="services__flip">
-          <div class="services__flip-front">
-            <i class="ph ph-scan" aria-hidden="true"></i>
-            <h3 class="services__flip-name">Diagnóstico<br>por Imagem</h3>
-            <p class="services__flip-desc">Tomografia, ressonância, ecocardiografia e mais.</p>
-          </div>
-          <div class="services__flip-back" aria-hidden="true">
-            <p class="services__flip-back-title">O que oferecemos:</p>
-            <ul class="services__flip-back-list">
-              <li>Tomografia computadorizada</li>
-              <li>Ultrassonografia</li>
-              <li>Ecocardiograma</li>
-              <li>Radiologia digital</li>
-            </ul>
-          </div>
-        </div>
-      </article>
-
-      <!-- SMALL CARD 3: Internação -->
-      <article class="services__card services__card--small" tabindex="0" aria-label="Internação veterinária — clique para ver detalhes">
-        <div class="services__flip">
-          <div class="services__flip-front">
-            <i class="ph ph-bed" aria-hidden="true"></i>
-            <h3 class="services__flip-name">Internação<br>Veterinária</h3>
-            <p class="services__flip-desc">Acompanhamento contínuo com equipe de enfermagem.</p>
-          </div>
-          <div class="services__flip-back" aria-hidden="true">
-            <p class="services__flip-back-title">O que oferecemos:</p>
-            <ul class="services__flip-back-list">
-              <li>Internação separada por espécie</li>
-              <li>Isolamento infeccioso</li>
-              <li>Monitoramento 24h</li>
-              <li>Atualização diária ao tutor</li>
-            </ul>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-```
+### Responsividade
+- **≤980px:** grid 2 colunas. Large card `span 2 row span 1`
+- **≤520px:** grid 1 coluna, sem large
 
 ---
 
-### Layout CSS
+## Seção 5: DIFERENCIAIS (Grid 3×3 Premium)
 
-```css
-.services {
-  background: var(--clr-bg);
-  padding-block: var(--sp-section);
-  padding-inline: var(--pad-x);
-}
+### Arquétipo e Constraints
+- **Arquétipo:** Grid Simétrico 3×3 com Icon Cards
+- **Constraints:** Icon Fill (Mídia) · Clip Reveal scroll-driven (Movimento) · Stagger Wave (Movimento)
+- **Justificativa:** Hospital tem 9 diferenciais (vs 4 na home) — grid 3×3 acomoda esse volume. Diferente de Editorial Rows da home (que tem só 4).
 
-.services__container {
-  max-width: var(--container);
-  margin-inline: auto;
-}
+### Conteúdo
+- **Pre-título / Título:** `Diferenciais que salvam vidas.`
+- **Cards (9), cada com ícone Phosphor fill:**
+  1. `ph-car` Estacionamento Gratuito · "Comodidade e segurança no local."
+  2. `ph-buildings` Internações Exclusivas · "Áreas separadas para cães, gatos e doenças infecciosas."
+  3. `ph-squares-four` Tudo em um só lugar · "Atendimento, exames, cirurgias, internação e especialidades integradas."
+  4. `ph-users-three` Trabalho em Equipe · "13 veterinários com diagnósticos compartilhados."
+  5. `ph-medal` Competência Garantida · "Profissionais em constante atualização técnica e acadêmica."
+  6. `ph-first-aid-kit` Cirurgias de Ponta · "Neurocirurgias e cirurgias cranianas de alta complexidade."
+  7. `ph-test-tube` Exames Laboratoriais · "Coleta de líquor, hemogasometria e testes hormonais imediatos."
+  8. `ph-scan` Imagem de Qualidade · "EEG, Ecocardiograma, Endoscopia, RX digital e Ultrassom."
+  9. `ph-cpu` Tecnologia Veterinária · "Equipamentos de última geração em todas as unidades."
 
-/* ── Section header ── */
-.services__header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(32px, 4vw, 64px);
-  align-items: end;
-  margin-bottom: clamp(48px, 6vw, 72px);
-}
+### Layout
+- Container max-width 1200px, padding `--sp-section`
+- Grid `repeat(3, 1fr)`, gap 24px
+- Card: padding `clamp(28px, 3vw, 40px)`, radius 16px, bg surface, border 1px solid border
 
-.services__title {
-  font-family: var(--font-display);
-  font-size: var(--fs-h2);
-  line-height: 1.1;
-  color: var(--clr-text);
-  letter-spacing: -0.02em;
-  margin: 0;
-}
+### Tipografia / Cores
+- Icon: 48×48px container radius 12px bg `--clr-primary-pale`, ícone 24px primary
+- Name: DM Serif Display · clamp(1.15rem, 1.8vw, 1.35rem) · line-height 1.2
+- Desc: DM Sans 400 · 0.9375rem · line-height 1.5 · muted
 
-.services__sub {
-  font-family: var(--font-body);
-  font-size: var(--fs-body);
-  color: var(--clr-muted);
-  line-height: 1.65;
-  margin: 0;
-  max-width: 420px;
-}
+### Animações
+- Scroll-driven clip-path reveal: cada card aparece com `clip-path inset(0 100% 0 0) → 0 0 0 0`, 800ms ease-out, delay `--card-i * 60ms`
+- Fallback IO threshold 0.15
 
-/* ── Bento Grid ── */
-.services__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto;
-  gap: clamp(12px, 2vw, 20px);
-}
-
-/* ── Large card (Emergência) ── */
-.services__card--large {
-  grid-column: 1 / 3; /* spans 2 columns */
-  grid-row: 1 / 3;    /* spans 2 rows */
-  background: var(--clr-dark);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  position: relative;
-  transition: transform 400ms var(--ease-out-expo), box-shadow 400ms var(--ease-out-expo);
-}
-
-.services__card--large:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(15,45,36,0.18);
-}
-
-/* Floating "Disponível agora" tag */
-.services__card-live {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(201,168,76,0.15);
-  border: 1px solid rgba(201,168,76,0.30);
-  color: var(--clr-accent);
-  border-radius: 100px;
-  padding: 6px 14px;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
-
-/* Pulsing live dot */
-.services__card-live-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--clr-accent);
-  animation: livePulse 2s ease infinite;
-  flex-shrink: 0;
-}
-
-@keyframes livePulse {
-  0%   { box-shadow: 0 0 0 0 rgba(201,168,76,0.5); }
-  70%  { box-shadow: 0 0 0 6px rgba(201,168,76,0); }
-  100% { box-shadow: 0 0 0 0 rgba(201,168,76,0); }
-}
-
-/* Large card inner — split body/photo */
-.services__card-large-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 100%;
-  min-height: 420px;
-}
-
-.services__card-large-body {
-  padding: clamp(32px, 4vw, 48px);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 16px;
-}
-
-.services__card-large-photo {
-  background-image: url('/images/hospital-uti.jpg');
-  background-size: cover;
-  background-position: center;
-  /* Fallback gradient */
-  background-color: #0a1e16;
-  position: relative;
-}
-
-/* Gradient blending photo into body */
-.services__card-large-photo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(15,45,36,0.5) 0%,
-    transparent 40%
-  );
-  pointer-events: none;
-}
-
-/* Large card typography */
-.services__card-category {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--clr-accent);
-}
-
-.services__card-category i {
-  font-size: 1rem;
-}
-
-.services__card-name {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-  line-height: 1.2;
-  color: #FFFFFF;
-  letter-spacing: -0.01em;
-  margin: 0;
-}
-
-.services__card-desc {
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.60);
-  margin: 0;
-}
-
-.services__card-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.services__card-list li {
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  color: rgba(255,255,255,0.50);
-  padding-left: 16px;
-  position: relative;
-}
-
-.services__card-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--clr-accent);
-  opacity: 0.7;
-}
-
-/* ── Small cards (flip) ── */
-.services__card--small {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  position: relative;
-  perspective: 800px;
-  min-height: 200px;
-  cursor: pointer;
-  background: var(--clr-surface);
-  border: 1px solid var(--clr-border);
-}
-
-.services__flip {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
-}
-
-.services__card--small:hover .services__flip,
-.services__card--small:focus .services__flip {
-  transform: rotateY(180deg);
-}
-
-.services__flip-front,
-.services__flip-back {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  padding: clamp(24px, 3vw, 36px);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.services__flip-front {
-  background: var(--clr-surface);
-}
-
-.services__flip-back {
-  background: var(--clr-primary);
-  transform: rotateY(180deg);
-}
-
-/* Front face icon */
-.services__flip-front > i {
-  font-size: 2rem;
-  color: var(--clr-primary);
-  position: absolute;
-  top: clamp(24px, 3vw, 36px);
-  left: clamp(24px, 3vw, 36px);
-}
-
-.services__flip-name {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  line-height: 1.2;
-  color: var(--clr-text);
-  margin: 0 0 8px;
-}
-
-.services__flip-desc {
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  color: var(--clr-muted);
-  line-height: 1.55;
-  margin: 0;
-}
-
-/* Back face content */
-.services__flip-back-title {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--clr-accent);
-  margin: 0 0 16px;
-}
-
-.services__flip-back-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.services__flip-back-list li {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.85);
-  padding-left: 18px;
-  position: relative;
-  line-height: 1.4;
-}
-
-.services__flip-back-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 7px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--clr-accent);
-}
-```
+### Responsividade
+- **≤900px:** grid 2 colunas
+- **≤520px:** grid 1 coluna
 
 ---
 
-### Mobile Flip (JS)
+## Seção 6: GALERIA — Nossa Estrutura
 
-```js
-// Mobile: flip on click/tap
-if ('ontouchstart' in window) {
-  document.querySelectorAll('.services__card--small').forEach(card => {
-    card.addEventListener('click', () => {
-      card.querySelector('.services__flip').style.transform =
-        card.classList.toggle('is-flipped') ? 'rotateY(180deg)' : 'rotateY(0deg)';
-    });
-  });
-}
-```
+### Arquétipo e Constraints
+- **Arquétipo:** Featured Carousel com prev/next buttons
+- **Constraints:** Drag-to-Scroll (Interação) · Caption Reveal on Hover (Mídia) · Snap (Interação)
+- **Justificativa:** Diferente do Scroll Horizontal puro da home (que não tem buttons). Hospital tem buttons explícitos pra navegação consciente.
 
----
+### Conteúdo
+- **Pre-título:** `Nossa estrutura`
+- **Título:** `Ambientes preparados para salvar vidas 24 horas por dia.`
+- **9 imagens com caption (já existentes):**
+  1. Recepção 24h · `hosp-estrutura-recepcao.jpg`
+  2. Hall de Espera · `hosp-estrutura-hall.jpg`
+  3. Consultórios Modernos · `hosp-estrutura-consultorio-1.jpg`
+  4. Centro Cirúrgico de Ponta · `hosp-estrutura-cirurgico-1.jpg`
+  5. Sala de Emergência · `hosp-estrutura-emergencia.jpg`
+  6. Radiologia Digital · `hosp-estrutura-raiox.jpg`
+  7. Ultrassonografia · `hosp-estrutura-ultrassom.jpg`
+  8. Internação Canina · `hosp-estrutura-internacao-caes-1.jpg`
+  9. Internação Felina Exclusiva · `hosp-estrutura-internacao-felinos.jpg`
 
-### Responsive Breakpoints
+### Layout
+- Header centralizado max-width 720px
+- Track: flex gap 16px, transform translateX por currentPos
+- Item: flex 0 0 auto, width `clamp(320px, 35vw, 480px)`, aspect 3/2, radius 16px
+- Buttons prev/next: circle 48×48px, radius 50%, bg surface, shadow, hover scale 1.05
 
-#### < 1024px (tablet)
+### Animações
+- Track transform: 600ms ease (currentPos × itemWidth + gap)
+- Caption: opacity 0→1 + translateY(16px)→0 on hover, 300ms
 
-```css
-@media (max-width: 1024px) {
-  .services__header {
-    grid-template-columns: 1fr;
-  }
-  .services__sub {
-    max-width: 100%;
-  }
-  .services__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .services__card--large {
-    grid-column: 1 / 3;
-    grid-row: 1;
-  }
-  .services__card-large-inner {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-  .services__card-large-photo {
-    height: 240px;
-    order: -1;
-  }
-}
-```
-
-#### < 640px (mobile)
-
-```css
-@media (max-width: 640px) {
-  .services__grid {
-    grid-template-columns: 1fr;
-  }
-  .services__card--large {
-    grid-column: 1;
-    grid-row: 1;
-  }
-  .services__card--small {
-    min-height: 180px;
-  }
-  /* Disable hover flip on mobile, use click JS above */
-  .services__card--small:hover .services__flip {
-    transform: none;
-  }
-  .services__card--small.is-flipped .services__flip {
-    transform: rotateY(180deg);
-  }
-}
-```
+### Responsividade
+- **≤640px:** items `100vw - 48px`, caption sempre visível
 
 ---
 
-## Section 3 — Especialidades Disponíveis (Scroll Horizontal)
+## Seção 7: ESPECIALIDADES DISPONÍVEIS NO HOSPITAL
 
-**Archetype:** Scroll Horizontal
-**Constraints:** Drag Horizontal + Overflow Visible + Fade nos edges + Sticky-ish title
+### Arquétipo e Constraints
+- **Arquétipo:** Kinetic Type Strip — chips infinitos com auto-scroll
+- **Constraints:** Infinite Loop (Movimento) · Drag-to-Scroll (Interação) · Fade Edges (Mídia)
+- **Justificativa:** 20 especialidades não cabem em grid sem ficar denso demais. Strip horizontal com loop infinito CSS-only = ritmo único.
 
----
+### Conteúdo
+- **Pre-título:** `20+ especialidades` (com ícone)
+- **Título:** `Especialidades disponíveis.`
+- **Sub:** `Nossa equipe cobre mais de 20 áreas especializadas. Se o seu pet precisar de um especialista, ele já está aqui.`
+- **20 chips (cada ícone Phosphor):** Neurologia · Cardiologia · Oncologia · Dermatologia · Oftalmologia · Ortopedia · Endocrinologia · Gastroenterologia · Nefrologia · Hematologia · Odontologia · Pneumologia · Nutrição · Radiologia · Anestesia · Felinos · Silvestres · Ozonioterapia · Reabilitação · Ultrassonografia
+- **CTA footer:** `Ver todas as especialidades →` → `/especialidades`
 
-### HTML Structure
+### Layout
+- Padding-block `--sp-section`
+- Stage container: position relative, overflow hidden
+- Fade-edges: pseudo-elements `::before` e `::after` 80px, gradient bg
+- Track: flex gap 12px, animation `infiniteScroll 40s linear infinite`
+- Chip: min-width clamp(140px, 14vw, 180px), height 80px, padding 12px 20px, radius 16px, bg surface, border 1px
 
-```html
-<section class="hosp-specs" aria-label="Especialidades disponíveis no hospital">
-  <div class="hosp-specs__head">
-    <h2 class="hosp-specs__title">Especialidades disponíveis.</h2>
-    <p class="hosp-specs__sub">Contamos com especialistas das principais áreas para um cuidado completo e integrado do seu animal.</p>
-  </div>
+### Tipografia / Cores
+- Chip name: DM Sans 600 · 0.875rem · color text
+- Icon Phosphor: 24px primary
 
-  <!-- Fade edges (CSS ::before/::after) + scrollable track -->
-  <div class="hosp-specs__stage" id="specsStage">
-    <div class="hosp-specs__track" id="specsTrack" role="list">
+### Animações
+- `@keyframes infiniteScroll`: 0% translateX(0) → 100% translateX(-50%) (chips duplicados pra continuidade)
+- Hover pausa animation (animation-play-state paused)
+- Drag-to-scroll JS (pageX track scrollLeft)
 
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-brain" aria-hidden="true"></i>
-        <span>Neurologia</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-bone" aria-hidden="true"></i>
-        <span>Ortopedia</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-heartbeat" aria-hidden="true"></i>
-        <span>Cardiologia</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-activity" aria-hidden="true"></i>
-        <span>Fisioterapia</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-eye" aria-hidden="true"></i>
-        <span>Oftalmologia</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-tooth" aria-hidden="true"></i>
-        <span>Odontologia</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-drop" aria-hidden="true"></i>
-        <span>Oncologia</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-flask" aria-hidden="true"></i>
-        <span>Endocrinologia</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-shield-check" aria-hidden="true"></i>
-        <span>Imunologia</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-scissors" aria-hidden="true"></i>
-        <span>Dermatologia</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-tree" aria-hidden="true"></i>
-        <span>Medicina Felina</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-baby" aria-hidden="true"></i>
-        <span>Neonatologia</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-syringe" aria-hidden="true"></i>
-        <span>Anestesiologia</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-cpu" aria-hidden="true"></i>
-        <span>Diagnóstico</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-person-arms-spread" aria-hidden="true"></i>
-        <span>Reabilitação</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-circles-three" aria-hidden="true"></i>
-        <span>Comportamento</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-chart-line-up" aria-hidden="true"></i>
-        <span>Nutrição Clínica</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-stethoscope" aria-hidden="true"></i>
-        <span>Clínica Geral</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-globe" aria-hidden="true"></i>
-        <span>Acupuntura</span>
-      </div>
-      <div class="hosp-specs__chip" role="listitem">
-        <i class="ph ph-sparkle" aria-hidden="true"></i>
-        <span>+ outras</span>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="hosp-specs__footer">
-    <a href="/especialidades" class="btn btn--primary">Ver todas as especialidades →</a>
-  </div>
-</section>
-```
+### Responsividade
+- **≤480px:** chip min-width 110px, height 72px
 
 ---
 
-### Layout CSS
+## Seção 8: TESTIMONIALS
 
-```css
-.hosp-specs {
-  background: var(--clr-primary-pale);
-  padding-block: var(--sp-section);
-  overflow: hidden; /* Contains the stage visually */
-}
-
-/* ── Header ── */
-.hosp-specs__head {
-  max-width: var(--container);
-  margin-inline: auto;
-  padding-inline: var(--pad-x);
-  text-align: center;
-  margin-bottom: clamp(40px, 5vw, 64px);
-}
-
-.hosp-specs__title {
-  font-family: var(--font-display);
-  font-size: var(--fs-h2);
-  line-height: 1.1;
-  color: var(--clr-text);
-  letter-spacing: -0.02em;
-  margin: 0 0 16px;
-}
-
-.hosp-specs__sub {
-  font-family: var(--font-body);
-  font-size: var(--fs-body);
-  color: var(--clr-muted);
-  line-height: 1.65;
-  max-width: 560px;
-  margin-inline: auto;
-}
-
-/* ── Scrollable stage ── */
-.hosp-specs__stage {
-  position: relative;
-  /* Fade edges using pseudo-elements */
-}
-
-.hosp-specs__stage::before,
-.hosp-specs__stage::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 80px;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.hosp-specs__stage::before {
-  left: 0;
-  background: linear-gradient(to right, var(--clr-primary-pale), transparent);
-}
-
-.hosp-specs__stage::after {
-  right: 0;
-  background: linear-gradient(to left, var(--clr-primary-pale), transparent);
-}
-
-/* ── Track (scrollable) ── */
-.hosp-specs__track {
-  display: flex;
-  gap: 12px;
-  padding: 8px var(--pad-x) 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  cursor: grab;
-  /* Hide scrollbar */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.hosp-specs__track::-webkit-scrollbar {
-  display: none;
-}
-
-.hosp-specs__track.is-dragging {
-  cursor: grabbing;
-  user-select: none;
-}
-
-/* ── Individual chip cards ── */
-.hosp-specs__chip {
-  flex-shrink: 0;
-  min-width: 160px;
-  height: 90px;
-  background: var(--clr-surface);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  scroll-snap-align: start;
-  transition:
-    border-color 250ms ease,
-    box-shadow 250ms ease,
-    transform 250ms ease;
-  padding: 16px;
-}
-
-.hosp-specs__chip:hover {
-  border-color: var(--clr-primary);
-  box-shadow: 0 4px 16px rgba(27,77,62,0.10);
-  transform: translateY(-3px);
-}
-
-.hosp-specs__chip i {
-  font-size: 1.375rem;
-  color: var(--clr-primary);
-}
-
-.hosp-specs__chip span {
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--clr-text);
-  text-align: center;
-  line-height: 1.3;
-}
-
-/* ── Footer CTA ── */
-.hosp-specs__footer {
-  display: flex;
-  justify-content: center;
-  padding-inline: var(--pad-x);
-  padding-top: clamp(32px, 4vw, 48px);
-}
-```
+### Arquétipo / Constraints / Conteúdo
+- Idêntico à home seção 8.
+- Mesmo CSS carousel dark mode + auto-rotate 6s.
+- Mesmos 3 slides + estrelas pop stagger.
 
 ---
 
-### Drag-to-Scroll JS
+## Seção 9: INSTAGRAM
 
-```js
-const track = document.getElementById('specsTrack');
-
-if (track) {
-  let isDragging = false;
-  let startX = 0;
-  let scrollLeft = 0;
-
-  track.addEventListener('mousedown', e => {
-    isDragging = true;
-    startX = e.pageX - track.offsetLeft;
-    scrollLeft = track.scrollLeft;
-    track.classList.add('is-dragging');
-  });
-
-  track.addEventListener('mouseleave', () => {
-    isDragging = false;
-    track.classList.remove('is-dragging');
-  });
-
-  track.addEventListener('mouseup', () => {
-    isDragging = false;
-    track.classList.remove('is-dragging');
-  });
-
-  track.addEventListener('mousemove', e => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - track.offsetLeft;
-    const walk = (x - startX) * 1.5; // drag speed multiplier
-    track.scrollLeft = scrollLeft - walk;
-  });
-}
-```
+### Arquétipo / Constraints / Conteúdo
+- Idêntico à home seção 9.
+- Grid 6 tiles + hover overlay verde + CTA pill.
+- Mesmas 6 fotos + comentário HTML para widget LightWidget/Elfsight.
+- Link `https://instagram.com/vetpiera`
 
 ---
 
-### Responsive Breakpoints
+## Seção 10: CONTATO + MAPA (Agendamento)
 
-#### < 768px (mobile)
+### Arquétipo e Constraints
+- **Arquétipo:** Split Assimétrico 45/55 (info / mapa)
+- **Constraints:** Dark Background (Cor) · Glass Card Floating com Live Indicator (Layout + Movimento) · Map embed (Mídia)
+- **Justificativa:** Encerra hospital com prova de "aberto agora" + mapa real. Diferente do Book CTA da home (que tem foto), aqui o mapa é o elemento visual.
 
-```css
-@media (max-width: 768px) {
-  .hosp-specs__chip {
-    min-width: 130px;
-    height: 80px;
-  }
-  .hosp-specs__stage::before,
-  .hosp-specs__stage::after {
-    width: 40px;
-  }
-}
-```
+### Conteúdo
+- **Eyebrow:** `Plantão 24 horas`
+- **Título:** `Estamos abertos agora.`
+- **Sub:** `Nosso hospital nunca fecha. Entre em contato pelo WhatsApp ou telefone — nossa equipe responde imediatamente.`
+- **Info list (4 itens com ícone):**
+  - `ph-map-pin` Endereço · "Av. Maria Luiza Americano, 803 — São Paulo, SP"
+  - `ph-clock` Horário · "24 horas · 7 dias por semana"
+  - `ph-phone` Telefone · `(11) 2746-7292`
+  - `ph-envelope` E-mail · `hospital@vetpiera.com.br`
+- **CTA primário:** `Chamar no WhatsApp` + ícone
+- **Mapa:** iframe Google Maps embed
+- **Glass card flutuante (canto inferior-esq do mapa):** dot verde pulsando + "Aberto agora · 24h · 7 dias"
 
----
+### Layout
+- Padding-block `--sp-section`
+- Background: `linear-gradient(135deg, #0F2D24, #1B4D3E)` (mesmo do Book CTA da home pra consistência)
+- Grid 45fr / 55fr, gap clamp(40px, 6vw, 80px)
+- Mapa: aspect 16/11, radius 20px, overflow hidden
+- Glass card: position absolute `bottom: 24px; left: 24px`, padding 12px 18px, radius 12px, backdrop-filter blur(16px), bg rgba(255,255,255,.18), text white, dot verde 10px pulse
 
-## Section 4 — Diferenciais (Timeline Vertical)
+### Tipografia / Cores
+- Eyebrow: DM Sans 600 · 0.8125rem · uppercase · 0.18em · dourado
+- Title: DM Serif Display · clamp(2rem, 4vw, 3rem) · white
+- Sub: DM Sans 400 · 1.05rem · rgba(255,255,255,.85)
+- Info label: DM Sans 500 · 0.75rem · uppercase · 0.08em · rgba(255,255,255,.6)
+- Info value: DM Sans 400 · 1rem · white
+- Tel link: dourado underline
 
-**Archetype:** Timeline Vertical
-**Constraints:** Clip Reveal + View Timeline CSS + Off-Grid números + Stagger
+### Animações
+- Glass dot pulse: 1.6s box-shadow ring
 
----
-
-### HTML Structure
-
-```html
-<section class="diffs" aria-label="Diferenciais do hospital">
-  <div class="diffs__container">
-
-    <header class="diffs__header">
-      <h2 class="diffs__title">O que torna nosso<br>hospital diferente.</h2>
-    </header>
-
-    <!-- Vertical line (absolute, sits in .diffs__timeline) -->
-    <div class="diffs__timeline" aria-hidden="true">
-      <div class="diffs__line"></div>
-    </div>
-
-    <div class="diffs__list">
-
-      <div class="diffs__item" style="--item-i: 0">
-        <div class="diffs__dot" aria-hidden="true"></div>
-        <div class="diffs__body">
-          <span class="diffs__num" aria-hidden="true">01</span>
-          <div class="diffs__text-group">
-            <div class="diffs__icon-title">
-              <i class="ph ph-car" aria-hidden="true"></i>
-              <h3 class="diffs__name">Estacionamento gratuito</h3>
-            </div>
-            <p class="diffs__desc">Nosso hospital conta com estacionamento exclusivo e gratuito para tutores durante o atendimento — sem preocupação com vagas em momentos difíceis.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="diffs__item" style="--item-i: 1">
-        <div class="diffs__dot" aria-hidden="true"></div>
-        <div class="diffs__body">
-          <span class="diffs__num" aria-hidden="true">02</span>
-          <div class="diffs__text-group">
-            <div class="diffs__icon-title">
-              <i class="ph ph-house-line" aria-hidden="true"></i>
-              <h3 class="diffs__name">Internação separada por espécie</h3>
-            </div>
-            <p class="diffs__desc">Cães e gatos são internados em alas separadas, reduzindo o estresse e garantindo o bem-estar de todos os animais durante a recuperação.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="diffs__item" style="--item-i: 2">
-        <div class="diffs__dot" aria-hidden="true"></div>
-        <div class="diffs__body">
-          <span class="diffs__num" aria-hidden="true">03</span>
-          <div class="diffs__text-group">
-            <div class="diffs__icon-title">
-              <i class="ph ph-virus" aria-hidden="true"></i>
-              <h3 class="diffs__name">Isolamento infeccioso</h3>
-            </div>
-            <p class="diffs__desc">Área dedicada a casos de doenças infectocontagiosas, com protocolo rigoroso de biossegurança para proteger os demais pacientes internados.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="diffs__item" style="--item-i: 3">
-        <div class="diffs__dot" aria-hidden="true"></div>
-        <div class="diffs__body">
-          <span class="diffs__num" aria-hidden="true">04</span>
-          <div class="diffs__text-group">
-            <div class="diffs__icon-title">
-              <i class="ph ph-users-three" aria-hidden="true"></i>
-              <h3 class="diffs__name">Equipe multidisciplinar</h3>
-            </div>
-            <p class="diffs__desc">Médicos veterinários de diferentes especialidades atuam em conjunto para casos complexos, garantindo um diagnóstico mais preciso e completo.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="diffs__item" style="--item-i: 4">
-        <div class="diffs__dot" aria-hidden="true"></div>
-        <div class="diffs__body">
-          <span class="diffs__num" aria-hidden="true">05</span>
-          <div class="diffs__text-group">
-            <div class="diffs__icon-title">
-              <i class="ph ph-cpu" aria-hidden="true"></i>
-              <h3 class="diffs__name">Tecnologia cirúrgica avançada</h3>
-            </div>
-            <p class="diffs__desc">Centro cirúrgico equipado com laparoscópico, sistema de monitoração multiparamétrica e anestesia inalatória de precisão para procedimentos de alta complexidade.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-```
+### Responsividade
+- **≤860px:** grid 1 coluna, mapa em cima
 
 ---
 
-### Layout CSS
+## Footer (compartilhado com home)
 
-```css
-.diffs {
-  background: var(--clr-surface);
-  padding-block: var(--sp-section);
-  padding-inline: var(--pad-x);
-}
-
-.diffs__container {
-  max-width: var(--container);
-  margin-inline: auto;
-  position: relative;
-}
-
-/* ── Header ── */
-.diffs__header {
-  text-align: center;
-  margin-bottom: clamp(64px, 8vw, 96px);
-}
-
-.diffs__title {
-  font-family: var(--font-display);
-  font-size: var(--fs-h2);
-  line-height: 1.1;
-  color: var(--clr-text);
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-
-/* ── Timeline line wrapper ── */
-.diffs__timeline {
-  position: absolute;
-  /* Center line at 50% on desktop */
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: 1px;
-  pointer-events: none;
-}
-
-.diffs__line {
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(to bottom, transparent, var(--clr-border) 10%, var(--clr-border) 90%, transparent);
-}
-
-/* ── List ── */
-.diffs__list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-/* ── Individual item ── */
-.diffs__item {
-  display: grid;
-  grid-template-columns: 1fr 24px 1fr; /* left content | dot | right content */
-  align-items: start;
-  gap: 0 clamp(32px, 4vw, 64px);
-  padding-block: clamp(40px, 5vw, 64px);
-  position: relative;
-
-  /* CSS View Timeline animation */
-  animation: clipReveal 600ms ease-out both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 35%;
-  animation-delay: calc(var(--item-i, 0) * 100ms);
-}
-
-/* Odd items: content on right side of line */
-.diffs__item:nth-child(odd) .diffs__body {
-  grid-column: 3;
-  grid-row: 1;
-}
-.diffs__item:nth-child(odd) .diffs__dot {
-  grid-column: 2;
-  grid-row: 1;
-}
-/* Invisible spacer for odd — left column is empty */
-.diffs__item:nth-child(odd)::before {
-  content: '';
-  grid-column: 1;
-}
-
-/* Even items: content on left side of line */
-.diffs__item:nth-child(even) .diffs__body {
-  grid-column: 1;
-  grid-row: 1;
-  text-align: right;
-}
-.diffs__item:nth-child(even) .diffs__dot {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-/* ── Dot ── */
-.diffs__dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--clr-accent);
-  border: 3px solid var(--clr-surface);
-  position: relative;
-  top: 8px;
-  /* Center in the 24px column */
-  justify-self: center;
-  flex-shrink: 0;
-  box-shadow: 0 0 0 1px var(--clr-accent);
-}
-
-/* ── Body ── */
-.diffs__body {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-/* ── Off-grid number ── */
-.diffs__num {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 7vw, 5rem);
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(27,77,62,0.12);
-  user-select: none;
-  display: block;
-  /* Off-grid: number overflows its column slightly */
-  margin-inline: -8px;
-}
-
-/* ── Icon + title row ── */
-.diffs__icon-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.diffs__icon-title i {
-  font-size: 1.375rem;
-  color: var(--clr-accent);
-  flex-shrink: 0;
-}
-
-.diffs__name {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  line-height: 1.25;
-  color: var(--clr-text);
-  margin: 0;
-}
-
-.diffs__desc {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  line-height: 1.65;
-  color: var(--clr-muted);
-  margin: 0;
-}
-
-/* Even: right-align text group */
-.diffs__item:nth-child(even) .diffs__icon-title {
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-}
-
-/* ── Keyframes ── */
-@keyframes clipReveal {
-  from {
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    opacity: 0;
-  }
-  to {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    opacity: 1;
-  }
-}
-```
+Mesma estrutura 3 colunas. Ver `home/layout.md`.
 
 ---
 
-### Fallback JS (no animation-timeline support)
+## Variedade entre seções consecutivas
 
-```js
-const supportsTimeline = CSS.supports('animation-timeline', 'view()');
-if (!supportsTimeline) {
-  const items = document.querySelectorAll('.diffs__item');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const delay = parseInt(e.target.style.getPropertyValue('--item-i') || 0) * 100;
-        setTimeout(() => {
-          e.target.style.cssText += '; animation: clipReveal 600ms ease-out both;';
-          io.unobserve(e.target);
-        }, delay);
-      }
-    });
-  }, { threshold: 0.15 });
-  items.forEach(item => {
-    item.style.opacity = '0';
-    io.observe(item);
-  });
-}
-```
+| # | Arquétipo | Constraint principal |
+|---|-----------|----------------------|
+| 1 | Split com Overlap | Gradient Mesh + Live Pulse |
+| 2 | Type Hero Editorial | Color Blocking |
+| 3 | Split Alternado | Badge Overlapping |
+| 4 | Bento Assimétrico | 3D Flip + Live Tag |
+| 5 | Grid 3×3 Simétrico | Clip Reveal stagger |
+| 6 | Featured Carousel (buttons) | Drag-to-Scroll |
+| 7 | Kinetic Type Strip | Infinite Loop |
+| 8 | CSS Carousel | Dark Mode |
+| 9 | Gallery Wall | Hover Overlay |
+| 10 | Split Assimétrico 45/55 | Dark Bg + Glass Live |
 
----
-
-### Responsive Breakpoints
-
-#### < 768px (mobile)
-
-```css
-@media (max-width: 768px) {
-  /* Stack all items on same side (left of line) */
-  .diffs__timeline {
-    left: 28px;
-    transform: none;
-  }
-
-  .diffs__item {
-    grid-template-columns: 56px 1fr;
-    gap: 0 20px;
-    padding-block: clamp(28px, 4vw, 48px);
-  }
-
-  /* All items: dot in col 1, body in col 2 */
-  .diffs__item .diffs__dot,
-  .diffs__item:nth-child(even) .diffs__dot {
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: center;
-    align-self: start;
-    margin-top: 8px;
-  }
-
-  .diffs__item .diffs__body,
-  .diffs__item:nth-child(even) .diffs__body {
-    grid-column: 2;
-    grid-row: 1;
-    text-align: left;
-  }
-
-  .diffs__item:nth-child(even) .diffs__icon-title {
-    flex-direction: row;
-    justify-content: flex-start;
-  }
-
-  .diffs__num {
-    font-size: clamp(2.5rem, 10vw, 4rem);
-  }
-}
-```
-
----
-
-## Section 5 — Contato
-
-**Archetype:** Split Assimétrico (45/55)
-**Constraints:** Dark Mode + Floating Cards (glassmorphism) + Imagem Fullbleed
-
----
-
-### HTML Structure
-
-```html
-<section class="hosp-contact" aria-label="Contato e localização do hospital">
-  <div class="hosp-contact__grid">
-
-    <!-- Left: copy + info (45%) -->
-    <div class="hosp-contact__left">
-      <span class="hosp-contact__eyebrow">Plantão 24 horas</span>
-      <h2 class="hosp-contact__title">Estamos abertos agora.</h2>
-      <p class="hosp-contact__sub">Nosso hospital nunca fecha. Entre em contato pelo WhatsApp ou telefone — nossa equipe responde imediatamente.</p>
-
-      <div class="hosp-contact__info-list">
-
-        <div class="hosp-contact__info-item">
-          <i class="ph ph-map-pin" aria-hidden="true"></i>
-          <div>
-            <p class="hosp-contact__info-label">Endereço</p>
-            <p class="hosp-contact__info-value">Rua Itapeti, 154 — São Paulo, SP</p>
-          </div>
-        </div>
-
-        <div class="hosp-contact__info-item">
-          <i class="ph ph-clock" aria-hidden="true"></i>
-          <div>
-            <p class="hosp-contact__info-label">Horário</p>
-            <p class="hosp-contact__info-value">24 horas · 7 dias por semana</p>
-          </div>
-        </div>
-
-        <div class="hosp-contact__info-item">
-          <i class="ph ph-phone" aria-hidden="true"></i>
-          <div>
-            <p class="hosp-contact__info-label">Telefone</p>
-            <p class="hosp-contact__info-value">
-              <a href="tel:+551123733144" class="hosp-contact__tel">(11) 2373-3144</a>
-            </p>
-          </div>
-        </div>
-
-        <div class="hosp-contact__info-item">
-          <i class="ph ph-envelope" aria-hidden="true"></i>
-          <div>
-            <p class="hosp-contact__info-label">E-mail</p>
-            <p class="hosp-contact__info-value">
-              <a href="mailto:hospital@vetpiera.com.br" class="hosp-contact__tel">hospital@vetpiera.com.br</a>
-            </p>
-          </div>
-        </div>
-
-      </div>
-
-      <a href="https://wa.me/5511991334520" class="btn btn--accent hosp-contact__cta" target="_blank" rel="noopener">
-        <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
-        Chamar no WhatsApp
-      </a>
-    </div>
-
-    <!-- Right: map placeholder (55%) -->
-    <div class="hosp-contact__right" aria-label="Mapa da localização">
-      <div class="hosp-contact__map" aria-hidden="true">
-        <!-- Replace with real Google Maps embed iframe -->
-        <div class="hosp-contact__map-placeholder">
-          <i class="ph ph-map-trifold" aria-hidden="true"></i>
-          <span>Mapa</span>
-        </div>
-      </div>
-      <!-- Floating glass card overlay -->
-      <div class="hosp-contact__glass-card" aria-hidden="true">
-        <div class="hosp-contact__glass-dot"></div>
-        <p class="hosp-contact__glass-text">Aberto agora</p>
-        <p class="hosp-contact__glass-sub">24h · 7 dias</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-```
-
----
-
-### Layout CSS
-
-```css
-.hosp-contact {
-  background: var(--clr-dark);
-  overflow: hidden;
-}
-
-.hosp-contact__grid {
-  display: grid;
-  grid-template-columns: 45fr 55fr;
-  min-height: 600px;
-}
-
-/* ── Left panel ── */
-.hosp-contact__left {
-  padding: clamp(64px, 8vw, 96px) var(--pad-x) clamp(64px, 8vw, 96px) clamp(24px, calc((100vw - var(--container)) / 2 + var(--pad-x)), 128px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: clamp(16px, 2vw, 24px);
-}
-
-.hosp-contact__eyebrow {
-  font-family: var(--font-body);
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--clr-accent);
-}
-
-.hosp-contact__title {
-  font-family: var(--font-display);
-  font-size: var(--fs-h2);
-  line-height: 1.1;
-  color: #FFFFFF;
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-
-.hosp-contact__sub {
-  font-family: var(--font-body);
-  font-size: var(--fs-body);
-  color: rgba(255,255,255,0.60);
-  line-height: 1.65;
-  max-width: 380px;
-  margin: 0;
-}
-
-/* Info list */
-.hosp-contact__info-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-block: clamp(16px, 2vw, 24px);
-}
-
-.hosp-contact__info-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-}
-
-.hosp-contact__info-item > i {
-  font-size: 1.25rem;
-  color: var(--clr-accent);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.hosp-contact__info-label {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.35);
-  margin: 0 0 4px;
-}
-
-.hosp-contact__info-value {
-  font-family: var(--font-body);
-  font-size: 0.9375rem;
-  color: rgba(255,255,255,0.85);
-  margin: 0;
-  line-height: 1.5;
-}
-
-.hosp-contact__tel {
-  color: rgba(255,255,255,0.85);
-  text-decoration: none;
-  transition: color 200ms ease;
-}
-.hosp-contact__tel:hover {
-  color: var(--clr-accent);
-}
-
-/* CTA */
-.hosp-contact__cta {
-  align-self: flex-start;
-  margin-top: 8px;
-}
-.hosp-contact__cta:hover {
-  box-shadow: 0 8px 32px rgba(201,168,76,0.35);
-}
-
-/* ── Right panel (map) ── */
-.hosp-contact__right {
-  position: relative;
-  background: rgba(255,255,255,0.04);
-  border-left: 1px solid rgba(255,255,255,0.08);
-}
-
-.hosp-contact__map {
-  width: 100%;
-  height: 100%;
-  min-height: 400px;
-  /* Replace with: <iframe src="maps url" style="width:100%;height:100%;border:0;"> */
-}
-
-/* Map placeholder styling */
-.hosp-contact__map-placeholder {
-  width: 100%;
-  height: 100%;
-  min-height: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  color: rgba(255,255,255,0.20);
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-}
-
-.hosp-contact__map-placeholder i {
-  font-size: 2.5rem;
-}
-
-/* ── Floating glass card ── */
-.hosp-contact__glass-card {
-  position: absolute;
-  bottom: 32px;
-  left: 24px;
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(20px) saturate(1.5);
-  -webkit-backdrop-filter: blur(20px) saturate(1.5);
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: var(--radius);
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 160px;
-}
-
-.hosp-contact__glass-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #4ade80; /* green alive dot */
-  flex-shrink: 0;
-  animation: livePulse 2s ease infinite; /* reuse keyframe from services section */
-  box-shadow: 0 0 0 0 rgba(74,222,128,0.5);
-}
-
-@keyframes livePulse {
-  0%   { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
-  70%  { box-shadow: 0 0 0 8px rgba(74,222,128,0); }
-  100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
-}
-
-.hosp-contact__glass-text {
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #FFFFFF;
-  margin: 0;
-}
-
-.hosp-contact__glass-sub {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.50);
-  margin: 2px 0 0;
-}
-```
-
----
-
-### Responsive Breakpoints
-
-#### < 1024px (tablet)
-
-```css
-@media (max-width: 1024px) {
-  .hosp-contact__grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .hosp-contact__left {
-    padding-left: var(--pad-x);
-  }
-}
-```
-
-#### < 768px (mobile)
-
-```css
-@media (max-width: 768px) {
-  .hosp-contact__grid {
-    grid-template-columns: 1fr;
-  }
-  /* Map comes first on mobile */
-  .hosp-contact__right {
-    order: -1;
-    border-left: none;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  .hosp-contact__map,
-  .hosp-contact__map-placeholder {
-    min-height: auto;
-    aspect-ratio: 16 / 9;
-  }
-  .hosp-contact__left {
-    padding-block: clamp(48px, 8vw, 72px);
-  }
-  .hosp-contact__sub {
-    max-width: 100%;
-  }
-}
-```
-
----
-
-## Global Accessibility Notes (Hospital-specific)
-
-- `.hosp-hero__stamp` has `aria-hidden="true"` — it is purely decorative
-- Spotlight div has `aria-hidden="true"` and `pointer-events: none`
-- All flip cards have `tabindex="0"` and respond to `Enter`/`Space` for keyboard flip
-- Map area: if iframe is used, provide `title="Mapa de localização da VetPiera"`
-- `prefers-reduced-motion`: skip all `animation` properties, show final state:
-
-```css
-@media (prefers-reduced-motion: reduce) {
-  .hosp-hero__eyebrow,
-  .hosp-hero__headline,
-  .hosp-hero__sub,
-  .hosp-hero__actions,
-  .hosp-hero__stamp {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-  .diffs__item {
-    animation: none;
-    opacity: 1;
-    clip-path: none;
-  }
-  .services__flip {
-    transition: none;
-  }
-  .hosp-hero__scroll-line {
-    animation: none;
-  }
-}
-```
-
----
-
-## Asset Requirements
-
-| Asset | Dimensions | Format | Notes |
-|---|---|---|---|
-| `/images/hospital-hero.jpg` | 1920×1080px min | JPG | Dark vet clinic interior, emergency mood |
-| `/images/hospital-uti.jpg` | 800×600px | JPG | ICU/UTI environment, green tones |
-| Phosphor Icons | CDN | SVG font | All `ph-` classes used above |
+✓ Nenhum arquétipo repetido consecutivo.
+✓ Hero (Split 60/40) ≠ Sobre (Split 50/50) ≠ Contato (Split 45/55) — todos splits MAS proporções e densidades diferentes.

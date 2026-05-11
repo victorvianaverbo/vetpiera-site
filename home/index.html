@@ -6,18 +6,20 @@
   <meta name="description" content="Grupo Piera — Cuidado veterinário completo desde 2002. Hospital 24h, UTI veterinária e 25 especialidades em São Paulo.">
   <title>VetPiera — Cuidado Veterinário Completo</title>
 
-  <!-- Preconnect for Google Fonts -->
+  <!-- Resource hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <link rel="preconnect" href="https://unpkg.com">
-  <link rel="dns-prefetch" href="https://unpkg.com">
-  
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- Preload do hero image (LCP) -->
+  <link rel="preload" as="image" href="/.netlify/images?url=/images/hosp-exterior.jpg&w=1200&q=80" fetchpriority="high">
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
 
-  <!-- Phosphor Icons -->
-  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
+  <!-- Phosphor Icons (cherry-pick: regular + fill apenas) -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
 
   <link rel="stylesheet" href="/home/style.css">
 </head>
@@ -70,45 +72,341 @@
   <main>
 
     <!-- ===================================================
-         SECTION 1 — HERO (Split Assimetrico 55/45)
+         SECTION 1 — HERO
+         Arquétipo: Split com Overlap (60/40)
+         Constraints: Gradiente Mesh + Imagem c/ Gradiente
+                     + Mouse Parallax + Headline com Gradiente
     =================================================== -->
     <section class="hero" aria-label="Hero principal">
 
-      <!-- Left copy panel 55% -->
-      <div class="hero__copy">
-        <span class="hero__eyebrow">Grupo Piera · Desde 2002</span>
-        <h1 class="hero__headline">
-          O cuidado veterinário completo que o seu pet merece.
-        </h1>
-        <p class="hero__sub is-visible">Somos o Grupo Piera — 22 anos cuidando de animais com tecnologia, especialização e humanidade.</p>
-        <div class="hero__actions is-visible">
-          <a href="/hospital" class="btn btn--accent">Hospital 24h →</a>
-          <a href="/especialidades" class="btn btn--outline">Conhecer Especialidades</a>
+      <!-- Mesh gradient backdrop (camada decorativa) -->
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__bg-orb hero__bg-orb--1"></div>
+        <div class="hero__bg-orb hero__bg-orb--2"></div>
+        <div class="hero__bg-orb hero__bg-orb--3"></div>
+      </div>
+
+      <div class="hero__container">
+
+        <!-- Copy panel 60% -->
+        <div class="hero__copy">
+          <span class="hero__eyebrow">
+            <span class="hero__eyebrow-dot"></span>
+            Grupo Piera · Desde 2002
+          </span>
+          <h1 class="hero__headline">
+            O cuidado <span class="hero__headline-grad">veterinário</span><br>
+            completo que o seu pet merece.
+          </h1>
+          <p class="hero__sub">Somos o Grupo Piera — 22 anos cuidando de animais com tecnologia, especialização e humanidade.</p>
+          <div class="hero__actions">
+            <a href="/hospital" class="btn btn--primary hero__btn-primary">
+              <span>Hospital 24h</span>
+              <i class="ph ph-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="/especialidades" class="hero__link">
+              Conhecer Especialidades
+              <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <!-- Trust strip — micro-elemento Petderma -->
+          <div class="hero__trust" aria-label="Diferenciais rápidos">
+            <div class="hero__trust-item">
+              <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
+              <span>Hospital 24h</span>
+            </div>
+            <div class="hero__trust-item">
+              <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
+              <span>25 especialidades</span>
+            </div>
+            <div class="hero__trust-item">
+              <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
+              <span>13+ veterinários</span>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Right media panel 45% -->
-      <div class="hero__media" aria-hidden="true">
-        <div class="hero__photo" id="heroPhoto" style="background-image: url('/.netlify/images?url=/images/hosp-exterior.jpg&w=1200&q=80');" fetchpriority="high"></div>
-        <div class="hero__vignette"></div>
-      </div>
+        <!-- Media panel 40% -->
+        <div class="hero__media" aria-hidden="true">
+          <div class="hero__photo-wrap">
+            <div class="hero__photo" id="heroPhoto" style="background-image: url('/.netlify/images?url=/images/hosp-exterior.jpg&w=1200&q=80');" fetchpriority="high"></div>
+            <div class="hero__photo-overlay"></div>
+          </div>
 
-      <!-- Badge "22 anos" — overlapping the diagonal seam -->
-      <div class="hero__badge" aria-label="22 anos de experiência">
-        <span class="hero__badge-num" id="heroBadgeCounter">0</span>
-        <span class="hero__badge-label">anos de<br>experiência</span>
-      </div>
+          <!-- Badge flutuante que cruza a borda -->
+          <div class="hero__badge" aria-label="22 anos de experiência">
+            <span class="hero__badge-num" id="heroBadgeCounter">0</span>
+            <span class="hero__badge-plus">+</span>
+            <span class="hero__badge-label">anos de<br>excelência</span>
+          </div>
 
+          <!-- Tag dourada flutuante -->
+          <div class="hero__tag" aria-hidden="true">
+            <i class="ph-fill ph-star"></i>
+            <span>5.0 · Google Reviews</span>
+          </div>
+        </div>
+
+      </div>
     </section>
 
     <!-- ===================================================
-         SECTION 2 — UNITS ("Duas Unidades")
+         SECTION 2 — STATS BAR
+         Arquétipo: Type Hero / Editorial (números gigantes)
+         Constraints: Color Blocking + Counter Animation + Stagger
+    =================================================== -->
+    <section class="stats" aria-label="Números do Grupo Piera">
+      <div class="stats__bg" aria-hidden="true"></div>
+
+      <div class="stats__container container">
+        <header class="stats__intro">
+          <span class="stats__eyebrow">Números que pesam</span>
+          <h2 class="stats__title">Mais de duas décadas<br>cuidando de quem você ama.</h2>
+        </header>
+
+        <div class="stats__grid">
+          <div class="stats__item" style="--stat-i: 0">
+            <div class="stats__num-wrap">
+              <span class="stats__num" data-count-to="22">22</span>
+              <span class="stats__plus">+</span>
+            </div>
+            <div class="stats__label-wrap">
+              <span class="stats__label-eyebrow">Tempo</span>
+              <p class="stats__label">Anos de<br>experiência</p>
+            </div>
+          </div>
+
+          <div class="stats__item" style="--stat-i: 1">
+            <div class="stats__num-wrap">
+              <span class="stats__num" data-count-to="25">25</span>
+            </div>
+            <div class="stats__label-wrap">
+              <span class="stats__label-eyebrow">Atuação</span>
+              <p class="stats__label">Especialidades<br>veterinárias</p>
+            </div>
+          </div>
+
+          <div class="stats__item" style="--stat-i: 2">
+            <div class="stats__num-wrap">
+              <span class="stats__num" data-count-to="13">13</span>
+              <span class="stats__plus">+</span>
+            </div>
+            <div class="stats__label-wrap">
+              <span class="stats__label-eyebrow">Equipe</span>
+              <p class="stats__label">Veterinários<br>especialistas</p>
+            </div>
+          </div>
+
+          <div class="stats__item" style="--stat-i: 3">
+            <div class="stats__num-wrap">
+              <span class="stats__num stats__num--text">24h</span>
+            </div>
+            <div class="stats__label-wrap">
+              <span class="stats__label-eyebrow">Plantão</span>
+              <p class="stats__label">Hospital aberto<br>todos os dias</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================
+         SECTION 3 — QUEM SOMOS / HISTÓRIA
+         Archetype: Split Alternado (Texto / Badge + Imagem)
+         ============================================= -->
+    <section class="hosp-about" id="quem-somos" aria-label="Sobre o Grupo Piera">
+      <div class="container hosp-about__grid">
+        <div class="hosp-about__content">
+          <span class="hosp-about__pre">Nossa história</span>
+          <h2 class="hosp-about__title">Cuidamos como se fosse<br><span class="hosp-about__title-grad">parte da nossa família.</span></h2>
+          <p class="hosp-about__text">
+            O <strong>Grupo Piera</strong> é composto pelo Piera Hospital Veterinário, que realiza atendimento clínico e hospitalar 24 horas; Piera Especialidades Veterinárias, focado no atendimento de especialidades; e Piera Cursos, focado no aprimoramento de médicos veterinários.
+          </p>
+          <p class="hosp-about__text">
+            Nascemos com a missão de oferecer medicina de alta complexidade com o acolhimento que seu pet merece. Hoje somos referência em neurologia, cirurgias complexas e reabilitação em toda a Grande São Paulo.
+          </p>
+          <a href="/quem-somos" class="hosp-about__cta">Saiba mais sobre o Grupo Piera →</a>
+        </div>
+        <div class="hosp-about__visual">
+          <div class="hosp-about__img-wrap">
+            <img src="/.netlify/images?url=/images/hosp-exterior.jpg&w=800&q=80" alt="Fachada do Hospital Veterinário Piera" class="hosp-about__img" loading="lazy" width="800" height="600">
+            <div class="hosp-about__img-overlay" aria-hidden="true"></div>
+          </div>
+          <div class="hosp-about__badge" aria-hidden="true">
+            <span class="hosp-about__badge-num">22</span>
+            <span class="hosp-about__badge-num" style="font-size: 0.7em; color: var(--clr-accent); -webkit-text-fill-color: var(--clr-accent);">+</span>
+            <span class="hosp-about__badge-text">anos de<br>experiência</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         SECTION 4 — SERVICES (Grid de Procedimentos)
+    =================================================== -->
+    <section class="services" aria-label="Serviços e procedimentos">
+      <div class="services__container container">
+        <header class="services__header">
+          <p class="services__pre">O que fazemos</p>
+          <h2 class="services__title">Atendimento veterinário<br><span class="services__title-grad">completo,</span> em um só grupo.</h2>
+          <p class="services__intro">Da emergência à madrugada à consulta especializada agendada — toda a estrutura, equipe e tecnologia para cuidar do seu animal.</p>
+        </header>
+
+        <div class="services__grid">
+          <article class="service-card">
+            <div class="service-card__icon"><i class="ph ph-first-aid" aria-hidden="true"></i></div>
+            <h3 class="service-card__name">Emergência 24h</h3>
+            <p class="service-card__desc">Atendimento de urgência todos os dias, a qualquer hora. Equipe plantonista pronta para receber seu pet.</p>
+            <a href="/hospital#emergencia" class="service-card__link">Saiba mais →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon"><i class="ph ph-scissors" aria-hidden="true"></i></div>
+            <h3 class="service-card__name">Cirurgias</h3>
+            <p class="service-card__desc">Centro cirúrgico equipado para procedimentos de alta complexidade, com anestesiologista dedicado.</p>
+            <a href="/hospital#cirurgia" class="service-card__link">Saiba mais →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon"><i class="ph ph-heartbeat" aria-hidden="true"></i></div>
+            <h3 class="service-card__name">UTI Veterinária</h3>
+            <p class="service-card__desc">Internação intensiva com monitoramento 24h, oxigenoterapia e suporte para casos críticos.</p>
+            <a href="/hospital#uti" class="service-card__link">Saiba mais →</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon"><i class="ph ph-magnifying-glass" aria-hidden="true"></i></div>
+            <h3 class="service-card__name">Diagnóstico por Imagem</h3>
+            <p class="service-card__desc">Raio-x digital, ultrassom, ecocardiografia e tomografia para diagnóstico preciso e rápido.</p>
+            <a href="/hospital#diagnostico" class="service-card__link">Saiba mais →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         SECTION 5 — PILLARS ("O que nos diferencia")
+         Editorial Rows — NOT a card grid
+    =================================================== -->
+    <section class="pillars" aria-label="Nossos diferenciais">
+      <div class="pillars__container">
+        <header class="pillars__header">
+          <span class="pillars__pre">Diferenciais</span>
+          <h2 class="pillars__title">O que nos<br><span class="pillars__title-grad">diferencia.</span></h2>
+        </header>
+
+        <div class="pillars__list">
+
+          <div class="pillars__row" style="--row-i: 0">
+            <span class="pillars__num" aria-hidden="true">01</span>
+            <div class="pillars__content">
+              <div class="pillars__tag">
+                <i class="ph ph-cpu" aria-hidden="true"></i>
+                <span>Tecnologia</span>
+              </div>
+              <h3 class="pillars__name">Tecnologia avançada</h3>
+              <p class="pillars__text">Equipamentos de última geração para diagnóstico e cirurgia — do raio-x digital ao microscópio cirúrgico. Tomografia, endoscopia, ecocardiografia e cirurgia laparoscópica a serviço do diagnóstico preciso.</p>
+            </div>
+          </div>
+
+          <div class="pillars__row" style="--row-i: 1">
+            <span class="pillars__num" aria-hidden="true">02</span>
+            <div class="pillars__content">
+              <div class="pillars__tag">
+                <i class="ph ph-stethoscope" aria-hidden="true"></i>
+                <span>Equipe</span>
+              </div>
+              <h3 class="pillars__name">Equipe especializada</h3>
+              <p class="pillars__text">Mais de 13 veterinários com formação específica em cada área, coordenados para atender cada caso da forma certa. Fisioterapeutas, nutricionistas e anestesiologistas dedicados.</p>
+            </div>
+          </div>
+
+          <div class="pillars__row" style="--row-i: 2">
+            <span class="pillars__num" aria-hidden="true">03</span>
+            <div class="pillars__content">
+              <div class="pillars__tag">
+                <i class="ph ph-heart" aria-hidden="true"></i>
+                <span>Cuidado</span>
+              </div>
+              <h3 class="pillars__name">Cuidado humanizado</h3>
+              <p class="pillars__text">Tratamos cada animal como único. Protocolos individualizados, comunicação clara e acolhimento em cada etapa. Mantemos tutores informados com transparência durante todo o atendimento.</p>
+            </div>
+          </div>
+
+          <div class="pillars__row" style="--row-i: 3">
+            <span class="pillars__num" aria-hidden="true">04</span>
+            <div class="pillars__content">
+              <div class="pillars__tag">
+                <i class="ph ph-calendar-check" aria-hidden="true"></i>
+                <span>Experiência</span>
+              </div>
+              <h3 class="pillars__name">22 anos de experiência</h3>
+              <p class="pillars__text">Desde 2002 cuidando de cães, gatos, silvestres e exóticos na Grande São Paulo. Uma das clínicas veterinárias mais antigas e respeitadas da região.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         SECTION 6 — GALLERY ("Nosso Espaço")
+         Carrossel CSS-only com fotos da estrutura
+    =================================================== -->
+    <section class="gallery" aria-label="Nosso espaço">
+      <div class="gallery__container container">
+        <header class="gallery__header">
+          <p class="gallery__pre">Nosso espaço</p>
+          <h2 class="gallery__title">Estrutura pensada<br>para o bem-estar do pet.</h2>
+          <p class="gallery__intro">Ambientes amplos, equipamentos modernos e áreas separadas para cães, gatos e isolamento. Conheça por dentro.</p>
+        </header>
+      </div>
+
+      <div class="gallery__rail" role="region" aria-label="Galeria de fotos da estrutura" tabindex="0">
+        <figure class="gallery__item">
+          <img src="/.netlify/images?url=/images/hosp-estrutura-recepcao.jpg&w=800&q=80" alt="Recepção do hospital" loading="lazy">
+          <figcaption>Recepção</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <img src="/.netlify/images?url=/images/hosp-estrutura-consultorio-1.jpg&w=800&q=80" alt="Consultório veterinário" loading="lazy">
+          <figcaption>Consultório</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <img src="/.netlify/images?url=/images/hosp-estrutura-cirurgico-1.jpg&w=800&q=80" alt="Centro cirúrgico" loading="lazy">
+          <figcaption>Centro Cirúrgico</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <img src="/.netlify/images?url=/images/hosp-estrutura-internacao-felinos.jpg&w=800&q=80" alt="Internação felinos" loading="lazy">
+          <figcaption>Internação Felinos</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <img src="/.netlify/images?url=/images/hosp-estrutura-internacao-caes-1.jpg&w=800&q=80" alt="Internação cães" loading="lazy">
+          <figcaption>Internação Cães</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <img src="/.netlify/images?url=/images/hosp-estrutura-raiox.jpg&w=800&q=80" alt="Sala de raio-x" loading="lazy">
+          <figcaption>Raio-X</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <img src="/.netlify/images?url=/images/hosp-estrutura-ultrassom.jpg&w=800&q=80" alt="Sala de ultrassom" loading="lazy">
+          <figcaption>Ultrassom</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <img src="/.netlify/images?url=/images/estrutura-fisio-01.jpg&w=800&q=80" alt="Fisioterapia" loading="lazy">
+          <figcaption>Fisioterapia</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         SECTION 7 — UNITS ("Duas Unidades")
          Bento Box com 3D Flip Cards
     =================================================== -->
     <section class="units" aria-label="Nossas unidades">
       <div class="units__header">
         <p class="units__pre">Onde seu pet precisa ir?</p>
-        <h2 class="units__title">Duas unidades.<br>Um só compromisso com o seu animal.</h2>
+        <h2 class="units__title">Duas unidades.<br><span class="units__title-grad">Um só compromisso</span> com o seu animal.</h2>
         <p class="units__intro">Temos a estrutura certa para cada momento — desde a emergência à madrugada até a consulta especializada marcada com antecedência.</p>
       </div>
 
@@ -169,97 +467,8 @@
       </div>
     </section>
 
-    <!-- =============================================
-         SECTION: QUEM SOMOS / HISTÓRIA
-         Archetype: Split Alternado (Texto / Badge + Imagem)
-         ============================================= -->
-    <section class="hosp-about" id="quem-somos" aria-label="Sobre o Grupo Piera">
-      <div class="container hosp-about__grid">
-        <div class="hosp-about__content">
-          <div class="hosp-about__badge">
-            <span class="hosp-about__badge-num">22+</span>
-            <span class="hosp-about__badge-text">Anos de<br>Experiência</span>
-          </div>
-          <h2 class="hosp-about__title">Nossa História.</h2>
-          <p class="hosp-about__text">
-            O <strong>Grupo Piera</strong> é composto pelo Piera Hospital Veterinário, que realiza atendimento clínico e hospitalar 24 horas; Piera Especialidades Veterinárias, focado no atendimento de especialidades e Piera Cursos veterinários, focado no aprimoramento de médicos veterinários.
-          </p>
-          <p class="hosp-about__text">
-            Nascemos com a missão de oferecer medicina de alta complexidade com o acolhimento que seu pet merece. Hoje somos referência em neurologia, cirurgias complexas e reabilitação em toda a grande São Paulo.
-          </p>
-        </div>
-        <div class="hosp-about__visual">
-          <img src="/.netlify/images?url=/images/hosp-exterior.jpg&w=800&q=80" alt="Fachada do Hospital Veterinário Piera" class="hosp-about__img" loading="lazy">
-        </div>
-      </div>
-    </section>
-
     <!-- ===================================================
-         SECTION 3 — PILLARS ("O que nos diferencia")
-         Editorial Rows — NOT a card grid
-    =================================================== -->
-    <section class="pillars" aria-label="Nossos diferenciais">
-      <div class="pillars__container">
-        <header class="pillars__header">
-          <h2 class="pillars__title">O que nos<br>diferencia.</h2>
-        </header>
-
-        <div class="pillars__list">
-
-          <div class="pillars__row" style="--row-i: 0">
-            <span class="pillars__num" aria-hidden="true">01</span>
-            <div class="pillars__content">
-              <div class="pillars__tag">
-                <i class="ph ph-cpu" aria-hidden="true"></i>
-                <span>Tecnologia</span>
-              </div>
-              <h3 class="pillars__name">Tecnologia avançada</h3>
-              <p class="pillars__text">Equipamentos de última geração para diagnóstico e cirurgia — do raio-x digital ao microscópio cirúrgico. Tomografia, endoscopia, ecocardiografia e cirurgia laparoscópica a serviço do diagnóstico preciso.</p>
-            </div>
-          </div>
-
-          <div class="pillars__row" style="--row-i: 1">
-            <span class="pillars__num" aria-hidden="true">02</span>
-            <div class="pillars__content">
-              <div class="pillars__tag">
-                <i class="ph ph-stethoscope" aria-hidden="true"></i>
-                <span>Equipe</span>
-              </div>
-              <h3 class="pillars__name">Equipe especializada</h3>
-              <p class="pillars__text">Mais de 13 veterinários com formação específica em cada área, coordenados para atender cada caso da forma certa. Fisioterapeutas, nutricionistas e anestesiologistas dedicados.</p>
-            </div>
-          </div>
-
-          <div class="pillars__row" style="--row-i: 2">
-            <span class="pillars__num" aria-hidden="true">03</span>
-            <div class="pillars__content">
-              <div class="pillars__tag">
-                <i class="ph ph-heart" aria-hidden="true"></i>
-                <span>Cuidado</span>
-              </div>
-              <h3 class="pillars__name">Cuidado humanizado</h3>
-              <p class="pillars__text">Tratamos cada animal como único. Protocolos individualizados, comunicação clara e acolhimento em cada etapa. Mantemos tutores informados com transparência durante todo o atendimento.</p>
-            </div>
-          </div>
-
-          <div class="pillars__row" style="--row-i: 3">
-            <span class="pillars__num" aria-hidden="true">04</span>
-            <div class="pillars__content">
-              <div class="pillars__tag">
-                <i class="ph ph-calendar-check" aria-hidden="true"></i>
-                <span>Experiência</span>
-              </div>
-              <h3 class="pillars__name">22 anos de experiência</h3>
-              <p class="pillars__text">Desde 2002 cuidando de cães, gatos, silvestres e exóticos na Grande São Paulo. Uma das clínicas veterinárias mais antigas e respeitadas da região.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================================================
-         SECTION 4 — TESTIMONIALS (CSS Carousel)
+         SECTION 8 — TESTIMONIALS (CSS Carousel)
          Pure CSS radio-driven carousel, dark bg
     =================================================== -->
     <section class="testimonials" aria-label="Depoimentos de clientes">
@@ -349,19 +558,72 @@
     </section>
 
     <!-- ===================================================
-         SECTION 5 — PARTNERSHIP (Minimal)
+         SECTION 9 — INSTAGRAM (Feed visual)
     =================================================== -->
-    <section class="partnership" aria-label="Parceria com veterinários">
+    <section class="instagram" aria-label="Instagram do Grupo Piera">
+      <div class="instagram__container container">
+        <header class="instagram__header">
+          <p class="instagram__pre">@vetpiera</p>
+          <h2 class="instagram__title">Acompanhe nosso<br>dia a dia no Instagram.</h2>
+          <a href="https://instagram.com/vetpiera" class="instagram__cta" target="_blank" rel="noopener">
+            <i class="ph ph-instagram-logo" aria-hidden="true"></i>
+            <span>Seguir no Instagram</span>
+          </a>
+        </header>
 
-      <!-- No decorative lines as per user feedback -->
-
-      <div class="partnership__body">
-        <span class="partnership__eyebrow">Para profissionais</span>
-        <h2 class="partnership__title">Você é veterinário?</h2>
-        <p class="partnership__sub">Conheça nosso programa de parceria e encaminhe seus pacientes para a estrutura que eles precisam. A VetPiera oferece infraestrutura completa, equipe de suporte e ambiente colaborativo.</p>
-        <a href="/parceiros" class="btn btn--outline partnership__cta">Seja parceiro →</a>
+        <div class="instagram__grid">
+          <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="instagram__tile" aria-label="Post no Instagram">
+            <img src="/.netlify/images?url=/images/cachorro-caramelo.jpg&w=400&q=70" alt="" loading="lazy">
+            <span class="instagram__tile-overlay"><i class="ph ph-instagram-logo" aria-hidden="true"></i></span>
+          </a>
+          <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="instagram__tile" aria-label="Post no Instagram">
+            <img src="/.netlify/images?url=/images/gato-brasil-premium.jpg&w=400&q=70" alt="" loading="lazy">
+            <span class="instagram__tile-overlay"><i class="ph ph-instagram-logo" aria-hidden="true"></i></span>
+          </a>
+          <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="instagram__tile" aria-label="Post no Instagram">
+            <img src="/.netlify/images?url=/images/dr-ryan.jpg&w=400&q=70" alt="" loading="lazy">
+            <span class="instagram__tile-overlay"><i class="ph ph-instagram-logo" aria-hidden="true"></i></span>
+          </a>
+          <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="instagram__tile" aria-label="Post no Instagram">
+            <img src="/.netlify/images?url=/images/dra-diana.jpg&w=400&q=70" alt="" loading="lazy">
+            <span class="instagram__tile-overlay"><i class="ph ph-instagram-logo" aria-hidden="true"></i></span>
+          </a>
+          <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="instagram__tile" aria-label="Post no Instagram">
+            <img src="/.netlify/images?url=/images/estrutura-fisio-02.jpg&w=400&q=70" alt="" loading="lazy">
+            <span class="instagram__tile-overlay"><i class="ph ph-instagram-logo" aria-hidden="true"></i></span>
+          </a>
+          <a href="https://instagram.com/vetpiera" target="_blank" rel="noopener" class="instagram__tile" aria-label="Post no Instagram">
+            <img src="/.netlify/images?url=/images/hospital-uti.jpg&w=400&q=70" alt="" loading="lazy">
+            <span class="instagram__tile-overlay"><i class="ph ph-instagram-logo" aria-hidden="true"></i></span>
+          </a>
+        </div>
       </div>
+    </section>
 
+    <!-- ===================================================
+         SECTION 10 — BOOK CTA (Agendamento WhatsApp)
+    =================================================== -->
+    <section class="book-cta" aria-label="Agende uma consulta">
+      <div class="book-cta__container container">
+        <div class="book-cta__content">
+          <p class="book-cta__pre">Agendamento</p>
+          <h2 class="book-cta__title">Pronto para cuidar<br>do seu pet?</h2>
+          <p class="book-cta__sub">Fale com nossa equipe pelo WhatsApp e agende uma consulta ou tire dúvidas sobre emergências, especialidades e exames.</p>
+          <div class="book-cta__actions">
+            <a href="https://wa.me/5511963326376" class="btn btn--accent book-cta__btn" target="_blank" rel="noopener">
+              <i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i>
+              <span>Falar pelo WhatsApp</span>
+            </a>
+            <a href="tel:+551127467292" class="book-cta__phone">
+              <i class="ph ph-phone" aria-hidden="true"></i>
+              <span>(11) 2746-7292 — 24h</span>
+            </a>
+          </div>
+        </div>
+        <div class="book-cta__visual" aria-hidden="true">
+          <img src="/.netlify/images?url=/images/cachorro-caramelo.jpg&w=600&q=80" alt="" loading="lazy">
+        </div>
+      </div>
     </section>
 
   </main>
