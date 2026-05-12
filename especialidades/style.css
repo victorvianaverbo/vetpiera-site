@@ -640,9 +640,7 @@ button {
   .esp-hero__tag { right: 12px; top: 12px; }
   .esp-hero__trust { gap: 14px; }
   .esp-hero__trust-item { font-size: 0.8125rem; }
-  .esp-hero__actions { gap: 18px; flex-direction: column; align-items: stretch; }
-  .esp-hero__btn-primary { justify-content: center; }
-  .esp-hero__link { justify-content: center; align-self: center; }
+  .esp-hero__actions { gap: 18px; }
 }
 
 @media (max-width: 380px) {
