@@ -363,45 +363,82 @@
         </header>
       </div>
 
-      <div class="gallery__rail" role="region" aria-label="Galeria de fotos da estrutura" tabindex="0">
-        <figure class="gallery__item">
-          <img src="/.netlify/images?url=/images/hosp-estrutura-recepcao.jpg&w=800&q=80" alt="Recepção do hospital" loading="lazy">
-          <figcaption>Recepção</figcaption>
-        </figure>
-        <figure class="gallery__item">
-          <img src="/.netlify/images?url=/images/hosp-estrutura-consultorio-1.jpg&w=800&q=80" alt="Consultório veterinário" loading="lazy">
-          <figcaption>Consultório</figcaption>
-        </figure>
-        <figure class="gallery__item">
-          <img src="/.netlify/images?url=/images/hosp-estrutura-cirurgico-1.jpg&w=800&q=80" alt="Centro cirúrgico" loading="lazy">
-          <figcaption>Centro Cirúrgico</figcaption>
-        </figure>
-        <figure class="gallery__item">
-          <img src="/.netlify/images?url=/images/hosp-estrutura-internacao-felinos.jpg&w=800&q=80" alt="Internação felinos" loading="lazy">
-          <figcaption>Internação Felinos</figcaption>
-        </figure>
-        <figure class="gallery__item">
-          <img src="/.netlify/images?url=/images/hosp-estrutura-internacao-caes-1.jpg&w=800&q=80" alt="Internação cães" loading="lazy">
-          <figcaption>Internação Cães</figcaption>
-        </figure>
-        <figure class="gallery__item">
-          <img src="/.netlify/images?url=/images/hosp-estrutura-raiox.jpg&w=800&q=80" alt="Sala de raio-x" loading="lazy">
-          <figcaption>Raio-X</figcaption>
-        </figure>
-        <figure class="gallery__item">
-          <img src="/.netlify/images?url=/images/hosp-estrutura-ultrassom.jpg&w=800&q=80" alt="Sala de ultrassom" loading="lazy">
-          <figcaption>Ultrassom</figcaption>
-        </figure>
-        <figure class="gallery__item">
-          <img src="/.netlify/images?url=/images/estrutura-fisio-01.jpg&w=800&q=80" alt="Fisioterapia" loading="lazy">
-          <figcaption>Fisioterapia</figcaption>
-        </figure>
+      <div class="gallery__viewport" role="region" aria-label="Galeria de fotos da estrutura">
+        <div class="gallery__track">
+          <!-- Set 1 -->
+          <figure class="gallery__item">
+            <img src="/.netlify/images?url=/images/hosp-estrutura-recepcao.jpg&w=800&q=80" alt="Recepção do hospital" loading="lazy" width="400" height="300">
+            <figcaption>Recepção</figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <img src="/.netlify/images?url=/images/hosp-estrutura-consultorio-1.jpg&w=800&q=80" alt="Consultório veterinário" loading="lazy" width="400" height="300">
+            <figcaption>Consultório</figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <img src="/.netlify/images?url=/images/hosp-estrutura-cirurgico-1.jpg&w=800&q=80" alt="Centro cirúrgico" loading="lazy" width="400" height="300">
+            <figcaption>Centro Cirúrgico</figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <img src="/.netlify/images?url=/images/hosp-estrutura-internacao-felinos.jpg&w=800&q=80" alt="Internação felinos" loading="lazy" width="400" height="300">
+            <figcaption>Internação Felinos</figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <img src="/.netlify/images?url=/images/hosp-estrutura-internacao-caes-1.jpg&w=800&q=80" alt="Internação cães" loading="lazy" width="400" height="300">
+            <figcaption>Internação Cães</figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <img src="/.netlify/images?url=/images/hosp-estrutura-raiox.jpg&w=800&q=80" alt="Sala de raio-x" loading="lazy" width="400" height="300">
+            <figcaption>Raio-X</figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <img src="/.netlify/images?url=/images/hosp-estrutura-ultrassom.jpg&w=800&q=80" alt="Sala de ultrassom" loading="lazy" width="400" height="300">
+            <figcaption>Ultrassom</figcaption>
+          </figure>
+          <figure class="gallery__item">
+            <img src="/.netlify/images?url=/images/estrutura-fisio-01.jpg&w=800&q=80" alt="Fisioterapia" loading="lazy" width="400" height="300">
+            <figcaption>Fisioterapia</figcaption>
+          </figure>
+
+          <!-- Set 2 (duplicado para loop infinito) -->
+          <figure class="gallery__item" aria-hidden="true">
+            <img src="/.netlify/images?url=/images/hosp-estrutura-recepcao.jpg&w=800&q=80" alt="" loading="lazy" width="400" height="300">
+            <figcaption>Recepção</figcaption>
+          </figure>
+          <figure class="gallery__item" aria-hidden="true">
+            <img src="/.netlify/images?url=/images/hosp-estrutura-consultorio-1.jpg&w=800&q=80" alt="" loading="lazy" width="400" height="300">
+            <figcaption>Consultório</figcaption>
+          </figure>
+          <figure class="gallery__item" aria-hidden="true">
+            <img src="/.netlify/images?url=/images/hosp-estrutura-cirurgico-1.jpg&w=800&q=80" alt="" loading="lazy" width="400" height="300">
+            <figcaption>Centro Cirúrgico</figcaption>
+          </figure>
+          <figure class="gallery__item" aria-hidden="true">
+            <img src="/.netlify/images?url=/images/hosp-estrutura-internacao-felinos.jpg&w=800&q=80" alt="" loading="lazy" width="400" height="300">
+            <figcaption>Internação Felinos</figcaption>
+          </figure>
+          <figure class="gallery__item" aria-hidden="true">
+            <img src="/.netlify/images?url=/images/hosp-estrutura-internacao-caes-1.jpg&w=800&q=80" alt="" loading="lazy" width="400" height="300">
+            <figcaption>Internação Cães</figcaption>
+          </figure>
+          <figure class="gallery__item" aria-hidden="true">
+            <img src="/.netlify/images?url=/images/hosp-estrutura-raiox.jpg&w=800&q=80" alt="" loading="lazy" width="400" height="300">
+            <figcaption>Raio-X</figcaption>
+          </figure>
+          <figure class="gallery__item" aria-hidden="true">
+            <img src="/.netlify/images?url=/images/hosp-estrutura-ultrassom.jpg&w=800&q=80" alt="" loading="lazy" width="400" height="300">
+            <figcaption>Ultrassom</figcaption>
+          </figure>
+          <figure class="gallery__item" aria-hidden="true">
+            <img src="/.netlify/images?url=/images/estrutura-fisio-01.jpg&w=800&q=80" alt="" loading="lazy" width="400" height="300">
+            <figcaption>Fisioterapia</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
     <!-- ===================================================
          SECTION 7 — UNITS ("Duas Unidades")
-         Bento Box com 3D Flip Cards
+         Cards lineares com todas as infos visíveis
     =================================================== -->
     <section class="units" aria-label="Nossas unidades">
       <div class="units__header">
@@ -413,56 +450,58 @@
       <div class="units__grid">
 
         <!-- Hospital 24h card (dark) -->
-        <div class="unit unit--dark" tabindex="0" role="button"
-             aria-label="Hospital Veterinário 24h — clique para ver detalhes">
-          <div class="unit__inner">
-            <!-- FRONT -->
-            <div class="unit__front">
-              <span class="unit__tag">Hospital Veterinário</span>
-              <h3 class="unit__name">Emergência<br>24 horas.</h3>
-              <p class="unit__desc">Emergências, cirurgias, internação, diagnóstico e atendimento de rotina. Aberto todos os dias, a qualquer hora.</p>
-              <a href="/hospital" class="btn btn--ghost unit__cta">Ir para o Hospital →</a>
-            </div>
-            <!-- BACK -->
-            <div class="unit__back" aria-hidden="true">
-              <div class="unit__back-content">
-                <p class="unit__back-label">Telefone</p>
-                <p class="unit__back-value">(11) 2746-7292</p>
-                <p class="unit__back-label">Endereço</p>
-                <p class="unit__back-value">Av. Maria Luiza Americano, 803<br>São Paulo – SP</p>
-                <p class="unit__back-label">Horário</p>
-                <p class="unit__back-value">24 horas, 7 dias por semana</p>
-                <a href="tel:+551127467292" class="btn btn--accent unit__back-cta">Ligar agora →</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <a href="/hospital" class="unit unit--dark" aria-label="Hospital Veterinário 24h">
+          <span class="unit__tag">Hospital Veterinário</span>
+          <h3 class="unit__name">Emergência<br>24 horas.</h3>
+          <p class="unit__desc">Emergências, cirurgias, internação, diagnóstico e atendimento de rotina. Aberto todos os dias, a qualquer hora.</p>
 
-        <!-- Especialidades card (pale green) -->
-        <div class="unit unit--light" tabindex="0" role="button"
-             aria-label="Clínica de Especialidades — clique para ver detalhes">
-          <div class="unit__inner">
-            <!-- FRONT -->
-            <div class="unit__front">
-              <span class="unit__tag">Clínica de Especialidades</span>
-              <h3 class="unit__name">25 especialidades<br>veterinárias.</h3>
-              <p class="unit__desc">25 especialidades veterinárias para consultas eletivas. Equipe de especialistas com foco em diagnóstico preciso e tratamento personalizado.</p>
-              <a href="/especialidades" class="btn btn--primary unit__cta">Conhecer Especialidades →</a>
-            </div>
-            <!-- BACK -->
-            <div class="unit__back" aria-hidden="true">
-              <div class="unit__back-content">
-                <p class="unit__back-label">Telefone</p>
-                <p class="unit__back-value">(11) 2373-3144</p>
-                <p class="unit__back-label">Endereço</p>
-                <p class="unit__back-value">Rua Itapeti, 154<br>São Paulo – SP</p>
-                <p class="unit__back-label">Horário</p>
-                <p class="unit__back-value">Seg–Sex: 9h–18h<br>Sáb: 9h–13h</p>
-                <a href="/especialidades#contato" class="btn btn--primary unit__back-cta">Agendar consulta →</a>
-              </div>
-            </div>
-          </div>
-        </div>
+          <ul class="unit__info">
+            <li class="unit__info-item">
+              <i class="ph ph-phone" aria-hidden="true"></i>
+              <span>(11) 2746-7292</span>
+            </li>
+            <li class="unit__info-item">
+              <i class="ph ph-map-pin" aria-hidden="true"></i>
+              <span>Av. Maria Luiza Americano, 803 — São Paulo, SP</span>
+            </li>
+            <li class="unit__info-item">
+              <i class="ph ph-clock" aria-hidden="true"></i>
+              <span>24 horas · 7 dias por semana</span>
+            </li>
+          </ul>
+
+          <span class="unit__cta">
+            Ir para o Hospital
+            <i class="ph ph-arrow-right" aria-hidden="true"></i>
+          </span>
+        </a>
+
+        <!-- Especialidades card (light) -->
+        <a href="/especialidades" class="unit unit--light" aria-label="Clínica de Especialidades">
+          <span class="unit__tag">Clínica de Especialidades</span>
+          <h3 class="unit__name">25 especialidades<br>veterinárias.</h3>
+          <p class="unit__desc">25 especialidades veterinárias para consultas eletivas. Equipe de especialistas com foco em diagnóstico preciso e tratamento personalizado.</p>
+
+          <ul class="unit__info">
+            <li class="unit__info-item">
+              <i class="ph ph-phone" aria-hidden="true"></i>
+              <span>(11) 2373-3144</span>
+            </li>
+            <li class="unit__info-item">
+              <i class="ph ph-map-pin" aria-hidden="true"></i>
+              <span>Rua Itapeti, 154 — São Paulo, SP</span>
+            </li>
+            <li class="unit__info-item">
+              <i class="ph ph-clock" aria-hidden="true"></i>
+              <span>Seg–Sex 9h–18h · Sáb 9h–13h</span>
+            </li>
+          </ul>
+
+          <span class="unit__cta">
+            Conhecer Especialidades
+            <i class="ph ph-arrow-right" aria-hidden="true"></i>
+          </span>
+        </a>
 
       </div>
     </section>
@@ -815,27 +854,7 @@
           });
         }
 
-        /* ==================================================
-           UNITS — 3D flip: keyboard + mobile click
-        ================================================== */
-        /* Mobile: click-to-flip */
-        if ('ontouchstart' in window) {
-          document.querySelectorAll('.unit').forEach(function (card) {
-            card.addEventListener('click', function () {
-              card.classList.toggle('is-flipped');
-            });
-          });
-        }
-
-        /* Keyboard: Enter / Space triggers flip */
-        document.querySelectorAll('.unit').forEach(function (card) {
-          card.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              card.classList.toggle('is-flipped');
-            }
-          });
-        });
+        /* Units agora são <a> links lineares — sem flip 3D necessário */
 
         /* ==================================================
            PILLARS — animation-timeline fallback (IO)
