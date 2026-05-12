@@ -2093,6 +2093,7 @@ ul {
    SECTION: NOSSA ESTRUTURA (Hospital)
    Archetype: Multi-row Carousel with Navigation
    ============================================================ */
+/* ── Carrossel auto-scroll (marquee) ── */
 .hosp-structure {
   background: var(--clr-primary-pale);
   padding-block: var(--sp-section);
@@ -2101,55 +2102,77 @@ ul {
 
 .hosp-structure__header {
   text-align: center;
-  margin-bottom: clamp(40px, 6vw, 64px);
+  margin-bottom: clamp(48px, 6vw, 72px);
+  max-width: 760px;
+  margin-inline: auto;
+  padding-inline: var(--pad-x);
 }
 
 .hosp-structure__title {
   font-family: var(--ff-heading);
-  font-size: var(--fs-h2);
-  color: var(--clr-primary);
-  margin-bottom: 12px;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.04;
+  color: var(--clr-dark);
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
 }
 
-.hosp-structure__carousel {
-  width: 100%;
+.hosp-structure__sub {
+  font-family: var(--ff-body);
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  color: var(--clr-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.hosp-structure__viewport {
   position: relative;
-  padding-inline: var(--pad-x);
-  max-width: var(--container);
-  margin-inline: auto;
-}
-
-.hosp-structure__track-wrapper {
   overflow: hidden;
-  border-radius: var(--radius-lg);
-  cursor: grab;
+  padding-block: 12px;
+  mask-image: linear-gradient(to right, transparent, #000 80px, #000 calc(100% - 80px), transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 80px, #000 calc(100% - 80px), transparent);
 }
-.hosp-structure__track-wrapper:active { cursor: grabbing; }
 
 .hosp-structure__track {
   display: flex;
   gap: 16px;
-  transition: transform 0.6s var(--ease);
+  width: max-content;
+  animation: hospStructureMarquee 55s linear infinite !important;
+  animation-duration: 55s !important;
+  animation-iteration-count: infinite !important;
+  will-change: transform;
+}
+
+@keyframes hospStructureMarquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-50% - 8px)); }
+}
+
+.hosp-structure__viewport:hover .hosp-structure__track,
+.hosp-structure__track:hover {
+  animation-play-state: paused !important;
 }
 
 .hosp-structure__item {
-  flex: 0 0 clamp(280px, 40vw, 450px);
-  height: clamp(300px, 45vw, 500px);
+  flex: 0 0 auto;
+  width: clamp(260px, 30vw, 380px);
+  aspect-ratio: 4 / 3;
   position: relative;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius);
   overflow: hidden;
   background: var(--clr-dark);
+  margin: 0;
 }
 
 .hosp-structure__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s var(--ease);
+  transition: transform 600ms var(--ease);
 }
 
 .hosp-structure__item:hover .hosp-structure__img {
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 .hosp-structure__caption {
@@ -2157,45 +2180,20 @@ ul {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 32px 24px 24px;
-  background: linear-gradient(to top, rgba(15, 45, 36, 0.9), transparent);
+  padding: 14px 18px;
+  background: linear-gradient(to top, rgba(15, 45, 36, 0.85), transparent);
   color: #fff;
-  font-size: 1rem;
-  font-weight: 500;
-  transform: translateY(10px);
-  opacity: 0;
-  transition: transform 0.4s var(--ease), opacity 0.4s ease;
+  font-family: var(--ff-body);
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
-.hosp-structure__item:hover .hosp-structure__caption {
-  transform: translateY(0);
-  opacity: 1;
+@media (prefers-reduced-motion: reduce) {
+  .hosp-structure__track { animation-duration: 100s !important; }
 }
 
-.hosp-structure__nav {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 32px;
-}
-
-.hosp-structure__btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--clr-primary);
-  font-size: 1.25rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-}
-.hosp-structure__btn:hover {
-  background: var(--clr-primary);
-  color: #fff;
-  transform: scale(1.1);
+@media (max-width: 640px) {
+  .hosp-structure__item { width: calc(100vw - 80px); }
 }
 
 /* ============================================================

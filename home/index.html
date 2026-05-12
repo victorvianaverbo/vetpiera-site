@@ -129,12 +129,26 @@
 
         <!-- Media panel 40% -->
         <div class="hero__media" aria-hidden="true">
-          <div class="hero__photo-wrap">
-            <div class="hero__photo" id="heroPhoto" style="background-image: url('/.netlify/images?url=/images/diretor-ryan.jpg&w=1200&q=80');" fetchpriority="high"></div>
-            <div class="hero__photo-overlay"></div>
+          <div class="hero__duo">
+            <div class="hero__photo-wrap hero__photo-wrap--ryan">
+              <img src="/.netlify/images?url=/images/diretor-ryan.jpg&w=600&q=80" alt="Dr. Ryan Elias Piera — Diretor Clínico" class="hero__photo-img" fetchpriority="high" width="500" height="600">
+              <div class="hero__photo-overlay"></div>
+              <div class="hero__photo-caption">
+                <span class="hero__photo-caption-role">Diretor Clínico</span>
+                <span class="hero__photo-caption-name">Dr. Ryan Elias Piera</span>
+              </div>
+            </div>
+            <div class="hero__photo-wrap hero__photo-wrap--diana">
+              <img src="/.netlify/images?url=/images/diretora-diana.jpg&w=600&q=80" alt="Dra. Diana Sogaiar Elias Piera — Diretora Clínica" class="hero__photo-img" loading="lazy" width="500" height="600">
+              <div class="hero__photo-overlay"></div>
+              <div class="hero__photo-caption">
+                <span class="hero__photo-caption-role">Diretora Clínica</span>
+                <span class="hero__photo-caption-name">Dra. Diana Sogaiar Elias Piera</span>
+              </div>
+            </div>
           </div>
 
-          <!-- Badge flutuante que cruza a borda -->
+          <!-- Badge flutuante centralizado entre as duas fotos -->
           <div class="hero__badge" aria-label="22 anos de experiência">
             <span class="hero__badge-num" id="heroBadgeCounter">0</span>
             <span class="hero__badge-plus">+</span>
