@@ -197,9 +197,23 @@
     <section class="esp-about" id="quem-somos" aria-label="Sobre as Especialidades">
       <div class="container esp-about__grid">
         <div class="esp-about__visual">
-          <div class="esp-about__img-wrap">
-            <img src="/.netlify/images?url=/images/diretor-ryan.jpg&w=800&q=80" alt="Equipe diretora da Clínica de Especialidades Piera" class="esp-about__img" loading="lazy" width="800" height="800">
-            <div class="esp-about__img-overlay" aria-hidden="true"></div>
+          <div class="esp-about__duo">
+            <div class="esp-about__img-wrap esp-about__img-wrap--ryan">
+              <img src="/.netlify/images?url=/images/diretor-ryan.jpg&w=600&q=80" alt="Dr. Ryan Elias Piera — Diretor Clínico" class="esp-about__img" loading="lazy" width="500" height="600">
+              <div class="esp-about__img-overlay" aria-hidden="true"></div>
+              <div class="esp-about__caption">
+                <span class="esp-about__caption-role">Diretor Clínico</span>
+                <span class="esp-about__caption-name">Dr. Ryan Elias Piera</span>
+              </div>
+            </div>
+            <div class="esp-about__img-wrap esp-about__img-wrap--diana">
+              <img src="/.netlify/images?url=/images/diretora-diana.jpg&w=600&q=80" alt="Dra. Diana Sogaiar Elias Piera — Diretora Clínica" class="esp-about__img" loading="lazy" width="500" height="600">
+              <div class="esp-about__img-overlay" aria-hidden="true"></div>
+              <div class="esp-about__caption">
+                <span class="esp-about__caption-role">Diretora Clínica</span>
+                <span class="esp-about__caption-name">Dra. Diana Sogaiar Elias Piera</span>
+              </div>
+            </div>
           </div>
           <div class="esp-about__badge" aria-hidden="true">
             <span class="esp-about__badge-num">13</span>
@@ -365,34 +379,67 @@
         <p class="structure__sub">Consultórios modernos, sala de fisioterapia equipada, recepção acolhedora — estrutura inteira pensada para o bem-estar do animal e do tutor.</p>
       </div>
 
-      <div class="structure__grid">
-        <div class="structure__item structure__item--lg">
-          <img src="/.netlify/images?url=/images/estrutura-recepcao.jpg&w=800&q=80" alt="Recepção principal da Unidade de Especialidades" class="structure__img" loading="lazy" width="700" height="467">
-          <div class="structure__caption">Recepção Acolhedora</div>
-        </div>
-        <div class="structure__item structure__item--sm">
-          <img src="/.netlify/images?url=/images/estrutura-consultorio-01.jpg&w=600&q=80" alt="Consultório veterinário moderno" class="structure__img" loading="lazy" width="500" height="333">
-          <div class="structure__caption">Consultórios Humanizados</div>
-        </div>
-        <div class="structure__item structure__item--sm">
-          <img src="/.netlify/images?url=/images/estrutura-fisio-01.jpg&w=600&q=80" alt="Sala de fisioterapia veterinária" class="structure__img" loading="lazy" width="500" height="333">
-          <div class="structure__caption">Fisioterapia &amp; Reabilitação</div>
-        </div>
-        <div class="structure__item structure__item--md">
-          <img src="/.netlify/images?url=/images/estrutura-fisio-02.jpg&w=600&q=80" alt="Equipamentos de reabilitação" class="structure__img" loading="lazy" width="500" height="500">
-          <div class="structure__caption">Reabilitação Avançada</div>
-        </div>
-        <div class="structure__item structure__item--lg">
-          <img src="/.netlify/images?url=/images/estrutura-cirurgico.jpg&w=800&q=80" alt="Centro cirúrgico de alta tecnologia" class="structure__img" loading="lazy" width="700" height="467">
-          <div class="structure__caption">Centro Cirúrgico Completo</div>
-        </div>
-        <div class="structure__item structure__item--sm">
-          <img src="/.netlify/images?url=/images/estrutura-consultorio-02.jpg&w=600&q=80" alt="Consultório de especialidades" class="structure__img" loading="lazy" width="500" height="333">
-          <div class="structure__caption">Atendimento Especializado</div>
-        </div>
-        <div class="structure__item structure__item--sm">
-          <img src="/.netlify/images?url=/images/estrutura-recuperacao.jpg&w=600&q=80" alt="Sala de recuperação pós-cirúrgica" class="structure__img" loading="lazy" width="500" height="333">
-          <div class="structure__caption">Recuperação Assistida</div>
+      <div class="structure__viewport" role="region" aria-label="Galeria da estrutura">
+        <div class="structure__track">
+          <!-- Set 1 -->
+          <figure class="structure__item">
+            <img src="/.netlify/images?url=/images/estrutura-recepcao.jpg&w=800&q=80" alt="Recepção" class="structure__img" loading="lazy" width="400" height="300">
+            <figcaption>Recepção Acolhedora</figcaption>
+          </figure>
+          <figure class="structure__item">
+            <img src="/.netlify/images?url=/images/estrutura-consultorio-01.jpg&w=600&q=80" alt="Consultório" class="structure__img" loading="lazy" width="400" height="300">
+            <figcaption>Consultórios Humanizados</figcaption>
+          </figure>
+          <figure class="structure__item">
+            <img src="/.netlify/images?url=/images/estrutura-fisio-01.jpg&w=600&q=80" alt="Fisioterapia" class="structure__img" loading="lazy" width="400" height="300">
+            <figcaption>Fisioterapia &amp; Reabilitação</figcaption>
+          </figure>
+          <figure class="structure__item">
+            <img src="/.netlify/images?url=/images/estrutura-fisio-02.jpg&w=600&q=80" alt="Reabilitação" class="structure__img" loading="lazy" width="400" height="300">
+            <figcaption>Reabilitação Avançada</figcaption>
+          </figure>
+          <figure class="structure__item">
+            <img src="/.netlify/images?url=/images/estrutura-cirurgico.jpg&w=800&q=80" alt="Centro Cirúrgico" class="structure__img" loading="lazy" width="400" height="300">
+            <figcaption>Centro Cirúrgico Completo</figcaption>
+          </figure>
+          <figure class="structure__item">
+            <img src="/.netlify/images?url=/images/estrutura-consultorio-02.jpg&w=600&q=80" alt="Consultório de especialidades" class="structure__img" loading="lazy" width="400" height="300">
+            <figcaption>Atendimento Especializado</figcaption>
+          </figure>
+          <figure class="structure__item">
+            <img src="/.netlify/images?url=/images/estrutura-recuperacao.jpg&w=600&q=80" alt="Recuperação" class="structure__img" loading="lazy" width="400" height="300">
+            <figcaption>Recuperação Assistida</figcaption>
+          </figure>
+
+          <!-- Set 2 (duplicado para loop infinito) -->
+          <figure class="structure__item" aria-hidden="true">
+            <img src="/.netlify/images?url=/images/estrutura-recepcao.jpg&w=800&q=80" alt="" class="structure__img" loading="lazy" width="400" height="300">
+            <figcaption>Recepção Acolhedora</figcaption>
+          </figure>
+          <figure class="structure__item" aria-hidden="true">
+            <img src="/.netlify/images?url=/images/estrutura-consultorio-01.jpg&w=600&q=80" alt="" class="structure__img" loading="lazy" width="400" height="300">
+            <figcaption>Consultórios Humanizados</figcaption>
+          </figure>
+          <figure class="structure__item" aria-hidden="true">
+            <img src="/.netlify/images?url=/images/estrutura-fisio-01.jpg&w=600&q=80" alt="" class="structure__img" loading="lazy" width="400" height="300">
+            <figcaption>Fisioterapia &amp; Reabilitação</figcaption>
+          </figure>
+          <figure class="structure__item" aria-hidden="true">
+            <img src="/.netlify/images?url=/images/estrutura-fisio-02.jpg&w=600&q=80" alt="" class="structure__img" loading="lazy" width="400" height="300">
+            <figcaption>Reabilitação Avançada</figcaption>
+          </figure>
+          <figure class="structure__item" aria-hidden="true">
+            <img src="/.netlify/images?url=/images/estrutura-cirurgico.jpg&w=800&q=80" alt="" class="structure__img" loading="lazy" width="400" height="300">
+            <figcaption>Centro Cirúrgico Completo</figcaption>
+          </figure>
+          <figure class="structure__item" aria-hidden="true">
+            <img src="/.netlify/images?url=/images/estrutura-consultorio-02.jpg&w=600&q=80" alt="" class="structure__img" loading="lazy" width="400" height="300">
+            <figcaption>Atendimento Especializado</figcaption>
+          </figure>
+          <figure class="structure__item" aria-hidden="true">
+            <img src="/.netlify/images?url=/images/estrutura-recuperacao.jpg&w=600&q=80" alt="" class="structure__img" loading="lazy" width="400" height="300">
+            <figcaption>Recuperação Assistida</figcaption>
+          </figure>
         </div>
       </div>
     </section>
