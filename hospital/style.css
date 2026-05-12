@@ -2475,9 +2475,9 @@ ul {
   left: -32px;
   z-index: 3;
   display: inline-flex;
-  align-items: flex-end;
-  gap: 12px;
-  padding: 20px 28px 18px;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 30px;
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -2487,32 +2487,32 @@ ul {
     0 0 0 1px rgba(255, 255, 255, 0.6) inset;
   overflow: visible;
   white-space: nowrap;
+  line-height: 1;
 }
 
 .hosp-about__badge-num {
   font-family: var(--ff-heading);
   font-size: clamp(2.5rem, 4vw, 3.25rem);
-  line-height: 0.9;
+  line-height: 1;
   background: linear-gradient(135deg, #1B4D3E 0%, #C9A84C 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.02em;
-  display: inline-flex;
-  align-items: baseline;
+  display: inline-block;
 }
 
-.hosp-about__badge-num + .hosp-about__badge-plus,
 .hosp-about__badge-plus {
   font-family: var(--ff-heading);
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   color: var(--clr-accent);
   -webkit-text-fill-color: var(--clr-accent);
   background: none;
-  margin-left: 2px;
-  margin-right: 0;
-  line-height: 0.9;
+  margin-left: -8px;
+  line-height: 1;
   display: inline-block;
+  align-self: flex-start;
+  margin-top: 0.1em;
 }
 
 .hosp-about__badge-text {
