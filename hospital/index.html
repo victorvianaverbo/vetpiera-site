@@ -14,14 +14,24 @@
   <!-- Preload do hero image (LCP) -->
   <link rel="preload" as="image" href="/.netlify/images?url=/images/hosp-hero-recepcao.png&w=1200&q=80" fetchpriority="high">
 
-  <!-- Fonts -->
+  <!-- Preload do CSS principal (prioridade alta) -->
+  <link rel="preload" as="style" href="/hospital/style.css">
+
+  <!-- Fonts (síncrono, com preconnect + display=swap) -->
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
 
-  <!-- Phosphor Icons (cherry-pick: regular + fill apenas) -->
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
-
+  <!-- CSS principal síncrono (bloqueia render para evitar CLS) -->
   <link rel="stylesheet" href="/hospital/style.css">
+
+  <!-- Phosphor Icons assíncrono (não bloqueia render) -->
+  <link rel="preload" as="style" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="preload" as="style" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  </noscript>
 </head>
 <body>
 

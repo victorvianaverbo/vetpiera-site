@@ -11,17 +11,28 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
 
-  <!-- Preload do hero image (LCP) -->
-  <link rel="preload" as="image" href="/.netlify/images?url=/images/diretor-ryan.jpg&w=1200&q=80" fetchpriority="high">
+  <!-- Preload das duas fotos do hero (LCP) -->
+  <link rel="preload" as="image" href="/.netlify/images?url=/images/diretor-ryan.jpg&w=600&q=80" fetchpriority="high">
+  <link rel="preload" as="image" href="/.netlify/images?url=/images/diretora-diana.jpg&w=600&q=80" fetchpriority="high">
 
-  <!-- Fonts -->
+  <!-- Preload do CSS principal (prioridade alta) -->
+  <link rel="preload" as="style" href="/home/style.css">
+
+  <!-- Fonts (síncrono, com preconnect + display=swap) -->
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
 
-  <!-- Phosphor Icons (cherry-pick: regular + fill apenas) -->
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
-
+  <!-- CSS principal síncrono (bloqueia render para evitar CLS) -->
   <link rel="stylesheet" href="/home/style.css">
+
+  <!-- Phosphor Icons assíncrono (não bloqueia render — ícones aparecem após CSS carregar) -->
+  <link rel="preload" as="style" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="preload" as="style" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+  </noscript>
 </head>
 <body>
 
