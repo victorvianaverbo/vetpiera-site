@@ -2003,7 +2003,6 @@ button {
   position: relative;
   padding-block: var(--sp-section);
   background: var(--clr-surface);
-  overflow: hidden;
   isolation: isolate;
 }
 

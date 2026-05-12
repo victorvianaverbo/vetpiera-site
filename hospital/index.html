@@ -868,6 +868,60 @@
     </div>
   </footer>
 
+  <!-- ===================================================
+       WHATSAPP FLOAT BUTTON
+  =================================================== -->
+  <a href="https://wa.me/5511963326376" class="wa-float" target="_blank" rel="noopener" aria-label="Fale conosco no WhatsApp do Hospital 24h">
+    <i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i>
+    <span class="wa-float__pulse" aria-hidden="true"></span>
+  </a>
+
+  <style>
+    .wa-float {
+      position: fixed;
+      bottom: clamp(16px, 3vw, 24px);
+      right: clamp(16px, 3vw, 24px);
+      z-index: 999;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: clamp(56px, 7vw, 64px);
+      height: clamp(56px, 7vw, 64px);
+      border-radius: 50%;
+      background: #25D366;
+      color: #FFFFFF;
+      box-shadow: 0 12px 28px -8px rgba(37, 211, 102, 0.55), 0 4px 12px rgba(0, 0, 0, 0.18);
+      text-decoration: none;
+      transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 280ms ease, background 280ms ease;
+    }
+    .wa-float i {
+      font-size: clamp(28px, 3.5vw, 34px);
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+    }
+    .wa-float:hover {
+      background: #1DAE54;
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 18px 36px -10px rgba(37, 211, 102, 0.7), 0 6px 16px rgba(0, 0, 0, 0.22);
+    }
+    .wa-float__pulse {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #25D366;
+      animation: waFloatPulse 2.4s ease-out infinite;
+      z-index: 0;
+    }
+    @keyframes waFloatPulse {
+      0%   { transform: scale(1); opacity: 0.55; }
+      80%  { transform: scale(1.45); opacity: 0; }
+      100% { transform: scale(1.45); opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .wa-float__pulse { animation: none; display: none; }
+    }
+  </style>
 
   <script>
     /* ============================================================
