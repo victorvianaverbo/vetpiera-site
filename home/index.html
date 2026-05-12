@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
   </noscript>
 
-  <!-- Reserva espaço fixo para ícones (evita CLS quando Phosphor carrega async) -->
+  <!-- Critical CSS inline: ícones com espaço reservado + orbs do hero pré-posicionados (evita CLS) -->
   <style>
     i[class^="ph"], i[class*=" ph"] {
       display: inline-block;
@@ -44,6 +44,12 @@
       line-height: 1;
       vertical-align: middle;
     }
+    .hero { position: relative; overflow: hidden; min-height: 100svh; }
+    .hero__bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .hero__bg-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.55; }
+    .hero__bg-orb--1 { width: 480px; height: 480px; top: -120px; left: -120px; }
+    .hero__bg-orb--2 { width: 380px; height: 380px; bottom: -100px; right: 20%; }
+    .hero__bg-orb--3 { width: 320px; height: 320px; top: 30%; right: 8%; }
   </style>
 </head>
 <body>
