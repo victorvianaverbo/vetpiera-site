@@ -768,6 +768,16 @@ ul {
   .hero__trust { gap: 16px; }
   .hero__trust-item { font-size: 0.8125rem; }
   .hero__photo-caption-name { font-size: 0.85rem; }
+  /* CTA primário fica full-width em mobile */
+  .hero__actions { gap: 16px; flex-direction: column; align-items: stretch; }
+  .hero__btn-primary { justify-content: center; }
+  .hero__link { justify-content: center; align-self: center; }
+}
+
+/* WhatsApp FAB não pode tampar conteúdo no mobile pequeno */
+@media (max-width: 480px) {
+  .hero__container { padding-inline: 20px; }
+  .hero__eyebrow { font-size: 0.6875rem; padding: 6px 12px; }
 }
 
 @media (max-width: 380px) {

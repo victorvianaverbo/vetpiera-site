@@ -673,15 +673,27 @@ ul {
   .hosp-hero__headline { font-size: clamp(2.125rem, 9vw, 2.75rem); }
   .hosp-hero__media { min-height: 360px; }
   .hosp-hero__badge { left: 12px; top: 12px; padding: 10px 16px 10px 14px; }
-  .hosp-hero__stamp { bottom: -12px; right: -8px; padding: 16px 22px; }
-  .hosp-hero__stamp-num { font-size: 2.25rem; }
-  .hosp-hero__trust { gap: 16px; }
+  .hosp-hero__stamp {
+    bottom: -10px;
+    right: -6px;
+    padding: 12px 18px;
+    border-radius: 14px;
+  }
+  .hosp-hero__stamp-num { font-size: 2rem; }
+  .hosp-hero__stamp-unit { font-size: 1.5rem; }
+  .hosp-hero__trust { gap: 14px; }
   .hosp-hero__trust-item { font-size: 0.8125rem; }
   .hosp-hero__phone-num { font-size: 1rem; }
+  .hosp-hero__actions { gap: 18px; }
+  .hosp-hero__btn-primary { justify-content: center; flex: 1 1 auto; }
 }
 
 @media (max-width: 380px) {
   .hosp-hero__headline { font-size: 2rem; }
+  .hosp-hero__container { padding-inline: 20px; }
+  .hosp-hero__stamp-num { font-size: 1.75rem; }
+  .hosp-hero__stamp-unit { font-size: 1.25rem; }
+  .hosp-hero__badge-title { font-size: 0.875rem; }
 }
 
 /* ============================================================

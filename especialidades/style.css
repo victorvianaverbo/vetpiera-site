@@ -638,12 +638,17 @@ button {
   .esp-hero__media { min-height: 360px; }
   .esp-hero__card-stamp { left: 12px; bottom: -16px; padding: 16px 22px; gap: 12px; }
   .esp-hero__tag { right: 12px; top: 12px; }
-  .esp-hero__trust { gap: 16px; }
+  .esp-hero__trust { gap: 14px; }
   .esp-hero__trust-item { font-size: 0.8125rem; }
+  .esp-hero__actions { gap: 18px; flex-direction: column; align-items: stretch; }
+  .esp-hero__btn-primary { justify-content: center; }
+  .esp-hero__link { justify-content: center; align-self: center; }
 }
 
 @media (max-width: 380px) {
   .esp-hero__headline { font-size: 2rem; }
+  .esp-hero__container { padding-inline: 20px; }
+  .esp-hero__card-num { font-size: 2.5rem; }
 }
 
 /* ============================================================
