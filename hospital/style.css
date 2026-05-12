@@ -2473,9 +2473,9 @@ ul {
   position: absolute;
   top: -32px;
   left: -32px;
-  z-index: 3;
+  z-index: 10;
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   gap: 14px;
   padding: 22px 30px;
   background: rgba(255, 255, 255, 0.96);
@@ -2487,7 +2487,6 @@ ul {
     0 0 0 1px rgba(255, 255, 255, 0.6) inset;
   overflow: visible;
   white-space: nowrap;
-  line-height: 1;
 }
 
 .hosp-about__badge-num {
@@ -2504,15 +2503,13 @@ ul {
 
 .hosp-about__badge-plus {
   font-family: var(--ff-heading);
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
   color: var(--clr-accent);
   -webkit-text-fill-color: var(--clr-accent);
   background: none;
-  margin-left: -8px;
+  margin-left: -10px;
   line-height: 1;
   display: inline-block;
-  align-self: flex-start;
-  margin-top: 0.1em;
 }
 
 .hosp-about__badge-text {
