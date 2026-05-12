@@ -2233,7 +2233,10 @@ ul {
   display: flex;
   gap: 16px;
   width: max-content;
-  animation: galleryMarquee 50s linear infinite;
+  /* !important para sobrepor o reset global de prefers-reduced-motion */
+  animation: galleryMarquee 50s linear infinite !important;
+  animation-duration: 50s !important;
+  animation-iteration-count: infinite !important;
   will-change: transform;
 }
 
@@ -2245,7 +2248,7 @@ ul {
 /* Pausa no hover */
 .gallery__viewport:hover .gallery__track,
 .gallery__track:hover {
-  animation-play-state: paused;
+  animation-play-state: paused !important;
 }
 
 .gallery__item {
@@ -2279,10 +2282,11 @@ ul {
   font-weight: 600;
 }
 
-/* Reduced motion: para a animação */
+/* Reduced motion: mantém animação, mas mais lenta */
 @media (prefers-reduced-motion: reduce) {
-  .gallery__track { animation: none; }
-  .gallery__viewport { overflow-x: auto; }
+  .gallery__track {
+    animation-duration: 90s !important;
+  }
 }
 
 /* ============================================================
