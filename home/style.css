@@ -2454,22 +2454,26 @@ ul {
 }
 
 /* ============================================================
-   17. BOOK CTA — Agendamento WhatsApp (Section 10)
+   17. BOOK CTA — Agendamento (fundo claro com mesh dourado)
    ============================================================ */
 .book-cta {
   padding-block: var(--sp-section);
-  background: linear-gradient(135deg, var(--clr-dark) 0%, var(--clr-primary) 100%);
-  color: var(--clr-inverse);
+  background: var(--clr-bg);
+  color: var(--clr-text);
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .book-cta::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 80% 20%, rgba(201,168,76,0.15), transparent 50%);
+  z-index: -1;
   pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 50% at 90% 10%, rgba(201, 168, 76, 0.18), transparent 60%),
+    radial-gradient(circle 380px at 10% 100%, rgba(27, 77, 62, 0.10), transparent 70%);
 }
 
 .book-cta__container {
@@ -2487,7 +2491,7 @@ ul {
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--clr-accent);
+  color: var(--clr-accent-deep, #b8922e);
   margin-bottom: 16px;
 }
 
@@ -2497,11 +2501,12 @@ ul {
   line-height: 1.05;
   letter-spacing: -0.02em;
   margin-bottom: 20px;
+  color: var(--clr-dark);
 }
 
 .book-cta__sub {
   font-size: 1.05rem;
-  color: rgba(255,255,255,0.85);
+  color: var(--clr-muted);
   line-height: 1.6;
   max-width: 480px;
   margin-bottom: 28px;
@@ -2517,6 +2522,16 @@ ul {
 .book-cta__btn {
   padding: 16px 32px;
   font-size: 1rem;
+  background: linear-gradient(135deg, #C9A84C 0%, #b8922e 100%);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 12px 32px -8px rgba(201, 168, 76, 0.55);
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 280ms ease;
+}
+.book-cta__btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -8px rgba(201, 168, 76, 0.65);
 }
 .book-cta__btn i { font-size: 22px; }
 
@@ -2524,22 +2539,33 @@ ul {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: rgba(255,255,255,0.9);
+  color: var(--clr-text);
   font-family: var(--font-body);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.95rem;
-  transition: color 200ms ease;
+  transition: color 200ms ease, gap 200ms ease;
 }
-.book-cta__phone:hover { color: var(--clr-accent); }
-.book-cta__phone i { font-size: 18px; }
+.book-cta__phone:hover { color: var(--clr-primary); gap: 14px; }
+.book-cta__phone i {
+  font-size: 18px;
+  color: var(--clr-primary);
+  padding: 10px;
+  border-radius: 50%;
+  background: rgba(27, 77, 62, 0.08);
+}
 
 .book-cta__visual {
   position: relative;
   aspect-ratio: 4 / 3;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+  box-shadow:
+    0 32px 64px -16px rgba(15, 45, 36, 0.30),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  transform: rotate(-1.5deg);
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
 }
+.book-cta:hover .book-cta__visual { transform: rotate(0deg); }
 
 .book-cta__visual img {
   width: 100%;
@@ -2549,5 +2575,5 @@ ul {
 
 @media (max-width: 860px) {
   .book-cta__container { grid-template-columns: 1fr; }
-  .book-cta__visual { aspect-ratio: 16 / 10; order: -1; }
+  .book-cta__visual { aspect-ratio: 16 / 10; order: -1; transform: rotate(0deg); }
 }

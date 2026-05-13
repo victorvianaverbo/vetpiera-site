@@ -2480,19 +2480,19 @@ ul {
 
 .hosp-about__badge {
   position: absolute;
-  top: -32px;
-  left: -32px;
+  top: 20px;
+  left: 20px;
   z-index: 10;
   display: inline-flex;
   align-items: baseline;
   gap: 14px;
-  padding: 22px 30px;
+  padding: 18px 24px;
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-radius: 20px;
+  border-radius: 18px;
   box-shadow:
-    0 24px 56px -12px rgba(15, 45, 36, 0.30),
+    0 16px 40px -10px rgba(15, 45, 36, 0.35),
     0 0 0 1px rgba(255, 255, 255, 0.6) inset;
   overflow: visible;
   white-space: nowrap;
