@@ -2554,9 +2554,14 @@ ul {
   color: #FFFFFF;
   transform: translateY(-2px);
 }
-.book-cta__phone i {
+.book-cta__phone i,
+.book-cta__phone-icon {
   font-size: 18px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
   color: inherit;
+  fill: currentColor;
 }
 
 .book-cta__visual {
