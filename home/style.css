@@ -2587,3 +2587,13 @@ ul {
   .book-cta__container { grid-template-columns: 1fr; }
   .book-cta__visual { aspect-ratio: 16 / 10; order: -1; transform: rotate(0deg); }
 }
+
+@media (max-width: 480px) {
+  .book-cta__actions { gap: 12px; }
+  .book-cta__btn,
+  .book-cta__phone {
+    width: 100%;
+    justify-content: center;
+  }
+  .book-cta__phone { padding: 12px 20px; font-size: 0.95rem; }
+}
