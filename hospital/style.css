@@ -2481,18 +2481,17 @@ ul {
 .hosp-about__badge {
   position: absolute;
   top: 32px;
-  left: -36px;
+  left: 32px;
   z-index: 10;
   display: inline-flex;
   align-items: baseline;
   gap: 14px;
-  padding: 20px 28px;
+  padding: 18px 26px;
   background: #FFFFFF;
-  border-radius: 20px;
+  border-radius: 18px;
   box-shadow:
-    0 28px 64px -12px rgba(15, 45, 36, 0.40),
-    0 8px 24px -6px rgba(15, 45, 36, 0.20),
-    0 0 0 1px rgba(15, 45, 36, 0.06);
+    0 24px 56px -12px rgba(15, 45, 36, 0.40),
+    0 8px 20px -6px rgba(15, 45, 36, 0.22);
   overflow: visible;
   white-space: nowrap;
 }

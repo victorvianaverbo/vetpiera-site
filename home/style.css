@@ -2538,26 +2538,25 @@ ul {
 .book-cta__phone {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  color: var(--clr-text);
+  gap: 10px;
+  color: var(--clr-dark);
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: color 200ms ease, gap 200ms ease;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  padding: 12px 22px;
+  border: 2px solid var(--clr-dark);
+  border-radius: 999px;
+  transition: background 220ms ease, color 220ms ease, transform 220ms ease;
 }
-.book-cta__phone:hover { color: var(--clr-accent-deep, #b8922e); gap: 16px; }
+.book-cta__phone:hover {
+  background: var(--clr-dark);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
 .book-cta__phone i {
   font-size: 18px;
-  color: #FFFFFF;
-  padding: 12px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #C9A84C 0%, #b8922e 100%);
-  box-shadow: 0 8px 20px -4px rgba(201, 168, 76, 0.55);
-  transition: transform 220ms ease, box-shadow 220ms ease;
-}
-.book-cta__phone:hover i {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px -6px rgba(201, 168, 76, 0.65);
+  color: inherit;
 }
 
 .book-cta__visual {
