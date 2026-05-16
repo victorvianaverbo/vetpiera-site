@@ -550,7 +550,7 @@ ul {
 .hosp-hero__photo {
   position: absolute;
   inset: -2%;
-  background-image: url('/.netlify/images?url=/images/hosp-hero-recepcao.png&w=1200&q=80');
+  background-image: url('/.netlify/images?url=/images/hospital-hero-logo-large.png&w=1200&q=80');
   background-size: cover;
   background-position: center center;
 }

@@ -540,7 +540,7 @@ button {
 .esp-hero__photo {
   position: absolute;
   inset: -2%;
-  background-image: url('/.netlify/images?url=/images/especialidades-hero-logo.jpg&w=1200&q=80');
+  background-image: url('/.netlify/images?url=/images/especialidades-hero-logo-large.png&w=1200&q=80');
   background-size: cover;
   background-position: 50% 30%;
 }
