@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Piera;Hosp;;;
+FN:Hosp Piera
+TEL;type=HOME:+55 11 2746-7292
+END:VCARD_$!<VCard-Separator>!$_BEGIN:VCARD
+VERSION:3.0
+N:Piera;Centro;;;
+FN:Centro Piera
+item1.TEL:+55 11 2746-7292
+item1.X-ABLabel:Celular
+END:VCARD

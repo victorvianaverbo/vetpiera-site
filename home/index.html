@@ -60,7 +60,7 @@
   <header class="site-header" role="banner">
     <div class="site-header__inner container">
       <a href="/" class="site-header__logo" aria-label="VetPiera — Página inicial">
-        <img src="/.netlify/images?url=/images/logo.png&w=200&q=80" alt="VetPiera Logo" class="site-header__logo-img">
+        <img src="/.netlify/images?url=/images/logo-piera-geral.png&w=400&q=80" alt="VetPiera Logo" class="site-header__logo-img" style="height: 50px; width: auto; max-width: 100%;">
       </a>
 
       <nav class="site-nav" aria-label="Navegação principal">
@@ -121,38 +121,22 @@
         <div class="hero__copy">
           <span class="hero__eyebrow">
             <span class="hero__eyebrow-dot"></span>
-            Grupo Piera · Desde 2002
+            Piera Veterinário · Desde 2002
           </span>
           <h1 class="hero__headline">
-            O cuidado <span class="hero__headline-grad">veterinário</span><br>
-            completo que o seu pet merece.
+            Hospital Veterinário 24h e<br>
+            <span class="hero__headline-grad">Centro de Especialidades</span>
           </h1>
-          <p class="hero__sub">Somos o Grupo Piera — 24 anos cuidando de animais com tecnologia, especialização e humanidade.</p>
+          <p class="hero__sub">Preparados para oferecer diagnóstico completo e tratamento personalizado com segurança, humanidade, tecnologia e acolhimento ao seu pet.</p>
           <div class="hero__actions">
-            <a href="/hospital" class="btn btn--primary hero__btn-primary">
-              <span>Hospital 24h</span>
-              <i class="ph ph-arrow-right" aria-hidden="true"></i>
+            <a href="https://wa.me/5511963326376" class="btn btn--primary hero__btn-primary" style="background: #25D366; color: white; border-color: #25D366;" target="_blank" rel="noopener">
+              <i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i>
+              <span>Fale pelo WhatsApp</span>
             </a>
-            <a href="/especialidades" class="hero__link">
-              Conhecer Especialidades
-              <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+            <a href="tel:+551127467292" class="hero__link" style="color: var(--clr-accent); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600;">
+              <i class="ph-fill ph-phone" aria-hidden="true"></i>
+              <span>(11) 2746-7292</span>
             </a>
-          </div>
-
-          <!-- Trust strip — micro-elemento Petderma -->
-          <div class="hero__trust" aria-label="Diferenciais rápidos">
-            <div class="hero__trust-item">
-              <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
-              <span>Hospital 24h</span>
-            </div>
-            <div class="hero__trust-item">
-              <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
-              <span>25 especialidades</span>
-            </div>
-            <div class="hero__trust-item">
-              <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
-              <span>13+ veterinários</span>
-            </div>
           </div>
         </div>
 
@@ -185,6 +169,77 @@
           </div>
 
         </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================
+         SECTION 1.5 — UNITS ("Duas Unidades")
+    =================================================== -->
+    <section class="units" aria-label="Nossas unidades">
+      <div class="units__header">
+        <p class="units__pre">Onde seu pet precisa ir?</p>
+        <h2 class="units__title">Conheça abaixo<br><span class="units__title-grad">nossas 2 unidades</span></h2>
+        <p class="units__intro">Hospital Veterinário 24h e Clínica de Especialidades Veterinárias.</p>
+      </div>
+
+      <div class="units__grid">
+
+        <!-- Hospital 24h card (dark) -->
+        <a href="/hospital" class="unit unit--dark" aria-label="Hospital Veterinário 24h">
+          <img src="/.netlify/images?url=/images/logo-piera-hospital.png&w=400&q=80" alt="Logo Hospital Veterinário Piera" style="width: 180px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);">
+          <span class="unit__tag">Hospital Veterinário</span>
+          <h3 class="unit__name">Emergência<br>24 horas.</h3>
+          <p class="unit__desc">Emergências, cirurgias, internação, diagnóstico e atendimento de rotina. Aberto todos os dias, a qualquer hora.</p>
+
+          <ul class="unit__info">
+            <li class="unit__info-item">
+              <i class="ph ph-phone" aria-hidden="true"></i>
+              <span>(11) 2746-7292</span>
+            </li>
+            <li class="unit__info-item">
+              <i class="ph ph-map-pin" aria-hidden="true"></i>
+              <span>Av. Maria Luiza Americano, 803 — São Paulo, SP</span>
+            </li>
+            <li class="unit__info-item">
+              <i class="ph ph-clock" aria-hidden="true"></i>
+              <span>24 horas · 7 dias por semana</span>
+            </li>
+          </ul>
+
+          <span class="unit__cta">
+            Ir para o Hospital
+            <i class="ph ph-arrow-right" aria-hidden="true"></i>
+          </span>
+        </a>
+
+        <!-- Especialidades card (light) -->
+        <a href="/especialidades" class="unit unit--light" aria-label="Clínica de Especialidades">
+          <img src="/.netlify/images?url=/images/logo-piera-especialidades.png&w=400&q=80" alt="Logo Piera Especialidades" style="width: 180px; margin-bottom: 1.5rem;">
+          <span class="unit__tag">Clínica de Especialidades</span>
+          <h3 class="unit__name">25 especialidades<br>veterinárias.</h3>
+          <p class="unit__desc">Equipe com 25 veterinários especializados nas diversas áreas, com foco em neurologia, fisioterapia, reabilitação e ortopedia, com diagnóstico preciso e tratamento personalizado.</p>
+
+          <ul class="unit__info">
+            <li class="unit__info-item">
+              <i class="ph ph-phone" aria-hidden="true"></i>
+              <span>(11) 2373-3144</span>
+            </li>
+            <li class="unit__info-item">
+              <i class="ph ph-map-pin" aria-hidden="true"></i>
+              <span>Rua Itapeti, 154 — São Paulo, SP</span>
+            </li>
+            <li class="unit__info-item">
+              <i class="ph ph-clock" aria-hidden="true"></i>
+              <span>Seg–Sex 9h–18h · Sáb 9h–13h</span>
+            </li>
+          </ul>
+
+          <span class="unit__cta">
+            Conhecer Especialidades
+            <i class="ph ph-arrow-right" aria-hidden="true"></i>
+          </span>
+        </a>
 
       </div>
     </section>
@@ -227,11 +282,12 @@
 
           <div class="stats__item" style="--stat-i: 2">
             <div class="stats__num-wrap">
-              <span class="stats__num" data-count-to="13">13</span>
+              <span class="stats__num" data-count-to="50">50</span>
+              <span class="stats__plus" style="margin-left: 4px; text-transform: none;">Mil</span>
             </div>
             <div class="stats__label-wrap">
-              <span class="stats__label-eyebrow">Equipe</span>
-              <p class="stats__label">Veterinários<br>na equipe</p>
+              <span class="stats__label-eyebrow">Confiança</span>
+              <p class="stats__label">Animais<br>atendidos</p>
             </div>
           </div>
 
@@ -315,7 +371,7 @@
           <article class="service-card">
             <div class="service-card__icon"><i class="ph ph-magnifying-glass" aria-hidden="true"></i></div>
             <h3 class="service-card__name">Diagnóstico por Imagem</h3>
-            <p class="service-card__desc">Raio-x digital, ultrassom, ecocardiografia e tomografia para diagnóstico preciso e rápido.</p>
+            <p class="service-card__desc">Raio-x digital, ultrassom e ecocardiografia para diagnóstico preciso e rápido.</p>
             <a href="/hospital#diagnostico" class="service-card__link">Saiba mais →</a>
           </article>
         </div>
@@ -355,7 +411,7 @@
                 <span>Equipe</span>
               </div>
               <h3 class="pillars__name">Equipe especializada</h3>
-              <p class="pillars__text">Mais de 13 veterinários com formação específica em cada área, coordenados para atender cada caso da forma certa. Fisioterapeutas, nutricionistas e anestesiologistas dedicados.</p>
+              <p class="pillars__text">Somos 25 veterinários com formação específica em cada área, coordenados para atender cada caso da melhor forma. Fisioterapeutas, neurologistas e anestesiologistas atualizados e dedicados.</p>
             </div>
           </div>
 
@@ -473,75 +529,7 @@
       </div>
     </section>
 
-    <!-- ===================================================
-         SECTION 7 — UNITS ("Duas Unidades")
-         Cards lineares com todas as infos visíveis
-    =================================================== -->
-    <section class="units" aria-label="Nossas unidades">
-      <div class="units__header">
-        <p class="units__pre">Onde seu pet precisa ir?</p>
-        <h2 class="units__title">Duas unidades.<br><span class="units__title-grad">Um só compromisso</span> com o seu animal.</h2>
-        <p class="units__intro">Temos a estrutura certa para cada momento — desde a emergência à madrugada até a consulta especializada marcada com antecedência.</p>
-      </div>
 
-      <div class="units__grid">
-
-        <!-- Hospital 24h card (dark) -->
-        <a href="/hospital" class="unit unit--dark" aria-label="Hospital Veterinário 24h">
-          <span class="unit__tag">Hospital Veterinário</span>
-          <h3 class="unit__name">Emergência<br>24 horas.</h3>
-          <p class="unit__desc">Emergências, cirurgias, internação, diagnóstico e atendimento de rotina. Aberto todos os dias, a qualquer hora.</p>
-
-          <ul class="unit__info">
-            <li class="unit__info-item">
-              <i class="ph ph-phone" aria-hidden="true"></i>
-              <span>(11) 2746-7292</span>
-            </li>
-            <li class="unit__info-item">
-              <i class="ph ph-map-pin" aria-hidden="true"></i>
-              <span>Av. Maria Luiza Americano, 803 — São Paulo, SP</span>
-            </li>
-            <li class="unit__info-item">
-              <i class="ph ph-clock" aria-hidden="true"></i>
-              <span>24 horas · 7 dias por semana</span>
-            </li>
-          </ul>
-
-          <span class="unit__cta">
-            Ir para o Hospital
-            <i class="ph ph-arrow-right" aria-hidden="true"></i>
-          </span>
-        </a>
-
-        <!-- Especialidades card (light) -->
-        <a href="/especialidades" class="unit unit--light" aria-label="Clínica de Especialidades">
-          <span class="unit__tag">Clínica de Especialidades</span>
-          <h3 class="unit__name">25 especialidades<br>veterinárias.</h3>
-          <p class="unit__desc">25 especialidades veterinárias para consultas eletivas. Equipe de especialistas com foco em diagnóstico preciso e tratamento personalizado.</p>
-
-          <ul class="unit__info">
-            <li class="unit__info-item">
-              <i class="ph ph-phone" aria-hidden="true"></i>
-              <span>(11) 2373-3144</span>
-            </li>
-            <li class="unit__info-item">
-              <i class="ph ph-map-pin" aria-hidden="true"></i>
-              <span>Rua Itapeti, 154 — São Paulo, SP</span>
-            </li>
-            <li class="unit__info-item">
-              <i class="ph ph-clock" aria-hidden="true"></i>
-              <span>Seg–Sex 9h–18h · Sáb 9h–13h</span>
-            </li>
-          </ul>
-
-          <span class="unit__cta">
-            Conhecer Especialidades
-            <i class="ph ph-arrow-right" aria-hidden="true"></i>
-          </span>
-        </a>
-
-      </div>
-    </section>
 
     <!-- ===================================================
          SECTION 8 — TESTIMONIALS (CSS Carousel)
@@ -553,16 +541,17 @@
       <input type="radio" name="testimonial" id="t1" class="testimonials__radio" checked>
       <input type="radio" name="testimonial" id="t2" class="testimonials__radio">
       <input type="radio" name="testimonial" id="t3" class="testimonials__radio">
+      <input type="radio" name="testimonial" id="t4" class="testimonials__radio">
+      <input type="radio" name="testimonial" id="t5" class="testimonials__radio">
+      <input type="radio" name="testimonial" id="t6" class="testimonials__radio">
+      <input type="radio" name="testimonial" id="t7" class="testimonials__radio">
+      <input type="radio" name="testimonial" id="t8" class="testimonials__radio">
+      <input type="radio" name="testimonial" id="t9" class="testimonials__radio">
 
       <div class="testimonials__inner">
-
-        <!-- Section label -->
         <p class="testimonials__section-label">O que dizem quem já foi atendido.</p>
-
-        <!-- Decorative giant quote mark -->
         <div class="testimonials__quote-mark" aria-hidden="true">"</div>
 
-        <!-- Track wrapper -->
         <div class="testimonials__track-wrapper">
           <div class="testimonials__track">
 
@@ -575,12 +564,10 @@
                 <i class="ph-fill ph-star" style="--star-i:3" aria-hidden="true"></i>
                 <i class="ph-fill ph-star" style="--star-i:4" aria-hidden="true"></i>
               </div>
-              <blockquote class="testimonials__quote">
-                "Os melhores veterinários da REGIÃO, com uma estrutura sensacional."
-              </blockquote>
+              <blockquote class="testimonials__quote">"Na semana passada levei um susto bem grande com a minha doguinha Ylla Maria. Ela é super ativa, porém ficou bem quietinha. Lá fomos atendidos pela Dra Érika, um encanto de pessoa. A Clínica está de parabéns por ter uma profissional humana, acolhedora e extremamente capacitada."</blockquote>
               <footer class="testimonials__author">
-                <p class="testimonials__name">Kamila Fernanda Oliveira</p>
-                <p class="testimonials__pet">Tutora de filhote tratado de parvovirose e coronavirose</p>
+                <p class="testimonials__name">Debora Pinheiro</p>
+                <p class="testimonials__pet">Avaliação no Google · Local Guide</p>
               </footer>
             </div>
 
@@ -593,12 +580,10 @@
                 <i class="ph-fill ph-star" style="--star-i:3" aria-hidden="true"></i>
                 <i class="ph-fill ph-star" style="--star-i:4" aria-hidden="true"></i>
               </div>
-              <blockquote class="testimonials__quote">
-                "Eu gostei muito, do atendimento, super recomendo."
-              </blockquote>
+              <blockquote class="testimonials__quote">"Toda a equipe do Piera demonstrou profissionalismo e atenção. Destaco a Dra Aline Sene que prestou os últimos cuidados ao meu gato Yuri com gentileza, e a Dra Erika Sena que atendeu uma urgência na madrugada."</blockquote>
               <footer class="testimonials__author">
-                <p class="testimonials__name">Edileide Santos de Oliveira</p>
-                <p class="testimonials__pet">Cliente VetPiera</p>
+                <p class="testimonials__name">Alejandro Rico</p>
+                <p class="testimonials__pet">Avaliação no Google</p>
               </footer>
             </div>
 
@@ -611,12 +596,106 @@
                 <i class="ph-fill ph-star" style="--star-i:3" aria-hidden="true"></i>
                 <i class="ph-fill ph-star" style="--star-i:4" aria-hidden="true"></i>
               </div>
-              <blockquote class="testimonials__quote">
-                "Meu cachorro Lup tinha uma lesão na coluna e precisou de cirurgia."
-              </blockquote>
+              <blockquote class="testimonials__quote">"Corri imediatamente para lá e simplesmente ameiiii todo carinho, amor e cuidado comigo e com a Mel. Atendimento impecável desde a recepção até os médicos. Dra Mirella maravilhosa, tirou todas minhas dúvidas."</blockquote>
               <footer class="testimonials__author">
-                <p class="testimonials__name">Elisete Assunção</p>
-                <p class="testimonials__pet">Tutora do Lup</p>
+                <p class="testimonials__name">Juliana Tamura</p>
+                <p class="testimonials__pet">Avaliação no Google</p>
+              </footer>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="testimonials__slide">
+              <div class="testimonials__stars" aria-label="5 estrelas">
+                <i class="ph-fill ph-star" style="--star-i:0" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:1" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:2" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:3" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:4" aria-hidden="true"></i>
+              </div>
+              <blockquote class="testimonials__quote">"A cirurgia foi muito bem realizada e a Kiara ficou ótima. Nas quimioterapias o Dr Rodrigo sempre esteve atento a todo momento. É muito bom poder confiar em uma equipe sabendo que se precisar pode contar com eles."</blockquote>
+              <footer class="testimonials__author">
+                <p class="testimonials__name">Ana Carolina Martins</p>
+                <p class="testimonials__pet">Avaliação no Google</p>
+              </footer>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="testimonials__slide">
+              <div class="testimonials__stars" aria-label="5 estrelas">
+                <i class="ph-fill ph-star" style="--star-i:0" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:1" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:2" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:3" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:4" aria-hidden="true"></i>
+              </div>
+              <blockquote class="testimonials__quote">"Nota mil para o hospital e equipe. Meu cachorro Yuri operou de hérnia de disco com o competente Dr Ryan Piera e hoje está ótimo. Me chamou a atenção a conexão entre todos os profissionais, da recepção aos médicos. Empatia, humanização e competência."</blockquote>
+              <footer class="testimonials__author">
+                <p class="testimonials__name">Ifigenia Marques</p>
+                <p class="testimonials__pet">Avaliação no Google</p>
+              </footer>
+            </div>
+
+            <!-- Slide 6 -->
+            <div class="testimonials__slide">
+              <div class="testimonials__stars" aria-label="5 estrelas">
+                <i class="ph-fill ph-star" style="--star-i:0" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:1" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:2" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:3" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:4" aria-hidden="true"></i>
+              </div>
+              <blockquote class="testimonials__quote">"Dra. Regina, fisioterapeuta, muito simpática e receptiva. Conquistou a confiança da minha cachorra. É uma profissional muito competente. Meu cão tem evoluído muito na questão muscular e no controle da dor."</blockquote>
+              <footer class="testimonials__author">
+                <p class="testimonials__name">Solange Filgueiras</p>
+                <p class="testimonials__pet">Avaliação no Google</p>
+              </footer>
+            </div>
+
+            <!-- Slide 7 -->
+            <div class="testimonials__slide">
+              <div class="testimonials__stars" aria-label="5 estrelas">
+                <i class="ph-fill ph-star" style="--star-i:0" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:1" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:2" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:3" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:4" aria-hidden="true"></i>
+              </div>
+              <blockquote class="testimonials__quote">"Ótima clinica e ótimos profissionais. A Mafalda ama a Dra. Regina e sua equipe."</blockquote>
+              <footer class="testimonials__author">
+                <p class="testimonials__name">Ricardo</p>
+                <p class="testimonials__pet">Avaliação no Google · Local Guide</p>
+              </footer>
+            </div>
+
+            <!-- Slide 8 -->
+            <div class="testimonials__slide">
+              <div class="testimonials__stars" aria-label="5 estrelas">
+                <i class="ph-fill ph-star" style="--star-i:0" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:1" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:2" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:3" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:4" aria-hidden="true"></i>
+              </div>
+              <blockquote class="testimonials__quote">"A experiência da minha Princesa foi maravilhosa!!! Recuperou-se muito bem de cirurgia de ligamento. Além da competência da Dra. Regina, auxiliada por Aline e Giuliane, recebeu muita atenção e carinho de todas!"</blockquote>
+              <footer class="testimonials__author">
+                <p class="testimonials__name">Rita Cristiane Teixeira</p>
+                <p class="testimonials__pet">Avaliação no Google</p>
+              </footer>
+            </div>
+
+            <!-- Slide 9 -->
+            <div class="testimonials__slide">
+              <div class="testimonials__stars" aria-label="5 estrelas">
+                <i class="ph-fill ph-star" style="--star-i:0" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:1" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:2" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:3" aria-hidden="true"></i>
+                <i class="ph-fill ph-star" style="--star-i:4" aria-hidden="true"></i>
+              </div>
+              <blockquote class="testimonials__quote">"Ótimo atendimento de toda equipe. Excelentes profissionais, tanto o ortopedista quanto a fisioterapeuta são muito atenciosos e meu cachorro está se recuperando muito bem da cirurgia de quadril."</blockquote>
+              <footer class="testimonials__author">
+                <p class="testimonials__name">Gisele Almeida</p>
+                <p class="testimonials__pet">Avaliação no Google</p>
               </footer>
             </div>
 
@@ -628,6 +707,12 @@
           <label for="t1" class="testimonials__dot" aria-label="Depoimento 1"></label>
           <label for="t2" class="testimonials__dot" aria-label="Depoimento 2"></label>
           <label for="t3" class="testimonials__dot" aria-label="Depoimento 3"></label>
+          <label for="t4" class="testimonials__dot" aria-label="Depoimento 4"></label>
+          <label for="t5" class="testimonials__dot" aria-label="Depoimento 5"></label>
+          <label for="t6" class="testimonials__dot" aria-label="Depoimento 6"></label>
+          <label for="t7" class="testimonials__dot" aria-label="Depoimento 7"></label>
+          <label for="t8" class="testimonials__dot" aria-label="Depoimento 8"></label>
+          <label for="t9" class="testimonials__dot" aria-label="Depoimento 9"></label>
         </nav>
 
       </div>
